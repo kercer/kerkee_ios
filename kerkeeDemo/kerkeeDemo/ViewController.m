@@ -47,10 +47,10 @@
     
     
 
-//    NSString* pathTestHtml = [[NSBundle mainBundle] pathForResource:@"test.html" ofType:Nil];
-//    NSURL* url =[NSURL URLWithString:pathTestHtml];
+    NSString* pathTestHtml = [[NSBundle mainBundle] pathForResource:@"test.html" ofType:Nil];
+    NSURL* url =[NSURL URLWithString:pathTestHtml];
     
-    NSURL* url =[NSURL URLWithString:KCWebPath_ModulesChannel_File];
+//    NSURL* url =[NSURL URLWithString:KCWebPath_ModulesChannel_File];
     
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
     [m_webView loadRequest:request];
