@@ -1,0 +1,20 @@
+## xcode specific
+*~
+build/*
+xcschememanagement.plist
+*.xcscheme
+UserInterfaceState.xcuserstate
+*.xcodeproj/*.mode*
+*.xcodeproj/*.pbxuser
+project.xcworkspace
+xcuserdata
+*.xcuserdata
+.svn
+*.xccheckout
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
