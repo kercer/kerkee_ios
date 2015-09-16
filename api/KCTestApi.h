@@ -18,5 +18,6 @@
 
 +(void)testJSBrige:(KCWebView*)aWebView argList:(KCArgList*)args;
 +(void)commonApi:(KCWebView*)aWebView argList:(KCArgList*)args;
++(void)testInfo:(KCWebView*)aWebView argList:(KCArgList*)args;
 
 @end

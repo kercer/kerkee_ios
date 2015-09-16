@@ -31,6 +31,7 @@
 
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId;
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId jsonString:(NSString *)aStr;
++ (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId string:(NSString *)aStr;
 
 
 @end

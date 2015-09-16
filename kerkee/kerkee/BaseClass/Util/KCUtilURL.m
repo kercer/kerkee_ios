@@ -17,32 +17,36 @@
 +(NSDictionary*)getQuery:(NSURL*)aUrl
 {
     NSString* strQuery = aUrl.query;
-    NSArray* arrKeyValue = [strQuery componentsSeparatedByString:@"&"];
-    NSMutableDictionary* dic = [[NSMutableDictionary alloc]init];
-    KCAutorelease(dic);
-    for (NSString* strKeyValue in arrKeyValue)
-    {
-        NSArray* arrKeyValue = [strKeyValue componentsSeparatedByString:@"="];
-        NSString* key = @"";
-        NSString* value = @"";
-        for (int i = 0; i<arrKeyValue.count; ++i)
-        {
-            if (i == 0)
-            {
-                key = [arrKeyValue objectAtIndex:i];
-                key = [key stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
-            }
-            else if(i == 1)
-            {
-                value  = [arrKeyValue objectAtIndex:i];
-            }
-        }
-        
-        if (key.length>0)
-        {
-            [dic setObject:value forKey:key];
-        }
-    }
+//    NSArray* arrKeyValue = [strQuery componentsSeparatedByString:@"&"];
+//    NSMutableDictionary* dic = [[NSMutableDictionary alloc]init];
+//    KCAutorelease(dic);
+//    for (NSString* strKeyValue in arrKeyValue)
+//    {
+//        NSArray* arrKeyValue = [strKeyValue componentsSeparatedByString:@"="];
+//        NSString* key = @"";
+//        NSString* value = @"";
+//        for (int i = 0; i<arrKeyValue.count; ++i)
+//        {
+//            if (i == 0)
+//            {
+//                key = [arrKeyValue objectAtIndex:i];
+//                key = [key stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+//            }
+//            else if(i == 1)
+//            {
+//                value  = [arrKeyValue objectAtIndex:i];
+//            }
+//        }
+//        
+//        if (key.length>0)
+//        {
+//            [dic setObject:value forKey:key];
+//        }
+//    }
+//    return dic;
+    
+
+    NSDictionary* dic = [KCUtilURL dictionaryFromQuery:strQuery usingEncoding:NSUTF8StringEncoding];
     return dic;
 }
 
@@ -141,20 +145,7 @@
         return NO;
 }
 
-+(NSString *) urlEncodeStringToStr:(NSString *)aStr
-{
-    NSMutableString *tempStr = [NSMutableString stringWithString:aStr];
-    [tempStr replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tempStr length])];
-    
-    NSString* str = [[NSString stringWithFormat:@"%@",tempStr] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    return str;
-}
 
-+(NSURL *) urlEncodeString:(NSString *)aStr
-{
-    NSString* str = [self urlEncodeStringToStr:aStr];
-    return [NSURL URLWithString:str];
-}
 
 
 @end

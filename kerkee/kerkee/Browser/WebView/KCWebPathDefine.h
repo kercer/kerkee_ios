@@ -41,5 +41,8 @@
 #define KCWebPath_ModulesSearch_File        [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"modules/search/search.html"]
 
 
+//test
+#define KCWebPath_ModulesTest_File       [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"modules/test/test.html"]
+
 
 #endif

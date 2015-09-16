@@ -13,6 +13,10 @@
 #import "KCAssistant.h"
 #import "KCBaseDefine.h"
 #import "KCWebPathDefine.h"
+#import "KCURIComponents.h"
+#import "KCActionTest.h"
+#import "KCUriRegister.h"
+#import "KCUriDispatcher.h"
 
 
 @interface ViewController ()
@@ -46,15 +50,37 @@
     m_jsBridge = [[KCJSBridge alloc] initWithWebView:m_webView delegate:self];
     
     
+//    //test uri
+//    KCURIComponents *components = [KCURIComponents componentsWithURL:[NSURL URLWithString:@"scheme://user:password@host:0/path?query=1&q=2#fragment"]
+//                                             resolvingAgainstBaseURL:NO];
 
-    NSString* pathTestHtml = [[NSBundle mainBundle] pathForResource:@"test.html" ofType:Nil];
-    NSURL* url =[NSURL URLWithString:pathTestHtml];
     
-//    NSURL* url =[NSURL URLWithString:KCWebPath_ModulesChannel_File];
+
+//    NSString* pathTestHtml = [[NSBundle mainBundle] pathForResource:@"test.html" ofType:Nil];
+//    NSURL* url =[NSURL URLWithString:pathTestHtml];
+    
+    NSURL* url =[NSURL URLWithString:KCWebPath_ModulesTest_File];
     
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
     [m_webView loadRequest:request];
+    
+    
+    
+    //test action
+    [self testAction];
 }
+
+
+-(void)testAction
+{
+    KCUriRegister* uriRegister = [KCUriDispatcher markDefaultRegister:@"kerkee"];
+//    KCUriRegister* uriRegister = [KCUriDispatcher defaultUriRegister];
+    KCActionTest* action = [[KCActionTest alloc] init];
+    [uriRegister registerAction:action];
+    
+    [KCUriDispatcher dispatcher:@"kerkee://search/path?A=1&B=2&C=3&D=4"];
+}
+
 
 
 - (void)didReceiveMemoryWarning {

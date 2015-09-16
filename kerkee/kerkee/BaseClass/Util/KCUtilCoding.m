@@ -16,6 +16,7 @@
 @implementation KCUtilCoding
 
 
+
 + (NSString *)encodeToPercentEscapeString: (NSString *) input  
 {
     return [self encodeToPercentEscapeString:input encoding:kCFStringEncodingUTF8];
@@ -31,6 +32,8 @@
     return outputStr;
 }
 
+/*!	Decode a URL's query-style string, taking out the + and %XX stuff
+ */
 + (NSString *)decodeFromPercentEscapeString: (NSString *) input  
 {  
     NSMutableString *outputStr = [NSMutableString stringWithString:input];  

@@ -106,6 +106,11 @@
     [KCApiBridge callbackJSWithCallbackId:aCallbackId jsonString:aStr WebView:aWebView];
 }
 
++ (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId string:(NSString *)aStr
+{
+    [KCApiBridge callbackJSWithCallbackId:aCallbackId string:aStr WebView:aWebView];
+}
+
 /*
 
 public static void callbackJS(KCWebView aWebview, String aCallbackId, JSONObject aJSONObject)

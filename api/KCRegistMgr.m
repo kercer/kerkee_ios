@@ -61,6 +61,7 @@
     
     //have rewritten jsBridgeClient in kerkee
     [KCJSBridge registJSBridgeClient:[KCTestApi class]];
+    [KCJSBridge registClass:[KCTestApi class] jsObjName:@"testModules"];
 
 }
 

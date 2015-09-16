@@ -13,7 +13,7 @@
 @interface KCUtilURL : NSObject
 
 +(NSDictionary*) getQuery:(NSURL*)aUrl;
-+ (NSDictionary*) dictionaryFromQuery:(NSString*)aQuery usingEncoding:(NSStringEncoding)aEncoding;
++(NSDictionary*) dictionaryFromQuery:(NSString*)aQuery usingEncoding:(NSStringEncoding)aEncoding;
 +(NSString*) getValueForKey:(NSString*)aKey URL:(NSURL*)aUrl;
 
 +(NSURL*) removeParamWithKey:(NSString*)aKey URL:(NSURL*)aUrl;
@@ -22,7 +22,5 @@
 +(BOOL) isItmsUrl:(NSURL*)aUrl;
 +(BOOL) isItunesUrl:(NSURL*)aUrl;
 
-+(NSString *) urlEncodeStringToStr:(NSString *)aStr;
-+(NSURL *) urlEncodeString:(NSString *)aStr;
 
 @end

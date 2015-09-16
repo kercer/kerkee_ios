@@ -48,4 +48,16 @@
 
 }
 
+
++(void)testInfo:(KCWebView*)aWebView argList:(KCArgList*)args
+{
+    NSString* jsonInfo = [args getArgValule:@"testInfo"];
+    KCLog(@"%@", jsonInfo);
+    
+    [KCJSBridge callbackJS:aWebView callBackID:[args getArgValule:@"callbackId"] string:@"This is testInfo callball"];
+    
+    
+
+}
+
 @end
