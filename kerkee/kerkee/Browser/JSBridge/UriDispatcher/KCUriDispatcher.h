@@ -19,8 +19,8 @@
 #pragma mark KCUriRegister
 
 /**
- before call defaultUriRegister,should set setDefaultScheme
- @param aScheme
+ * before call defaultUriRegister,should set setDefaultScheme
+ * @param aScheme
  */
 +(KCUriRegister*)markDefaultRegister:(NSString*)aScheme;
 
@@ -30,7 +30,7 @@
 +(KCUriRegister*)defaultUriRegister;
 
 /**
- add Uri Register
+ * add Uri Register
  */
 +(KCUriRegister*)addUriRegisterWithScheme:(NSString*)aScheme;
 
@@ -39,12 +39,12 @@
 #pragma mark id<KCUriRegisterDelegate>
 
 /**
- return a Uri Register
+ * return a Uri Register
  */
 +(id<KCUriRegisterDelegate>)getUriRegister:(NSString*)aScheme;
 
 /**
- add uri register with KCUriRegisterDelegate, if use custom uri register ,you must realize KCUriRegisterDelegate interface
+ * add uri register with KCUriRegisterDelegate, if use custom uri register ,you must realize KCUriRegisterDelegate interface
  */
 +(BOOL)addUriRegister:(id<KCUriRegisterDelegate>)aUriRegisterDelegate;
 

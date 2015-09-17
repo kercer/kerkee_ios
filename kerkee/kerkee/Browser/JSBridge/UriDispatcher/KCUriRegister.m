@@ -56,7 +56,7 @@
 
 -(BOOL) containsAction:(id<KCUriActionDelegate>)aAction
 {
-    return (aAction && [m_uriActions containsObject:aAction]) ? true : false;
+    return (aAction && [m_uriActions containsObject:aAction]);
 }
 
 #pragma mark KCUriRegisterDelegate

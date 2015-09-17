@@ -94,9 +94,12 @@ DEF_SINGLETON(KCUriDispatcher);
 }
 -(KCUriRegister*)defaultUriRegister
 {
+    if (!m_defaultScheme || m_defaultScheme.length == 0)
+        return nil;
+        
     KCUriRegister* uriRegister = [m_uriRgisterMap objectForKey:m_defaultScheme];
     if (!uriRegister)
-        [self markDefaultRegister:@"kerkee"];
+        [self markDefaultRegister:m_defaultScheme];
     return uriRegister;
 }
 

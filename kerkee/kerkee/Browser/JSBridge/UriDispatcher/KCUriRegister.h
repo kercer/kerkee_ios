@@ -27,6 +27,13 @@
 
 -(id)initWithScheme:(NSString*)aScheme;
 
+
+/**
+ * Determine whether there is contains the action
+ *
+ * @param aAction
+ * @return if has action in register return true, else return false
+ */
 -(BOOL)containsAction:(id<KCUriActionDelegate>)aAction;
 
 @end
