@@ -11,6 +11,7 @@
 #import "KCXMLHttpRequest.h"
 #import "KCBaseDefine.h"
 #include "KCApiBridge.h"
+#import "KCJSExecutor.h"
 
 
 //static NSMutableDictionary *mRequestMap;
@@ -162,7 +163,7 @@ static void initializeClassMap()
 
 + (void)setPropertiesToJSSide:(NSDictionary *)properties Webview:(KCWebView*)webview
 {
-    [KCApiBridge callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:properties WebView:webview];
+    [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:properties WebView:webview];
     
 //    KCLog(@"%@",[properties objectForKey:@"id"]);
 }
@@ -181,12 +182,12 @@ static void initializeClassMap()
 //    [UCXMLHttpRequestDispatcher writeCached:xmlHttpRequest PropertiesData:properties];
     //[KCXMLHttpRequestDispatcher freeXMLHttpRequestObject:[xmlHttpRequest objectId]];
     
-    [KCApiBridge callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", [xmlHttpRequest objectId]] WebView:[xmlHttpRequest webview]];
+    [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", [xmlHttpRequest objectId]] WebView:[xmlHttpRequest webview]];
 }
 +(void)fetchFailed:(KCXMLHttpRequest*)xmlHttpRequest didFailWithError:(NSError *)error
 {
     //[KCXMLHttpRequestDispatcher freeXMLHttpRequestObject: [xmlHttpRequest objectId]];
-    [KCApiBridge callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", [xmlHttpRequest objectId]] WebView:[xmlHttpRequest webview]];
+    [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", [xmlHttpRequest objectId]] WebView:[xmlHttpRequest webview]];
 }
 
 @end

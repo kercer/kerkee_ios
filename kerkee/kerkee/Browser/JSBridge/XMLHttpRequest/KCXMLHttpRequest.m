@@ -10,6 +10,7 @@
 #import "KCXMLHttpRequest.h"
 #import "KCBaseDefine.h"
 #import "KCApiBridge.h"
+#import "KCJSExecutor.h"
 
 #define UNSET               0
 #define OPENED              1
@@ -267,7 +268,7 @@
 
 - (void)callJSSetProperties:(NSDictionary *)aProperties
 {
-    [KCApiBridge callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:_mWebView];
+    [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:_mWebView];
 }
 
 #pragma mark --

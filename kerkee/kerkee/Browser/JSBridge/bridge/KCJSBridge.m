@@ -12,6 +12,7 @@
 #import "KCBaseDefine.h"
 #import "KCApiBridge.h"
 #import "KCClass.h"
+#import "KCJSExecutor.h"
 
 @interface KCJSBridge()
 {
@@ -73,42 +74,42 @@
 //
 + (void)callJSOnMainThread:(KCWebView *)aWebView jsString:(NSString *)aJS
 {
-    [KCApiBridge callJSOnMainThread:aJS WebView:aWebView];
+    [KCJSExecutor callJSOnMainThread:aJS WebView:aWebView];
 }
 
 + (void)callJS:(KCWebView *)aWebView jsString:(NSString *)aJS
 {
-    [KCApiBridge callJS:aJS WebView:aWebView];
+    [KCJSExecutor callJS:aJS WebView:aWebView];
 }
 
 + (void)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview
 {
-    [KCApiBridge callJSFunction:function withJSONObject:jsonObj WebView:webview];
+    [KCJSExecutor callJSFunction:function withJSONObject:jsonObj WebView:webview];
 }
 + (void)callJSFunction:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview
 {
-    [KCApiBridge callJSFunction:function withJJSONString:jsonObj WebView:webview];
+    [KCJSExecutor callJSFunction:function withJJSONString:jsonObj WebView:webview];
 }
 //
 + (void)callJSFunctionOnMainThread:(KCWebView *)aWebView funName:(NSString *)aFunName args:(NSString *)aArgs
 {
-    [KCApiBridge callJSFunctionOnMainThread:aFunName withJJSONString:aArgs WebView:aWebView];
+    [KCJSExecutor callJSFunctionOnMainThread:aFunName withJJSONString:aArgs WebView:aWebView];
 }
 
 //
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId
 {
-    [KCApiBridge callbackJSWithCallbackId:aCallbackId WebView:aWebView];
+    [KCJSExecutor callbackJSWithCallbackId:aCallbackId WebView:aWebView];
 }
 
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId jsonString:(NSString *)aStr
 {
-    [KCApiBridge callbackJSWithCallbackId:aCallbackId jsonString:aStr WebView:aWebView];
+    [KCJSExecutor callbackJSWithCallbackId:aCallbackId jsonString:aStr WebView:aWebView];
 }
 
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId string:(NSString *)aStr
 {
-    [KCApiBridge callbackJSWithCallbackId:aCallbackId string:aStr WebView:aWebView];
+    [KCJSExecutor callbackJSWithCallbackId:aCallbackId string:aStr WebView:aWebView];
 }
 
 /*

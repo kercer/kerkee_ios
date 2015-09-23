@@ -12,6 +12,7 @@
 #import "KCApiBridgeManager.h"
 #import "KCApiBridge.h"
 #import "KCBaseDefine.h"
+#import "KCJSExecutor.h"
 
 
 @implementation KCApiBridgeManager
@@ -44,7 +45,7 @@
     KCAutorelease(json);
     //返回
 
-    [KCApiBridge callbackJSWithCallbackId:[args getArgValule:@"callbackId"] jsonString:json WebView:aWebView];
+    [KCJSExecutor callbackJSWithCallbackId:[args getArgValule:@"callbackId"] jsonString:json WebView:aWebView];
 }
 
 @end
