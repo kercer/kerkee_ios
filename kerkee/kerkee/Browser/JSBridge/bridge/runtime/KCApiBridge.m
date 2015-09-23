@@ -17,6 +17,7 @@
 #import "KCBaseDefine.h"
 #import "KCWebPathDefine.h"
 #import "KCJSExecutor.h"
+#import "NSObject+KCSelector.h"
 
 
 static NSString *PRIVATE_SCHEME = @"kcnative";
@@ -69,33 +70,49 @@ static NSString* m_js = nil;
 }
 
 
-+ (id)apiBridgeWithWebView:(KCWebView *)aWebView andDelegate:(id)userDelegate
++ (id)apiBridgeWithWebView:(KCWebView *)aWebView delegate:(id)aUserDelegate
 {
     //KCApiBridge *bridge = [KCApiBridge sharedInstance];
     
     KCApiBridge *bridge = [[KCApiBridge alloc] init];
-    [bridge setCurrentWebView:aWebView andDelegate:userDelegate];
+    [bridge setCurrentWebView:aWebView delegate:aUserDelegate];
     
     KCAutorelease(bridge);
     return bridge;
 }
 
-- (void)setCurrentWebView:(KCWebView *)webView andDelegate:(id)userDelegate
+- (void)setCurrentWebView:(KCWebView *)aWebView delegate:(id)aUserDelegate
 {
-    if(nil == webView){
+    if(nil == aWebView){
         return;
     }
 
-    if(nil != userDelegate){
-        self.m_userDelegate = userDelegate;
+    if(nil != aUserDelegate){
+        self.m_userDelegate = aUserDelegate;
     }
     
-    self.m_webView = webView;
+    self.m_webView = aWebView;
     self.m_webView.delegate = self;
     self.m_webView.progressDelegate = self;
 }
 
 
+#pragma mark --
+#pragma mark KCWebViewProgressDelegate
+-(void)webView:(KCWebView*)aWebView identifierForInitialRequest:(NSURLRequest*)aInitialRequest
+{
+    if (self.m_userDelegate)
+        [self.m_userDelegate performSelectorSafetyWithArgs:@selector(webView:identifierForInitialRequest:), aWebView, aInitialRequest, nil];
+}
+
+-(void) webView:(KCWebView*)aWebView didReceiveResourceNumber:(int)aResourceNumber totalResources:(int)aTotalResources
+{
+    if (self.m_userDelegate)
+        [self.m_userDelegate performSelectorSafetyWithArgs:@selector(webView:didReceiveResourceNumber:totalResources:), aWebView, aResourceNumber, aTotalResources, nil];
+}
+
+
+#pragma mark --
 #pragma mark UIWebViewDelegate
 
 - (BOOL)webView:(KCWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -194,50 +211,6 @@ static NSString* m_js = nil;
                 //KCLog(@"method ---------------------> %@", methodName);
             }
             
-            /*
-            NSString *className = [s_classMap objectForKey:[jsonObj objectForKey:@"clz"]];
-            if (className)
-            {
-                Class clz = NSClassFromString(className);
-                NSString* methodStr = [jsonObj objectForKey:@"method"];
-                if (!methodStr) continue;
-                
-                NSRange range = [methodStr rangeOfString:@":"];
-                if (range.length == 0)
-                {
-                    methodStr = [NSString stringWithFormat:@"%@:argList:", methodStr];
-                    KCLog(@"method >> %@", methodStr);
-                }
-                
-                SEL method = NSSelectorFromString(methodStr);
-//                if (method != @selector(JSLog:))
-//                {
-//                    KCLog(@"[OBJC] - %@ = %@", className, [jsonObj objectForKey:@"method"]);
-//                }
-                if (clz && [clz respondsToSelector:method])
-                {
-//                    if (method != @selector(JSLog:))
-//                    {
-//                        KCLog(@"[OBJC] - √ %@ = %@", className, [jsonObj objectForKey:@"method"]);
-//                    }
-                    NSDictionary *args = [jsonObj objectForKey:@"args"];
-                    // suppress the warnings
-                    #pragma clang diagnostic push
-                    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    if (args)
-                    {
-                        [clz performSelector:method withObject:webView withObject:args];
-                    }
-                    else
-                    {
-                        [clz performSelector:method];
-                    }
-                    #pragma clang diagnostic pop
-                    
-                }
-                
-            }
-            */
         }
     }
 }

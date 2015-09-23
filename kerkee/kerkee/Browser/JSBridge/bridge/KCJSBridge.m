@@ -30,7 +30,7 @@
     if(self)
     {
         _mWebView = aWebView;
-        m_apiBridge = [KCApiBridge apiBridgeWithWebView:_mWebView andDelegate:delegate];
+        m_apiBridge = [KCApiBridge apiBridgeWithWebView:_mWebView delegate:delegate];
         KCRetain(m_apiBridge);
     }
     

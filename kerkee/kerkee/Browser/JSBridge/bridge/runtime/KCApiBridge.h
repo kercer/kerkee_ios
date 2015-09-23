@@ -28,7 +28,7 @@
 @property(nonatomic, strong) NSString *attachApiScheme;//附加的协议主题 需要实现parseCustomApi接口
 @property(nonatomic, weak) KCWebView *m_webView;
 
-+ (id)apiBridgeWithWebView:(KCWebView *)aWebView andDelegate:(id)userDelegate;
++ (id)apiBridgeWithWebView:(KCWebView *)aWebView delegate:(id)userDelegate;
 
 
 

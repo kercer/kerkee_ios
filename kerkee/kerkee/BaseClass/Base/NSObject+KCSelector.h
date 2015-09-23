@@ -25,6 +25,8 @@
 - (id) performSelectorSafetyWithArgs:(SEL)aSelector, ...;
 - (id) performSelectorSafetyWithArgs:(SEL)aSelector arguments:(va_list)aArgList;
 
+
+#pragma mark --
 // Selector Utilities
 // Return an invocation based on a selector and variadic arguments
 - (NSInvocation *) invocationWithSelectorAndArguments: (SEL) aSelector,...;

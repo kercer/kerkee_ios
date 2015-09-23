@@ -14,6 +14,7 @@
 #import "KCWebImageSetterTask.h"
 #import "UIWebView+KCClean.h"
 
+
 @class WebView;
 @class WebScriptObject;
 
@@ -220,15 +221,17 @@ static int createWebViewID = 0;
 //    if([UIWebView instancesRespondToSelector:@selector(webView:identifierForInitialRequest:fromDataSource:)])
 //        return [super webView:sender identifierForInitialRequest:initialRequest fromDataSource:dataSource];
     
-    /*
+    
     if ([self.progressDelegate respondsToSelector:@selector(webView:identifierForInitialRequest:)])
     {
         [self.progressDelegate webView:self identifierForInitialRequest:initialRequest];
     }
-    */
-    if([initialRequest isKindOfClass:[NSURLRequest class]]){
+    
+    if([initialRequest isKindOfClass:[NSURLRequest class]])
+    {
         NSURLRequest *rqt = (NSURLRequest *)initialRequest;
-        if(nil != m_imageSetter){
+        if(nil != m_imageSetter)
+        {
             [m_imageSetter handleImage:[KCWebImageSetterTask create:self url:rqt.URL]];
         }
     }
@@ -249,12 +252,12 @@ static int createWebViewID = 0;
 {
     [super webView:sender resource:resource didFailLoadingWithError:error fromDataSource:dataSource];
     resourceCompletedCount++;
-    /*
+    
     if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveResourceNumber:totalResources:)])
     {
         [self.progressDelegate webView:self didReceiveResourceNumber:resourceCompletedCount totalResources:resourceCount];
     }
-    */
+    
 }
 
 //当资源的所有数据返回后发生
@@ -262,12 +265,12 @@ static int createWebViewID = 0;
 {
     [super webView:sender resource:resource didFinishLoadingFromDataSource:dataSource];
     resourceCompletedCount++;
-    /*
+    
     if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveResourceNumber:totalResources:)])
     {
         [self.progressDelegate webView:self didReceiveResourceNumber:resourceCompletedCount totalResources:resourceCount];
     }
-     */
+    
 }
 
 //当请求的资源返回第一个字节时发生
