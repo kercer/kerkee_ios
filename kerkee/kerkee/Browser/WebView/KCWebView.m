@@ -393,6 +393,14 @@ static int createWebViewID = 0;
 //        [frame setNeedsLayout];
 //}
 
+
+#pragma mark -
+//- (void)setDelegate:(id<UIWebViewDelegate>)delegate
+//{
+//    
+//}
+
+
 #pragma mark -
 #pragma maik api
 - (int)getWebViewID
