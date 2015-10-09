@@ -33,7 +33,7 @@
 		DF83DC871B95CA95003E3F91 /* KCPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC801B95CA95003E3F91 /* KCPlatform.m */; };
 		DF83DC881B95CA95003E3F91 /* KCUrlMaping.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */; };
 		DF83DC891B95CA95003E3F91 /* KCWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC851B95CA95003E3F91 /* KCWidget.m */; };
-		DFC3ACCA1B9C20F3009F4775 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC3ACC91B9C20F3009F4775 /* kerkee.framework */; };
+		DF8F35881BC771D800C79B71 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8F35851BC7719500C79B71 /* kerkee.framework */; };
 		DFC3ACCC1B9C284F009F4775 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC3ACCB1B9C284F009F4775 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +44,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = DF83DA7F1B959D2A003E3F91;
 			remoteInfo = kerkeeDemo;
+		};
+		DF8F35841BC7719500C79B71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DF3075051B959B01005AA030;
+			remoteInfo = kerkee;
+		};
+		DF8F35861BC7719500C79B71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DF3075101B959B01005AA030;
+			remoteInfo = kerkeeTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -98,7 +112,7 @@
 		DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUrlMaping.m; sourceTree = "<group>"; };
 		DF83DC841B95CA95003E3F91 /* KCWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWidget.h; sourceTree = "<group>"; };
 		DF83DC851B95CA95003E3F91 /* KCWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWidget.m; sourceTree = "<group>"; };
-		DFC3ACC91B9C20F3009F4775 /* kerkee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kerkee.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/kerkee-egtuhlhgsgsifucqcbbqqgvuavzp/Build/Products/Debug-iphonesimulator/kerkee.framework"; sourceTree = "<group>"; };
+		DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerkee.xcodeproj; path = ../kerkee/kerkee.xcodeproj; sourceTree = "<group>"; };
 		DFC3ACCB1B9C284F009F4775 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -107,8 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF8F35881BC771D800C79B71 /* kerkee.framework in Frameworks */,
 				DFC3ACCC1B9C284F009F4775 /* libz.dylib in Frameworks */,
-				DFC3ACCA1B9C20F3009F4775 /* kerkee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +139,8 @@
 		DF83DA771B959D2A003E3F91 = {
 			isa = PBXGroup;
 			children = (
+				DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */,
 				DFC3ACCB1B9C284F009F4775 /* libz.dylib */,
-				DFC3ACC91B9C20F3009F4775 /* kerkee.framework */,
 				DF83DC7C1B95CA95003E3F91 /* kerkeeSDK */,
 				DF83DC501B95A45E003E3F91 /* api */,
 				DF83DC4B1B95A441003E3F91 /* assets */,
@@ -272,6 +286,15 @@
 			path = ../kerkeeSDK;
 			sourceTree = "<group>";
 		};
+		DF8F35801BC7719500C79B71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DF8F35851BC7719500C79B71 /* kerkee.framework */,
+				DF8F35871BC7719500C79B71 /* kerkeeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,6 +362,12 @@
 			mainGroup = DF83DA771B959D2A003E3F91;
 			productRefGroup = DF83DA811B959D2A003E3F91 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DF8F35801BC7719500C79B71 /* Products */;
+					ProjectRef = DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DF83DA7F1B959D2A003E3F91 /* kerkeeDemo */,
@@ -346,6 +375,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DF8F35851BC7719500C79B71 /* kerkee.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = kerkee.framework;
+			remoteRef = DF8F35841BC7719500C79B71 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DF8F35871BC7719500C79B71 /* kerkeeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = kerkeeTests.xctest;
+			remoteRef = DF8F35861BC7719500C79B71 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DF83DA7E1B959D2A003E3F91 /* Resources */ = {
@@ -524,39 +570,35 @@
 		DF83DAA41B959D2A003E3F91 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/kerkee-egtuhlhgsgsifucqcbbqqgvuavzp/Build/Products/Debug-iphonesimulator",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/kerkee-egtuhlhgsgsifucqcbbqqgvuavzp/Build/Products/Debug-iphonesimulator/kerkee.framework/Headers\"",
 				);
 				INFOPLIST_FILE = kerkeeDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 			};
 			name = Debug;
 		};
 		DF83DAA51B959D2A003E3F91 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/kerkee-egtuhlhgsgsifucqcbbqqgvuavzp/Build/Products/Debug-iphonesimulator",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/kerkee-egtuhlhgsgsifucqcbbqqgvuavzp/Build/Products/Debug-iphonesimulator/kerkee.framework/Headers\"",
 					"$(BUILT_PRODUCTS_DIR)",
 				);
 				INFOPLIST_FILE = kerkeeDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 			};
 			name = Release;
 		};
