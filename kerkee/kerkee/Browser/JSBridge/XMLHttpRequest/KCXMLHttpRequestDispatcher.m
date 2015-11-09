@@ -14,41 +14,41 @@
 #import "KCJSExecutor.h"
 
 
-//static NSMutableDictionary *mRequestMap;
+static NSMutableDictionary *mRequestMap;
 
 @interface KCXMLHttpRequestDispatcher ()
 
 + (id)objectInDictionary:(KCArgList *)dic forKey:(NSString *)key defaultValue:(NSString *)defaultValue;
-//+ (KCXMLHttpRequest *)getXHRObject:(KCArgList *)args;
++ (KCXMLHttpRequest *)getXHRObject:(KCArgList *)args;
 
 @end
 
 @implementation KCXMLHttpRequestDispatcher
-/*
+
 __attribute__((constructor))
 static void initializeClassMap()
 {
     mRequestMap = [[NSMutableDictionary alloc] init];
 }
-*/
+
 + (KCXMLHttpRequest *)create:(KCWebView*)aWebView argList:(KCArgList *)args
 {
     NSNumber *objectId = [args getArgValule:@"id"];
     KCXMLHttpRequest *xhr = [[KCXMLHttpRequest alloc] initWithObjectId:objectId WebView:aWebView];
     xhr.delegate = self;
-    /*
+    
     @synchronized (mRequestMap)
     {
         [mRequestMap setValue:xhr forKey:[objectId stringValue]];
     }
-    */
-    aWebView.xmlRequest = xhr;
+    
+//    aWebView.xmlRequest = xhr;
     return xhr;
 }
 
 + (void)open:(KCWebView*)aWebView argList:(KCArgList *)args
 {
-    KCXMLHttpRequest *xhr = aWebView.xmlRequest;//[self getXHRObject:args];
+    KCXMLHttpRequest *xhr = [self getXHRObject:args];
     if (!xhr)
     {
         xhr = [self create:aWebView argList:args];
@@ -68,7 +68,7 @@ static void initializeClassMap()
 {
     //KCLog(@"sendArgs:%@", args);
 //    KCLog(@"%@",[args objectForKey:@"id"]);
-    KCXMLHttpRequest *xhr = aWebView.xmlRequest;//[self getXHRObject:args];
+    KCXMLHttpRequest *xhr = [self getXHRObject:args];
     if (xhr)
     {
             //KCLog(@"%@",[args getArgValule:@"id"]);
@@ -89,7 +89,7 @@ static void initializeClassMap()
 
 + (void)setRequestHeader:(KCWebView*)aWebView argList:(KCArgList *)args
 {
-    KCXMLHttpRequest *xhr = aWebView.xmlRequest;//[self getXHRObject:args];
+    KCXMLHttpRequest *xhr = [self getXHRObject:args];
     if (xhr)
     {
         NSString* headerName = [args getArgValule:@"headerName"];
@@ -110,7 +110,7 @@ static void initializeClassMap()
 
 + (void)overrideMimeType:(KCWebView*)aWebView argList:(KCArgList *)args
 {
-    KCXMLHttpRequest *xhr = aWebView.xmlRequest;//[self getXHRObject:args];
+    KCXMLHttpRequest *xhr = [self getXHRObject:args];
     if (xhr)
     {
         [xhr overrideMimeType:[args getArgValule:@"mimetype"]];
@@ -119,7 +119,7 @@ static void initializeClassMap()
 
 + (void)abort:(KCWebView*)aWebView argList:(KCArgList *)args
 {
-    KCXMLHttpRequest *xhr = aWebView.xmlRequest;//[self getXHRObject:args];
+    KCXMLHttpRequest *xhr = [self getXHRObject:args];
     if (xhr)
     {
         [xhr abort];
@@ -134,7 +134,7 @@ static void initializeClassMap()
     }
     return defaultValue;
 }
-/*
+
 + (KCXMLHttpRequest *)getXHRObject:(KCArgList *)args
 {
     NSNumber *objectId = [args getArgValule:@"id"];
@@ -154,12 +154,12 @@ static void initializeClassMap()
             NSString *strObjectId = [objectId stringValue];
             KCXMLHttpRequest *xhr = [mRequestMap objectForKey:strObjectId];
             [mRequestMap removeObjectForKey:strObjectId];
-            [KCApiBridge callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", strObjectId] WebView:[xhr webview]];
+            [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", strObjectId] WebView:[xhr webview]];
 //            KCLog(@"==~~~ free object %d, %@", mRequestMap.count, objectId);
         }
     }
 }
-*/
+
 
 + (void)setPropertiesToJSSide:(NSDictionary *)properties Webview:(KCWebView*)webview
 {
@@ -179,15 +179,15 @@ static void initializeClassMap()
 +(void)fetchComplete:(KCXMLHttpRequest*)xmlHttpRequest responseData:(NSString*)aResponseData
 {
 //    KCLog(@"%@,%@",xmlHttpRequest.request.URL.absoluteString, [xmlHttpRequest.request allHTTPHeaderFields]);
-//    [UCXMLHttpRequestDispatcher writeCached:xmlHttpRequest PropertiesData:properties];
-    //[KCXMLHttpRequestDispatcher freeXMLHttpRequestObject:[xmlHttpRequest objectId]];
+//    [KCXMLHttpRequestDispatcher writeCached:xmlHttpRequest PropertiesData:properties];
+    [KCXMLHttpRequestDispatcher freeXMLHttpRequestObject:[xmlHttpRequest objectId]];
     
-    [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", [xmlHttpRequest objectId]] WebView:[xmlHttpRequest webview]];
+//    [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", [xmlHttpRequest objectId]] WebView:[xmlHttpRequest webview]];
 }
 +(void)fetchFailed:(KCXMLHttpRequest*)xmlHttpRequest didFailWithError:(NSError *)error
 {
-    //[KCXMLHttpRequestDispatcher freeXMLHttpRequestObject: [xmlHttpRequest objectId]];
-    [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", [xmlHttpRequest objectId]] WebView:[xmlHttpRequest webview]];
+    [KCXMLHttpRequestDispatcher freeXMLHttpRequestObject: [xmlHttpRequest objectId]];
+//    [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", [xmlHttpRequest objectId]] WebView:[xmlHttpRequest webview]];
 }
 
 @end

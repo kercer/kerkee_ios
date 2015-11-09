@@ -13,13 +13,13 @@
 #import "KCApiBridge.h"
 #import "KCClass.h"
 #import "KCJSExecutor.h"
+#import "KCJSDefine.h"
 
 @interface KCJSBridge()
 {
     KCApiBridge* m_apiBridge;
 }
 
-@property (nonatomic, weak)KCWebView *mWebView;
 @end
 
 @implementation KCJSBridge
@@ -29,8 +29,7 @@
     self = [super init];
     if(self)
     {
-        _mWebView = aWebView;
-        m_apiBridge = [KCApiBridge apiBridgeWithWebView:_mWebView delegate:delegate];
+        m_apiBridge = [KCApiBridge apiBridgeWithWebView:aWebView delegate:delegate];
         KCRetain(m_apiBridge);
     }
     
@@ -41,10 +40,6 @@
 {
     
     KCRelease(m_apiBridge);
-
-    self.mWebView.delegate = nil;
-    self.mWebView.progressDelegate = nil;
-    self.mWebView = nil;
     
     KCDealloc(super);
 }
@@ -55,23 +50,49 @@
  */
 /********************************************************/
 #pragma mark - register
-+ (BOOL)registJSBridgeClient:(Class)aClass
++ (KCClass*)registJSBridgeClient:(Class)aClass
 {
-    return [KCApiBridge registJSBridgeClient:aClass];
+    return [KCRegister registClass:aClass withJSObjName:kJS_jsBridgeClient];
 }
 
-+ (BOOL)registClass:(KCClass *)aClass
++ (KCClass*)registClass:(KCClass *)aClass
 {
-    return [KCApiBridge registClass:aClass];
+    return [KCRegister registClass:aClass];
 }
 
-+ (BOOL)registClass:(Class)aClass jsObjName:(NSString *)aJSObjectName;
++ (KCClass*)registClass:(Class)aClass jsObjName:(NSString *)aJSObjectName;
 {
-    return [KCApiBridge registClass:aClass jsObjName:aJSObjectName];
+    return [KCRegister registClass:aClass withJSObjName:aJSObjectName];
 }
+
++ (KCClass*)registObject:(KCJSObject*)aObject
+{
+    return [KCRegister registObject:aObject];
+}
++ (KCClass*)removeObject:(KCJSObject*)aObject
+{
+    return [KCRegister removeObject:aObject];
+}
+
++ (KCClass*)removeClass:(NSString*)aJSObjName
+{
+    return [KCRegister removeClass:aJSObjName];
+}
+
++ (KCClass*)getClass:(NSString*)aJSObjName
+{
+    return [KCRegister getClass:aJSObjName];
+}
+
+
+/********************************************************/
+/*
+ * js call
+ */
+/********************************************************/
 
 #pragma mark - callJS
-//
+
 + (void)callJSOnMainThread:(KCWebView *)aWebView jsString:(NSString *)aJS
 {
     [KCJSExecutor callJSOnMainThread:aJS WebView:aWebView];
@@ -156,10 +177,6 @@ public static void callbackJS(KCWebView aWebview, String aCallbackId, JSONArray 
      */
 }
 
-- (KCWebView *)getWebView
-{
-    return _mWebView;
-}
 
 - (NSString *)getResRootPath
 {

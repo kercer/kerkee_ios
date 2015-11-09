@@ -24,11 +24,11 @@ static NSString *PRIVATE_SCHEME = @"kcnative";
 static NSString* m_js = nil;
 
 @interface KCApiBridge ()
-
+{
+}
 
 @property (nonatomic, assign)id m_userDelegate;
 
-//AS_SINGLETON(KCApiBridge);
 
 /* notified when a message is pushed/delievered on the JS side */
 - (void) onNotified:(KCWebView *)webView;
@@ -59,10 +59,6 @@ static NSString* m_js = nil;
 
 - (void)dealloc
 {
-    self.m_webView.delegate = nil;
-    self.m_webView.progressDelegate = self;
-    
-    self.m_webView = nil;
     self.attachApiScheme = nil;
     self.m_userDelegate = nil;
     
@@ -70,18 +66,17 @@ static NSString* m_js = nil;
 }
 
 
+
 + (id)apiBridgeWithWebView:(KCWebView *)aWebView delegate:(id)aUserDelegate
 {
-    //KCApiBridge *bridge = [KCApiBridge sharedInstance];
-    
     KCApiBridge *bridge = [[KCApiBridge alloc] init];
-    [bridge setCurrentWebView:aWebView delegate:aUserDelegate];
+    [bridge webviewSetting:aWebView delegate:aUserDelegate];
     
     KCAutorelease(bridge);
     return bridge;
 }
 
-- (void)setCurrentWebView:(KCWebView *)aWebView delegate:(id)aUserDelegate
+- (void)webviewSetting:(KCWebView *)aWebView delegate:(id)aUserDelegate
 {
     if(nil == aWebView){
         return;
@@ -91,9 +86,8 @@ static NSString* m_js = nil;
         self.m_userDelegate = aUserDelegate;
     }
     
-    self.m_webView = aWebView;
-    self.m_webView.delegate = self;
-    self.m_webView.progressDelegate = self;
+    aWebView.delegate = self;
+    aWebView.progressDelegate = self;
 }
 
 
@@ -186,7 +180,7 @@ static NSString* m_js = nil;
             KCArgList *argList = [parser getArgList];
             //NSLog(@"value = %@",[argList getArgValule:@"callbackId"]);
             
-            KCClass *kcCls = [KCClassMrg getClass:clsName];
+            KCClass *kcCls = [KCRegister getClass:clsName];
             {
                 Class clz = [kcCls getNavClass];
                 
@@ -248,21 +242,7 @@ static NSString* m_js = nil;
 
 
 #pragma mark - register
-+ (BOOL)registClass:(KCClass *)aClass
-{
-    return [KCClassMrg registClass:aClass];
-}
 
-+ (BOOL)registClass:(Class )aClass jsObjName:(NSString *)aJSObjectName
-{
-    return [KCClassMrg registClass:aClass withJSObjName:aJSObjectName];
-}
-
-+ (BOOL)registJSBridgeClient:(Class)aClass
-{
-    [KCClassMrg removeClass:kJS_jsBridgeClient];
-    return [KCClassMrg registClass:aClass withJSObjName:kJS_jsBridgeClient];
-}
 
 
 @end

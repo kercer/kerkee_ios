@@ -10,16 +10,20 @@
 
 #import <Foundation/Foundation.h>
 #import "KCWebView.h"
-#import "KCClassMrg.h"
+#import "KCRegister.h"
 
 @interface KCJSBridge : NSObject<UIWebViewDelegate>
 
 - (id)initWithWebView:(KCWebView *)aWebView delegate:(id)delegate;
 
 #pragma mark - register
-+ (BOOL)registJSBridgeClient:(Class)aClass;
-+ (BOOL)registClass:(KCClass *)aClass;
-+ (BOOL)registClass:(Class)aClass jsObjName:(NSString *)aJSObjectName;
++ (KCClass*)registJSBridgeClient:(Class)aClass;
++ (KCClass*)registClass:(KCClass *)aClass;
++ (KCClass*)registClass:(Class)aClass jsObjName:(NSString *)aJSObjectName;
++ (KCClass*)registObject:(KCJSObject*)aObject;
++ (KCClass*)removeObject:(KCJSObject*)aObject;
++ (KCClass*)removeClass:(NSString*)aJSObjName;
++ (KCClass*)getClass:(NSString*)aJSObjName;
 
 #pragma mark - callJS
 + (void)callJSOnMainThread:(KCWebView *)aWebView jsString:(NSString *)aJS;

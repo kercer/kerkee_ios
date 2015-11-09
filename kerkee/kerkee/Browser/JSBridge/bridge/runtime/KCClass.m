@@ -22,7 +22,7 @@
 
 @implementation KCClass
 
-+ (KCClass *)initWithClass:(Class)aClass clzName:(NSString *)aJSClzName
++ (KCClass *)newClass:(Class)aClass withJSObjName:(NSString *)aJSClzName
 {
     KCClass *clz = [[self alloc] init];
     

@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "KCWebView.h"
-#import "KCClassMrg.h"
+#import "KCRegister.h"
 
 @protocol KCApiBridgeDelegate <UIWebViewDelegate>
 
@@ -23,19 +23,13 @@
 
 @interface KCApiBridge : NSObject <UIWebViewDelegate,KCWebViewProgressDelegate>
 
-//@property (nonatomic, assign) IBOutlet id <KCApiBridgeDelegate> delegate;
-
 @property(nonatomic, strong) NSString *attachApiScheme;//附加的协议主题 需要实现parseCustomApi接口
-@property(nonatomic, weak) KCWebView *m_webView;
+
 
 + (id)apiBridgeWithWebView:(KCWebView *)aWebView delegate:(id)userDelegate;
 
+//- (void)destroy;// destroy webview
 
 
-
-#pragma mark - register
-+ (BOOL)registClass:(KCClass *)aClass;
-+ (BOOL)registClass:(Class)aClass jsObjName:(NSString *)aJSObjectName;
-+ (BOOL)registJSBridgeClient:(Class)aClass;
 
 @end

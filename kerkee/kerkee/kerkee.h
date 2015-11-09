@@ -77,8 +77,10 @@ FOUNDATION_EXPORT const unsigned char kerkeeVersionString[];
 #import "KCArg.h"
 #import "KCArgList.h"
 #import "KCClass.h"
-#import "KCClassMrg.h"
+#import "KCRegister.h"
 #import "KCClassParser.h"
 #import "KCMethod.h"
 
 #import "KCWebPathDefine.h"
+
+#import "KCJSObject.h"

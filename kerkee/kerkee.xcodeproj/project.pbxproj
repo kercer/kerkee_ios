@@ -20,8 +20,8 @@
 		DF5D70BF1BA91859008A8FB2 /* KCUriRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5D70BD1BA91859008A8FB2 /* KCUriRegister.m */; };
 		DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C1F1BA171CF0025B0CC /* KCUriActionDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF5D70C41BA95A8C008A8FB2 /* KCUriDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C171BA16C860025B0CC /* KCUriDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF75C2C41BB29BCA00CAD3CA /* KCJSExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */; settings = {ASSET_TAGS = (); }; };
-		DF75C2C51BB29BCA00CAD3CA /* KCJSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */; settings = {ASSET_TAGS = (); }; };
+		DF75C2C41BB29BCA00CAD3CA /* KCJSExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */; };
+		DF75C2C51BB29BCA00CAD3CA /* KCJSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */; };
 		DF765C1A1BA16C860025B0CC /* KCUriDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = DF765C181BA16C860025B0CC /* KCUriDispatcher.m */; };
 		DF765C241BA175E20025B0CC /* KCURIComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C221BA175E20025B0CC /* KCURIComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF765C251BA175E20025B0CC /* KCURIComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = DF765C231BA175E20025B0CC /* KCURIComponents.m */; };
@@ -42,8 +42,8 @@
 		DF809CB31B9D90FF008B315D /* KCArgList.m in Sources */ = {isa = PBXBuildFile; fileRef = DF809CA01B9D90FF008B315D /* KCArgList.m */; };
 		DF809CB41B9D90FF008B315D /* KCClass.h in Headers */ = {isa = PBXBuildFile; fileRef = DF809CA11B9D90FF008B315D /* KCClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF809CB51B9D90FF008B315D /* KCClass.m in Sources */ = {isa = PBXBuildFile; fileRef = DF809CA21B9D90FF008B315D /* KCClass.m */; };
-		DF809CB61B9D90FF008B315D /* KCClassMrg.h in Headers */ = {isa = PBXBuildFile; fileRef = DF809CA31B9D90FF008B315D /* KCClassMrg.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF809CB71B9D90FF008B315D /* KCClassMrg.m in Sources */ = {isa = PBXBuildFile; fileRef = DF809CA41B9D90FF008B315D /* KCClassMrg.m */; };
+		DF809CB61B9D90FF008B315D /* KCRegister.h in Headers */ = {isa = PBXBuildFile; fileRef = DF809CA31B9D90FF008B315D /* KCRegister.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF809CB71B9D90FF008B315D /* KCRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = DF809CA41B9D90FF008B315D /* KCRegister.m */; };
 		DF809CB81B9D90FF008B315D /* KCClassParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DF809CA51B9D90FF008B315D /* KCClassParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF809CB91B9D90FF008B315D /* KCClassParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DF809CA61B9D90FF008B315D /* KCClassParser.m */; };
 		DF809CBA1B9D90FF008B315D /* KCJSDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = DF809CA71B9D90FF008B315D /* KCJSDefine.h */; };
@@ -57,79 +57,82 @@
 		DF8A2FB21B9FFC4200BD7FB3 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8A2FAC1B9FFC4200BD7FB3 /* SSKeychain.m */; };
 		DF8A2FB31B9FFC4200BD7FB3 /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */; };
 		DF8A2FB41B9FFC4200BD7FB3 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8A2FAE1B9FFC4200BD7FB3 /* SSKeychainQuery.m */; };
-		DF8F35891BC7727900C79B71 /* SSKeychain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8A2FAB1B9FFC4200BD7FB3 /* SSKeychain.h */; };
-		DF8F358A1BC7727900C79B71 /* SSKeychainQuery.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */; };
-		DF8F358B1BC7727900C79B71 /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF44A1091B9FE3920045092E /* Reachability.h */; };
-		DF8F358C1BC7727900C79B71 /* KCURIQuery.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF765C261BA185D30025B0CC /* KCURIQuery.h */; };
-		DF8F358D1BC7727900C79B71 /* KCURIComponents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF765C221BA175E20025B0CC /* KCURIComponents.h */; };
-		DF8F358E1BC7727900C79B71 /* KCURI.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF765C2A1BA1B5850025B0CC /* KCURI.h */; };
-		DF8F358F1BC7727900C79B71 /* UIDevice+KCHardware.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8A2FA31B9FF9D300BD7FB3 /* UIDevice+KCHardware.h */; };
-		DF8F35901BC7727900C79B71 /* KCBaseDefine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABB31B9C17FC009F4775 /* KCBaseDefine.h */; };
-		DF8F35911BC7727900C79B71 /* KCFileArchiver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABB41B9C17FC009F4775 /* KCFileArchiver.h */; };
-		DF8F35921BC7727900C79B71 /* KCObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABB61B9C17FC009F4775 /* KCObject.h */; };
-		DF8F35931BC7727900C79B71 /* KCRuntime.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABB81B9C17FC009F4775 /* KCRuntime.h */; };
-		DF8F35941BC7727A00C79B71 /* KCSandbox.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABBA1B9C17FC009F4775 /* KCSandbox.h */; };
-		DF8F35951BC7727A00C79B71 /* KCSingleton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABBC1B9C17FC009F4775 /* KCSingleton.h */; };
-		DF8F35961BC7727A00C79B71 /* KCTaskQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABBE1B9C17FC009F4775 /* KCTaskQueue.h */; };
-		DF8F35971BC7727A00C79B71 /* NSArray+KCStack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABC01B9C17FC009F4775 /* NSArray+KCStack.h */; };
-		DF8F35981BC7727A00C79B71 /* NSData+HMAC.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABC21B9C17FC009F4775 /* NSData+HMAC.h */; };
-		DF8F35991BC7727A00C79B71 /* NSDate+KCDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABC41B9C17FC009F4775 /* NSDate+KCDate.h */; };
-		DF8F359A1BC7727A00C79B71 /* NSObject+KCCoding.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABC61B9C17FC009F4775 /* NSObject+KCCoding.h */; };
-		DF8F359B1BC7727A00C79B71 /* NSObject+KCNotification.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABC81B9C17FC009F4775 /* NSObject+KCNotification.h */; };
-		DF8F359C1BC7727A00C79B71 /* NSObject+KCObjectInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABCA1B9C17FC009F4775 /* NSObject+KCObjectInfo.h */; };
-		DF8F359D1BC7727A00C79B71 /* NSObject+KCObserver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABCC1B9C17FC009F4775 /* NSObject+KCObserver.h */; };
-		DF8F359E1BC7727A00C79B71 /* NSObject+KCProperty.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABCE1B9C17FC009F4775 /* NSObject+KCProperty.h */; };
-		DF8F359F1BC7727A00C79B71 /* NSObject+KCSelector.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABD01B9C17FC009F4775 /* NSObject+KCSelector.h */; };
-		DF8F35A01BC7727A00C79B71 /* NSObject+KCTicker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABD21B9C17FC009F4775 /* NSObject+KCTicker.h */; };
-		DF8F35A11BC7727A00C79B71 /* NSString+KCExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABD41B9C17FC009F4775 /* NSString+KCExtension.h */; };
-		DF8F35A21BC7727A00C79B71 /* KCCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABD71B9C17FC009F4775 /* KCCache.h */; };
-		DF8F35A31BC7727A00C79B71 /* KCCacheKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABD91B9C17FC009F4775 /* KCCacheKit.h */; };
-		DF8F35A41BC7727A00C79B71 /* KCDataValidCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABDA1B9C17FC009F4775 /* KCDataValidCache.h */; };
-		DF8F35A51BC7727A00C79B71 /* KCFileCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABDC1B9C17FC009F4775 /* KCFileCache.h */; };
-		DF8F35A61BC7727A00C79B71 /* KCImageCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABDE1B9C17FC009F4775 /* KCImageCache.h */; };
-		DF8F35A71BC7727A00C79B71 /* KCImagePreCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABE01B9C17FC009F4775 /* KCImagePreCache.h */; };
-		DF8F35A81BC7727A00C79B71 /* KCMemoryCache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABE21B9C17FC009F4775 /* KCMemoryCache.h */; };
-		DF8F35A91BC7727A00C79B71 /* NSData+AES256.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABE51B9C17FC009F4775 /* NSData+AES256.h */; };
-		DF8F35AA1BC7727A00C79B71 /* NSData+Base64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABE71B9C17FC009F4775 /* NSData+Base64.h */; };
-		DF8F35AB1BC7727A00C79B71 /* KCUncaughtExceptionHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */; };
-		DF8F35AC1BC7727A00C79B71 /* KCException.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF44A10D1B9FE5EA0045092E /* KCException.h */; };
-		DF8F35AD1BC7727A00C79B71 /* KCLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABEA1B9C17FC009F4775 /* KCLog.h */; };
-		DF8F35AE1BC7727A00C79B71 /* KCArchiver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABED1B9C17FC009F4775 /* KCArchiver.h */; };
-		DF8F35AF1BC7727A00C79B71 /* KCMainBundle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABEF1B9C17FC009F4775 /* KCMainBundle.h */; };
-		DF8F35B01BC7727A00C79B71 /* KCUtilCoding.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABF11B9C17FC009F4775 /* KCUtilCoding.h */; };
-		DF8F35B11BC7727A00C79B71 /* KCUtilDevice.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABF31B9C17FC009F4775 /* KCUtilDevice.h */; };
-		DF8F35B21BC7727A00C79B71 /* KCUtilFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABF51B9C17FC009F4775 /* KCUtilFile.h */; };
-		DF8F35B31BC7727A00C79B71 /* KCUtilGzip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABF71B9C17FC009F4775 /* KCUtilGzip.h */; };
-		DF8F35B41BC7727A00C79B71 /* KCUtilMd5.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABF91B9C17FC009F4775 /* KCUtilMd5.h */; };
-		DF8F35B51BC7727A00C79B71 /* KCUtilNet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABFB1B9C17FC009F4775 /* KCUtilNet.h */; };
-		DF8F35B61BC7727A00C79B71 /* KCUtilURL.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */; };
-		DF8F35B71BC7727A00C79B71 /* KCUriDispatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF765C171BA16C860025B0CC /* KCUriDispatcher.h */; };
-		DF8F35B81BC7727A00C79B71 /* KCUriActionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF765C1F1BA171CF0025B0CC /* KCUriActionDelegate.h */; };
-		DF8F35B91BC7727A00C79B71 /* KCUriRegister.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF5D70BC1BA91859008A8FB2 /* KCUriRegister.h */; };
-		DF8F35BA1BC7727A00C79B71 /* KCJSBridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809C961B9D90FF008B315D /* KCJSBridge.h */; };
-		DF8F35BB1BC7727A00C79B71 /* KCApiBridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809C991B9D90FF008B315D /* KCApiBridge.h */; };
-		DF8F35BC1BC7727A00C79B71 /* KCApiBridgeManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809C9B1B9D90FF008B315D /* KCApiBridgeManager.h */; };
-		DF8F35BD1BC7727A00C79B71 /* KCArg.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809C9D1B9D90FF008B315D /* KCArg.h */; };
-		DF8F35BE1BC7727A00C79B71 /* KCArgList.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809C9F1B9D90FF008B315D /* KCArgList.h */; };
-		DF8F35BF1BC7727A00C79B71 /* KCClass.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809CA11B9D90FF008B315D /* KCClass.h */; };
-		DF8F35C01BC7727A00C79B71 /* KCClassMrg.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809CA31B9D90FF008B315D /* KCClassMrg.h */; };
-		DF8F35C11BC7727A00C79B71 /* KCClassParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809CA51B9D90FF008B315D /* KCClassParser.h */; };
-		DF8F35C21BC7727A00C79B71 /* KCJSDefine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809CA71B9D90FF008B315D /* KCJSDefine.h */; };
-		DF8F35C31BC7727A00C79B71 /* KCMethod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809CA81B9D90FF008B315D /* KCMethod.h */; };
-		DF8F35C41BC7727A00C79B71 /* KCJSExecutor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */; };
-		DF8F35C51BC7727A00C79B71 /* KCManifestParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB5B1B9C17F2009F4775 /* KCManifestParser.h */; };
-		DF8F35C61BC7727A00C79B71 /* KCWebImageSetter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB731B9C17F2009F4775 /* KCWebImageSetter.h */; };
-		DF8F35C71BC7727A00C79B71 /* KCWebImageSetterTask.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB751B9C17F2009F4775 /* KCWebImageSetterTask.h */; };
-		DF8F35C81BC7727A00C79B71 /* KCXMLHttpRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB781B9C17F2009F4775 /* KCXMLHttpRequest.h */; };
-		DF8F35C91BC7727A00C79B71 /* KCXMLHttpRequestDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB7A1B9C17F2009F4775 /* KCXMLHttpRequestDelegate.h */; };
-		DF8F35CA1BC7727A00C79B71 /* KCXMLHttpRequestDispatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB7B1B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.h */; };
-		DF8F35CB1BC7727A00C79B71 /* KCWebPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB7E1B9C17F2009F4775 /* KCWebPath.h */; };
-		DF8F35CC1BC7727A00C79B71 /* KCWebPathDefine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF809C931B9D73A8008B315D /* KCWebPathDefine.h */; };
-		DF8F35CD1BC7727A00C79B71 /* KCWebView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB801B9C17F2009F4775 /* KCWebView.h */; };
-		DF8F35CE1BC7727A00C79B71 /* KCWebViewManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB831B9C17F2009F4775 /* KCWebViewManager.h */; };
-		DF8F35CF1BC7727A00C79B71 /* KCWebViewProxy.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB851B9C17F2009F4775 /* KCWebViewProxy.h */; };
-		DF8F35D01BC7727A00C79B71 /* UIWebView+KCClean.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DFC3AB871B9C17F2009F4775 /* UIWebView+KCClean.h */; };
-		DF8F35D11BC7727A00C79B71 /* kerkee.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF30750A1B959B01005AA030 /* kerkee.h */; };
+		DF8F35891BC7727900C79B71 /* SSKeychain.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF8A2FAB1B9FFC4200BD7FB3 /* SSKeychain.h */; };
+		DF8F358A1BC7727900C79B71 /* SSKeychainQuery.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */; };
+		DF8F358B1BC7727900C79B71 /* Reachability.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF44A1091B9FE3920045092E /* Reachability.h */; };
+		DF8F358C1BC7727900C79B71 /* KCURIQuery.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF765C261BA185D30025B0CC /* KCURIQuery.h */; };
+		DF8F358D1BC7727900C79B71 /* KCURIComponents.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF765C221BA175E20025B0CC /* KCURIComponents.h */; };
+		DF8F358E1BC7727900C79B71 /* KCURI.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF765C2A1BA1B5850025B0CC /* KCURI.h */; };
+		DF8F358F1BC7727900C79B71 /* UIDevice+KCHardware.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF8A2FA31B9FF9D300BD7FB3 /* UIDevice+KCHardware.h */; };
+		DF8F35901BC7727900C79B71 /* KCBaseDefine.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABB31B9C17FC009F4775 /* KCBaseDefine.h */; };
+		DF8F35911BC7727900C79B71 /* KCFileArchiver.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABB41B9C17FC009F4775 /* KCFileArchiver.h */; };
+		DF8F35921BC7727900C79B71 /* KCObject.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABB61B9C17FC009F4775 /* KCObject.h */; };
+		DF8F35931BC7727900C79B71 /* KCRuntime.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABB81B9C17FC009F4775 /* KCRuntime.h */; };
+		DF8F35941BC7727A00C79B71 /* KCSandbox.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABBA1B9C17FC009F4775 /* KCSandbox.h */; };
+		DF8F35951BC7727A00C79B71 /* KCSingleton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABBC1B9C17FC009F4775 /* KCSingleton.h */; };
+		DF8F35961BC7727A00C79B71 /* KCTaskQueue.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABBE1B9C17FC009F4775 /* KCTaskQueue.h */; };
+		DF8F35971BC7727A00C79B71 /* NSArray+KCStack.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC01B9C17FC009F4775 /* NSArray+KCStack.h */; };
+		DF8F35981BC7727A00C79B71 /* NSData+HMAC.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC21B9C17FC009F4775 /* NSData+HMAC.h */; };
+		DF8F35991BC7727A00C79B71 /* NSDate+KCDate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC41B9C17FC009F4775 /* NSDate+KCDate.h */; };
+		DF8F359A1BC7727A00C79B71 /* NSObject+KCCoding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC61B9C17FC009F4775 /* NSObject+KCCoding.h */; };
+		DF8F359B1BC7727A00C79B71 /* NSObject+KCNotification.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC81B9C17FC009F4775 /* NSObject+KCNotification.h */; };
+		DF8F359C1BC7727A00C79B71 /* NSObject+KCObjectInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABCA1B9C17FC009F4775 /* NSObject+KCObjectInfo.h */; };
+		DF8F359D1BC7727A00C79B71 /* NSObject+KCObserver.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABCC1B9C17FC009F4775 /* NSObject+KCObserver.h */; };
+		DF8F359E1BC7727A00C79B71 /* NSObject+KCProperty.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABCE1B9C17FC009F4775 /* NSObject+KCProperty.h */; };
+		DF8F359F1BC7727A00C79B71 /* NSObject+KCSelector.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABD01B9C17FC009F4775 /* NSObject+KCSelector.h */; };
+		DF8F35A01BC7727A00C79B71 /* NSObject+KCTicker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABD21B9C17FC009F4775 /* NSObject+KCTicker.h */; };
+		DF8F35A11BC7727A00C79B71 /* NSString+KCExtension.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABD41B9C17FC009F4775 /* NSString+KCExtension.h */; };
+		DF8F35A21BC7727A00C79B71 /* KCCache.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABD71B9C17FC009F4775 /* KCCache.h */; };
+		DF8F35A31BC7727A00C79B71 /* KCCacheKit.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABD91B9C17FC009F4775 /* KCCacheKit.h */; };
+		DF8F35A41BC7727A00C79B71 /* KCDataValidCache.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABDA1B9C17FC009F4775 /* KCDataValidCache.h */; };
+		DF8F35A51BC7727A00C79B71 /* KCFileCache.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABDC1B9C17FC009F4775 /* KCFileCache.h */; };
+		DF8F35A61BC7727A00C79B71 /* KCImageCache.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABDE1B9C17FC009F4775 /* KCImageCache.h */; };
+		DF8F35A71BC7727A00C79B71 /* KCImagePreCache.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABE01B9C17FC009F4775 /* KCImagePreCache.h */; };
+		DF8F35A81BC7727A00C79B71 /* KCMemoryCache.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABE21B9C17FC009F4775 /* KCMemoryCache.h */; };
+		DF8F35A91BC7727A00C79B71 /* NSData+AES256.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABE51B9C17FC009F4775 /* NSData+AES256.h */; };
+		DF8F35AA1BC7727A00C79B71 /* NSData+Base64.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABE71B9C17FC009F4775 /* NSData+Base64.h */; };
+		DF8F35AB1BC7727A00C79B71 /* KCUncaughtExceptionHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */; };
+		DF8F35AC1BC7727A00C79B71 /* KCException.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF44A10D1B9FE5EA0045092E /* KCException.h */; };
+		DF8F35AD1BC7727A00C79B71 /* KCLog.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABEA1B9C17FC009F4775 /* KCLog.h */; };
+		DF8F35AE1BC7727A00C79B71 /* KCArchiver.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABED1B9C17FC009F4775 /* KCArchiver.h */; };
+		DF8F35AF1BC7727A00C79B71 /* KCMainBundle.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABEF1B9C17FC009F4775 /* KCMainBundle.h */; };
+		DF8F35B01BC7727A00C79B71 /* KCUtilCoding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABF11B9C17FC009F4775 /* KCUtilCoding.h */; };
+		DF8F35B11BC7727A00C79B71 /* KCUtilDevice.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABF31B9C17FC009F4775 /* KCUtilDevice.h */; };
+		DF8F35B21BC7727A00C79B71 /* KCUtilFile.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABF51B9C17FC009F4775 /* KCUtilFile.h */; };
+		DF8F35B31BC7727A00C79B71 /* KCUtilGzip.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABF71B9C17FC009F4775 /* KCUtilGzip.h */; };
+		DF8F35B41BC7727A00C79B71 /* KCUtilMd5.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABF91B9C17FC009F4775 /* KCUtilMd5.h */; };
+		DF8F35B51BC7727A00C79B71 /* KCUtilNet.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABFB1B9C17FC009F4775 /* KCUtilNet.h */; };
+		DF8F35B61BC7727A00C79B71 /* KCUtilURL.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */; };
+		DF8F35B71BC7727A00C79B71 /* KCUriDispatcher.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF765C171BA16C860025B0CC /* KCUriDispatcher.h */; };
+		DF8F35B81BC7727A00C79B71 /* KCUriActionDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF765C1F1BA171CF0025B0CC /* KCUriActionDelegate.h */; };
+		DF8F35B91BC7727A00C79B71 /* KCUriRegister.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF5D70BC1BA91859008A8FB2 /* KCUriRegister.h */; };
+		DF8F35BA1BC7727A00C79B71 /* KCJSBridge.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809C961B9D90FF008B315D /* KCJSBridge.h */; };
+		DF8F35BB1BC7727A00C79B71 /* KCApiBridge.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809C991B9D90FF008B315D /* KCApiBridge.h */; };
+		DF8F35BC1BC7727A00C79B71 /* KCApiBridgeManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809C9B1B9D90FF008B315D /* KCApiBridgeManager.h */; };
+		DF8F35BD1BC7727A00C79B71 /* KCArg.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809C9D1B9D90FF008B315D /* KCArg.h */; };
+		DF8F35BE1BC7727A00C79B71 /* KCArgList.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809C9F1B9D90FF008B315D /* KCArgList.h */; };
+		DF8F35BF1BC7727A00C79B71 /* KCClass.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809CA11B9D90FF008B315D /* KCClass.h */; };
+		DF8F35C01BC7727A00C79B71 /* KCRegister.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809CA31B9D90FF008B315D /* KCRegister.h */; };
+		DF8F35C11BC7727A00C79B71 /* KCClassParser.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809CA51B9D90FF008B315D /* KCClassParser.h */; };
+		DF8F35C21BC7727A00C79B71 /* KCJSDefine.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809CA71B9D90FF008B315D /* KCJSDefine.h */; };
+		DF8F35C31BC7727A00C79B71 /* KCMethod.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809CA81B9D90FF008B315D /* KCMethod.h */; };
+		DF8F35C41BC7727A00C79B71 /* KCJSExecutor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */; };
+		DF8F35C51BC7727A00C79B71 /* KCManifestParser.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB5B1B9C17F2009F4775 /* KCManifestParser.h */; };
+		DF8F35C61BC7727A00C79B71 /* KCWebImageSetter.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB731B9C17F2009F4775 /* KCWebImageSetter.h */; };
+		DF8F35C71BC7727A00C79B71 /* KCWebImageSetterTask.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB751B9C17F2009F4775 /* KCWebImageSetterTask.h */; };
+		DF8F35C81BC7727A00C79B71 /* KCXMLHttpRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB781B9C17F2009F4775 /* KCXMLHttpRequest.h */; };
+		DF8F35C91BC7727A00C79B71 /* KCXMLHttpRequestDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB7A1B9C17F2009F4775 /* KCXMLHttpRequestDelegate.h */; };
+		DF8F35CA1BC7727A00C79B71 /* KCXMLHttpRequestDispatcher.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB7B1B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.h */; };
+		DF8F35CB1BC7727A00C79B71 /* KCWebPath.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB7E1B9C17F2009F4775 /* KCWebPath.h */; };
+		DF8F35CC1BC7727A00C79B71 /* KCWebPathDefine.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF809C931B9D73A8008B315D /* KCWebPathDefine.h */; };
+		DF8F35CD1BC7727A00C79B71 /* KCWebView.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB801B9C17F2009F4775 /* KCWebView.h */; };
+		DF8F35CE1BC7727A00C79B71 /* KCWebViewManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB831B9C17F2009F4775 /* KCWebViewManager.h */; };
+		DF8F35CF1BC7727A00C79B71 /* KCWebViewProxy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB851B9C17F2009F4775 /* KCWebViewProxy.h */; };
+		DF8F35D01BC7727A00C79B71 /* UIWebView+KCClean.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB871B9C17F2009F4775 /* UIWebView+KCClean.h */; };
+		DF8F35D11BC7727A00C79B71 /* kerkee.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF30750A1B959B01005AA030 /* kerkee.h */; };
+		DFBB9E0E1BF0863F00921758 /* KCJSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = DFBB9E0C1BF0863F00921758 /* KCJSObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFBB9E0F1BF0863F00921758 /* KCJSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBB9E0D1BF0863F00921758 /* KCJSObject.m */; };
+		DFBB9E1B1BF0904600921758 /* KCJSObject.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFBB9E0C1BF0863F00921758 /* KCJSObject.h */; };
 		DFC3AB891B9C17F2009F4775 /* KCManifestParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3AB5B1B9C17F2009F4775 /* KCManifestParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3AB8A1B9C17F2009F4775 /* KCManifestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB5C1B9C17F2009F4775 /* KCManifestParser.m */; };
 		DFC3AB9E1B9C17F2009F4775 /* KCWebImageSetter.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3AB731B9C17F2009F4775 /* KCWebImageSetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -237,86 +240,88 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		DF8F357E1BC76BD300C79B71 /* CopyFiles */ = {
+		DF8F357E1BC76BD300C79B71 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
-				DF8F35891BC7727900C79B71 /* SSKeychain.h in CopyFiles */,
-				DF8F358A1BC7727900C79B71 /* SSKeychainQuery.h in CopyFiles */,
-				DF8F358B1BC7727900C79B71 /* Reachability.h in CopyFiles */,
-				DF8F358C1BC7727900C79B71 /* KCURIQuery.h in CopyFiles */,
-				DF8F358D1BC7727900C79B71 /* KCURIComponents.h in CopyFiles */,
-				DF8F358E1BC7727900C79B71 /* KCURI.h in CopyFiles */,
-				DF8F358F1BC7727900C79B71 /* UIDevice+KCHardware.h in CopyFiles */,
-				DF8F35901BC7727900C79B71 /* KCBaseDefine.h in CopyFiles */,
-				DF8F35911BC7727900C79B71 /* KCFileArchiver.h in CopyFiles */,
-				DF8F35921BC7727900C79B71 /* KCObject.h in CopyFiles */,
-				DF8F35931BC7727900C79B71 /* KCRuntime.h in CopyFiles */,
-				DF8F35941BC7727A00C79B71 /* KCSandbox.h in CopyFiles */,
-				DF8F35951BC7727A00C79B71 /* KCSingleton.h in CopyFiles */,
-				DF8F35961BC7727A00C79B71 /* KCTaskQueue.h in CopyFiles */,
-				DF8F35971BC7727A00C79B71 /* NSArray+KCStack.h in CopyFiles */,
-				DF8F35981BC7727A00C79B71 /* NSData+HMAC.h in CopyFiles */,
-				DF8F35991BC7727A00C79B71 /* NSDate+KCDate.h in CopyFiles */,
-				DF8F359A1BC7727A00C79B71 /* NSObject+KCCoding.h in CopyFiles */,
-				DF8F359B1BC7727A00C79B71 /* NSObject+KCNotification.h in CopyFiles */,
-				DF8F359C1BC7727A00C79B71 /* NSObject+KCObjectInfo.h in CopyFiles */,
-				DF8F359D1BC7727A00C79B71 /* NSObject+KCObserver.h in CopyFiles */,
-				DF8F359E1BC7727A00C79B71 /* NSObject+KCProperty.h in CopyFiles */,
-				DF8F359F1BC7727A00C79B71 /* NSObject+KCSelector.h in CopyFiles */,
-				DF8F35A01BC7727A00C79B71 /* NSObject+KCTicker.h in CopyFiles */,
-				DF8F35A11BC7727A00C79B71 /* NSString+KCExtension.h in CopyFiles */,
-				DF8F35A21BC7727A00C79B71 /* KCCache.h in CopyFiles */,
-				DF8F35A31BC7727A00C79B71 /* KCCacheKit.h in CopyFiles */,
-				DF8F35A41BC7727A00C79B71 /* KCDataValidCache.h in CopyFiles */,
-				DF8F35A51BC7727A00C79B71 /* KCFileCache.h in CopyFiles */,
-				DF8F35A61BC7727A00C79B71 /* KCImageCache.h in CopyFiles */,
-				DF8F35A71BC7727A00C79B71 /* KCImagePreCache.h in CopyFiles */,
-				DF8F35A81BC7727A00C79B71 /* KCMemoryCache.h in CopyFiles */,
-				DF8F35A91BC7727A00C79B71 /* NSData+AES256.h in CopyFiles */,
-				DF8F35AA1BC7727A00C79B71 /* NSData+Base64.h in CopyFiles */,
-				DF8F35AB1BC7727A00C79B71 /* KCUncaughtExceptionHandler.h in CopyFiles */,
-				DF8F35AC1BC7727A00C79B71 /* KCException.h in CopyFiles */,
-				DF8F35AD1BC7727A00C79B71 /* KCLog.h in CopyFiles */,
-				DF8F35AE1BC7727A00C79B71 /* KCArchiver.h in CopyFiles */,
-				DF8F35AF1BC7727A00C79B71 /* KCMainBundle.h in CopyFiles */,
-				DF8F35B01BC7727A00C79B71 /* KCUtilCoding.h in CopyFiles */,
-				DF8F35B11BC7727A00C79B71 /* KCUtilDevice.h in CopyFiles */,
-				DF8F35B21BC7727A00C79B71 /* KCUtilFile.h in CopyFiles */,
-				DF8F35B31BC7727A00C79B71 /* KCUtilGzip.h in CopyFiles */,
-				DF8F35B41BC7727A00C79B71 /* KCUtilMd5.h in CopyFiles */,
-				DF8F35B51BC7727A00C79B71 /* KCUtilNet.h in CopyFiles */,
-				DF8F35B61BC7727A00C79B71 /* KCUtilURL.h in CopyFiles */,
-				DF8F35B71BC7727A00C79B71 /* KCUriDispatcher.h in CopyFiles */,
-				DF8F35B81BC7727A00C79B71 /* KCUriActionDelegate.h in CopyFiles */,
-				DF8F35B91BC7727A00C79B71 /* KCUriRegister.h in CopyFiles */,
-				DF8F35BA1BC7727A00C79B71 /* KCJSBridge.h in CopyFiles */,
-				DF8F35BB1BC7727A00C79B71 /* KCApiBridge.h in CopyFiles */,
-				DF8F35BC1BC7727A00C79B71 /* KCApiBridgeManager.h in CopyFiles */,
-				DF8F35BD1BC7727A00C79B71 /* KCArg.h in CopyFiles */,
-				DF8F35BE1BC7727A00C79B71 /* KCArgList.h in CopyFiles */,
-				DF8F35BF1BC7727A00C79B71 /* KCClass.h in CopyFiles */,
-				DF8F35C01BC7727A00C79B71 /* KCClassMrg.h in CopyFiles */,
-				DF8F35C11BC7727A00C79B71 /* KCClassParser.h in CopyFiles */,
-				DF8F35C21BC7727A00C79B71 /* KCJSDefine.h in CopyFiles */,
-				DF8F35C31BC7727A00C79B71 /* KCMethod.h in CopyFiles */,
-				DF8F35C41BC7727A00C79B71 /* KCJSExecutor.h in CopyFiles */,
-				DF8F35C51BC7727A00C79B71 /* KCManifestParser.h in CopyFiles */,
-				DF8F35C61BC7727A00C79B71 /* KCWebImageSetter.h in CopyFiles */,
-				DF8F35C71BC7727A00C79B71 /* KCWebImageSetterTask.h in CopyFiles */,
-				DF8F35C81BC7727A00C79B71 /* KCXMLHttpRequest.h in CopyFiles */,
-				DF8F35C91BC7727A00C79B71 /* KCXMLHttpRequestDelegate.h in CopyFiles */,
-				DF8F35CA1BC7727A00C79B71 /* KCXMLHttpRequestDispatcher.h in CopyFiles */,
-				DF8F35CB1BC7727A00C79B71 /* KCWebPath.h in CopyFiles */,
-				DF8F35CC1BC7727A00C79B71 /* KCWebPathDefine.h in CopyFiles */,
-				DF8F35CD1BC7727A00C79B71 /* KCWebView.h in CopyFiles */,
-				DF8F35CE1BC7727A00C79B71 /* KCWebViewManager.h in CopyFiles */,
-				DF8F35CF1BC7727A00C79B71 /* KCWebViewProxy.h in CopyFiles */,
-				DF8F35D01BC7727A00C79B71 /* UIWebView+KCClean.h in CopyFiles */,
-				DF8F35D11BC7727A00C79B71 /* kerkee.h in CopyFiles */,
+				DFBB9E1B1BF0904600921758 /* KCJSObject.h in Copy Files */,
+				DF8F35891BC7727900C79B71 /* SSKeychain.h in Copy Files */,
+				DF8F358A1BC7727900C79B71 /* SSKeychainQuery.h in Copy Files */,
+				DF8F358B1BC7727900C79B71 /* Reachability.h in Copy Files */,
+				DF8F358C1BC7727900C79B71 /* KCURIQuery.h in Copy Files */,
+				DF8F358D1BC7727900C79B71 /* KCURIComponents.h in Copy Files */,
+				DF8F358E1BC7727900C79B71 /* KCURI.h in Copy Files */,
+				DF8F358F1BC7727900C79B71 /* UIDevice+KCHardware.h in Copy Files */,
+				DF8F35901BC7727900C79B71 /* KCBaseDefine.h in Copy Files */,
+				DF8F35911BC7727900C79B71 /* KCFileArchiver.h in Copy Files */,
+				DF8F35921BC7727900C79B71 /* KCObject.h in Copy Files */,
+				DF8F35931BC7727900C79B71 /* KCRuntime.h in Copy Files */,
+				DF8F35941BC7727A00C79B71 /* KCSandbox.h in Copy Files */,
+				DF8F35951BC7727A00C79B71 /* KCSingleton.h in Copy Files */,
+				DF8F35961BC7727A00C79B71 /* KCTaskQueue.h in Copy Files */,
+				DF8F35971BC7727A00C79B71 /* NSArray+KCStack.h in Copy Files */,
+				DF8F35981BC7727A00C79B71 /* NSData+HMAC.h in Copy Files */,
+				DF8F35991BC7727A00C79B71 /* NSDate+KCDate.h in Copy Files */,
+				DF8F359A1BC7727A00C79B71 /* NSObject+KCCoding.h in Copy Files */,
+				DF8F359B1BC7727A00C79B71 /* NSObject+KCNotification.h in Copy Files */,
+				DF8F359C1BC7727A00C79B71 /* NSObject+KCObjectInfo.h in Copy Files */,
+				DF8F359D1BC7727A00C79B71 /* NSObject+KCObserver.h in Copy Files */,
+				DF8F359E1BC7727A00C79B71 /* NSObject+KCProperty.h in Copy Files */,
+				DF8F359F1BC7727A00C79B71 /* NSObject+KCSelector.h in Copy Files */,
+				DF8F35A01BC7727A00C79B71 /* NSObject+KCTicker.h in Copy Files */,
+				DF8F35A11BC7727A00C79B71 /* NSString+KCExtension.h in Copy Files */,
+				DF8F35A21BC7727A00C79B71 /* KCCache.h in Copy Files */,
+				DF8F35A31BC7727A00C79B71 /* KCCacheKit.h in Copy Files */,
+				DF8F35A41BC7727A00C79B71 /* KCDataValidCache.h in Copy Files */,
+				DF8F35A51BC7727A00C79B71 /* KCFileCache.h in Copy Files */,
+				DF8F35A61BC7727A00C79B71 /* KCImageCache.h in Copy Files */,
+				DF8F35A71BC7727A00C79B71 /* KCImagePreCache.h in Copy Files */,
+				DF8F35A81BC7727A00C79B71 /* KCMemoryCache.h in Copy Files */,
+				DF8F35A91BC7727A00C79B71 /* NSData+AES256.h in Copy Files */,
+				DF8F35AA1BC7727A00C79B71 /* NSData+Base64.h in Copy Files */,
+				DF8F35AB1BC7727A00C79B71 /* KCUncaughtExceptionHandler.h in Copy Files */,
+				DF8F35AC1BC7727A00C79B71 /* KCException.h in Copy Files */,
+				DF8F35AD1BC7727A00C79B71 /* KCLog.h in Copy Files */,
+				DF8F35AE1BC7727A00C79B71 /* KCArchiver.h in Copy Files */,
+				DF8F35AF1BC7727A00C79B71 /* KCMainBundle.h in Copy Files */,
+				DF8F35B01BC7727A00C79B71 /* KCUtilCoding.h in Copy Files */,
+				DF8F35B11BC7727A00C79B71 /* KCUtilDevice.h in Copy Files */,
+				DF8F35B21BC7727A00C79B71 /* KCUtilFile.h in Copy Files */,
+				DF8F35B31BC7727A00C79B71 /* KCUtilGzip.h in Copy Files */,
+				DF8F35B41BC7727A00C79B71 /* KCUtilMd5.h in Copy Files */,
+				DF8F35B51BC7727A00C79B71 /* KCUtilNet.h in Copy Files */,
+				DF8F35B61BC7727A00C79B71 /* KCUtilURL.h in Copy Files */,
+				DF8F35B71BC7727A00C79B71 /* KCUriDispatcher.h in Copy Files */,
+				DF8F35B81BC7727A00C79B71 /* KCUriActionDelegate.h in Copy Files */,
+				DF8F35B91BC7727A00C79B71 /* KCUriRegister.h in Copy Files */,
+				DF8F35BA1BC7727A00C79B71 /* KCJSBridge.h in Copy Files */,
+				DF8F35BB1BC7727A00C79B71 /* KCApiBridge.h in Copy Files */,
+				DF8F35BC1BC7727A00C79B71 /* KCApiBridgeManager.h in Copy Files */,
+				DF8F35BD1BC7727A00C79B71 /* KCArg.h in Copy Files */,
+				DF8F35BE1BC7727A00C79B71 /* KCArgList.h in Copy Files */,
+				DF8F35BF1BC7727A00C79B71 /* KCClass.h in Copy Files */,
+				DF8F35C01BC7727A00C79B71 /* KCRegister.h in Copy Files */,
+				DF8F35C11BC7727A00C79B71 /* KCClassParser.h in Copy Files */,
+				DF8F35C21BC7727A00C79B71 /* KCJSDefine.h in Copy Files */,
+				DF8F35C31BC7727A00C79B71 /* KCMethod.h in Copy Files */,
+				DF8F35C41BC7727A00C79B71 /* KCJSExecutor.h in Copy Files */,
+				DF8F35C51BC7727A00C79B71 /* KCManifestParser.h in Copy Files */,
+				DF8F35C61BC7727A00C79B71 /* KCWebImageSetter.h in Copy Files */,
+				DF8F35C71BC7727A00C79B71 /* KCWebImageSetterTask.h in Copy Files */,
+				DF8F35C81BC7727A00C79B71 /* KCXMLHttpRequest.h in Copy Files */,
+				DF8F35C91BC7727A00C79B71 /* KCXMLHttpRequestDelegate.h in Copy Files */,
+				DF8F35CA1BC7727A00C79B71 /* KCXMLHttpRequestDispatcher.h in Copy Files */,
+				DF8F35CB1BC7727A00C79B71 /* KCWebPath.h in Copy Files */,
+				DF8F35CC1BC7727A00C79B71 /* KCWebPathDefine.h in Copy Files */,
+				DF8F35CD1BC7727A00C79B71 /* KCWebView.h in Copy Files */,
+				DF8F35CE1BC7727A00C79B71 /* KCWebViewManager.h in Copy Files */,
+				DF8F35CF1BC7727A00C79B71 /* KCWebViewProxy.h in Copy Files */,
+				DF8F35D01BC7727A00C79B71 /* UIWebView+KCClean.h in Copy Files */,
+				DF8F35D11BC7727A00C79B71 /* kerkee.h in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -360,8 +365,8 @@
 		DF809CA01B9D90FF008B315D /* KCArgList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCArgList.m; sourceTree = "<group>"; };
 		DF809CA11B9D90FF008B315D /* KCClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCClass.h; sourceTree = "<group>"; };
 		DF809CA21B9D90FF008B315D /* KCClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCClass.m; sourceTree = "<group>"; };
-		DF809CA31B9D90FF008B315D /* KCClassMrg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCClassMrg.h; sourceTree = "<group>"; };
-		DF809CA41B9D90FF008B315D /* KCClassMrg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCClassMrg.m; sourceTree = "<group>"; };
+		DF809CA31B9D90FF008B315D /* KCRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCRegister.h; sourceTree = "<group>"; };
+		DF809CA41B9D90FF008B315D /* KCRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCRegister.m; sourceTree = "<group>"; };
 		DF809CA51B9D90FF008B315D /* KCClassParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCClassParser.h; sourceTree = "<group>"; };
 		DF809CA61B9D90FF008B315D /* KCClassParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCClassParser.m; sourceTree = "<group>"; };
 		DF809CA71B9D90FF008B315D /* KCJSDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSDefine.h; sourceTree = "<group>"; };
@@ -375,6 +380,8 @@
 		DF8A2FAC1B9FFC4200BD7FB3 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
 		DF8A2FAE1B9FFC4200BD7FB3 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		DFBB9E0C1BF0863F00921758 /* KCJSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSObject.h; sourceTree = "<group>"; };
+		DFBB9E0D1BF0863F00921758 /* KCJSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSObject.m; sourceTree = "<group>"; };
 		DFC3AB5B1B9C17F2009F4775 /* KCManifestParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCManifestParser.h; sourceTree = "<group>"; };
 		DFC3AB5C1B9C17F2009F4775 /* KCManifestParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCManifestParser.m; sourceTree = "<group>"; };
 		DFC3AB731B9C17F2009F4775 /* KCWebImageSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWebImageSetter.h; sourceTree = "<group>"; };
@@ -594,6 +601,8 @@
 		DF809C981B9D90FF008B315D /* runtime */ = {
 			isa = PBXGroup;
 			children = (
+				DFBB9E051BF04C2D00921758 /* event */,
+				DFBB9E041BF04C2700921758 /* type */,
 				DF809C991B9D90FF008B315D /* KCApiBridge.h */,
 				DF809C9A1B9D90FF008B315D /* KCApiBridge.m */,
 				DF809C9B1B9D90FF008B315D /* KCApiBridgeManager.h */,
@@ -604,8 +613,8 @@
 				DF809CA01B9D90FF008B315D /* KCArgList.m */,
 				DF809CA11B9D90FF008B315D /* KCClass.h */,
 				DF809CA21B9D90FF008B315D /* KCClass.m */,
-				DF809CA31B9D90FF008B315D /* KCClassMrg.h */,
-				DF809CA41B9D90FF008B315D /* KCClassMrg.m */,
+				DF809CA31B9D90FF008B315D /* KCRegister.h */,
+				DF809CA41B9D90FF008B315D /* KCRegister.m */,
 				DF809CA51B9D90FF008B315D /* KCClassParser.h */,
 				DF809CA61B9D90FF008B315D /* KCClassParser.m */,
 				DF809CA71B9D90FF008B315D /* KCJSDefine.h */,
@@ -613,6 +622,8 @@
 				DF809CA91B9D90FF008B315D /* KCMethod.m */,
 				DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */,
 				DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */,
+				DFBB9E0C1BF0863F00921758 /* KCJSObject.h */,
+				DFBB9E0D1BF0863F00921758 /* KCJSObject.m */,
 			);
 			path = runtime;
 			sourceTree = "<group>";
@@ -637,6 +648,20 @@
 				DF8A2FAE1B9FFC4200BD7FB3 /* SSKeychainQuery.m */,
 			);
 			path = SSKeychain;
+			sourceTree = "<group>";
+		};
+		DFBB9E041BF04C2700921758 /* type */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = type;
+			sourceTree = "<group>";
+		};
+		DFBB9E051BF04C2D00921758 /* event */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = event;
 			sourceTree = "<group>";
 		};
 		DFC3AB581B9C17F2009F4775 /* Browser */ = {
@@ -874,7 +899,6 @@
 				DF809CB01B9D90FF008B315D /* KCArg.h in Headers */,
 				DF809CB21B9D90FF008B315D /* KCArgList.h in Headers */,
 				DF809CB41B9D90FF008B315D /* KCClass.h in Headers */,
-				DF809CB61B9D90FF008B315D /* KCClassMrg.h in Headers */,
 				DF809CAA1B9D90FF008B315D /* KCJSBridge.h in Headers */,
 				DFC3AC2F1B9C17FC009F4775 /* NSData+AES256.h in Headers */,
 				DF809C941B9D7867008B315D /* KCWebPathDefine.h in Headers */,
@@ -925,6 +949,8 @@
 				DFC3AC001B9C17FC009F4775 /* KCFileArchiver.h in Headers */,
 				DFC3AC291B9C17FC009F4775 /* KCImageCache.h in Headers */,
 				DF809CAC1B9D90FF008B315D /* KCApiBridge.h in Headers */,
+				DFBB9E0E1BF0863F00921758 /* KCJSObject.h in Headers */,
+				DF809CB61B9D90FF008B315D /* KCRegister.h in Headers */,
 				DFC3ABFF1B9C17FC009F4775 /* KCBaseDefine.h in Headers */,
 				DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */,
 				DFC3AC041B9C17FC009F4775 /* KCRuntime.h in Headers */,
@@ -947,7 +973,7 @@
 				DF3075011B959B01005AA030 /* Frameworks */,
 				DF3075021B959B01005AA030 /* Headers */,
 				DF3075031B959B01005AA030 /* Resources */,
-				DF8F357E1BC76BD300C79B71 /* CopyFiles */,
+				DF8F357E1BC76BD300C79B71 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -1036,7 +1062,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFC3AC421B9C17FC009F4775 /* KCUtilMd5.m in Sources */,
-				DF809CB71B9D90FF008B315D /* KCClassMrg.m in Sources */,
+				DF809CB71B9D90FF008B315D /* KCRegister.m in Sources */,
 				DFC3AC3C1B9C17FC009F4775 /* KCUtilDevice.m in Sources */,
 				DF809CAF1B9D90FF008B315D /* KCApiBridgeManager.m in Sources */,
 				DF765C251BA175E20025B0CC /* KCURIComponents.m in Sources */,
@@ -1065,6 +1091,7 @@
 				DFC3AB9F1B9C17F2009F4775 /* KCWebImageSetter.m in Sources */,
 				DFC3AC441B9C17FC009F4775 /* KCUtilNet.m in Sources */,
 				DFC3AC211B9C17FC009F4775 /* NSString+KCExtension.m in Sources */,
+				DFBB9E0F1BF0863F00921758 /* KCJSObject.m in Sources */,
 				DFC3AC2E1B9C17FC009F4775 /* KCMemoryCache.m in Sources */,
 				DFC3AC3E1B9C17FC009F4775 /* KCUtilFile.m in Sources */,
 				DFC3AC2A1B9C17FC009F4775 /* KCImageCache.m in Sources */,
@@ -1225,6 +1252,7 @@
 		DF30751C1B959B01005AA030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1241,6 +1269,7 @@
 		DF30751D1B959B01005AA030 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

@@ -24,8 +24,6 @@
     
 }
 
-@property (nonatomic,weak)KCXMLHttpRequest *xmlRequest;
-
 @property (nonatomic, assign) int resourceCount;
 @property (nonatomic, assign) int resourceCompletedCount;
 

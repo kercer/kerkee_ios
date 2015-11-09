@@ -14,7 +14,7 @@
 
 @interface KCClass : NSObject
 
-+ (KCClass *)initWithClass:(Class)aClass clzName:(NSString *)aJSClzName;
++ (KCClass *)newClass:(Class)aClass withJSObjName:(NSString *)aJSClzName;
 
 - (Class)getNavClass;
 - (NSString *)getJSClz;
