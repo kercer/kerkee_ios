@@ -44,7 +44,7 @@
     KCLog(@"docment dir:\n%@",KCWebPath_HtmlRootPath);
     
     m_webView = [[KCWebView alloc] initWithFrame:self.view.bounds];
-    m_webView.delegate = self;
+//    m_webView.delegate = self;
     [self.view addSubview:m_webView];
     
     m_jsBridge = [[KCJSBridge alloc] initWithWebView:m_webView delegate:self];
@@ -115,5 +115,6 @@
    
     return YES;
 }
+
 
 @end

@@ -10,7 +10,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class KCXMLHttpRequest;
 @class KCWebView;
 
 @protocol KCWebViewProgressDelegate <NSObject>

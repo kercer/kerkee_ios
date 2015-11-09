@@ -12,7 +12,8 @@
 #import "KCClientUI.h"
 #import "KCSearchApi.h"
 #import "KCWidget.h"
-#import "KCTestApi.h"
+#import "KCApiTest.h"
+#import "KCApiOverrideJSBridgeClient.h"
 
 @interface KCRegistObj:NSObject
 

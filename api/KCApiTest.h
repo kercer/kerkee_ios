@@ -9,15 +9,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KCClass.h"
 #import "KCWebView.h"
 #import "KCArgList.h"
 
-@interface KCTestApi : NSObject
+@interface KCApiTest : NSObject
 
-
-+(void)testJSBrige:(KCWebView*)aWebView argList:(KCArgList*)args;
-+(void)commonApi:(KCWebView*)aWebView argList:(KCArgList*)args;
 +(void)testInfo:(KCWebView*)aWebView argList:(KCArgList*)args;
 
 @end

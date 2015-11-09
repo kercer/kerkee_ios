@@ -1,31 +1,16 @@
 //
-//  KCTestApi.m
-//  kerkee
+//  KCApiOverrideJSBridgeClient.m
+//  kerkeeDemo
 //
-//  Designed by zihong
-//
-//  Created by zihong on 15/8/25.
-//  Copyright (c) 2015年 zihong. All rights reserved.
+//  Created by zihong on 15/11/9.
+//  Copyright © 2015年 zihong. All rights reserved.
 //
 
-
-#import "KCTestApi.h"
+#import "KCApiOverrideJSBridgeClient.h"
 #import "KCBaseDefine.h"
 #import "KCJSBridge.h"
 
-
-@implementation KCTestApi
-
-- (id)init
-{
-    self = [super init];
-    if(self)
-    {
-        
-    }
-    
-    return self;
-}
+@implementation KCApiOverrideJSBridgeClient
 
 +(void)testJSBrige:(KCWebView*)aWebView argList:(KCArgList*)args
 {
@@ -45,19 +30,7 @@
     //返回
     
     [KCJSBridge callbackJS:aWebView callBackID:[args getArgValule:@"callbackId"] jsonString:json];
-
-}
-
-
-+(void)testInfo:(KCWebView*)aWebView argList:(KCArgList*)args
-{
-    NSString* jsonInfo = [args getArgValule:@"testInfo"];
-    KCLog(@"%@", jsonInfo);
     
-    [KCJSBridge callbackJS:aWebView callBackID:[args getArgValule:@"callbackId"] string:@"This is testInfo callball"];
-    
-    
-
 }
 
 @end
