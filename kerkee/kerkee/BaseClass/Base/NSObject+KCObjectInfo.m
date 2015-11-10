@@ -10,7 +10,7 @@
 
 #import "NSObject+KCObjectInfo.h"
 #import "KCBaseDefine.h"
-#import <objc/runtime.h>
+
 
 @implementation NSObject (KCObjectInfo)
 
@@ -278,6 +278,19 @@
 
 #pragma mark - Class Bits
 
++ (NSArray *) getMetaSelectorListForClass
+{
+    NSMutableArray *selectors = [NSMutableArray array];
+    unsigned int num;
+    Class clz = objc_getMetaClass(self.description.UTF8String);
+    Method *methods = class_copyMethodList(clz, &num);
+    for (int i = 0; i < num; i++)
+        [selectors addObject:NSStringFromSelector(method_getName(methods[i]))];
+    free(methods);
+    return selectors;
+}
+
+
 // Return an array of all an object's selectors
 + (NSArray *) getSelectorListForClass
 {
@@ -408,5 +421,63 @@
 		return nil;
 }
 
++ (void)swizzleMethod:(SEL)aOrigSel withMethod:(SEL)aAltSel
+{
+    Method orig_method = class_getInstanceMethod(self, aOrigSel);
+    Method alt_method = class_getInstanceMethod(self, aAltSel);
+    
+    if (orig_method == nil || alt_method == nil) {
+        NSLog(@"method not exists.");
+        return;
+    }
+    
+    class_addMethod(self,
+                    aOrigSel,
+                    class_getMethodImplementation(self, aOrigSel),
+                    method_getTypeEncoding(orig_method));
+    
+    class_addMethod(self,
+                    aAltSel,
+                    class_getMethodImplementation(self, aAltSel),
+                    method_getTypeEncoding(alt_method));
+    
+    method_exchangeImplementations(class_getInstanceMethod(self, aOrigSel), class_getInstanceMethod(self, aAltSel));
+}
+
++ (BOOL)swizzle:(SEL)aOriginal with:(IMP)aReplacement store:(IMPPointer)aStore
+{
+    return class_swizzleMethodAndStore(self, aOriginal, aReplacement, aStore);
+}
+
+
++ (void)exchangeMethond:(SEL)aSel1 :(SEL)aSel2
+{
+    Method m1 = class_getInstanceMethod([self class], aSel1);
+    Method m2 = class_getInstanceMethod([self class], aSel2);
+    method_exchangeImplementations(m1, m2);
+}
++(IMP)replaceMethod :(SEL)aOldMethond :(IMP)aNewIMP
+{
+    IMP orginIMP = [[self class] instanceMethodForSelector:aOldMethond];
+    class_replaceMethod([self class],aOldMethond,aNewIMP,NULL);
+    return orginIMP;
+}
 
 @end
+
+BOOL class_swizzleMethodAndStore(Class aClass, SEL aOriginal, IMP aReplacement, IMPPointer aStore)
+{
+    IMP imp = NULL;
+    Method method = class_getInstanceMethod(aClass, aOriginal);
+    if (method)
+    {
+        const char *type = method_getTypeEncoding(method);
+        imp = class_replaceMethod(aClass, aOriginal, aReplacement, type);
+        if (!imp)
+        {
+            imp = method_getImplementation(method);
+        }
+    }
+    if (imp && aStore) { *aStore = imp; }
+    return (imp != NULL);
+}

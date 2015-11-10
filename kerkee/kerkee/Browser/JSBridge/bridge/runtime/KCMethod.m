@@ -2,46 +2,46 @@
 //  KCMethod.m
 //  kerkee
 //
-//  Designed by zihong
+//  Created by zihong on 15/11/10.
+//  Copyright © 2015年 zihong. All rights reserved.
 //
-//  Created by lijian on 15/8/25.
-//  Copyright (c) 2015年 lijian. All rights reserved.
-//
+
 
 #import "KCMethod.h"
 #import "KCBaseDefine.h"
 
 @interface KCMethod()
-
-@property (nonatomic, copy) NSString *mJSMethodName;
-@property (nonatomic, assign) SEL mMethod;
-@property (nonatomic, copy) NSString *mIdentity;
-
-@property (nonatomic, retain) KCArgList *mArgList;
+{
+    NSString* m_jsMethodName;
+    SEL m_method;
+    NSString* m_indentity;
+}
 
 @end
 
 
 @implementation KCMethod
 
-+ (KCMethod *)initWithName:(NSString *)aName andMethod:(SEL)aMethod andArgs:(KCArgList *)aArgs
++ (KCMethod *)createMethod:(SEL)aMethod
 {
     KCMethod *mtd = [[self alloc] init];
     
-    mtd.mMethod = aMethod;
-    mtd.mJSMethodName = aName;
-    mtd.mArgList = aArgs;
+    NSString *selectorString = NSStringFromSelector(aMethod);
+    NSArray *components = [selectorString componentsSeparatedByString:@":"];
     
+    mtd->m_method = aMethod;
+    mtd->m_jsMethodName = components[0];
     KCAutorelease(mtd);
     return mtd;
 }
 
 - (void)dealloc
 {
-    self.mJSMethodName = nil;
-    self.mMethod = nil;
-    self.mIdentity = nil;
-    self.mArgList = nil;
+    KCRelease(m_jsMethodName);
+    m_jsMethodName = nil;
+    m_method = nil;
+    KCRelease(m_indentity);
+    m_indentity = nil;
     
     KCDealloc(super);
 }
@@ -53,25 +53,18 @@
 
 - (NSString *)getIdentity
 {
-    return self.mIdentity;
+    return m_indentity;
 }
 
 - (SEL)getNavMethod
 {
-    return self.mMethod;
+    return m_method;
 }
 
-/*
-public int getArgsCount()
+- (NSString*)getJSMethodName
 {
-    return mMethod.getParameterTypes().length;
+    return m_jsMethodName;
 }
 
-public Object invoke(Object aReceiver, Object... aArgs) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
-{
-    return mMethod.invoke(aReceiver, aArgs);
-}
-
-*/
 
 @end

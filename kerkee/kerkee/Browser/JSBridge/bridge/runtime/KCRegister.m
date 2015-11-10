@@ -152,4 +152,13 @@ static void initializeClassMap()
     return [m_classMap objectForKey:aJSObjName];
 }
 
++ (KCJSObject*)getJSObject:(NSString*)aJSObjName
+{
+    return [[KCRegister sharedInstance] getJSObject:aJSObjName];
+}
+- (KCJSObject*)getJSObject:(NSString*)aJSObjName
+{
+    return [m_jsObjectMap objectForKey:aJSObjName];
+}
+
 @end

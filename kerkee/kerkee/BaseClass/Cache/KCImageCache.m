@@ -42,11 +42,14 @@ DEF_SINGLETON(KCImageCache);
 
 - (NSMutableDictionary*)m_dicImages
 {
-	if (m_dicImages == nil)
-	{
-		m_dicImages = [NSMutableDictionary dictionaryWithCapacity:10];
-        KCRetain(m_dicImages);
-	}
+    @synchronized(self)
+    {
+        if (m_dicImages == nil)
+        {
+            m_dicImages = [NSMutableDictionary dictionaryWithCapacity:10];
+            KCRetain(m_dicImages);
+        }
+    }
 	return m_dicImages;
 }
 
@@ -288,7 +291,10 @@ DEF_SINGLETON(KCImageCache);
 
 - (void)cacheImage:(UIImage*)image withURL:(NSURL*)url
 {
-	[self.m_dicImages setObject:image forKey:[self keyForURL:url]];
+    @synchronized(self)
+    {
+        [self.m_dicImages setObject:image forKey:[self keyForURL:url]];
+    }
 }
 
 
@@ -334,7 +340,10 @@ DEF_SINGLETON(KCImageCache);
 -(void)flushMemoryWithURL:(NSURL*)url
 {
     NSString* key = [self keyForURL:url];
-    [m_dicImages removeObjectForKey:key];
+    @synchronized(self)
+    {
+        [m_dicImages removeObjectForKey:key];
+    }
 }
 
 -(void)deleteCachePool

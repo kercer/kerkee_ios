@@ -2,10 +2,8 @@
 //  KCClass.h
 //  kerkee
 //
-//  Designed by zihong
-//
-//  Created by lijian on 15/8/25.
-//  Copyright (c) 2015年 lijian. All rights reserved.
+//  Created by zihong on 2015-11-10.
+//  Copyright © 2015 zihong. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -19,7 +17,7 @@
 - (Class)getNavClass;
 - (NSString *)getJSClz;
 
-- (void)addMethod:(NSString *)aMethodName args:(KCArgList *)aArgList;
+- (void)addJSMethod:(NSString *)aJSMethodName args:(KCArgList *)aArgList;
 - (KCMethod *)getMethods:(NSString *)aName;
 
 @end

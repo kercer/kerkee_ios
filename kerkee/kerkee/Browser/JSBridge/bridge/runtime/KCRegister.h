@@ -18,5 +18,6 @@
 + (KCClass*)registClass:(Class)aClass withJSObjName:(NSString*)aJSObjName;
 + (KCClass*)removeClass:(NSString*)aJSObjName;
 + (KCClass*)getClass:(NSString*)aJSObjName;
++ (KCJSObject*)getJSObject:(NSString*)aJSObjName;
 
 @end

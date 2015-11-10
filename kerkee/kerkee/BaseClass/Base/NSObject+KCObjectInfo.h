@@ -10,12 +10,17 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGGeometry.h>
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 
 #define KC_VALUE(struct) ({ __typeof__(struct) __struct = struct; [NSValue valueWithBytes:&__struct objCType:@encode(__typeof__(__struct))]; })
 
 #define KC_MAKELIVE(_CLASSNAME_)	Class _CLASSNAME_ = NSClassFromString((NSString *)CFSTR(#_CLASSNAME_));
 
 #define KC_VERIFIED_CLASS(_CLASSNAME_) ((_CLASSNAME_ *) NSClassFromString(@"" # _CLASSNAME_))
+
+
+typedef IMP *IMPPointer;
+BOOL class_swizzleMethodAndStore(Class aClass, SEL aOriginal, IMP aReplacement, IMPPointer aStore);
 
 @interface NSObject (KCObjectInfo)
 
@@ -32,10 +37,13 @@
 
 // Access to object essentials for run-time checks. Stored by class in dictionary.
 // Return an array of all an object's selectors
++ (NSArray *) getMetaSelectorListForClass;
 + (NSArray *) getSelectorListForClass;
 + (NSArray *) getPropertyListForClass;
 + (NSArray *) getIvarListForClass;
 + (NSArray *) getProtocolListForClass;
+
+
 
 // Return a dictionary with class/selectors entries, all the way up to NSObject
 @property (readonly) NSDictionary *selectors;
@@ -49,5 +57,11 @@
 + (BOOL) classExists: (NSString *) aClassName;
 + (id) instanceOfClassNamed: (NSString *) aClassName;
 
++ (void)swizzleMethod:(SEL)aOrigSel withMethod:(SEL)aAltSel;
++ (BOOL)swizzle:(SEL)aOriginal with:(IMP)aReplacement store:(IMPPointer)aStore;
++ (void)exchangeMethond:(SEL)aSel1 :(SEL)aSel2;
++(IMP)replaceMethod :(SEL)aOldMethond :(IMP)aNewIMP;
 
 @end
+
+

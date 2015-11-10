@@ -18,6 +18,7 @@
 #import "KCWebPathDefine.h"
 #import "KCJSExecutor.h"
 #import "NSObject+KCSelector.h"
+#import "NSObject+KCObjectInfo.h"
 
 
 static NSString *PRIVATE_SCHEME = @"kcnative";
@@ -175,16 +176,17 @@ static NSString* m_js = nil;
         {
             KCClassParser *parser = [KCClassParser initWithDictionary:jsonObj];
             
-            NSString *clsName = [parser getJSClzName];
-            NSString *methodName = [parser getJSMethodName];
-            KCArgList *argList = [parser getArgList];
+            NSString* jsClzName = [parser getJSClzName];
+            NSString* methodName = [parser getJSMethodName];
+            KCArgList* argList = [parser getArgList];
             //NSLog(@"value = %@",[argList getArgValule:@"callbackId"]);
             
-            KCClass *kcCls = [KCRegister getClass:clsName];
+            KCClass* kcCls = [KCRegister getClass:jsClzName];
+            if (kcCls)
             {
                 Class clz = [kcCls getNavClass];
                 
-                [kcCls addMethod:methodName args:argList];
+                [kcCls addJSMethod:methodName args:argList];
                 
                 if([argList count] > 0)
                 {
@@ -199,6 +201,15 @@ static NSString* m_js = nil;
                 if(clz && [clz respondsToSelector:method])
                 {
                      [clz performSelector:method withObject:webView withObject:argList];
+                }
+                else
+                {
+                    KCJSObject* receiver = [KCRegister getJSObject:jsClzName];
+                    
+                    if (receiver && [receiver respondsToSelector:method])
+                    {
+                        [receiver performSelector:method withObject:webView withObject:argList];
+                    }
                 }
                 #pragma clang diagnostic pop
                 

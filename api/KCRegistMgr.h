@@ -7,13 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KCChannelModuleApi.h"
-#import "KCClientInfoApi.h"
-#import "KCClientUI.h"
-#import "KCSearchApi.h"
-#import "KCWidget.h"
-#import "KCApiTest.h"
-#import "KCApiOverrideJSBridgeClient.h"
+
+
 
 @interface KCRegistObj:NSObject
 

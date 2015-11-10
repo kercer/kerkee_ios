@@ -2,21 +2,20 @@
 //  KCClass.m
 //  kerkee
 //
-//  Designed by zihong
-//
-//  Created by lijian on 15/8/25.
-//  Copyright (c) 2015年 lijian. All rights reserved.
+//  Created by zihong on 2015-11-10.
+//  Copyright © 2015 zihong. All rights reserved.
 //
 
 #import "KCClass.h"
 #import "KCBaseDefine.h"
 
 @interface KCClass()
+{
+    NSString* m_jsClzName;
+    Class m_clz;
+    NSMutableDictionary* m_methods;
+}
 
-@property (nonatomic, copy) NSString *mJSClzName;
-@property (nonatomic, copy) NSString *mClassName;
-@property (nonatomic, retain) Class mClz;
-@property (nonatomic, retain) NSMutableDictionary *mMethods;
 
 @end
 
@@ -26,8 +25,8 @@
 {
     KCClass *clz = [[self alloc] init];
     
-    clz.mJSClzName = aJSClzName;
-    clz.mClz = aClass;
+    clz->m_jsClzName = aJSClzName;
+    clz->m_clz = aClass;
     
     KCAutorelease(clz);
     return clz;
@@ -37,7 +36,7 @@
 {
     self = [super init];
     if(self){
-        _mMethods = [[NSMutableDictionary alloc] initWithCapacity:20];
+        m_methods = [[NSMutableDictionary alloc] initWithCapacity:20];
     }
     
     return self;
@@ -45,35 +44,36 @@
  
 - (void)dealloc
 {
-    self.mJSClzName = nil;
-    self.mClassName = nil;
-    self.mClz = nil;
-    self.mMethods = nil;
+    KCRelease(m_jsClzName);
+    m_jsClzName = nil;
+    KCRelease(m_clz);
+    m_clz = nil;
+    KCRelease(m_methods);
+    m_methods = nil;
     
     KCDealloc(super);
 }
 
 - (Class)getNavClass
 {
-    return self.mClz;
+    return m_clz;
 }
 
-- (NSString *)getJSClz
+- (NSString*)getJSClz
 {
-    return self.mJSClzName;
+    return m_jsClzName;
 }
 
-- (void)addMethod:(NSString *)aMethodName args:(KCArgList *)aArgList
+- (void)addJSMethod:(NSString *)aJSMethodName args:(KCArgList *)aArgList
 {
-    //to do
-    KCMethod *method = [KCMethod initWithName:aMethodName andMethod:NSSelectorFromString(aMethodName) andArgs:aArgList];
-    
-    [self.mMethods setObject:method forKeyedSubscript:aMethodName];
+//    KCMethod *method = [KCMethod createMethod:NSSelectorFromString(aJSMethodName)];
+//    
+//    [m_methods setObject:method forKeyedSubscript:aJSMethodName];
 }
 
 - (KCMethod *)getMethods:(NSString *)aName
 {
-    return [self.mMethods objectForKey:aName];
+    return [m_methods objectForKey:aName];
 }
 
 @end

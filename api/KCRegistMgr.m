@@ -7,6 +7,16 @@
 //
 
 #import "KCRegistMgr.h"
+#import "KCJSObjDefine.h"
+
+#import "KCChannelModuleApi.h"
+#import "KCClientInfoApi.h"
+#import "KCClientUI.h"
+#import "KCSearchApi.h"
+#import "KCWidget.h"
+#import "KCApiTest.h"
+#import "KCApiOverrideJSBridgeClient.h"
+#import "KCApiJSObjExample.h"
 
 
 @implementation KCRegistObj
@@ -61,7 +71,10 @@
     
     //have rewritten jsBridgeClient in kerkee
     [KCJSBridge registJSBridgeClient:[KCApiOverrideJSBridgeClient class]];
-    [KCJSBridge registClass:[KCApiTest class] jsObjName:@"testModule"];
+    [KCJSBridge registClass:[KCApiTest class] jsObjName:kJS_TestModule];
+    
+//    [KCJSBridge registClass:[KCApiJSObjExample class] jsObjName:kJS_JSObjExampleModule];
+    [KCJSBridge registObject:[[KCApiJSObjExample alloc]init] ];
 
 }
 
