@@ -62,7 +62,7 @@
 #define __KC_MODLE_TEST__				(__OFF__)
 
 #define __KC_LOG__						(__ON__)
-#define __KC_LOG__Brief__               (__OFF__)
+//#define __KC_LOG__Brief__               (__OFF__)
 #define __KC_LOG__FILE__			    (__OFF__)
 
 #pragma mark -

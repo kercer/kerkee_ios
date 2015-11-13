@@ -227,6 +227,9 @@
 		DFC3AC451B9C17FC009F4775 /* KCUtilURL.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3AC461B9C17FC009F4775 /* KCUtilURL.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABFE1B9C17FC009F4775 /* KCUtilURL.m */; };
 		DFC3ACC41B9C18AD009F4775 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC3ACC31B9C18AD009F4775 /* libz.dylib */; };
+		DFD5455C1BF44A3200770ED0 /* KCModifier.h in Headers */ = {isa = PBXBuildFile; fileRef = DFD5455A1BF44A3200770ED0 /* KCModifier.h */; };
+		DFD5455D1BF44A3200770ED0 /* KCModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5455B1BF44A3200770ED0 /* KCModifier.m */; };
+		DFD5455E1BF46DC100770ED0 /* KCModifier.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFD5455A1BF44A3200770ED0 /* KCModifier.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,6 +249,7 @@
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				DFD5455E1BF46DC100770ED0 /* KCModifier.h in Copy Files */,
 				DFBB9E1B1BF0904600921758 /* KCJSObject.h in Copy Files */,
 				DF8F35891BC7727900C79B71 /* SSKeychain.h in Copy Files */,
 				DF8F358A1BC7727900C79B71 /* SSKeychainQuery.h in Copy Files */,
@@ -476,6 +480,8 @@
 		DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUtilURL.h; sourceTree = "<group>"; };
 		DFC3ABFE1B9C17FC009F4775 /* KCUtilURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilURL.m; sourceTree = "<group>"; };
 		DFC3ACC31B9C18AD009F4775 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DFD5455A1BF44A3200770ED0 /* KCModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCModifier.h; sourceTree = "<group>"; };
+		DFD5455B1BF44A3200770ED0 /* KCModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCModifier.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -624,6 +630,8 @@
 				DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */,
 				DFBB9E0C1BF0863F00921758 /* KCJSObject.h */,
 				DFBB9E0D1BF0863F00921758 /* KCJSObject.m */,
+				DFD5455A1BF44A3200770ED0 /* KCModifier.h */,
+				DFD5455B1BF44A3200770ED0 /* KCModifier.m */,
 			);
 			path = runtime;
 			sourceTree = "<group>";
@@ -956,6 +964,7 @@
 				DFC3AC041B9C17FC009F4775 /* KCRuntime.h in Headers */,
 				DFC3ABA01B9C17F2009F4775 /* KCWebImageSetterTask.h in Headers */,
 				DFC3AC2B1B9C17FC009F4775 /* KCImagePreCache.h in Headers */,
+				DFD5455C1BF44A3200770ED0 /* KCModifier.h in Headers */,
 				DF809CBA1B9D90FF008B315D /* KCJSDefine.h in Headers */,
 				DFC3AC331B9C17FC009F4775 /* KCLog.h in Headers */,
 				DF30750B1B959B01005AA030 /* kerkee.h in Headers */,
@@ -1097,6 +1106,7 @@
 				DFC3AC2A1B9C17FC009F4775 /* KCImageCache.m in Sources */,
 				DFC3AC321B9C17FC009F4775 /* NSData+Base64.m in Sources */,
 				DF8A2FB21B9FFC4200BD7FB3 /* SSKeychain.m in Sources */,
+				DFD5455D1BF44A3200770ED0 /* KCModifier.m in Sources */,
 				DF809CB91B9D90FF008B315D /* KCClassParser.m in Sources */,
 				DFC3AC0D1B9C17FC009F4775 /* NSArray+KCStack.m in Sources */,
 				DFC3AC461B9C17FC009F4775 /* KCUtilURL.m in Sources */,

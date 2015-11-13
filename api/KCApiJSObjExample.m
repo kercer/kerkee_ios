@@ -19,12 +19,12 @@
 
 -(void)objExampleNotStaticFunction:(KCWebView*)aWebView argList:(KCArgList*)args
 {
-    
+    KCLog(@"objExampleNotStaticFunction");
 }
 
 +(void)objExampleStaticFunction:(KCWebView*)aWebView argList:(KCArgList*)args
 {
-    
+    KCLog(@"objExampleStaticFunction");
 }
 
 @end

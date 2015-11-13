@@ -17,7 +17,9 @@
 - (Class)getNavClass;
 - (NSString *)getJSClz;
 
+- (void)loadMethods;
+
 - (void)addJSMethod:(NSString *)aJSMethodName args:(KCArgList *)aArgList;
-- (KCMethod *)getMethods:(NSString *)aName;
+- (NSArray*)getMethods:(NSString *)aJSMethodName;
 
 @end

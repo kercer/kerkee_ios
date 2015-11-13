@@ -213,6 +213,14 @@ static NSString* m_js = nil;
                 }
                 #pragma clang diagnostic pop
                 
+                
+//                NSArray* methodList = [kcCls getMethods:methodName];
+//                if (methodList && methodList.count > 0)
+//                {
+//                    KCMethod* method = methodList[0];
+//                    [method invoke:clz, webView, argList, nil];
+//                }
+                
                 //KCLog(@"method ---------------------> %@", methodName);
             }
             
@@ -238,7 +246,7 @@ static NSString* m_js = nil;
 
 + (void)JSLog:(KCWebView*)aWebView argList:(KCArgList *)aArgList
 {
-    KCLog(@"[JS] - %@", [aArgList getArgValule:@"msg"]);
+    KCLog(@"[JS] %@", [aArgList getArgValule:@"msg"]);
 }
 
 

@@ -269,19 +269,23 @@ DEF_SINGLETON( KCLogger );
 		[text appendString:content];
 	}
 	
-	if ( [text rangeOfString:@"\n"].length )
-	{
-		[text replaceOccurrencesOfString:@"\n"
-							  withString:[NSString stringWithFormat:@"%@", tabs ? tabs : @"\t\t"]
-								 options:NSCaseInsensitiveSearch
-								   range:NSMakeRange( 0, text.length )];
-	}
+//	if ( [text rangeOfString:@"\n"].length )
+//	{
+//		[text replaceOccurrencesOfString:@"\n"
+//							  withString:[NSString stringWithFormat:@"%@", tabs ? tabs : @"\t\t"]
+//								 options:NSCaseInsensitiveSearch
+//								   range:NSMakeRange( 0, text.length )];
+//	}
 	
+    [text appendString:@"\n"];
+    
 	// print to console
-    //NSString *printfText = [text stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	fprintf( stderr, [text UTF8String], NULL );
-	fprintf( stderr, "\n", NULL );
-    fflush(stderr);
+    @synchronized(self)
+    {
+        fprintf( stderr, [text UTF8String], NULL );
+//        fprintf( stderr, "\n", NULL );
+        fflush(stderr);
+    }
 //    printf("%s\n",[text UTF8String]);
 #endif	// #if (__ON__ == __KC_LOG__)
 }
@@ -357,14 +361,14 @@ void KCLogBrief( NSString * format, ... )
 	if ( nil == format || NO == [format isKindOfClass:[NSString class]] )
 		return;
 	
-	va_list args;
-	va_start( args, format );
-	
-	[[KCLogger sharedInstance] level:KCLogLevelInfo format:format args:args];
+
+        va_list args;
+        va_start( args, format );
     
-	va_end( args );
+        [[KCLogger sharedInstance] level:KCLogLevelInfo format:format args:args];
     
-    
+        va_end( args );
+
     
 #endif	// #if (__ON__ == __KC_LOG__)
 }

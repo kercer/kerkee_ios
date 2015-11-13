@@ -12,6 +12,7 @@
 #import "KCXMLHttpRequestDispatcher.h"
 #import "KCJSDefine.h"
 #import "KCBaseDefine.h"
+#import "KCTaskQueue.h"
 
 @interface KCRegister()
 {
@@ -119,6 +120,10 @@ static void initializeClassMap()
     KCClass* clz = [KCClass newClass: aClass withJSObjName:aJSObjName];
     
     [m_classMap setObject:clz forKey:aJSObjName];
+    
+    BACKGROUND_GLOBAL_BEGIN(DISPATCH_QUEUE_PRIORITY_HIGH)
+    [clz loadMethods];
+    BACKGROUND_GLOBAL_COMMIT
     
     return clz;
 }
