@@ -32,11 +32,6 @@
 
 @property (nonatomic,weak)KCWebView* mWebView;
 
-- (void)createHttpRequestWithMethod:(NSString *)method url:(NSString *)url;
-- (void)callJSSetProperties:(NSDictionary *)properties;
-- (void)handleHeaders:(NSHTTPURLResponse *)response;
-- (void)returnError:(KCWebView*)aWebView statusCode:(int)aStatusCode statusText:(NSString*)statusText;
-- (void)returnResult:(KCWebView*)aWebview statusCode:(int)aStatusCode statusText:(NSString*)aStatusText responseText:(NSString*)aResponseText;
 
 @end
 
@@ -60,6 +55,7 @@
 {
     [self abort];
     _mWebView = nil;
+    _delegate = nil;
     KCDealloc(super);
 }
 
