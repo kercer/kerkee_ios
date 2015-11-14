@@ -48,6 +48,7 @@
             
         }
         
+        [invo retainArguments];
         [invo invoke];
         if (sig.methodReturnLength)
         {
@@ -215,6 +216,7 @@
 {
 	NSInvocation *inv = [self invocationWithSelector:aSelector andArguments:arglist];
 	if (!inv) return NO;
+    [inv retainArguments];
 	[inv invoke];
     
     NSMethodSignature *sig = inv.methodSignature;
@@ -230,6 +232,7 @@
 	va_start(arglist, result);
 	NSInvocation *inv = [self invocationWithSelector:aSelector andArguments:arglist];
 	if (!inv) return NO;
+    [inv retainArguments];
 	[inv invoke];
     NSMethodSignature *sig = inv.methodSignature;
 	if (result && sig.methodReturnLength)

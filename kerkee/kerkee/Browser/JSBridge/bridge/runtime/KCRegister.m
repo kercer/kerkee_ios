@@ -40,7 +40,8 @@ static void initializeClassMap()
 {
     [self registClass:[KCApiBridgeManager class] withJSObjName:kJS_jsBridgeClient];
     [self registClass:[KCApiBridge class] withJSObjName:kJS_ApiBridge];
-    [self registClass:[KCXMLHttpRequestDispatcher class] withJSObjName:kJS_XMLHttpRequest];
+//    [self registClass:[KCXMLHttpRequestDispatcher class] withJSObjName:kJS_XMLHttpRequest];
+    [self registObject:[[KCXMLHttpRequestDispatcher alloc] init]];
 }
 
 - (id)init

@@ -218,7 +218,16 @@ static NSString* m_js = nil;
 //                if (methodList && methodList.count > 0)
 //                {
 //                    KCMethod* method = methodList[0];
-//                    [method invoke:clz, webView, argList, nil];
+//                    KCLog(@"%d", method.modifier.getModifiers);
+//                    if ([method isStatic])
+//                    {
+//                        [method invoke:clz, webView, argList, nil];
+//                    }
+//                    else
+//                    {
+//                        KCJSObject* receiver = [KCRegister getJSObject:jsClzName];
+//                        [method invoke:receiver, webView, argList, nil];
+//                    }
 //                }
                 
                 //KCLog(@"method ---------------------> %@", methodName);

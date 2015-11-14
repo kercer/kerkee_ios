@@ -56,6 +56,13 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [self abort];
+    _mWebView = nil;
+    KCDealloc(super);
+}
+
 - (void)createHttpRequestWithMethod:(NSString *)method url:(NSString *)url
 {
     if (method)

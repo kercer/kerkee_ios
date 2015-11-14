@@ -104,7 +104,6 @@
     for (int i = 0; i < num; i++)
     {
         KCModifier* modifier = [[KCModifier alloc] init];
-        [modifier markStatic];
         [self loadMethod:objMethods[i] modifier:modifier];
     }
     free(objMethods);
