@@ -37,7 +37,8 @@
 
 @implementation KCXMLHttpRequest
 
-@synthesize delegate = _delegate;
+@synthesize delegate = m_delegate;
+@synthesize mWebView = m_webview;
 
 - (id)initWithObjectId:(NSNumber *)objectId WebView:(KCWebView*)webview
 {
@@ -45,7 +46,7 @@
     if (self)
     {
         mObjectId = objectId;
-        _mWebView = webview;
+        m_webview = webview;
         mState = UNSET;
     }
     return self;
@@ -54,8 +55,8 @@
 - (void)dealloc
 {
     [self abort];
-    _mWebView = nil;
-    _delegate = nil;
+    m_webview = nil;
+    m_delegate = nil;
     KCDealloc(super);
 }
 
@@ -80,12 +81,12 @@
         }
         else
         {
-            [self returnError:_mWebView statusCode:405 statusText:@"Method Not Allowed"];
+            [self returnError:m_webview statusCode:405 statusText:@"Method Not Allowed"];
         }
     }
     else
     {
-        [self returnError:_mWebView statusCode:405 statusText:@"Method Not Allowed"];
+        [self returnError:m_webview statusCode:405 statusText:@"Method Not Allowed"];
     }
 }
 
@@ -271,7 +272,7 @@
 
 - (void)callJSSetProperties:(NSDictionary *)aProperties
 {
-    [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:_mWebView];
+    [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:m_webview];
 }
 
 #pragma mark --
@@ -309,7 +310,7 @@
     KCAutorelease(receivedData);
     
     
-    [self returnResult:_mWebView statusCode:200 statusText:@"OK" responseText:receivedData];
+    [self returnResult:m_webview statusCode:200 statusText:@"OK" responseText:receivedData];
     
 //    KCLog(@"properties:%@", properties);
     
@@ -324,26 +325,26 @@
 
 -(void)notifyFetchReceiveData:(NSData *)aData
 {
-    if([self.delegate respondsToSelector:@selector(fetchReceiveData:didReceiveData:)])
+    if([m_delegate respondsToSelector:@selector(fetchReceiveData:didReceiveData:)])
     {
-        [self.delegate fetchReceiveData:self didReceiveData:aData];
+        [m_delegate fetchReceiveData:self didReceiveData:aData];
     }
 }
 
 -(void)notifyFetchComplete:(NSString*)aResponseData
 {
-    if([self.delegate respondsToSelector:@selector(fetchComplete:responseData:)])
+    if([m_delegate respondsToSelector:@selector(fetchComplete:responseData:)])
     {
-        [self.delegate fetchComplete:self responseData:aResponseData];
+        [m_delegate fetchComplete:self responseData:aResponseData];
     }
 }
 
 
 -(void)notifyFetchFailed:(NSError*)aError
 {
-    if ([self.delegate respondsToSelector:@selector(fetchFailed:didFailWithError:)])
+    if ([m_delegate respondsToSelector:@selector(fetchFailed:didFailWithError:)])
     {
-        [self.delegate fetchFailed:self didFailWithError:aError];
+        [m_delegate fetchFailed:self didFailWithError:aError];
     }
 }
 
@@ -373,7 +374,7 @@
 
 -(KCWebView*)webview
 {
-    return _mWebView;
+    return m_webview;
 }
 
 

@@ -28,11 +28,6 @@
 
 @implementation KCXMLHttpRequestDispatcher
 
-//__attribute__((constructor))
-//static void initializeClassMap()
-//{
-//}
-
 - (id)init
 {
     if (self = [super init])
