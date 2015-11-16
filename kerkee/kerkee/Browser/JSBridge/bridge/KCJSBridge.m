@@ -120,17 +120,17 @@
 //
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId
 {
-    [KCJSExecutor callbackJSWithCallbackId:aCallbackId WebView:aWebView];
+    [KCJSExecutor callbackJS:aWebView callbackId:aCallbackId];
 }
 
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId jsonString:(NSString *)aStr
 {
-    [KCJSExecutor callbackJSWithCallbackId:aCallbackId jsonString:aStr WebView:aWebView];
+    [KCJSExecutor callbackJS:aWebView callbackId:aCallbackId jsonString:aStr];
 }
 
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId string:(NSString *)aStr
 {
-    [KCJSExecutor callbackJSWithCallbackId:aCallbackId string:aStr WebView:aWebView];
+    [KCJSExecutor callbackJS:aWebView callbackId:aCallbackId string:aStr];
 }
 
 /*

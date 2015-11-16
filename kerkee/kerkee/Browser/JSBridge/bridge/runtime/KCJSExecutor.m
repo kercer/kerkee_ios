@@ -80,52 +80,46 @@
     [webview performSelectorOnMainThread:@selector(stringByEvaluatingJavaScriptFromString:) withObject:js waitUntilDone:NO];
 }
 
-//+ (void)callbackJSWithCallbackId:(NSString *)callbackId
-//{
-//    if(nil != [KCApiBridge sharedInstance].m_webView)
-//    {
-//        [KCApiBridge callbackJSWithCallbackId:callbackId  WebView:[KCApiBridge sharedInstance].m_webView];
-//    }
-//}
-+ (void)callbackJSWithCallbackId:(NSString *)callbackId WebView:(KCWebView*)webview
+
++ (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@)", callbackId];
-    [self callJS:js WebView:webview];
+    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@)", aCallbackId];
+    [self callJS:js WebView:aWebview];
     KCRelease(js);
 }
 
-+ (void)callbackJSWithCallbackIdOnMainThread:(NSString *)callbackId WebView:(KCWebView*)webview
++ (void)callbackJSOnMainThread:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@)", callbackId];
-    [self callJSOnMainThread:js WebView:webview];
+    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@)", aCallbackId];
+    [self callJSOnMainThread:js WebView:aWebview];
     KCRelease(js);
 }
 
-+ (void)callbackJSWithCallbackId:(NSString *)callbackId jsonString:(NSString *)jsonString WebView:(KCWebView*)webview
++ (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId jsonString:(NSString *)aJsonString
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", callbackId, jsonString];
-    [self callJS:js WebView:webview];
+    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", aCallbackId, aJsonString];
+    [self callJS:js WebView:aWebview];
     KCRelease(js);
 }
 
-+ (void)callbackJSWithCallbackIdOnMainThread:(NSString *)callbackId jsonString:(NSString *)jsonString WebView:(KCWebView*)webview
++ (void)callbackJSOnMainThread:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId jsonString:(NSString *)aJsonString
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", callbackId, jsonString];
-    [self callJSOnMainThread:js WebView:webview];
+    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", aCallbackId, aJsonString];
+    [self callJSOnMainThread:js WebView:aWebview];
     KCRelease(js);
 }
 
-+ (void)callbackJSWithCallbackId:(NSString *)callbackId string:(NSString *)string WebView:(KCWebView*)webview
++ (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId string:(NSString *)aString
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, \"%@\")", callbackId, string];
-    [self callJS:js WebView:webview];
+    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, \"%@\")", aCallbackId, aString];
+    [self callJS:js WebView:aWebview];
     KCRelease(js);
 }
 
-+ (void)callbackJSWithCallbackId:(NSString *)callbackId unquotedString:(NSString *)unquotedString WebView:(KCWebView*)webview
++ (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId unquotedString:(NSString *)aUnquotedString;
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", callbackId, unquotedString];
-    [self callJS:js WebView:webview];
+    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", aCallbackId, aUnquotedString];
+    [self callJS:js WebView:aWebview];
     KCRelease(js);
 }
 

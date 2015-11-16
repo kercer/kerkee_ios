@@ -45,7 +45,8 @@
     KCAutorelease(json);
     //返回
 
-    [KCJSExecutor callbackJSWithCallbackId:[args getArgValule:@"callbackId"] jsonString:json WebView:aWebView];
+    [KCJSExecutor callbackJS:aWebView callbackId:[args getArgValule:@"callbackId"] jsonString:json];
+
 }
 
 @end

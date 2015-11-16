@@ -12,12 +12,7 @@
 #import "KCArg.h"
 
 
-
-
-
 @interface KCArgList : NSObject
-
-+ (KCArgList *)convertToArgList:(NSDictionary *)dic;
 
 - (BOOL) addArg:(KCArg *)aArg;
 - (id) getArgValule:(NSString *)aKey;

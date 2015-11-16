@@ -174,7 +174,7 @@ static NSString* m_js = nil;
 //        KCLog(@"%@", jsonMessages);
         for (NSDictionary *jsonObj in jsonMessages)
         {
-            KCClassParser *parser = [KCClassParser initWithDictionary:jsonObj];
+            KCClassParser *parser = [KCClassParser createParser:jsonObj];
             
             NSString* jsClzName = [parser getJSClzName];
             NSString* methodName = [parser getJSMethodName];
@@ -264,7 +264,7 @@ static NSString* m_js = nil;
     [aWebView documentReady:YES];
     NSString* callbackId = [aArgList getArgValule:kJS_callbackId];
 
-    [KCJSExecutor callbackJSWithCallbackId:callbackId WebView:aWebView];
+    [KCJSExecutor callbackJS:aWebView callbackId:callbackId];
 }
 
 

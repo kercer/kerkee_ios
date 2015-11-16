@@ -16,6 +16,11 @@
 		DF44A1101B9FE5EA0045092E /* KCException.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A10E1B9FE5EA0045092E /* KCException.m */; };
 		DF44A1131B9FE5F20045092E /* KCUncaughtExceptionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF44A1141B9FE5F20045092E /* KCUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1121B9FE5F20045092E /* KCUncaughtExceptionHandler.m */; };
+		DF54B5E01BF9B45500F384BF /* KCJSCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */; };
+		DF54B5E11BF9B45500F384BF /* KCJSCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = DF54B5DF1BF9B45500F384BF /* KCJSCallback.m */; };
+		DF54B5E21BF9B4D300F384BF /* KCJSCallback.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */; };
+		DF54B5E61BF9B55D00F384BF /* KCJSType.h in Headers */ = {isa = PBXBuildFile; fileRef = DF54B5E41BF9B55D00F384BF /* KCJSType.h */; };
+		DF54B5E71BF9B55D00F384BF /* KCJSType.m in Sources */ = {isa = PBXBuildFile; fileRef = DF54B5E51BF9B55D00F384BF /* KCJSType.m */; };
 		DF5D70BE1BA91859008A8FB2 /* KCUriRegister.h in Headers */ = {isa = PBXBuildFile; fileRef = DF5D70BC1BA91859008A8FB2 /* KCUriRegister.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF5D70BF1BA91859008A8FB2 /* KCUriRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5D70BD1BA91859008A8FB2 /* KCUriRegister.m */; };
 		DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C1F1BA171CF0025B0CC /* KCUriActionDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -249,6 +254,7 @@
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				DF54B5E21BF9B4D300F384BF /* KCJSCallback.h in Copy Files */,
 				DFD5455E1BF46DC100770ED0 /* KCModifier.h in Copy Files */,
 				DFBB9E1B1BF0904600921758 /* KCJSObject.h in Copy Files */,
 				DF8F35891BC7727900C79B71 /* SSKeychain.h in Copy Files */,
@@ -343,6 +349,10 @@
 		DF44A10E1B9FE5EA0045092E /* KCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCException.m; sourceTree = "<group>"; };
 		DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUncaughtExceptionHandler.h; sourceTree = "<group>"; };
 		DF44A1121B9FE5F20045092E /* KCUncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUncaughtExceptionHandler.m; sourceTree = "<group>"; };
+		DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSCallback.h; sourceTree = "<group>"; };
+		DF54B5DF1BF9B45500F384BF /* KCJSCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSCallback.m; sourceTree = "<group>"; };
+		DF54B5E41BF9B55D00F384BF /* KCJSType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSType.h; sourceTree = "<group>"; };
+		DF54B5E51BF9B55D00F384BF /* KCJSType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSType.m; sourceTree = "<group>"; };
 		DF5D70BC1BA91859008A8FB2 /* KCUriRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUriRegister.h; sourceTree = "<group>"; };
 		DF5D70BD1BA91859008A8FB2 /* KCUriRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUriRegister.m; sourceTree = "<group>"; };
 		DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSExecutor.h; sourceTree = "<group>"; };
@@ -661,6 +671,10 @@
 		DFBB9E041BF04C2700921758 /* type */ = {
 			isa = PBXGroup;
 			children = (
+				DF54B5E41BF9B55D00F384BF /* KCJSType.h */,
+				DF54B5E51BF9B55D00F384BF /* KCJSType.m */,
+				DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */,
+				DF54B5DF1BF9B45500F384BF /* KCJSCallback.m */,
 			);
 			path = type;
 			sourceTree = "<group>";
@@ -928,7 +942,9 @@
 				DF75C2C41BB29BCA00CAD3CA /* KCJSExecutor.h in Headers */,
 				DFC3AC141B9C17FC009F4775 /* NSObject+KCNotification.h in Headers */,
 				DFC3AC221B9C17FC009F4775 /* KCCache.h in Headers */,
+				DF54B5E61BF9B55D00F384BF /* KCJSType.h in Headers */,
 				DFC3AC2D1B9C17FC009F4775 /* KCMemoryCache.h in Headers */,
+				DF54B5E01BF9B45500F384BF /* KCJSCallback.h in Headers */,
 				DFC3AB9E1B9C17F2009F4775 /* KCWebImageSetter.h in Headers */,
 				DFC3AC351B9C17FC009F4775 /* KCArchiver.h in Headers */,
 				DFC3AC061B9C17FC009F4775 /* KCSandbox.h in Headers */,
@@ -1073,10 +1089,12 @@
 				DFC3AC421B9C17FC009F4775 /* KCUtilMd5.m in Sources */,
 				DF809CB71B9D90FF008B315D /* KCRegister.m in Sources */,
 				DFC3AC3C1B9C17FC009F4775 /* KCUtilDevice.m in Sources */,
+				DF54B5E11BF9B45500F384BF /* KCJSCallback.m in Sources */,
 				DF809CAF1B9D90FF008B315D /* KCApiBridgeManager.m in Sources */,
 				DF765C251BA175E20025B0CC /* KCURIComponents.m in Sources */,
 				DFC3AC131B9C17FC009F4775 /* NSObject+KCCoding.m in Sources */,
 				DF8A2FA61B9FF9D300BD7FB3 /* UIDevice+KCHardware.m in Sources */,
+				DF54B5E71BF9B55D00F384BF /* KCJSType.m in Sources */,
 				DFC3AC0B1B9C17FC009F4775 /* KCTaskQueue.m in Sources */,
 				DFC3ABA61B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.m in Sources */,
 				DFC3AC171B9C17FC009F4775 /* NSObject+KCObjectInfo.m in Sources */,

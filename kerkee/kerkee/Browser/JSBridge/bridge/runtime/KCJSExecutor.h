@@ -25,15 +25,16 @@
 + (NSString *)callJS:(NSString *)js WebView:(KCWebView*)webview;
 
 
-//+ (void)callbackJSWithCallbackId:(NSString *)callbackId;
-+ (void)callbackJSWithCallbackId:(NSString *)callbackId WebView:(KCWebView*)webview;
-+ (void)callbackJSWithCallbackIdOnMainThread:(NSString *)callbackId WebView:(KCWebView*)webview;
+#pragma mark -
+#pragma mark callbackJS
++ (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId;
++ (void)callbackJSOnMainThread:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId;
 
-//+ (void)callbackJSWithCallbackId:(NSString *)callbackId jsonString:(NSString *)jsonString;
-+ (void)callbackJSWithCallbackId:(NSString *)callbackId jsonString:(NSString *)jsonString WebView:(KCWebView*)webview;
 
-+ (void)callbackJSWithCallbackIdOnMainThread:(NSString *)callbackId jsonString:(NSString *)jsonString WebView:(KCWebView*)webview;
-+ (void)callbackJSWithCallbackId:(NSString *)callbackId string:(NSString *)string WebView:(KCWebView*)webview;
-+ (void)callbackJSWithCallbackId:(NSString *)callbackId unquotedString:(NSString *)unquotedString WebView:(KCWebView*)webview;
++ (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId jsonString:(NSString *)aJsonString;
++ (void)callbackJSOnMainThread:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId jsonString:(NSString *)aJsonString;
+
++ (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId string:(NSString *)aString;
++ (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId unquotedString:(NSString *)aUnquotedString;
 
 @end

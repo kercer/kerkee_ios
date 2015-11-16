@@ -13,8 +13,7 @@
 
 @interface KCClassParser : NSObject
 
-- (KCClassParser *)initWithJson:(NSString *)json;
-+ (KCClassParser *)initWithDictionary:(NSDictionary *)dic;
++ (KCClassParser *)createParser:(NSDictionary *)dic;
 
 - (NSString *)getJSClzName;
 - (NSString *)getJSMethodName;
