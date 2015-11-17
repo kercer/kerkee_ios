@@ -15,8 +15,8 @@
 
 - (BOOL)addArg:(KCArg *)aArg;
 - (BOOL)has:(NSString*)aKey;
-- (id)getArgValule:(NSString *)aKey;
-- (NSString *)getArgValueString:(NSString *)aKey;
+- (id)getArgValule:(NSString*)aKey __attribute__((deprecated("use 'getObject:' in deepContent instead")));;
+- (id)getObject:(NSString *)aKey;
 - (NSString*)getString:(NSString*)aKey;
 - (KCJSCallback*)getCallback;
 - (NSString *)toString;

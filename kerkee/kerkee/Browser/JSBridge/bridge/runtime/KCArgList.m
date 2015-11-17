@@ -55,8 +55,9 @@
 
 - (BOOL)has:(NSString*)aKey
 {
-    return [self getArgValule:aKey] ? YES : NO;
+    return [self getObject:aKey] ? YES : NO;
 }
+
 
 - (id) getArgValule:(NSString *)aKey
 {
@@ -74,20 +75,20 @@
     return [arg getValue];
 }
 
-- (NSString *)getArgValueString:(NSString *)aKey
+- (id) getObject:(NSString *)aKey
 {
-    return [self getString:aKey];
+    return [self getObject:aKey];
 }
 
 - (NSString*)getString:(NSString*)aKey
 {
-    id value = [self getArgValule:aKey];
+    id value = [self getObject:aKey];
     return value ? [value description] : value;
 }
 
 - (KCJSCallback*)getCallback
 {
-    return [self getArgValule:kJS_callbackId];
+    return [self getObject:kJS_callbackId];
 }
 
 - (NSString *)toString

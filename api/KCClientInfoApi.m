@@ -30,7 +30,7 @@
     
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
     
-    NSString *callbackId = [aArgList getArgValule:(@"callbackId")];
+    NSString *callbackId = [aArgList getObject:(@"callbackId")];
     if(nil == callbackId)
     return;
     [KCJSBridge callbackJS:aWebView callBackID:callbackId jsonString:json];

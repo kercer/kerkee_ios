@@ -12,7 +12,7 @@
 
 + (void)getChannelInfo:(KCWebView*)aWebView argList:(KCArgList*)args
 {
-    NSString* jsonInfo = [args getArgValule:@"info"];
+    NSString* jsonInfo = [args getObject:@"info"];
     NSLog(@"%@", jsonInfo);
     
     //NSString *string = @"http://api.k.sohu.com/api/channel/v5/news.go?channelId=247&num=20&page=1&picScale=11&groupPic=1&supportTV=1&imgTag=1&supportSpecial=1&supportLive=1&showSdkAd=1&rt=json&from=channel&pull=1&focusPosition=2&cursor=0&cdma_lng=116.332478&cdma_lat=39.997120&net=wifi&p1=NTk0MTQ4MTE4OTU4NzQ2NDI2MQ==&pid=-1&apiVersion=26&sid=10&u=1&bid=Y29tLnNvaHUubmV3c3BhcGVy";
@@ -24,7 +24,7 @@
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
     //返回
     
-    NSString *callbackId = [args getArgValule:(@"callbackId")];
+    NSString *callbackId = [args getObject:(@"callbackId")];
     if(nil == callbackId)
         return;
     [KCJSBridge callbackJS:aWebView callBackID:callbackId jsonString:json];

@@ -47,7 +47,7 @@
 
 - (KCXMLHttpRequest *)create:(KCWebView*)aWebView argList:(KCArgList *)args
 {
-    NSNumber *objectId = [args getArgValule:@"id"];
+    NSNumber *objectId = [args getObject:@"id"];
     KCXMLHttpRequest *xhr = [[KCXMLHttpRequest alloc] initWithObjectId:objectId WebView:aWebView];
     KCAutorelease(xhr);
     xhr.delegate = self;
@@ -67,11 +67,11 @@
     {
         xhr = [self create:aWebView argList:args];
     }
-    NSString *method = [args getArgValule:@"method"];
-    NSString *url = [args getArgValule:@"url"];
+    NSString *method = [args getObject:@"method"];
+    NSString *url = [args getObject:@"url"];
     NSString *userAgent = [self objectInArgList:args forKey:@"useragent" defaultValue:@"iOS"];
-    NSString *referer = [args getArgValule:@"referer"];
-    NSString *cookie = [args getArgValule:@"cookie"];
+    NSString *referer = [args getObject:@"referer"];
+    NSString *cookie = [args getObject:@"cookie"];
     
     [xhr open:method url:url userAgent:userAgent referer:referer cookie:cookie];
     
@@ -82,9 +82,9 @@
     KCXMLHttpRequest *xhr = [self getXHR:args];
     if (xhr)
     {
-            //KCLog(@"%@",[args getArgValule:@"id"]);
-            
-            NSString *data = [args getArgValule:@"data"];
+            //KCLog(@"%@",[args getObject:@"id"]);
+        
+            NSString *data = [args getObject:@"data"];
             if (data)
             {
                 [xhr send:data];
@@ -101,8 +101,8 @@
     KCXMLHttpRequest* xhr = [self getXHR:args];
     if (xhr)
     {
-        NSString* headerName = [args getArgValule:@"headerName"];
-        id headerValue = [args getArgValule:@"headerValue"];
+        NSString* headerName = [args getObject:@"headerName"];
+        id headerValue = [args getObject:@"headerValue"];
         NSString* headerValueString=@"";
         if ([headerValue isKindOfClass:[NSString class]])
         {
@@ -122,7 +122,7 @@
     KCXMLHttpRequest *xhr = [self getXHR:args];
     if (xhr)
     {
-        [xhr overrideMimeType:[args getArgValule:@"mimetype"]];
+        [xhr overrideMimeType:[args getObject:@"mimetype"]];
     }
 }
 
@@ -136,7 +136,7 @@
 }
 
 - (id)objectInArgList:(KCArgList *)dic forKey:(NSString *)key defaultValue:(NSString *)defaultValue {
-    id obj = [dic getArgValule:key];
+    id obj = [dic getObject:key];
     if (obj)
     {
         return obj;
@@ -147,7 +147,7 @@
 - (KCXMLHttpRequest *)getXHR:(KCArgList *)args
 {
     [m_lock lock];
-    NSNumber *objectId = [args getArgValule:@"id"];
+    NSNumber *objectId = [args getObject:@"id"];
     KCXMLHttpRequest *xhr = [m_xhrMap objectForKey:[objectId stringValue]];
     [m_lock unlock];
     

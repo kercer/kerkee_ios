@@ -255,7 +255,7 @@ static NSString* m_js = nil;
 
 + (void)JSLog:(KCWebView*)aWebView argList:(KCArgList *)aArgList
 {
-    KCLog(@"[JS] %@", [aArgList getArgValule:@"msg"]);
+    KCLog(@"[JS] %@", [aArgList getObject:@"msg"]);
 }
 
 

@@ -28,7 +28,7 @@
 }
 + (void)commonApi:(KCWebView *)aWebView argList:(KCArgList *)aArgList
 {
-    NSString* jsonInfo = [aArgList getArgValule:@"info"];
+    NSString* jsonInfo = [aArgList getObject:@"info"];
     NSLog(@"%@", jsonInfo);
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -36,7 +36,7 @@
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
     //返回
     
-    NSString *callbackId = [aArgList getArgValule:kKerkeeSDK_CallbackId];
+    NSString *callbackId = [aArgList getObject:kKerkeeSDK_CallbackId];
     if(nil == callbackId)
         return;
     [KCJSBridge callbackJS:aWebView callBackID:callbackId jsonString:json];
@@ -100,10 +100,10 @@ public static void showDialog(final KCWebView aWebView, KCArgList aArgList) {
     final String callbackId = (String) aArgList.getArgValue(KCJSDefine.kJS_callbackId);
     KCLog.d(">>>>>> NewApiTest showDialog called: " + callbackId+",jsonStr>>>>>"+jsonStr);
     
-    String title = aArgList.getArgValueString("title");
-    String message = aArgList.getArgValueString("message");
-    String okBtn=aArgList.getArgValueString("okBtn");
-    String cancelBtn=aArgList.getArgValueString("cancelBtn");
+    String title = aArgList.getString("title");
+    String message = aArgList.getString("message");
+    String okBtn=aArgList.getString("okBtn");
+    String cancelBtn=aArgList.getString("cancelBtn");
     
     AlertDialog.Builder builder = new AlertDialog.Builder(
                                                           aWebView.getContext());
@@ -135,10 +135,10 @@ public static void alertDialog(final KCWebView aWebView, KCArgList aArgList) {
     KCLog.d(">>>>>> NewApiTest showDialog called: " + callbackId);
     
  
-    String title = aArgList.getArgValueString("title");
-    String message = aArgList.getArgValueString("message");
-    String okBtn=aArgList.getArgValueString("okBtn");
-    String cancelBtn=aArgList.getArgValueString("cancelBtn");
+    String title = aArgList.getString("title");
+    String message = aArgList.getString("message");
+    String okBtn=aArgList.getString("okBtn");
+    String cancelBtn=aArgList.getString("cancelBtn");
     
     AlertDialog.Builder builder = new AlertDialog.Builder(
                                                           aWebView.getContext());

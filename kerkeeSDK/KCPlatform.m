@@ -38,7 +38,7 @@
 
 + (void)getDevice:(KCWebView *)aWebView argList:(KCArgList *)aArgList
 {
-    NSString *callbackId = [aArgList getArgValule:kKerkeeSDK_CallbackId];
+    NSString *callbackId = [aArgList getObject:kKerkeeSDK_CallbackId];
     if(nil == callbackId)
         return;
     
@@ -127,7 +127,7 @@
 
 + (void)getNetworkType:(KCWebView *)aWebView argList:(KCArgList *)aArgList
 {
-    NSString *callbackId = [aArgList getArgValule:kKerkeeSDK_CallbackId];
+    NSString *callbackId = [aArgList getObject:kKerkeeSDK_CallbackId];
     if(nil == callbackId)
         return;
     

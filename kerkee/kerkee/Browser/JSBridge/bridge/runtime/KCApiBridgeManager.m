@@ -30,13 +30,13 @@
 
 +(void)testJSBrige:(KCWebView*)aWebView argList:(KCArgList*)args
 {
-    NSString* jsonInfo = [args getArgValule:@"info"];
+    NSString* jsonInfo = [args getObject:@"info"];
     NSLog(@"%@", jsonInfo);
 }
 
 +(void)commonApi:(KCWebView*)aWebView argList:(KCArgList*)args
 {
-    NSString* jsonInfo = [args getArgValule:@"info"];
+    NSString* jsonInfo = [args getObject:@"info"];
     NSLog(@"%@", jsonInfo);
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -45,7 +45,7 @@
     KCAutorelease(json);
     //返回
 
-    [KCJSExecutor callbackJS:aWebView callbackId:[args getArgValule:@"callbackId"] jsonString:json];
+    [KCJSExecutor callbackJS:aWebView callbackId:[args getObject:@"callbackId"] jsonString:json];
 
 }
 
