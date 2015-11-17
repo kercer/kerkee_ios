@@ -20,7 +20,8 @@
 
 + (NSString*)getIdentifier;
 + (BOOL)isSelfApp:(NSString*)identifier;
-+ (NSString*)getVersion;
++ (NSString*)getVersionName;
++ (NSString*)getBuildCode;
 + (NSString*)getVersionFullName;
 + (NSString*)getDisplayName;
 + (CGSize)getScreenSize;

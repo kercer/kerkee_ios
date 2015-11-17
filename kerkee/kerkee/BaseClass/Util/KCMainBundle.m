@@ -75,9 +75,14 @@ static void initializeSetting()
 {
     return [[KCMainBundle getIdentifier] isEqualToString:identifier] ? YES : NO;
 }
-+ (NSString*)getVersion
++ (NSString*)getVersionName
 {
     return [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
++ (NSString*)getBuildCode
+{
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
 }
 
 + (NSString*)getVersionFullName
