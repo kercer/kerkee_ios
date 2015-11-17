@@ -61,6 +61,11 @@
 
 - (id) getArgValule:(NSString *)aKey
 {
+    return [self getObject:aKey];
+}
+
+- (id) getObject:(NSString *)aKey
+{
     if(nil == aKey)
     {
         return nil;
@@ -73,11 +78,6 @@
     }
     
     return [arg getValue];
-}
-
-- (id) getObject:(NSString *)aKey
-{
-    return [self getObject:aKey];
 }
 
 - (NSString*)getString:(NSString*)aKey
