@@ -8,6 +8,27 @@
 
 #import "KCJSType.h"
 
+@interface KCJSType ()
+{
+    
+}
+
+@end
+
 @implementation KCJSType
+
+-(id)init
+{
+    if (self = [super init])
+    {
+        
+    }
+    return self;
+}
+
+- (NSString*)description
+{
+    return @"please implement description";
+}
 
 @end

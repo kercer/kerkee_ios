@@ -12,9 +12,11 @@
 
 @interface KCArg : NSObject
 
++ (id)newArgWithObject:(id)aValue name:(NSString*)aName;
 
-+ (id)initWithObject:(id)obj key:(NSString *)key;
-- (id)getValue;
+- (id)initWithObject:(id)aValue name:(NSString *)aName;
 - (NSString *)getArgName;
+- (id)getValue;
+- (Class)getType;
 - (NSString *)toString;
 @end

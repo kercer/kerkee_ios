@@ -10,17 +10,19 @@
 
 #import "KCClassParser.h"
 #import "KCBaseDefine.h"
+#import "KCJSDefine.h"
+#import "KCJSCallback.h"
 
 #define kCP_ClassName       (@"clz")
 #define kCP_MethodName      (@"method")
 #define kCP_Args            (@"args")
 
 @interface KCClassParser()
-
-
-@property (nonatomic, copy) NSString    *m_clsName;
-@property (nonatomic, copy) NSString    *m_methodName;
-@property (nonatomic, retain) KCArgList   *m_argList;
+{
+    NSString    *m_clsName;
+    NSString    *m_methodName;
+    KCArgList   *m_argList;
+}
 
 @end
 
@@ -32,12 +34,12 @@
     KCClassParser *parser = [[KCClassParser alloc] init];
     if(parser)
     {
-        parser.m_clsName = [dic objectForKey:kCP_ClassName];
-        parser.m_methodName = [dic objectForKey:kCP_MethodName];
+        parser->m_clsName = [dic objectForKey:kCP_ClassName];
+        parser->m_methodName = [dic objectForKey:kCP_MethodName];
         NSDictionary *args = [dic objectForKey:kCP_Args];
         if(nil != args)
         {
-            parser.m_argList = [self convertToArgList:args];
+            parser->m_argList = [self convertToArgList:args];
         }
     }
     
@@ -47,9 +49,9 @@
 
 - (void)dealloc
 {
-    self.m_clsName = nil;
-    self.m_methodName = nil;
-    self.m_argList = nil;
+    m_clsName = nil;
+    m_methodName = nil;
+    m_argList = nil;
     
     KCDealloc(super);
 }
@@ -68,7 +70,15 @@
         __unsafe_unretained id obj = objs[i];
         __unsafe_unretained id key = keys[i];
         
-        [list addArg:[KCArg initWithObject:obj key:key]];
+        id value = obj;
+        if ([key isEqualToString:kJS_callbackId])
+        {
+            value = [[KCJSCallback alloc] initWithCallbackId:obj];
+        }
+        
+        KCArg* arg = [[KCArg alloc] initWithObject:value name:key];
+        
+        [list addArg:arg];
     }
     
     KCAutorelease(list);
@@ -78,15 +88,15 @@
 
 - (NSString *)getJSClzName
 {
-    return self.m_clsName;
+    return m_clsName;
 }
 - (NSString *)getJSMethodName
 {
-    return self.m_methodName;
+    return m_methodName;
 }
 - (KCArgList *)getArgList
 {
-    return self.m_argList;
+    return m_argList;
 }
 
 @end

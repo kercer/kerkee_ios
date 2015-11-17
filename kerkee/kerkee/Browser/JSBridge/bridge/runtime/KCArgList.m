@@ -2,17 +2,18 @@
 //  KCArgList.m
 //  kerkee
 //
-//  Designed by zihong
-//
-//  Created by lijian on 15/8/25.
-//  Copyright (c) 2015年 lijian. All rights reserved.
+//  Created by zihong on 15/11/16.
+//  Copyright © 2015年 zihong. All rights reserved.
 //
 
 #import "KCArgList.h"
 #import "KCBaseDefine.h"
+#import "KCJSDefine.h"
 
 @interface KCArgList()
-@property (nonatomic, retain)NSMutableDictionary *m_Args;
+{
+    NSMutableDictionary *m_Args;
+}
 
 @end
 
@@ -23,7 +24,7 @@
     self = [super init];
     if(self)
     {
-        _m_Args = [[NSMutableDictionary alloc] initWithCapacity:20];
+        m_Args = [[NSMutableDictionary alloc] initWithCapacity:5];
      }
     
     return self;
@@ -31,7 +32,7 @@
 
 - (void)dealloc
 {
-    self.m_Args = nil;
+    m_Args = nil;
     
     KCDealloc(super);
 }
@@ -45,13 +46,17 @@
         return NO;
     }
     
-    [_m_Args setObject:aArg forKey:[aArg getArgName]];
+    [m_Args setObject:aArg forKey:[aArg getArgName]];
     
     //KCLog(@"Arg--%@",[aArg toString]);
     
     return YES;
 }
 
+- (BOOL)has:(NSString*)aKey
+{
+    return [self getArgValule:aKey] ? YES : NO;
+}
 
 - (id) getArgValule:(NSString *)aKey
 {
@@ -60,7 +65,7 @@
         return nil;
     }
     
-    KCArg *arg = [_m_Args objectForKey:aKey];
+    KCArg *arg = [m_Args objectForKey:aKey];
     if(nil == arg)
     {
         return nil;
@@ -69,27 +74,32 @@
     return [arg getValue];
 }
 
-
-
 - (NSString *)getArgValueString:(NSString *)aKey
 {
-    id obj = [self getArgValule:aKey];
-    if(nil == obj)
-    {
-        return nil;
-    }
-    
-    return ([obj isKindOfClass:[NSString class]])?(obj):([obj toString]);;
+    return [self getString:aKey];
+}
+
+- (NSString*)getString:(NSString*)aKey
+{
+    id value = [self getArgValule:aKey];
+    return value ? [value description] : value;
+}
+
+- (KCJSCallback*)getCallback
+{
+    return [self getArgValule:kJS_callbackId];
 }
 
 - (NSString *)toString
 {
-    if(nil == _m_Args || [_m_Args count] <= 0)
+    if(nil == m_Args || [m_Args count] <= 0)
         return nil;
     
     __block NSMutableString *str = [NSMutableString string];
-    [_m_Args enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [str appendString:[[KCArg initWithObject:obj key:key] toString]];
+    [m_Args enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+    {
+        KCArg* arg = [[KCArg alloc] initWithObject:obj name:key];
+        [str appendString:[arg toString]];
         [str appendString:@";"];
     }];
     
@@ -98,7 +108,7 @@
 
 - (NSInteger)count
 {
-    return [_m_Args count];
+    return [m_Args count];
 }
 
 @end

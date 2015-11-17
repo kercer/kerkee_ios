@@ -46,4 +46,9 @@
     [KCJSExecutor callbackJS:aWebview callbackId:m_callbackId jsonString:aJsonString];
 }
 
+- (NSString*)description
+{
+    return m_callbackId;
+}
+
 @end

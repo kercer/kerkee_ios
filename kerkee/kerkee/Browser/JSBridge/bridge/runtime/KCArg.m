@@ -10,50 +10,67 @@
 
 #import "KCArg.h"
 #import "KCBaseDefine.h"
+#import "KCJSType.h"
 
 @interface KCArg()
+{
+    NSString* m_name;
+    id m_Object;
+    Class m_type;
+}
 
-@property (nonatomic, copy)     NSString *mName;
-@property (nonatomic, retain)   id mObject;
 @end
 
 @implementation KCArg
 
-+ (id)initWithObject:(id)obj key:(NSString *)key
++ (id)newArgWithObject:(id)aValue name:(NSString*)aName
 {
-    KCArg *arg = [[self alloc] init];
-    
-    arg.mName = key;
-    arg.mObject = obj;
-
-    KCAutorelease(arg);
-    return arg;
+    return [[KCArg alloc] initWithObject:aValue name:aName];
 }
 
-- (id)getValue
+- (id)initWithObject:(id)aValue name:(NSString *)aName
 {
-    return self.mObject;
+    if (self = [super init])
+    {
+        m_name = aName;
+        m_Object = aValue;
+        m_type = [aValue class];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    m_name = nil;
+    m_Object  = nil;
+    
+    KCDealloc(super);
 }
 
 
 - (NSString *)getArgName
 {
-    return self.mName;
+    return m_name;
 }
 
-
-- (NSString *)toString
+- (id)getValue
 {
-    NSString *objString = ([self.mObject isKindOfClass:[NSString class]])?(self.mObject):( NSStringFromClass([self.mObject class]));
-    return [NSString stringWithFormat:@"%@:%@",self.mName,objString];
+    return m_Object;
 }
 
-- (void)dealloc
+- (Class)getType
 {
-    self.mObject = nil;
-    self.mName  = nil;
-    
-    KCDealloc(super);
+    return m_type;
+}
+
+- (NSString*)toString
+{
+    return [self description];
+}
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"%@:%@",m_name, [m_Object description]];
 }
 
 @end

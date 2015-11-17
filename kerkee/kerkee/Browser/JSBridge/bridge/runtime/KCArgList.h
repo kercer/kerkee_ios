@@ -1,22 +1,24 @@
 //
-//  KCArglist.h
+//  KCArgList.h
 //  kerkee
 //
-//  Designed by zihong
-//
-//  Created by lijian on 15/8/25.
-//  Copyright (c) 2015年 lijian. All rights reserved.
+//  Created by zihong on 15/11/16.
+//  Copyright © 2015年 zihong. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "KCArg.h"
+#import "KCJSCallback.h"
 
 
 @interface KCArgList : NSObject
 
-- (BOOL) addArg:(KCArg *)aArg;
-- (id) getArgValule:(NSString *)aKey;
+- (BOOL)addArg:(KCArg *)aArg;
+- (BOOL)has:(NSString*)aKey;
+- (id)getArgValule:(NSString *)aKey;
 - (NSString *)getArgValueString:(NSString *)aKey;
+- (NSString*)getString:(NSString*)aKey;
+- (KCJSCallback*)getCallback;
 - (NSString *)toString;
 - (NSInteger)count;
 

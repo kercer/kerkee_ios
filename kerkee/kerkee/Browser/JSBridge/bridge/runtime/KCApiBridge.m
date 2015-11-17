@@ -262,9 +262,11 @@ static NSString* m_js = nil;
 + (void)onBridgeInitComplete:(KCWebView*)aWebView argList:(KCArgList *)aArgList
 {
     [aWebView documentReady:YES];
-    NSString* callbackId = [aArgList getArgValule:kJS_callbackId];
-
-    [KCJSExecutor callbackJS:aWebView callbackId:callbackId];
+    KCJSCallback* callback = [aArgList getCallback];
+    if (callback)
+    {
+        [callback callbackJS:aWebView];
+    }
 }
 
 
