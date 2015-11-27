@@ -19,12 +19,12 @@ static const char * __jb_app = NULL;
 + (BOOL)isJailbroken {
 	static const char * __jb_apps[] =
 	{
-		"/Application/Cydia.app",
-		"/Application/limera1n.app",
-		"/Application/greenpois0n.app",
-		"/Application/blackra1n.app",
-		"/Application/blacksn0w.app",
-		"/Application/redsn0w.app",
+		"/Applications/Cydia.app",
+		"/Applications/limera1n.app",
+		"/Applications/greenpois0n.app",
+		"/Applications/blackra1n.app",
+		"/Applications/blacksn0w.app",
+		"/Applications/redsn0w.app",
 		NULL
 	};
     
