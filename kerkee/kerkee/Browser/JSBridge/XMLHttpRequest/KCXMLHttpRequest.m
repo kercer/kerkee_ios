@@ -25,6 +25,7 @@
     NSMutableURLRequest *mRequest;
     NSString *mResponseCharset; // for example: gbk, gb2312, etc.
     NSMutableData *mReceivedData;
+    NSDictionary *mProperties;
     
     BOOL mAborted;
     int mState;
@@ -114,7 +115,7 @@
     if (mAborted)
         return;
     
-    NSDictionary *properties = [[NSDictionary alloc] initWithObjectsAndKeys:
+    NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
                                 [mObjectId stringValue], @"id",
                                 [[NSNumber alloc] initWithInt:DONE], @"readyState",
                                 [[NSNumber alloc] initWithInt:aStatusCode], @"status",
@@ -255,7 +256,7 @@
     NSString* contentType = [response.allHeaderFields objectForKey:@"Content-Type"];
     [self readCharset:contentType];
     
-    NSDictionary *properties = [[NSDictionary alloc] initWithObjectsAndKeys:
+     mProperties = [[NSDictionary alloc] initWithObjectsAndKeys:
                                 [mObjectId stringValue], @"id",
                                 [[NSNumber alloc] initWithInt:HEADERS_RECEIVED], @"readyState",
                                 [[NSNumber alloc] initWithInteger:response.statusCode], @"status",
@@ -264,7 +265,7 @@
                                 nil];
 //    NSData *data = [NSJSONSerialization dataWithJSONObject:properties options:NSJSONWritingPrettyPrinted error:nil];
 //    [self setPropertiesToJSSide:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
-    [self callJSSetProperties:properties];
+    [self callJSSetProperties:mProperties];
     
     
     //KCLog(@"allHeaderFields---%@",  response.allHeaderFields);
@@ -309,8 +310,18 @@
     NSString* receivedData = [[NSString alloc] initWithData:mReceivedData encoding:encoding];
     KCAutorelease(receivedData);
     
+    NSNumber* codeNumber = [mProperties objectForKey:@"status"];
+    int code = 200;
+    if (codeNumber)
+    {
+        code = [codeNumber intValue];
+    }
+    NSString* tmpStatusText = [mProperties objectForKey:@"statusText"];
+    NSString* statusText = @"OK";
+    if (tmpStatusText)
+        statusText = tmpStatusText;
     
-    [self returnResult:m_webview statusCode:200 statusText:@"OK" responseText:receivedData];
+    [self returnResult:m_webview statusCode:code  statusText:statusText responseText:receivedData];
     
 //    KCLog(@"properties:%@", properties);
     
