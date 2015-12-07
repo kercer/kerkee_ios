@@ -13,6 +13,7 @@
 #import "KCWebImageSetter.h"
 #import "KCWebImageSetterTask.h"
 #import "UIWebView+KCClean.h"
+#import "KCApiBridge.h"
 
 
 @class WebView;
@@ -74,6 +75,8 @@
     int m_webViewID;
     BOOL m_isDocumentReady;
     KCWebImageSetter* m_imageSetter;
+    
+    float m_threshold;
 }
 @property (nonatomic,weak)id m_attach;
 
@@ -94,6 +97,9 @@ static int createWebViewID = 0;
         // Initialization code
         m_webViewID = createWebViewID++;
         m_imageSetter = [[KCWebImageSetter alloc] init];
+        
+//        // Add observer for scroll
+//        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -109,8 +115,20 @@ static int createWebViewID = 0;
     return self;
 }
 
+//#pragma mark - KVO
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+//    if ([keyPath isEqualToString:@"contentOffset"])
+//    {
+//         CGPoint contentOffset = self.scrollView.contentOffset;
+//        
+//        KCLog(@"%f, %f", contentOffset.x, contentOffset.y);
+//    }
+//}
+
+
 - (void)dealloc
 {
+//    [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
     KCRelease(m_imageSetter);
     [self cleanForDealloc];
     
@@ -127,12 +145,12 @@ static int createWebViewID = 0;
     self.m_attach = aAttch;
 }
 
-//- (NSString *) description
-//{
-//    NSString* des = [NSString stringWithFormat:@"<%s: %p, %@>", class_getName([self class]), self, [[[self request] URL] absoluteString]];
-//    NSLog(@"%@",des);
-//    return des;
-//}
+- (NSString *) description
+{
+    NSString* des = [NSString stringWithFormat:@"<%s: %p, %@>", class_getName([self class]), self, [[[self request] URL] absoluteString]];
+    KCLog(@"%@",des);
+    return des;
+}
 
 
 //static void $UIWebViewWebViewDelegate$webView$addMessageToConsole$(id self, SEL sel, WebView *view, NSDictionary *message)
@@ -243,7 +261,9 @@ static int createWebViewID = 0;
 - (NSURLRequest *)webView:(id)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(id)dataSource
 {
     if ([UIWebView instancesRespondToSelector:@selector(webView:resource:willSendRequest:redirectResponse:fromDataSource:)])
+    {
         request = [super webView:sender resource:identifier willSendRequest:request redirectResponse:redirectResponse fromDataSource:dataSource];
+    }
     
     return request;
 }
@@ -292,7 +312,9 @@ static int createWebViewID = 0;
 - (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(void *)frame decisionListener:(id)listener
 {
     if([UIWebView instancesRespondToSelector:@selector(webView:decidePolicyForNavigationAction:request:frame:decisionListener:)])
+    {
         [super webView:sender decidePolicyForNavigationAction:actionInformation request:request frame:frame decisionListener:listener];
+    }
 }
 
 - (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id)listener
@@ -312,20 +334,12 @@ static int createWebViewID = 0;
 - (void)webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(void *)frame
 {
     if ([UIWebView instancesRespondToSelector:@selector(webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:)])
-//        if (
-//            ![self.delegate respondsToSelector:@selector(webView:shouldRunJavaScriptAlertPanelWithMessage:initiatedByFrame:)] ||
-//            [self.delegate webView:view shouldRunJavaScriptAlertPanelWithMessage:message initiatedByFrame:frame]
-//            )
             [super webView:sender runJavaScriptAlertPanelWithMessage:message initiatedByFrame:frame];
 }
 
 - (BOOL)webView:(WebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(void *)frame
 {
     if ([UIWebView instancesRespondToSelector:@selector(webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:)])
-//        if (
-//            ![self.delegate respondsToSelector:@selector(webView:shouldRunJavaScriptConfirmPanelWithMessage:initiatedByFrame:)] ||
-//            [self.delegate webView:sender shouldRunJavaScriptConfirmPanelWithMessage:message initiatedByFrame:frame]
-//            )
             return [super webView:sender runJavaScriptConfirmPanelWithMessage:message initiatedByFrame:frame];
     return NO;
 }
@@ -333,10 +347,6 @@ static int createWebViewID = 0;
 - (NSString *)webView:(WebView *)sender runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(void *)frame
 {
     if ([UIWebView instancesRespondToSelector:@selector(webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:)])
-//        if (
-//            ![self.delegate respondsToSelector:@selector(webView:shouldRunJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:)] ||
-//            [self.delegate webView:sender shouldRunJavaScriptTextInputPanelWithPrompt:prompt defaultText:defaultText initiatedByFrame:frame]
-//            )
             return [super webView:sender runJavaScriptTextInputPanelWithPrompt:prompt defaultText:defaultText initiatedByFrame:frame];
     return nil;
 }
@@ -361,9 +371,6 @@ static int createWebViewID = 0;
 {
     return [super _documentView];
 }
-
-
-//以下几个接口重写无效，先注掉，以后再研究
 
 //- (void) dispatchEvent:(NSString *)event
 //{
@@ -395,14 +402,33 @@ static int createWebViewID = 0;
 
 
 #pragma mark -
-//- (void)setDelegate:(id<UIWebViewDelegate>)delegate
-//{
-//    
-//}
+#pragma mark UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+{
+//    NSString *scrollHeight = [self stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
+    [super scrollViewDidScroll:scrollView];
+//    NSLog(@"ContentOffset  x is  %f,y is %f",scrollView.contentOffset.x,scrollView.contentOffset.y);
+    
+    float bottomHeight = scrollView.contentOffset.y + self.frame.size.height;
+    float contentHeight = self.scrollView.contentSize.height;
+    if (contentHeight <= bottomHeight+m_threshold)
+    {
+        [KCApiBridge callbackJSOnHitPageBottom:self];
+    }
+    
+}
+
+
+
+- (void)setHitPageBottomThreshold:(float)aThreshold
+{
+    m_threshold = aThreshold;
+}
+
 
 
 #pragma mark -
-#pragma maik api
+#pragma mark api
 - (int)getWebViewID
 {
     return m_webViewID;

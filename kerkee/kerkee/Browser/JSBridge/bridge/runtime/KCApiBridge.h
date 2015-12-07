@@ -30,6 +30,7 @@
 
 //- (void)destroy;// destroy webview
 
++ (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView;
 
 
 @end

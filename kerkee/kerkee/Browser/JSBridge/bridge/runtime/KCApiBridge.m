@@ -269,9 +269,22 @@ static NSString* m_js = nil;
     }
 }
 
++ (void)setHitPageBottomThreshold:(KCWebView*)aWebView argList:(KCArgList *)aArgList
+{
+    NSString* strThreshold = [aArgList getString:@"threshold"];
+    if (strThreshold)
+    {
+        float threshold = strThreshold.floatValue;
+        [aWebView setHitPageBottomThreshold:threshold];
+    }
+}
 
 
-#pragma mark - register
+#pragma mark - 
++ (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView
+{
+    [KCJSExecutor callJSOnMainThread:@"if(jsBridgeClient && jsBridgeClient.onHitPageBottom) jsBridgeClient.onHitPageBottom()" WebView:aWebView];
+}
 
 
 
