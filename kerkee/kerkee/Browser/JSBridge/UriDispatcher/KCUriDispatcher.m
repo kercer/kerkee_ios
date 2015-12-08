@@ -105,7 +105,7 @@ DEF_SINGLETON(KCUriDispatcher);
 
 +(KCUriRegister*)addUriRegisterWithScheme:(NSString*)aScheme
 {
-    return [self addUriRegisterWithScheme:aScheme];
+    return [[KCUriDispatcher sharedInstance] addUriRegisterWithScheme:aScheme];
 }
 -(KCUriRegister*)addUriRegisterWithScheme:(NSString*)aScheme
 {
