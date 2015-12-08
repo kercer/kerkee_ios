@@ -188,11 +188,7 @@ static NSString* m_js = nil;
                 
                 [kcCls addJSMethod:methodName args:argList];
                 
-                if([argList count] > 0)
-                {
-                    methodName = [NSString stringWithFormat:@"%@:argList:", methodName];
-                }
-                
+                methodName = [NSString stringWithFormat:@"%@:argList:", methodName];
                 SEL method = NSSelectorFromString(methodName);
                 
                 // suppress the warnings
