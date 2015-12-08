@@ -233,7 +233,7 @@ DEF_SINGLETON(KCImageCache);
     NSURLSession *session = [self session];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
-        if (!error)
+        if (!error && block)
         {
             block(data);
 //          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
