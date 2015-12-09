@@ -15,7 +15,6 @@
 #import "KCJSDefine.h"
 #import "KCTaskQueue.h"
 #import "KCDataValidCache.h"
-#import "KCMemoryCache.h"
 
 
 
@@ -23,7 +22,6 @@
 {
     NSMutableDictionary *m_xhrMap;
     NSLock* m_lock;
-    KCMemoryCache* m_memoryCache;
 }
 
 
@@ -37,9 +35,6 @@
     {
         m_xhrMap = [[NSMutableDictionary alloc] init];
         m_lock = [[NSLock alloc] init];
-        m_memoryCache = [[KCMemoryCache alloc] init];
-        m_memoryCache.maxCount = 10;
-        
     }
     return self;
 }
@@ -50,8 +45,6 @@
     m_xhrMap = nil;
     KCRelease(m_lock);
     m_lock = nil;
-    KCRelease(m_memoryCache);
-    m_memoryCache = nil;
 }
 
 
@@ -224,9 +217,6 @@
                     return YES;
                 }
             }
-            
-            //set memory cache
-            [m_memoryCache setCache:urlStr Value:aProperties];
         }
     }
     return NO;
@@ -234,8 +224,6 @@
 
 -(BOOL)readCached:(KCXMLHttpRequest*)aXHR
 {
-    NSDictionary* dicProperties = nil;
-    
     if ([aXHR isGetMethod])
     {
         NSURLRequest* request = [aXHR request];
@@ -244,22 +232,18 @@
         NSString* cacheTime = [request valueForHTTPHeaderField:@"cache-time"];
         if (cacheTime && [cacheTime doubleValue] > 0)
         {
-            dicProperties = [[KCDataValidCache defaultCache] getCache:urlStr];
-        }
-        else
-        {
-            dicProperties = [m_memoryCache getCache:urlStr];
-        }
-        
-        if (dicProperties && dicProperties.count > 0)
-        {
-            NSMutableDictionary* dicMutableProperties = [[NSMutableDictionary alloc] initWithDictionary:dicProperties];
-            KCRelease(dicMutableProperties);
-            NSNumber *objectId = [aXHR objectId];
-            [dicMutableProperties setObject:objectId forKey:@"id"];
-            [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:dicMutableProperties WebView:aXHR.webview];
+            NSDictionary* dicProperties = [[KCDataValidCache defaultCache] getCache:urlStr];
             
-            return YES;
+            if (dicProperties && dicProperties.count > 0)
+            {
+                NSMutableDictionary* dicMutableProperties = [[NSMutableDictionary alloc] initWithDictionary:dicProperties];
+                KCRelease(dicMutableProperties);
+                NSNumber *objectId = [aXHR objectId];
+                [dicMutableProperties setObject:objectId forKey:@"id"];
+                [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:dicMutableProperties WebView:aXHR.webview];
+                
+                return YES;
+            }
         }
     }
     
