@@ -25,7 +25,8 @@
     NSMutableURLRequest *mRequest;
     NSString *mResponseCharset; // for example: gbk, gb2312, etc.
     NSMutableData *mReceivedData;
-    NSDictionary *mProperties;
+    
+    NSDictionary *mHeaderProperties;
     
     BOOL mAborted;
     int mState;
@@ -89,46 +90,6 @@
     {
         [self returnError:m_webview statusCode:405 statusText:@"Method Not Allowed"];
     }
-}
-
-- (void)returnError:(KCWebView*)aWebView statusCode:(int)aStatusCode statusText:(NSString*)aStatusText
-{
-    
-    NSDictionary *jsonObj = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             mObjectId, @"id",
-                             [[NSNumber alloc] initWithInt:DONE], @"readyState",
-                             [[NSNumber alloc] initWithInt:aStatusCode], @"status",
-                             aStatusText, @"statusText",
-                             nil];
-    [self callJSSetProperties:jsonObj];
-    
-    [self notifyFetchFailed:nil];
-    //KCLog(@"returnError------readyState=%ld",DONE);
-    
-    mState = DONE;
-    
-}
-
-//if statusCode is 200, aStatusText is "OK"
-- (void)returnResult:(KCWebView*)aWebview statusCode:(int)aStatusCode statusText:(NSString*)aStatusText responseText:(NSString*)aResponseText
-{
-    if (mAborted)
-        return;
-    
-    NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                [mObjectId stringValue], @"id",
-                                [[NSNumber alloc] initWithInt:DONE], @"readyState",
-                                [[NSNumber alloc] initWithInt:aStatusCode], @"status",
-                                aStatusText, @"statusText",
-                                aResponseText, @"responseText",
-                                nil];
-    
-    [self callJSSetProperties:properties];
-    
-    //KCLog(@"returnResult------readyState=%d ,textLenght=%ld",DONE,[aResponseText length]);
-    
-    mState = DONE;
-    
 }
 
 
@@ -207,8 +168,6 @@
 - (void)setRequestHeader:(NSString *)headerName headerValue:(NSString *)headerValue
 {
     [mRequest setValue:headerValue forHTTPHeaderField:headerName];
-    
-    //KCLog(@"headerName=%@, headerValue=%@",headerName, headerValue);
 }
 
 // "text/html;charset=gbk", "gbk" will be extracted, others will be ignored.
@@ -251,30 +210,6 @@
     }
 }
 
-- (void)handleHeaders:(NSHTTPURLResponse *)response
-{
-    NSString* contentType = [response.allHeaderFields objectForKey:@"Content-Type"];
-    [self readCharset:contentType];
-    
-     mProperties = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                [mObjectId stringValue], @"id",
-                                [[NSNumber alloc] initWithInt:HEADERS_RECEIVED], @"readyState",
-                                [[NSNumber alloc] initWithInteger:response.statusCode], @"status",
-                                [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode], @"statusText",
-                                response.allHeaderFields, @"headers",
-                                nil];
-//    NSData *data = [NSJSONSerialization dataWithJSONObject:properties options:NSJSONWritingPrettyPrinted error:nil];
-//    [self setPropertiesToJSSide:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
-    [self callJSSetProperties:mProperties];
-    
-    
-    //KCLog(@"allHeaderFields---%@",  response.allHeaderFields);
-}
-
-- (void)callJSSetProperties:(NSDictionary *)aProperties
-{
-    [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:m_webview];
-}
 
 #pragma mark --
 #pragma mark net delegate
@@ -310,24 +245,20 @@
     NSString* receivedData = [[NSString alloc] initWithData:mReceivedData encoding:encoding];
     KCAutorelease(receivedData);
     
-    NSNumber* codeNumber = [mProperties objectForKey:@"status"];
+    NSNumber* codeNumber = [mHeaderProperties objectForKey:@"status"];
     int code = 200;
     if (codeNumber)
     {
         code = [codeNumber intValue];
     }
-    NSString* tmpStatusText = [mProperties objectForKey:@"statusText"];
+    NSString* tmpStatusText = [mHeaderProperties objectForKey:@"statusText"];
     NSString* statusText = @"OK";
     if (tmpStatusText)
         statusText = tmpStatusText;
     
-    [self returnResult:m_webview statusCode:code  statusText:statusText responseText:receivedData];
-    
-//    KCLog(@"properties:%@", properties);
-    
-    //KCLog(@"XHR----DONE  %@, %@：\n %@", mRequest.URL.path, mObjectId, receivedData);
+    NSDictionary* dic = [self returnResult:m_webview statusCode:code  statusText:statusText responseText:receivedData];
 
-    [self notifyFetchComplete:receivedData];
+    [self notifyFetchComplete:dic];
 }
 
 
@@ -342,7 +273,7 @@
     }
 }
 
--(void)notifyFetchComplete:(NSString*)aResponseData
+-(void)notifyFetchComplete:(NSDictionary*)aResponseData
 {
     if([m_delegate respondsToSelector:@selector(fetchComplete:responseData:)])
     {
@@ -359,6 +290,66 @@
     }
 }
 
+
+
+#pragma mark --
+- (void)callJSSetProperties:(NSDictionary *)aProperties
+{
+    [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:m_webview];
+}
+
+- (void)handleHeaders:(NSHTTPURLResponse *)response
+{
+    NSString* contentType = [response.allHeaderFields objectForKey:@"Content-Type"];
+    [self readCharset:contentType];
+    
+    mHeaderProperties = [[NSDictionary alloc] initWithObjectsAndKeys:
+                   [mObjectId stringValue], @"id",
+                   [[NSNumber alloc] initWithInt:HEADERS_RECEIVED], @"readyState",
+                   [[NSNumber alloc] initWithInteger:response.statusCode], @"status",
+                   [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode], @"statusText",
+                   response.allHeaderFields, @"headers",
+                   nil];
+    [self callJSSetProperties:mHeaderProperties];
+}
+
+- (void)returnError:(KCWebView*)aWebView statusCode:(int)aStatusCode statusText:(NSString*)aStatusText
+{
+    
+    NSDictionary *jsonObj = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             mObjectId, @"id",
+                             [[NSNumber alloc] initWithInt:DONE], @"readyState",
+                             [[NSNumber alloc] initWithInt:aStatusCode], @"status",
+                             aStatusText, @"statusText",
+                             nil];
+    [self callJSSetProperties:jsonObj];
+    
+    [self notifyFetchFailed:nil];
+    
+    mState = DONE;
+    
+}
+
+//if statusCode is 200, aStatusText is "OK"
+- (NSDictionary*)returnResult:(KCWebView*)aWebview statusCode:(int)aStatusCode statusText:(NSString*)aStatusText responseText:(NSString*)aResponseText
+{
+    if (mAborted)
+        return nil;
+    
+    NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [mObjectId stringValue], @"id",
+                                [[NSNumber alloc] initWithInt:DONE], @"readyState",
+                                [[NSNumber alloc] initWithInt:aStatusCode], @"status",
+                                aStatusText, @"statusText",
+                                aResponseText, @"responseText",
+                                nil];
+    
+    [self callJSSetProperties:properties];
+    
+    mState = DONE;
+    
+    return properties;
+}
 
 #pragma mark --
 #pragma mark api

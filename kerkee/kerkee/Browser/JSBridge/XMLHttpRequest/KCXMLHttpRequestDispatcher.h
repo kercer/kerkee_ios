@@ -17,7 +17,7 @@
 
 @interface KCXMLHttpRequestDispatcher : KCJSObject
 
-//- (KCXMLHttpRequest *)create:(KCWebView*)aWebView argList:(KCArgList *)args;
+- (KCXMLHttpRequest *)create:(KCWebView*)aWebView argList:(KCArgList *)args;
 
 - (void)open:(KCWebView*)aWebView argList:(KCArgList *)args;
 - (void)send:(KCWebView*)aWebView argList:(KCArgList *)args;

@@ -14,6 +14,8 @@
 #import "KCJSExecutor.h"
 #import "KCJSDefine.h"
 #import "KCTaskQueue.h"
+#import "KCDataValidCache.h"
+#import "KCMemoryCache.h"
 
 
 
@@ -21,6 +23,7 @@
 {
     NSMutableDictionary *m_xhrMap;
     NSLock* m_lock;
+    KCMemoryCache* m_memoryCache;
 }
 
 
@@ -34,9 +37,21 @@
     {
         m_xhrMap = [[NSMutableDictionary alloc] init];
         m_lock = [[NSLock alloc] init];
+        m_memoryCache = [[KCMemoryCache alloc] init];
+        m_memoryCache.maxCount = 10;
         
     }
     return self;
+}
+
+- (void)dealloc
+{
+    KCRelease(m_xhrMap);
+    m_xhrMap = nil;
+    KCRelease(m_lock);
+    m_lock = nil;
+    KCRelease(m_memoryCache);
+    m_memoryCache = nil;
 }
 
 
@@ -52,7 +67,6 @@
     KCAutorelease(xhr);
     xhr.delegate = self;
     
-
     [m_lock lock];
     [m_xhrMap setValue:xhr forKey:[objectId stringValue]];
     [m_lock unlock];
@@ -82,8 +96,8 @@
     KCXMLHttpRequest *xhr = [self getXHR:args];
     if (xhr)
     {
-            //KCLog(@"%@",[args getObject:@"id"]);
-        
+        if(![self readCached:xhr])
+        {
             NSString *data = [args getObject:@"data"];
             if (data)
             {
@@ -93,6 +107,7 @@
             {
                 [xhr send];
             }
+        }
     }
 }
 
@@ -178,13 +193,78 @@
 {
     
 }
--(void)fetchComplete:(KCXMLHttpRequest*)xmlHttpRequest responseData:(NSString*)aResponseData
+-(void)fetchComplete:(KCXMLHttpRequest*)xmlHttpRequest responseData:(NSDictionary*)aResponseData
 {
+    [self writeCached:xmlHttpRequest propertiesData:aResponseData];
     [self freeXMLHttpRequestObject:[xmlHttpRequest objectId]];
 }
 -(void)fetchFailed:(KCXMLHttpRequest*)xmlHttpRequest didFailWithError:(NSError *)error
 {
     [self freeXMLHttpRequestObject: [xmlHttpRequest objectId]];
 }
+
+
+#pragma mark cache
+-(BOOL)writeCached:(KCXMLHttpRequest*)aXHR propertiesData:(NSDictionary*)aProperties
+{
+    if(aProperties.count>0)
+    {
+        if ([aXHR isGetMethod])
+        {
+            NSURLRequest* request = [aXHR request];
+            NSURL* url = request.URL;
+            NSString* urlStr = url.absoluteString;
+            NSString* cacheTime = [request valueForHTTPHeaderField:@"cache-time"];
+            if (cacheTime)
+            {
+                double  cacheSec = [cacheTime doubleValue];
+                if (cacheSec> 0)
+                {
+                    [[KCDataValidCache defaultCache] setCacheAuto:urlStr Value:aProperties Seconds:cacheSec];
+                    return YES;
+                }
+            }
+            
+            //set memory cache
+            [m_memoryCache setCache:urlStr Value:aProperties];
+        }
+    }
+    return NO;
+}
+
+-(BOOL)readCached:(KCXMLHttpRequest*)aXHR
+{
+    NSDictionary* dicProperties = nil;
+    
+    if ([aXHR isGetMethod])
+    {
+        NSURLRequest* request = [aXHR request];
+        NSURL* url = request.URL;
+        NSString* urlStr = url.absoluteString;
+        NSString* cacheTime = [request valueForHTTPHeaderField:@"cache-time"];
+        if (cacheTime && [cacheTime doubleValue] > 0)
+        {
+            dicProperties = [[KCDataValidCache defaultCache] getCache:urlStr];
+        }
+        else
+        {
+            dicProperties = [m_memoryCache getCache:urlStr];
+        }
+        
+        if (dicProperties && dicProperties.count > 0)
+        {
+            NSMutableDictionary* dicMutableProperties = [[NSMutableDictionary alloc] initWithDictionary:dicProperties];
+            KCRelease(dicMutableProperties);
+            NSNumber *objectId = [aXHR objectId];
+            [dicMutableProperties setObject:objectId forKey:@"id"];
+            [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:dicMutableProperties WebView:aXHR.webview];
+            
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 
 @end
