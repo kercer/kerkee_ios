@@ -65,3 +65,12 @@ BOOL class_swizzleMethodAndStore(Class aClass, SEL aOriginal, IMP aReplacement, 
 @end
 
 
+// Method swizzling
+void KCSwapClassMethods(Class cls, SEL original, SEL replacement);
+void KCSwapInstanceMethods(Class cls, SEL original, SEL replacement);
+
+// Module subclass support
+BOOL KCClassOverridesClassMethod(Class cls, SEL selector);
+BOOL KCClassOverridesInstanceMethod(Class cls, SEL selector);
+
+

@@ -28,6 +28,9 @@
 		DF74CC341BFAE49D00346F1A /* KCJSType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF54B5E41BF9B55D00F384BF /* KCJSType.h */; };
 		DF75C2C41BB29BCA00CAD3CA /* KCJSExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */; };
 		DF75C2C51BB29BCA00CAD3CA /* KCJSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */; };
+		DF7642631C18017B0014789E /* KCAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = DF7642611C18017B0014789E /* KCAssert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF7642641C18017B0014789E /* KCAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7642621C18017B0014789E /* KCAssert.m */; };
+		DF7642691C1812270014789E /* KCAssert.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF7642611C18017B0014789E /* KCAssert.h */; };
 		DF765C1A1BA16C860025B0CC /* KCUriDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = DF765C181BA16C860025B0CC /* KCUriDispatcher.m */; };
 		DF765C241BA175E20025B0CC /* KCURIComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C221BA175E20025B0CC /* KCURIComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF765C251BA175E20025B0CC /* KCURIComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = DF765C231BA175E20025B0CC /* KCURIComponents.m */; };
@@ -233,6 +236,8 @@
 		DFC3AC451B9C17FC009F4775 /* KCUtilURL.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3AC461B9C17FC009F4775 /* KCUtilURL.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABFE1B9C17FC009F4775 /* KCUtilURL.m */; };
 		DFC3ACC41B9C18AD009F4775 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC3ACC31B9C18AD009F4775 /* libz.dylib */; };
+		DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC6334A1C195EDF008301F3 /* KCUtilJson.h */; };
+		DFC6334D1C195EDF008301F3 /* KCUtilJson.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC6334B1C195EDF008301F3 /* KCUtilJson.m */; };
 		DFD5455C1BF44A3200770ED0 /* KCModifier.h in Headers */ = {isa = PBXBuildFile; fileRef = DFD5455A1BF44A3200770ED0 /* KCModifier.h */; };
 		DFD5455D1BF44A3200770ED0 /* KCModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5455B1BF44A3200770ED0 /* KCModifier.m */; };
 		DFD5455E1BF46DC100770ED0 /* KCModifier.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFD5455A1BF44A3200770ED0 /* KCModifier.h */; };
@@ -255,6 +260,7 @@
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				DF7642691C1812270014789E /* KCAssert.h in Copy Files */,
 				DF74CC341BFAE49D00346F1A /* KCJSType.h in Copy Files */,
 				DF54B5E21BF9B4D300F384BF /* KCJSCallback.h in Copy Files */,
 				DFD5455E1BF46DC100770ED0 /* KCModifier.h in Copy Files */,
@@ -359,6 +365,8 @@
 		DF5D70BD1BA91859008A8FB2 /* KCUriRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUriRegister.m; sourceTree = "<group>"; };
 		DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSExecutor.h; sourceTree = "<group>"; };
 		DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSExecutor.m; sourceTree = "<group>"; };
+		DF7642611C18017B0014789E /* KCAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = KCAssert.h; path = ../../Browser/JSBridge/bridge/executors/KCAssert.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DF7642621C18017B0014789E /* KCAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = KCAssert.m; path = ../../Browser/JSBridge/bridge/executors/KCAssert.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		DF765C171BA16C860025B0CC /* KCUriDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUriDispatcher.h; sourceTree = "<group>"; };
 		DF765C181BA16C860025B0CC /* KCUriDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUriDispatcher.m; sourceTree = "<group>"; };
 		DF765C1F1BA171CF0025B0CC /* KCUriActionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KCUriActionDelegate.h; sourceTree = "<group>"; };
@@ -419,7 +427,7 @@
 		DFC3AB861B9C17F2009F4775 /* KCWebViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWebViewProxy.m; sourceTree = "<group>"; };
 		DFC3AB871B9C17F2009F4775 /* UIWebView+KCClean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+KCClean.h"; sourceTree = "<group>"; };
 		DFC3AB881B9C17F2009F4775 /* UIWebView+KCClean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+KCClean.m"; sourceTree = "<group>"; };
-		DFC3ABB31B9C17FC009F4775 /* KCBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCBaseDefine.h; sourceTree = "<group>"; };
+		DFC3ABB31B9C17FC009F4775 /* KCBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KCBaseDefine.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DFC3ABB41B9C17FC009F4775 /* KCFileArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCFileArchiver.h; sourceTree = "<group>"; };
 		DFC3ABB51B9C17FC009F4775 /* KCFileArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCFileArchiver.m; sourceTree = "<group>"; };
 		DFC3ABB61B9C17FC009F4775 /* KCObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCObject.h; sourceTree = "<group>"; };
@@ -492,6 +500,8 @@
 		DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUtilURL.h; sourceTree = "<group>"; };
 		DFC3ABFE1B9C17FC009F4775 /* KCUtilURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilURL.m; sourceTree = "<group>"; };
 		DFC3ACC31B9C18AD009F4775 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DFC6334A1C195EDF008301F3 /* KCUtilJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUtilJson.h; sourceTree = "<group>"; };
+		DFC6334B1C195EDF008301F3 /* KCUtilJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilJson.m; sourceTree = "<group>"; };
 		DFD5455A1BF44A3200770ED0 /* KCModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCModifier.h; sourceTree = "<group>"; };
 		DFD5455B1BF44A3200770ED0 /* KCModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCModifier.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -857,6 +867,8 @@
 		DFC3ABE91B9C17FC009F4775 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				DF7642611C18017B0014789E /* KCAssert.h */,
+				DF7642621C18017B0014789E /* KCAssert.m */,
 				DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */,
 				DF44A1121B9FE5F20045092E /* KCUncaughtExceptionHandler.m */,
 				DF44A10D1B9FE5EA0045092E /* KCException.h */,
@@ -888,6 +900,8 @@
 				DFC3ABFC1B9C17FC009F4775 /* KCUtilNet.m */,
 				DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */,
 				DFC3ABFE1B9C17FC009F4775 /* KCUtilURL.m */,
+				DFC6334A1C195EDF008301F3 /* KCUtilJson.h */,
+				DFC6334B1C195EDF008301F3 /* KCUtilJson.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -975,11 +989,13 @@
 				DFC3AC001B9C17FC009F4775 /* KCFileArchiver.h in Headers */,
 				DFC3AC291B9C17FC009F4775 /* KCImageCache.h in Headers */,
 				DF809CAC1B9D90FF008B315D /* KCApiBridge.h in Headers */,
+				DF7642631C18017B0014789E /* KCAssert.h in Headers */,
 				DFBB9E0E1BF0863F00921758 /* KCJSObject.h in Headers */,
 				DF809CB61B9D90FF008B315D /* KCRegister.h in Headers */,
 				DFC3ABFF1B9C17FC009F4775 /* KCBaseDefine.h in Headers */,
 				DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */,
 				DFC3AC041B9C17FC009F4775 /* KCRuntime.h in Headers */,
+				DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */,
 				DFC3ABA01B9C17F2009F4775 /* KCWebImageSetterTask.h in Headers */,
 				DFC3AC2B1B9C17FC009F4775 /* KCImagePreCache.h in Headers */,
 				DFD5455C1BF44A3200770ED0 /* KCModifier.h in Headers */,
@@ -1097,6 +1113,7 @@
 				DFC3AC131B9C17FC009F4775 /* NSObject+KCCoding.m in Sources */,
 				DF8A2FA61B9FF9D300BD7FB3 /* UIDevice+KCHardware.m in Sources */,
 				DF54B5E71BF9B55D00F384BF /* KCJSType.m in Sources */,
+				DF7642641C18017B0014789E /* KCAssert.m in Sources */,
 				DFC3AC0B1B9C17FC009F4775 /* KCTaskQueue.m in Sources */,
 				DFC3ABA61B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.m in Sources */,
 				DFC3AC171B9C17FC009F4775 /* NSObject+KCObjectInfo.m in Sources */,
@@ -1110,6 +1127,7 @@
 				DFC3AC1D1B9C17FC009F4775 /* NSObject+KCSelector.m in Sources */,
 				DF8A2FB41B9FFC4200BD7FB3 /* SSKeychainQuery.m in Sources */,
 				DFC3AC1F1B9C17FC009F4775 /* NSObject+KCTicker.m in Sources */,
+				DFC6334D1C195EDF008301F3 /* KCUtilJson.m in Sources */,
 				DFC3AC2C1B9C17FC009F4775 /* KCImagePreCache.m in Sources */,
 				DFC3AC191B9C17FC009F4775 /* NSObject+KCObserver.m in Sources */,
 				DF809CBC1B9D90FF008B315D /* KCMethod.m in Sources */,

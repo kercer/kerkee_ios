@@ -481,3 +481,58 @@ BOOL class_swizzleMethodAndStore(Class aClass, SEL aOriginal, IMP aReplacement, 
     if (imp && aStore) { *aStore = imp; }
     return (imp != NULL);
 }
+
+
+void KCSwapClassMethods(Class cls, SEL original, SEL replacement)
+{
+    Method originalMethod = class_getClassMethod(cls, original);
+    IMP originalImplementation = method_getImplementation(originalMethod);
+    const char *originalArgTypes = method_getTypeEncoding(originalMethod);
+    
+    Method replacementMethod = class_getClassMethod(cls, replacement);
+    IMP replacementImplementation = method_getImplementation(replacementMethod);
+    const char *replacementArgTypes = method_getTypeEncoding(replacementMethod);
+    
+    if (class_addMethod(cls, original, replacementImplementation, replacementArgTypes)) {
+        class_replaceMethod(cls, replacement, originalImplementation, originalArgTypes);
+    } else {
+        method_exchangeImplementations(originalMethod, replacementMethod);
+    }
+}
+
+void KCSwapInstanceMethods(Class cls, SEL original, SEL replacement)
+{
+    Method originalMethod = class_getInstanceMethod(cls, original);
+    IMP originalImplementation = method_getImplementation(originalMethod);
+    const char *originalArgTypes = method_getTypeEncoding(originalMethod);
+    
+    Method replacementMethod = class_getInstanceMethod(cls, replacement);
+    IMP replacementImplementation = method_getImplementation(replacementMethod);
+    const char *replacementArgTypes = method_getTypeEncoding(replacementMethod);
+    
+    if (class_addMethod(cls, original, replacementImplementation, replacementArgTypes)) {
+        class_replaceMethod(cls, replacement, originalImplementation, originalArgTypes);
+    } else {
+        method_exchangeImplementations(originalMethod, replacementMethod);
+    }
+}
+
+BOOL KCClassOverridesClassMethod(Class cls, SEL selector)
+{
+    return KCClassOverridesInstanceMethod(object_getClass(cls), selector);
+}
+
+BOOL KCClassOverridesInstanceMethod(Class cls, SEL selector)
+{
+    unsigned int numberOfMethods;
+    Method *methods = class_copyMethodList(cls, &numberOfMethods);
+    for (unsigned int i = 0; i < numberOfMethods; i++) {
+        if (method_getName(methods[i]) == selector) {
+            free(methods);
+            return YES;
+        }
+    }
+    free(methods);
+    return NO;
+}
+

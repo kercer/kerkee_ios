@@ -9,6 +9,9 @@
 #ifndef KerCer_KCBaseDefine_h
 #define KerCer_KCBaseDefine_h
 
+#if __OBJC__
+#  import <Foundation/Foundation.h>
+#endif
 
 #import "KCLog.h"
 
@@ -83,5 +86,39 @@
 //#endif	// #if (__ON__ == __KC_LOG__)
 
 
+
+
+
+/**
+ * Make global functions usable in C++
+ */
+#if defined(__cplusplus)
+#define KC_EXTERN extern "C" __attribute__((visibility("default")))
+#else
+#define KC_EXTERN extern __attribute__((visibility("default")))
+#endif
+
+/**
+ * By default, only raise an NSAssertion in debug mode
+ * (custom assert functions will still be called).
+ */
+#ifndef KC_NSASSERT
+#if __KC_LOG__
+#define KC_NSASSERT 1
+#else
+#define KC_NSASSERT 0
+#endif
+#endif
+
+/**
+ * Throw an assertion for unimplemented methods.
+ */
+#define KC_NOT_IMPLEMENTED(method) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wmissing-method-return-type\"") \
+_Pragma("clang diagnostic ignored \"-Wunused-parameter\"") \
+KC_EXTERN NSException *_KCNotImplementedException(SEL, Class); \
+method NS_UNAVAILABLE { @throw _KCNotImplementedException(_cmd, [self class]); } \
+_Pragma("clang diagnostic pop")
 
 #endif
