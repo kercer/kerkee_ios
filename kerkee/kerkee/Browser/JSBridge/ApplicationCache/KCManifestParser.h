@@ -16,8 +16,10 @@
 }
 
 -(void)parser:(NSString*)aManifest;
+-(void)parserData:(NSData *)aManifest;
 -(NSString*)getCommentValueForKey:(NSString*)aKey;
 -(NSArray*)getCacheTokens;
 -(NSString*)getManifestContent;
+
 
 @end

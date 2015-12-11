@@ -80,4 +80,9 @@
     return dicQueries;
 }
 
+- (NSURL*)URL
+{
+    return m_uriComponents.URL;
+}
+
 @end

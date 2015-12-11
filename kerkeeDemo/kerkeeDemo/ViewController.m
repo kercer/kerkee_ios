@@ -17,6 +17,7 @@
 #import "KCActionTest.h"
 #import "KCUriRegister.h"
 #import "KCUriDispatcher.h"
+#import "KCFetchManifest.h"
 
 
 @interface ViewController ()
@@ -64,7 +65,7 @@
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
     [m_webView loadRequest:request];
     
-    
+    [self testFetchManifest];
     
     //test action
     [self testAction];
@@ -81,6 +82,11 @@
     [KCUriDispatcher dispatcher:@"kerkee://search/path?A=1&B=2&C=3&D=4"];
 }
 
+
+-(void)testFetchManifest
+{
+    [KCFetchManifest fetchOneServerManifest:[KCURI parse:@"http://www.linzihong.com/test/html/manifest"]];
+}
 
 
 - (void)didReceiveMemoryWarning {

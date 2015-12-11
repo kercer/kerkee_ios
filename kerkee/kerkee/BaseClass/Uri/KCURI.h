@@ -60,4 +60,16 @@
 -(NSDictionary*)getQueries;
 
 
+/**
+ Returns a URL created from the `KCURIComponents`.
+ 
+ If the `KCURIComponents` has an authority component (user, password, host or port)
+ and a path component, then the path must either begin with `/` or be an empty
+ string. If the `KCURIComponents` does not have an authority component (user, password, host or port)
+ and has a path component, the path component must not start with `//`. If those
+ requirements are not met, `nil` is returned.
+ */
+- (NSURL *)URL;
+
+
 @end
