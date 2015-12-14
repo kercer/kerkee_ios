@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "KCURI.h"
+#import "KCManifestObject.h"
 
 @interface KCFetchManifest : NSObject
 
-+ (void)fetchOneServerManifest:(KCURI*)aUri;
++ (void)fetchOneServerManifest:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock;
+
++ (void)fetchServerManifests:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock;
+
++ (KCManifestObject*)fetchOneLocalManifest:(KCURI*)aUri;
++ (void)fetchOneLocalManifest:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock;
+
+
 
 @end

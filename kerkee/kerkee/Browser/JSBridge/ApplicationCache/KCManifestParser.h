@@ -9,14 +9,15 @@
 
 
 #import <Foundation/Foundation.h>
+#import "KCManifestObject.h"
 
 @interface KCManifestParser : NSObject
 {
-
 }
 
--(void)parser:(NSString*)aManifest;
--(void)parserData:(NSData *)aManifest;
+-(KCManifestObject*)parser:(NSString*)aManifest;
+-(KCManifestObject*)parserData:(NSData *)aManifest;
+
 -(NSString*)getCommentValueForKey:(NSString*)aKey;
 -(NSArray*)getCacheTokens;
 -(NSString*)getManifestContent;

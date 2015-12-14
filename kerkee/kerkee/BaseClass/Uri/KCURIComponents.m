@@ -8,6 +8,8 @@
 
 #import "KCURIComponents.h"
 #import "KCBaseDefine.h"
+#import "KCUtilURI.h"
+#import "KCString.h"
 
 
 @interface KCURIComponents ()
@@ -138,7 +140,7 @@
         
         CFStringRef path = CFStringCreateWithSubstring(NULL, CFURLGetString((CFURLRef)aUrl), pathRange);
         self.percentEncodedPath = (__bridge NSString *)path;
-        CFRelease(path);
+        self.percentEncodedPath = [KCUtilURI removeDotSegments:self.percentEncodedPath];
     }
     
     CFStringRef query = CFURLCopyQueryString((CFURLRef)aUrl, NULL);
@@ -415,6 +417,11 @@
     // Same treatment as -host
     NSString *path = self.percentEncodedPath;
     if (path.length == 0) return nil;
+    
+    if (![path startsWithChar:'/'])
+    {
+        path = [NSString stringWithFormat:@"/%@", path];
+    }
     
     return [path stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }

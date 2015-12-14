@@ -11,8 +11,9 @@
 
 #import "KCManifestParser.h"
 #import "KCBaseDefine.h"
-#import "KCManifestObject.h"
 #import "KCURI.h"
+#import "KCString.h"
+#import "KCUtilURI.h"
 
 #define kComment_Version @"version"
 #define kComment_List @"list"
@@ -78,22 +79,27 @@ typedef enum
     KCDealloc(super);
 }
 
--(void)parserData:(NSData *)aManifest
+-(KCManifestObject*)parserData:(NSData *)aManifest
 {
     NSString *strData = [[NSString alloc] initWithData:aManifest encoding:NSUTF8StringEncoding];
     if (strData)
     {
-        [self parser:strData];
+       return [self parser:strData];
     }
+    return nil;
 }
 
--(void)parser:(NSString*)aManifest
+-(KCManifestObject*)parser:(NSString*)aManifest
 {
     m_manifestContent = aManifest;
     KCRetain(m_manifestContent);
     NSArray *lines = [aManifest componentsSeparatedByString: @"\n"];
     [self scanLine:lines];
+    
+    return m_manifestObject;
 }
+
+
 
 -(void)scanLine:(NSArray *)aLines
 {
@@ -187,6 +193,7 @@ typedef enum
             if (uri.components.scheme == nil)
             {
                 NSString* relativePath = uri.components.path;
+//                relativePath = [KCUtilURI removeDotSegments:relativePath];
                 m_manifestObject.mDekRelativePath = relativePath;
             }
             else if(uri.components.scheme && uri.components.host)
@@ -221,7 +228,7 @@ typedef enum
     [cacheList addObject:aLine];
     
     NSString* dir = kFileSeparator;
-    int index = [self lastIndexOf:aLine c:'/'];
+    int index = [KCString lastIndexOfChar:'/' str:aLine];
     if (index >= 0)
     {
         dir = [aLine substringToIndex:index+1];
@@ -234,22 +241,6 @@ typedef enum
     
     [m_cacheLines addObject:aLine];
 }
-
-
-- (int)lastIndexOf:(NSString*)aSrc c:(char)aChar
-{
-    if (!aSrc) return -1;
-    
-    int lenth = (int)aSrc.length;
-    for (int i = lenth-1; i >= 0; i--)
-    {
-        char c = [aSrc characterAtIndex:i];
-        if (aChar == c)
-            return i;
-    }
-    return -1;
-}
-
 
 - (BOOL)isInExtra:(NSString*)aFileName
 {

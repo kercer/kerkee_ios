@@ -80,7 +80,6 @@
 		DF8F35941BC7727A00C79B71 /* KCSandbox.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABBA1B9C17FC009F4775 /* KCSandbox.h */; };
 		DF8F35951BC7727A00C79B71 /* KCSingleton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABBC1B9C17FC009F4775 /* KCSingleton.h */; };
 		DF8F35961BC7727A00C79B71 /* KCTaskQueue.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABBE1B9C17FC009F4775 /* KCTaskQueue.h */; };
-		DF8F35971BC7727A00C79B71 /* NSArray+KCStack.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC01B9C17FC009F4775 /* NSArray+KCStack.h */; };
 		DF8F35981BC7727A00C79B71 /* NSData+HMAC.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC21B9C17FC009F4775 /* NSData+HMAC.h */; };
 		DF8F35991BC7727A00C79B71 /* NSDate+KCDate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC41B9C17FC009F4775 /* NSDate+KCDate.h */; };
 		DF8F359A1BC7727A00C79B71 /* NSObject+KCCoding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3ABC61B9C17FC009F4775 /* NSObject+KCCoding.h */; };
@@ -176,8 +175,6 @@
 		DFC3AC091B9C17FC009F4775 /* KCSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABBD1B9C17FC009F4775 /* KCSingleton.m */; };
 		DFC3AC0A1B9C17FC009F4775 /* KCTaskQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3ABBE1B9C17FC009F4775 /* KCTaskQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3AC0B1B9C17FC009F4775 /* KCTaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABBF1B9C17FC009F4775 /* KCTaskQueue.m */; };
-		DFC3AC0C1B9C17FC009F4775 /* NSArray+KCStack.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3ABC01B9C17FC009F4775 /* NSArray+KCStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DFC3AC0D1B9C17FC009F4775 /* NSArray+KCStack.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC11B9C17FC009F4775 /* NSArray+KCStack.m */; };
 		DFC3AC0E1B9C17FC009F4775 /* NSData+HMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3ABC21B9C17FC009F4775 /* NSData+HMAC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3AC0F1B9C17FC009F4775 /* NSData+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABC31B9C17FC009F4775 /* NSData+HMAC.m */; };
 		DFC3AC101B9C17FC009F4775 /* NSDate+KCDate.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3ABC41B9C17FC009F4775 /* NSDate+KCDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -247,6 +244,18 @@
 		DFD5455C1BF44A3200770ED0 /* KCModifier.h in Headers */ = {isa = PBXBuildFile; fileRef = DFD5455A1BF44A3200770ED0 /* KCModifier.h */; };
 		DFD5455D1BF44A3200770ED0 /* KCModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD5455B1BF44A3200770ED0 /* KCModifier.m */; };
 		DFD5455E1BF46DC100770ED0 /* KCModifier.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFD5455A1BF44A3200770ED0 /* KCModifier.h */; };
+		DFE100C81C1E6CFC00938E43 /* KCFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE100C61C1E6CFC00938E43 /* KCFileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFE100C91C1E6CFC00938E43 /* KCFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE100C71C1E6CFC00938E43 /* KCFileManager.m */; };
+		DFE100CA1C1E888F00938E43 /* KCFileManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE100C61C1E6CFC00938E43 /* KCFileManager.h */; };
+		DFE100CD1C1E9FFF00938E43 /* KCString.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE100CB1C1E9FFF00938E43 /* KCString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFE100CE1C1E9FFF00938E43 /* KCString.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE100CC1C1E9FFF00938E43 /* KCString.m */; };
+		DFE100CF1C1EA01400938E43 /* KCString.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE100CB1C1E9FFF00938E43 /* KCString.h */; };
+		DFE100D21C1EC47800938E43 /* KCUtilURI.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE100D01C1EC47800938E43 /* KCUtilURI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFE100D31C1EC47800938E43 /* KCUtilURI.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE100D11C1EC47800938E43 /* KCUtilURI.m */; };
+		DFE100D61C1EC8A300938E43 /* KCStack.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE100D41C1EC8A300938E43 /* KCStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFE100D71C1EC8A300938E43 /* KCStack.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE100D51C1EC8A300938E43 /* KCStack.m */; };
+		DFE100D81C1EC9D900938E43 /* KCStack.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE100D41C1EC8A300938E43 /* KCStack.h */; };
+		DFE100D91C1EC9F300938E43 /* KCUtilURI.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE100D01C1EC47800938E43 /* KCUtilURI.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +275,10 @@
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				DFE100D91C1EC9F300938E43 /* KCUtilURI.h in Copy Files */,
+				DFE100D81C1EC9D900938E43 /* KCStack.h in Copy Files */,
+				DFE100CF1C1EA01400938E43 /* KCString.h in Copy Files */,
+				DFE100CA1C1E888F00938E43 /* KCFileManager.h in Copy Files */,
 				DFC6335C1C198D5B008301F3 /* KCManifestObject.h in Copy Files */,
 				DFC6335B1C198D49008301F3 /* KCFetchManifest.h in Copy Files */,
 				DF7642691C1812270014789E /* KCAssert.h in Copy Files */,
@@ -287,7 +300,6 @@
 				DF8F35941BC7727A00C79B71 /* KCSandbox.h in Copy Files */,
 				DF8F35951BC7727A00C79B71 /* KCSingleton.h in Copy Files */,
 				DF8F35961BC7727A00C79B71 /* KCTaskQueue.h in Copy Files */,
-				DF8F35971BC7727A00C79B71 /* NSArray+KCStack.h in Copy Files */,
 				DF8F35981BC7727A00C79B71 /* NSData+HMAC.h in Copy Files */,
 				DF8F35991BC7727A00C79B71 /* NSDate+KCDate.h in Copy Files */,
 				DF8F359A1BC7727A00C79B71 /* NSObject+KCCoding.h in Copy Files */,
@@ -448,8 +460,6 @@
 		DFC3ABBD1B9C17FC009F4775 /* KCSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCSingleton.m; sourceTree = "<group>"; };
 		DFC3ABBE1B9C17FC009F4775 /* KCTaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCTaskQueue.h; sourceTree = "<group>"; };
 		DFC3ABBF1B9C17FC009F4775 /* KCTaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCTaskQueue.m; sourceTree = "<group>"; };
-		DFC3ABC01B9C17FC009F4775 /* NSArray+KCStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+KCStack.h"; sourceTree = "<group>"; };
-		DFC3ABC11B9C17FC009F4775 /* NSArray+KCStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KCStack.m"; sourceTree = "<group>"; };
 		DFC3ABC21B9C17FC009F4775 /* NSData+HMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HMAC.h"; sourceTree = "<group>"; };
 		DFC3ABC31B9C17FC009F4775 /* NSData+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HMAC.m"; sourceTree = "<group>"; };
 		DFC3ABC41B9C17FC009F4775 /* NSDate+KCDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+KCDate.h"; sourceTree = "<group>"; };
@@ -516,6 +526,14 @@
 		DFC633581C198629008301F3 /* KCManifestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCManifestObject.m; sourceTree = "<group>"; };
 		DFD5455A1BF44A3200770ED0 /* KCModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCModifier.h; sourceTree = "<group>"; };
 		DFD5455B1BF44A3200770ED0 /* KCModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCModifier.m; sourceTree = "<group>"; };
+		DFE100C61C1E6CFC00938E43 /* KCFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCFileManager.h; sourceTree = "<group>"; };
+		DFE100C71C1E6CFC00938E43 /* KCFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCFileManager.m; sourceTree = "<group>"; };
+		DFE100CB1C1E9FFF00938E43 /* KCString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCString.h; sourceTree = "<group>"; };
+		DFE100CC1C1E9FFF00938E43 /* KCString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCString.m; sourceTree = "<group>"; };
+		DFE100D01C1EC47800938E43 /* KCUtilURI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUtilURI.h; sourceTree = "<group>"; };
+		DFE100D11C1EC47800938E43 /* KCUtilURI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilURI.m; sourceTree = "<group>"; };
+		DFE100D41C1EC8A300938E43 /* KCStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCStack.h; sourceTree = "<group>"; };
+		DFE100D51C1EC8A300938E43 /* KCStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -624,6 +642,8 @@
 				DF765C231BA175E20025B0CC /* KCURIComponents.m */,
 				DF765C2A1BA1B5850025B0CC /* KCURI.h */,
 				DF765C2B1BA1B5850025B0CC /* KCURI.m */,
+				DFE100D01C1EC47800938E43 /* KCUtilURI.h */,
+				DFE100D11C1EC47800938E43 /* KCUtilURI.m */,
 			);
 			path = Uri;
 			sourceTree = "<group>";
@@ -813,6 +833,8 @@
 				DFC3ABB31B9C17FC009F4775 /* KCBaseDefine.h */,
 				DFC3ABB41B9C17FC009F4775 /* KCFileArchiver.h */,
 				DFC3ABB51B9C17FC009F4775 /* KCFileArchiver.m */,
+				DFE100C61C1E6CFC00938E43 /* KCFileManager.h */,
+				DFE100C71C1E6CFC00938E43 /* KCFileManager.m */,
 				DFC3ABB61B9C17FC009F4775 /* KCObject.h */,
 				DFC3ABB71B9C17FC009F4775 /* KCObject.m */,
 				DFC3ABB81B9C17FC009F4775 /* KCRuntime.h */,
@@ -823,8 +845,6 @@
 				DFC3ABBD1B9C17FC009F4775 /* KCSingleton.m */,
 				DFC3ABBE1B9C17FC009F4775 /* KCTaskQueue.h */,
 				DFC3ABBF1B9C17FC009F4775 /* KCTaskQueue.m */,
-				DFC3ABC01B9C17FC009F4775 /* NSArray+KCStack.h */,
-				DFC3ABC11B9C17FC009F4775 /* NSArray+KCStack.m */,
 				DFC3ABC21B9C17FC009F4775 /* NSData+HMAC.h */,
 				DFC3ABC31B9C17FC009F4775 /* NSData+HMAC.m */,
 				DFC3ABC41B9C17FC009F4775 /* NSDate+KCDate.h */,
@@ -845,6 +865,10 @@
 				DFC3ABD31B9C17FC009F4775 /* NSObject+KCTicker.m */,
 				DFC3ABD41B9C17FC009F4775 /* NSString+KCExtension.h */,
 				DFC3ABD51B9C17FC009F4775 /* NSString+KCExtension.m */,
+				DFE100CB1C1E9FFF00938E43 /* KCString.h */,
+				DFE100CC1C1E9FFF00938E43 /* KCString.m */,
+				DFE100D41C1EC8A300938E43 /* KCStack.h */,
+				DFE100D51C1EC8A300938E43 /* KCStack.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -964,7 +988,6 @@
 				DFC3ABAF1B9C17F2009F4775 /* UIWebView+KCClean.h in Headers */,
 				DFC3AC021B9C17FC009F4775 /* KCObject.h in Headers */,
 				DFC3ABA71B9C17F2009F4775 /* KCWebPath.h in Headers */,
-				DFC3AC0C1B9C17FC009F4775 /* NSArray+KCStack.h in Headers */,
 				DFC3AC121B9C17FC009F4775 /* NSObject+KCCoding.h in Headers */,
 				DFC3AC101B9C17FC009F4775 /* NSDate+KCDate.h in Headers */,
 				DFC3AB891B9C17F2009F4775 /* KCManifestParser.h in Headers */,
@@ -1007,7 +1030,11 @@
 				DF809CAC1B9D90FF008B315D /* KCApiBridge.h in Headers */,
 				DF7642631C18017B0014789E /* KCAssert.h in Headers */,
 				DFC633591C198629008301F3 /* KCManifestObject.h in Headers */,
+				DFE100C81C1E6CFC00938E43 /* KCFileManager.h in Headers */,
 				DFBB9E0E1BF0863F00921758 /* KCJSObject.h in Headers */,
+				DFE100D61C1EC8A300938E43 /* KCStack.h in Headers */,
+				DFE100CD1C1E9FFF00938E43 /* KCString.h in Headers */,
+				DFE100D21C1EC47800938E43 /* KCUtilURI.h in Headers */,
 				DFC633551C1985EF008301F3 /* KCFetchManifest.h in Headers */,
 				DF809CB61B9D90FF008B315D /* KCRegister.h in Headers */,
 				DFC3ABFF1B9C17FC009F4775 /* KCBaseDefine.h in Headers */,
@@ -1138,6 +1165,8 @@
 				DFC3AC231B9C17FC009F4775 /* KCCache.m in Sources */,
 				DFC3AC151B9C17FC009F4775 /* NSObject+KCNotification.m in Sources */,
 				DF44A1101B9FE5EA0045092E /* KCException.m in Sources */,
+				DFE100C91C1E6CFC00938E43 /* KCFileManager.m in Sources */,
+				DFE100D71C1EC8A300938E43 /* KCStack.m in Sources */,
 				DF765C291BA185D30025B0CC /* KCURIQuery.m in Sources */,
 				DFC6335A1C198629008301F3 /* KCManifestObject.m in Sources */,
 				DF809CB11B9D90FF008B315D /* KCArg.m in Sources */,
@@ -1166,7 +1195,6 @@
 				DF8A2FB21B9FFC4200BD7FB3 /* SSKeychain.m in Sources */,
 				DFD5455D1BF44A3200770ED0 /* KCModifier.m in Sources */,
 				DF809CB91B9D90FF008B315D /* KCClassParser.m in Sources */,
-				DFC3AC0D1B9C17FC009F4775 /* NSArray+KCStack.m in Sources */,
 				DFC3AC461B9C17FC009F4775 /* KCUtilURL.m in Sources */,
 				DF809CAD1B9D90FF008B315D /* KCApiBridge.m in Sources */,
 				DFC3ABB01B9C17F2009F4775 /* UIWebView+KCClean.m in Sources */,
@@ -1179,6 +1207,7 @@
 				DFC3AC381B9C17FC009F4775 /* KCMainBundle.m in Sources */,
 				DF809CB31B9D90FF008B315D /* KCArgList.m in Sources */,
 				DFC3ABAA1B9C17F2009F4775 /* KCWebView.m in Sources */,
+				DFE100CE1C1E9FFF00938E43 /* KCString.m in Sources */,
 				DFC3AC401B9C17FC009F4775 /* KCUtilGzip.m in Sources */,
 				DFC3AC111B9C17FC009F4775 /* NSDate+KCDate.m in Sources */,
 				DF765C1A1BA16C860025B0CC /* KCUriDispatcher.m in Sources */,
@@ -1193,6 +1222,7 @@
 				DFC3AC011B9C17FC009F4775 /* KCFileArchiver.m in Sources */,
 				DFC3AC071B9C17FC009F4775 /* KCSandbox.m in Sources */,
 				DF765C2D1BA1B5850025B0CC /* KCURI.m in Sources */,
+				DFE100D31C1EC47800938E43 /* KCUtilURI.m in Sources */,
 				DFC3ABA31B9C17F2009F4775 /* KCXMLHttpRequest.m in Sources */,
 				DF809CB51B9D90FF008B315D /* KCClass.m in Sources */,
 				DF75C2C51BB29BCA00CAD3CA /* KCJSExecutor.m in Sources */,

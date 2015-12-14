@@ -85,7 +85,15 @@
 
 -(void)testFetchManifest
 {
-    [KCFetchManifest fetchOneServerManifest:[KCURI parse:@"http://www.linzihong.com/test/html/manifest"]];
+    KCURI* uri = [KCURI parse:@"http://www.linzihong.com/test/html/manifest"];
+//    [KCFetchManifest fetchOneServerManifest:uri block:^(KCManifestObject *aManifestObject) {
+//    }];
+    
+    [KCFetchManifest fetchServerManifests:uri block:^(KCManifestObject *aManifestObject) {
+        
+        KCLog(@"%@", aManifestObject);
+    }];
+    
 }
 
 
