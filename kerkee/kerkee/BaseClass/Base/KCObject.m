@@ -217,7 +217,7 @@ Class nsArrayClass;
 {
     NSMutableDictionary *dic = [self toDictionary];
 	
-	return [NSString stringWithFormat:@"#<%@: id = %@ %@>", [self class], self.objectId, [dic description]];
+	return [NSString stringWithFormat:@"#<%@: id = %@ \n%@>", [self class], self.objectId, [dic description]];
 }
 
 - (BOOL)isEqual:(id)object

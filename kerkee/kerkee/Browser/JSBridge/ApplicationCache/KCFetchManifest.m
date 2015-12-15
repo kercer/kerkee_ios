@@ -107,17 +107,27 @@
 }
 
 
++ (NSString*)toLocalManifestPath:(KCURI*)aUri
+{
+    NSString* strPath = aUri.URL.path;
+    return strPath;
+}
+
 + (KCManifestObject*)fetchOneLocalManifest:(KCURI*)aUri
 {
     if (aUri)
     {
-        NSString* strUrl = aUri.URL.absoluteString;
-        if ([KCFileManager exists:strUrl])
+        NSString* strPath = [self toLocalManifestPath:aUri];
+        if ([KCFileManager exists:strPath])
         {
             NSError* error = nil;
-            NSData* data = [KCFileManager readFileAsData:strUrl error:&error];
+            NSData* data = [KCFileManager readFileAsData:strPath error:&error];
             KCManifestParser* parser = [[KCManifestParser alloc] init];
             KCManifestObject* manifestObject = [parser parserData:data];
+            if (manifestObject)
+            {
+                manifestObject.mDestDir = [strPath substring:0 end:[strPath lastIndexOf:kFileSeparator]+1];
+            }
             return manifestObject;
         }
     }
@@ -125,9 +135,49 @@
 }
 + (void)fetchOneLocalManifest:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock
 {
+    BACKGROUND_GLOBAL_BEGIN(PRIORITY_HIGH)
     KCManifestObject* manifestObject = [self fetchOneLocalManifest:aUri];
+    FOREGROUND_BEGIN
     if (aBlock)
         aBlock(manifestObject);
+    FOREGROUND_COMMIT
+    BACKGROUND_GLOBAL_COMMIT
+}
+
++ (void)fetchLocalManifests:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock
+{
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+    [self fetchLocalManifests:aUri outManifests:dic block:aBlock];
+}
+
++ (void)fetchLocalManifests:(KCURI*)aUri outManifests:(NSMutableDictionary*)aOutMapManifestObjects block:(void(^)(KCManifestObject* aManifestObject))aBlock
+{
+    if (aOutMapManifestObjects == NULL) return;
+    
+    [self fetchOneLocalManifest:aUri block:^(KCManifestObject *aManifestObject) {
+        KCManifestObject* mo = aManifestObject;
+        if (mo)
+        {
+            NSString* strPath = [self toLocalManifestPath:aUri];
+            [aOutMapManifestObjects setObject:mo forKey:strPath];
+            
+            if (aBlock)
+                aBlock(mo);
+            
+            NSArray* subManifests = mo.mSubManifests;
+            if (subManifests)
+            {
+                for (int i = 0; i < subManifests.count; i++)
+                {
+                    NSString* subPathManifest = subManifests[i];
+                    subPathManifest = [subPathManifest stringByReplacingOccurrencesOfString:@"./" withString:@""];
+                    NSString* subFullPath = [NSString stringWithFormat:@"%@%@", mo.mDestDir, subPathManifest];
+                    
+                    [self fetchLocalManifests:[KCURI parse:subFullPath] outManifests:aOutMapManifestObjects block:aBlock];
+                }
+            }
+        }
+    }];
 }
 
 

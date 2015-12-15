@@ -88,6 +88,19 @@
     return -1;
 }
 
+- (int)lastIndexOfStringWithChar:(char)aChar
+{
+    
+    int lenth = (int)self.length;
+    for (int i = lenth-1; i >= 0; i--)
+    {
+        char c = [self characterAtIndex:i];
+        if (aChar == c)
+            return i;
+    }
+    return -1;
+}
+
 - (int)lastIndexOf:(NSString*)aSearch
 {
     NSRange range = [self rangeOfString:aSearch options:NSBackwardsSearch];

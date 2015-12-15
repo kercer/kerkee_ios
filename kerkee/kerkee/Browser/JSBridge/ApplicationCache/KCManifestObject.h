@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KCObject.h"
 
-@interface KCManifestObject : NSObject
+@interface KCManifestObject : KCObject
 
 
 @property (nonatomic, retain) NSString* mVersion;// version

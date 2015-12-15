@@ -241,9 +241,10 @@
     {
         [string appendString:scheme];
         [string appendString:@":"];
+        [string appendString:@"//"];
     }
     
-    if (hasAuthorityComponent) [string appendString:@"//"];
+//    if (hasAuthorityComponent) [string appendString:@"//"];
     
     if (user) [string appendString:user];
     

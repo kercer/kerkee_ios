@@ -313,7 +313,11 @@ DEF_SINGLETON(KCImageCache);
     image = [UIImage imageWithContentsOfFile:path];
     if (image != nil)
     {
-        [self.m_dicImages setObject:image forKey:key];
+        @synchronized(self)
+        {
+            [self.m_dicImages setObject:image forKey:key];
+        }
+        
         return;
     }
 }

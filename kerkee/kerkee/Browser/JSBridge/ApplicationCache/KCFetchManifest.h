@@ -12,13 +12,18 @@
 
 @interface KCFetchManifest : NSObject
 
+#pragma mark - fetch server manifest
+//fetch one manifest file from server
 + (void)fetchOneServerManifest:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock;
-
+//fetch all association manifest from server
 + (void)fetchServerManifests:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock;
 
+#pragma mark - fetch local manifest
+//fetch one manifest file from local
 + (KCManifestObject*)fetchOneLocalManifest:(KCURI*)aUri;
 + (void)fetchOneLocalManifest:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock;
-
+//fetch all association manifest from local
++ (void)fetchLocalManifests:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock;
 
 
 @end
