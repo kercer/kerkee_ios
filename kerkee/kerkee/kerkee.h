@@ -28,7 +28,6 @@ FOUNDATION_EXPORT const unsigned char kerkeeVersionString[];
 #import "KCSandbox.h"
 #import "KCSingleton.h"
 #import "KCTaskQueue.h"
-#import "NSArray+KCStack.h"
 #import "NSData+HMAC.h"
 #import "NSDate+KCDate.h"
 #import "NSObject+KCCoding.h"

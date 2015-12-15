@@ -11,7 +11,6 @@
 #import "NSObject+KCTicker.h"
 #import "KCSingleton.h"
 #import "KCBaseDefine.h"
-#import "NSArray+KCStack.h"
 #import <objc/runtime.h>
 
 #pragma mark -
@@ -113,7 +112,7 @@ DEF_SINGLETON( KCTicker )
 {
 	if ( NO == [m_receives containsObject:obj] )
 	{
-		[m_receives addObjectNoRetain:obj];
+		[m_receives addObject:obj];
         
 		if ( nil == m_timer )
 		{
@@ -127,7 +126,7 @@ DEF_SINGLETON( KCTicker )
 
 - (void)removeReceive:(NSObject *)obj
 {
-	[m_receives removeObjectNoRelease:obj];
+	[m_receives removeObject:obj];
     
 	if ( 0 == m_receives.count )
 	{
@@ -163,7 +162,7 @@ DEF_SINGLETON( KCTicker )
 	[m_timer invalidate];
 	m_timer = nil;
     
-	[m_receives removeAllObjectsNoRelease];
+	[m_receives removeAllObjects];
     KCRelease(m_receives);
     
 	KCDealloc(super);
