@@ -18,7 +18,7 @@
 #define VersionFullName @"versionFullName"
 
 #define GUUID_SELF @"GUUID_SELF"
-#define UUID_SELF @"GUUID_SELF"
+#define UUID_SELF @"UUID_SELF"
 
 @implementation KCMainBundle
 
