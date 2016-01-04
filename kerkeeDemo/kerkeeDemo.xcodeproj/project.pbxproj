@@ -34,10 +34,10 @@
 		DF83DC871B95CA95003E3F91 /* KCPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC801B95CA95003E3F91 /* KCPlatform.m */; };
 		DF83DC881B95CA95003E3F91 /* KCUrlMaping.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */; };
 		DF83DC891B95CA95003E3F91 /* KCWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC851B95CA95003E3F91 /* KCWidget.m */; };
+		DF9BCE4F1C3A5E3C0097A767 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */; };
 		DFBB9E111BF08BF500921758 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8F35851BC7719500C79B71 /* kerkee.framework */; };
 		DFBB9E121BF08BF500921758 /* kerkee.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF8F35851BC7719500C79B71 /* kerkee.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFBB9E1F1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBB9E1E1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m */; };
-		DFC3ACCC1B9C284F009F4775 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC3ACCB1B9C284F009F4775 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,9 +140,9 @@
 		DF83DC841B95CA95003E3F91 /* KCWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWidget.h; sourceTree = "<group>"; };
 		DF83DC851B95CA95003E3F91 /* KCWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWidget.m; sourceTree = "<group>"; };
 		DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerkee.xcodeproj; path = ../kerkee/kerkee.xcodeproj; sourceTree = "<group>"; };
+		DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DFBB9E1D1BF0A82500921758 /* KCApiOverrideJSBridgeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiOverrideJSBridgeClient.h; sourceTree = "<group>"; };
 		DFBB9E1E1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiOverrideJSBridgeClient.m; sourceTree = "<group>"; };
-		DFC3ACCB1B9C284F009F4775 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFC3ACCC1B9C284F009F4775 /* libz.dylib in Frameworks */,
+				DF9BCE4F1C3A5E3C0097A767 /* libz.tbd in Frameworks */,
 				DFBB9E111BF08BF500921758 /* kerkee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,8 +168,8 @@
 		DF83DA771B959D2A003E3F91 = {
 			isa = PBXGroup;
 			children = (
+				DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */,
 				DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */,
-				DFC3ACCB1B9C284F009F4775 /* libz.dylib */,
 				DF83DC7C1B95CA95003E3F91 /* kerkeeSDK */,
 				DF83DC501B95A45E003E3F91 /* api */,
 				DF83DC4B1B95A441003E3F91 /* assets */,

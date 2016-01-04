@@ -138,6 +138,7 @@
 		DF8F35CF1BC7727A00C79B71 /* KCWebViewProxy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB851B9C17F2009F4775 /* KCWebViewProxy.h */; };
 		DF8F35D01BC7727A00C79B71 /* UIWebView+KCClean.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB871B9C17F2009F4775 /* UIWebView+KCClean.h */; };
 		DF8F35D11BC7727A00C79B71 /* kerkee.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF30750A1B959B01005AA030 /* kerkee.h */; };
+		DF9BCE511C3A5E800097A767 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9BCE501C3A5E800097A767 /* libz.tbd */; };
 		DFBB9E0E1BF0863F00921758 /* KCJSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = DFBB9E0C1BF0863F00921758 /* KCJSObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFBB9E0F1BF0863F00921758 /* KCJSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBB9E0D1BF0863F00921758 /* KCJSObject.m */; };
 		DFBB9E1B1BF0904600921758 /* KCJSObject.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFBB9E0C1BF0863F00921758 /* KCJSObject.h */; };
@@ -232,7 +233,6 @@
 		DFC3AC441B9C17FC009F4775 /* KCUtilNet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABFC1B9C17FC009F4775 /* KCUtilNet.m */; };
 		DFC3AC451B9C17FC009F4775 /* KCUtilURL.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3AC461B9C17FC009F4775 /* KCUtilURL.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABFE1B9C17FC009F4775 /* KCUtilURL.m */; };
-		DFC3ACC41B9C18AD009F4775 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC3ACC31B9C18AD009F4775 /* libz.dylib */; };
 		DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC6334A1C195EDF008301F3 /* KCUtilJson.h */; };
 		DFC6334D1C195EDF008301F3 /* KCUtilJson.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC6334B1C195EDF008301F3 /* KCUtilJson.m */; };
 		DFC633551C1985EF008301F3 /* KCFetchManifest.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC633531C1985EF008301F3 /* KCFetchManifest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -424,6 +424,7 @@
 		DF8A2FAC1B9FFC4200BD7FB3 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
 		DF8A2FAE1B9FFC4200BD7FB3 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		DF9BCE501C3A5E800097A767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DFBB9E0C1BF0863F00921758 /* KCJSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSObject.h; sourceTree = "<group>"; };
 		DFBB9E0D1BF0863F00921758 /* KCJSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSObject.m; sourceTree = "<group>"; };
 		DFC3AB5B1B9C17F2009F4775 /* KCManifestParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCManifestParser.h; sourceTree = "<group>"; };
@@ -517,7 +518,6 @@
 		DFC3ABFC1B9C17FC009F4775 /* KCUtilNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilNet.m; sourceTree = "<group>"; };
 		DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUtilURL.h; sourceTree = "<group>"; };
 		DFC3ABFE1B9C17FC009F4775 /* KCUtilURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilURL.m; sourceTree = "<group>"; };
-		DFC3ACC31B9C18AD009F4775 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DFC6334A1C195EDF008301F3 /* KCUtilJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUtilJson.h; sourceTree = "<group>"; };
 		DFC6334B1C195EDF008301F3 /* KCUtilJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilJson.m; sourceTree = "<group>"; };
 		DFC633531C1985EF008301F3 /* KCFetchManifest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCFetchManifest.h; sourceTree = "<group>"; };
@@ -541,7 +541,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFC3ACC41B9C18AD009F4775 /* libz.dylib in Frameworks */,
+				DF9BCE511C3A5E800097A767 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,7 +559,7 @@
 		DF3074FB1B959B01005AA030 = {
 			isa = PBXGroup;
 			children = (
-				DFC3ACC31B9C18AD009F4775 /* libz.dylib */,
+				DF9BCE501C3A5E800097A767 /* libz.tbd */,
 				DF3075071B959B01005AA030 /* kerkee */,
 				DF3075141B959B01005AA030 /* kerkeeTests */,
 				DF3075061B959B01005AA030 /* Products */,
