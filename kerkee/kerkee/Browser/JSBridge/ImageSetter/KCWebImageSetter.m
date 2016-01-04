@@ -60,8 +60,7 @@
     
     if ([KCUtilURL isImageUrl:url])
     {
-        __weak KCImagePreCache* cache = m_imageCacheManager;
-//        __block KCImagePreCache* cache = m_imageCacheManager;
+        __block KCImagePreCache* cache = m_imageCacheManager;
         [KCWebViewProxy handleRequestsWithHost:url.host path:url.path handler:^(NSURLRequest *req, KCWebViewResponse *res)
          {
              BACKGROUND_GLOBAL_BEGIN(PRIORITY_BACKGROUND);
