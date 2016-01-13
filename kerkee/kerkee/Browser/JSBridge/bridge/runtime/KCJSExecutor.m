@@ -26,21 +26,16 @@
  */
 + (NSString *)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview
 {
-    //NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, jsonObj.JSONString];
+    NSString* result = @"";
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonObj options:0 error:nil] encoding:NSUTF8StringEncoding];
+    if (!json) return result;
     NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, json];
     KCAutorelease(json);
     KCAutorelease(js);
-    return [webview stringByEvaluatingJavaScriptFromString:js];
+    if (js)
+        result = [webview stringByEvaluatingJavaScriptFromString:js];
+    return result;
 }
-
-
-//+ (NSString *)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj
-//{
-//    NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonObj options:0 error:nil] encoding:NSUTF8StringEncoding];
-//    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, json];
-//    return [[KCApiBridge sharedInstance].m_webView stringByEvaluatingJavaScriptFromString:js];
-//}
 
 
 + (void)callJSFunctionOnMainThread:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview

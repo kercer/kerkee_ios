@@ -14,7 +14,6 @@
 
 
 + (NSString *)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview;
-//+ (NSString *)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj;
 
 + (void)callJSFunctionOnMainThread:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview;
 + (void)callJSOnMainThread:(NSString *)js WebView:(KCWebView*)webview;
