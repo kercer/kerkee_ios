@@ -28,7 +28,7 @@
 	zlibStreamStruct.opaque = Z_NULL;
 	zlibStreamStruct.total_out = 0;
 	zlibStreamStruct.next_in = (Bytef *)[pUncompressedData bytes];
-	zlibStreamStruct.avail_in = [pUncompressedData length];
+	zlibStreamStruct.avail_in = (uInt)[pUncompressedData length];
 	
 	int initError = deflateInit2(&zlibStreamStruct, Z_DEFAULT_COMPRESSION, Z_DEFLATED, (15+16), 8, Z_DEFAULT_STRATEGY);
 	if (initError != Z_OK) {
@@ -56,7 +56,7 @@
 	int deflateStatus;
 	do {
 		zlibStreamStruct.next_out = [compressedData mutableBytes] + zlibStreamStruct.total_out;
-		zlibStreamStruct.avail_out = [compressedData length] - zlibStreamStruct.total_out;
+		zlibStreamStruct.avail_out =(uInt)( [compressedData length] - zlibStreamStruct.total_out);
 		deflateStatus = deflate(&zlibStreamStruct, Z_FINISH);
 				
 	} while (deflateStatus == Z_OK);
@@ -117,7 +117,7 @@
 	
     strm.next_in = (Bytef *)[compressedData bytes];  
 	
-    strm.avail_in = [compressedData length];  
+    strm.avail_in =(uInt) [compressedData length];
 	
     strm.total_out = 0;  
 	
@@ -133,7 +133,7 @@
             [decompressed increaseLengthBy: half_length];  
         }  
         strm.next_out = [decompressed mutableBytes] + strm.total_out;  
-        strm.avail_out = [decompressed length] - strm.total_out;  
+        strm.avail_out = (uInt) ([decompressed length] - strm.total_out);
         // Inflate another chunk.  
         status = inflate (&strm, Z_SYNC_FLUSH);  
         if (status == Z_STREAM_END) {  

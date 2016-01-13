@@ -67,7 +67,7 @@
     NSAssert([self isValidPolicy:aPolicy],@"POLICY must be valid.");
     
     // associate object
-    objc_setAssociatedObject(self, aKey, aProperty, aPolicy);
+    objc_setAssociatedObject(self, aKey, aProperty, (objc_AssociationPolicy)aPolicy);
 }
 
 - (id)getPropertyForKey:(char const * const)aKey

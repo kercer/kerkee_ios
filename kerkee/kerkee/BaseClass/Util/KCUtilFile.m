@@ -230,7 +230,7 @@
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     struct statfs tStats;
-    statfs([[paths lastObject] cString], &tStats);
+    statfs([[paths lastObject] UTF8String], &tStats);
     unsigned long long totalSpace = (unsigned long long)(tStats.f_blocks * tStats.f_bsize);
     
     return totalSpace;

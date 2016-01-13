@@ -87,7 +87,7 @@
         {
             if (delegate && [delegate respondsToSelector:aSelector])
             {
-                [delegate performSelectorWithArgs:aSelector withObjectFormat:format arguments:argList];
+                [delegate performSelectorWithArgs:aSelector, format, argList, nil];
             }
         }
     }

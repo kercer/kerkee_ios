@@ -27,7 +27,7 @@
     while(!done)
     {
         NSData* fileData = [handle readDataOfLength: 256 ];
-        CC_MD5_Update(&md5, [fileData bytes], [fileData length]);
+        CC_MD5_Update(&md5, [fileData bytes], (CC_LONG)[fileData length]);
         if( [fileData length] == 0 ) done = YES;
     }
     
@@ -50,7 +50,7 @@
 + (NSData *)MD5:(NSData*)data
 {
 	unsigned char md5Result[CC_MD5_DIGEST_LENGTH + 1];
-	CC_MD5( [data bytes], [data length], md5Result );
+	CC_MD5( [data bytes], (CC_LONG)[data length], md5Result );
     
 	NSMutableData * retData = [[NSMutableData alloc] init];
     KCAutorelease(retData);
