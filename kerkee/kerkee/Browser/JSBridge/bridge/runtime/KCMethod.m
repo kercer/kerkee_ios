@@ -10,6 +10,7 @@
 #import "KCMethod.h"
 #import "KCBaseDefine.h"
 #import "NSObject+KCSelector.h"
+#import <objc/runtime.h>
 
 @interface KCMethod()
 {

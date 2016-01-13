@@ -14,6 +14,8 @@
 #import "KCWebImageSetterTask.h"
 #import "UIWebView+KCClean.h"
 #import "KCApiBridge.h"
+#import <objc/runtime.h>
+#import "KCLog.h"
 
 
 @class WebView;

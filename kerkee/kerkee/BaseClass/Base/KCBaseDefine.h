@@ -13,8 +13,6 @@
 #  import <Foundation/Foundation.h>
 #endif
 
-#import "KCLog.h"
-
 #if ! __has_feature(objc_arc)
     #define KCAutorelease(__v) ([__v autorelease]);
     #define KCReturnAutoreleased KCAutorelease
@@ -33,7 +31,7 @@
     #define KCRetain(__v)
     #define KCReturnRetained(__v) (__v)
 
-    #define KCRelease(__v) ([__v class])    //([__v class]) 只为了去掉该变量未使用的警告，无其他意义 lijian
+    #define KCRelease(__v) ([__v class])
 
     #define KCDealloc(__v) ([__v class])
 #endif
@@ -65,8 +63,8 @@
 #define __KC_MODLE_TEST__				(__OFF__)
 
 #define __KC_LOG__						(__ON__)
-//#define __KC_LOG__Brief__               (__OFF__)
-#define __KC_LOG__FILE__			    (__OFF__)
+#define __KC_LOG__Brief__               (__OFF__)
+#define __KC_LOG__FILE__			    (__ON__)
 
 #pragma mark -
 #if defined(__KC_LOG__) && __KC_LOG__
@@ -120,5 +118,8 @@ _Pragma("clang diagnostic ignored \"-Wunused-parameter\"") \
 KC_EXTERN NSException *_KCNotImplementedException(SEL, Class); \
 method NS_UNAVAILABLE { @throw _KCNotImplementedException(_cmd, [self class]); } \
 _Pragma("clang diagnostic pop")
+
+
+#import "KCLog.h"
 
 #endif

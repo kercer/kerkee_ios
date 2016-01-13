@@ -161,11 +161,11 @@ extern "C" {
 #endif
 
 
-//#if __KC_LOG__Brief__
-//    #  define KCLog(fmt, ...) KCLogBrief(fmt, ##__VA_ARGS__)
-//#else
+#if __KC_LOG__Brief__
+    #  define KCLog(fmt, ...) KCLogBrief(fmt, ##__VA_ARGS__)
+#else
     #  define KCLog(fmt, ...) KCLoger(fmt, ##__VA_ARGS__)
-//#endif
+#endif
     
 
 #  define KCLoger(fmt, ...) KCLogBrief((@"%s #%d\n\t\t" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)

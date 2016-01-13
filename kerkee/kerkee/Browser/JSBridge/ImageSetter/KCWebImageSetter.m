@@ -15,6 +15,7 @@
 #import "KCWebViewProxy.h"
 #import "KCUtilURL.h"
 #import "KCTaskQueue.h"
+#import "KCLog.h"
 
 @interface KCWebImageSetter ()
 {
@@ -63,34 +64,16 @@
         __block KCImagePreCache* cache = m_imageCacheManager;
         [KCWebViewProxy handleRequestsWithHost:url.host path:url.path handler:^(NSURLRequest *req, KCWebViewResponse *res)
          {
-             BACKGROUND_GLOBAL_BEGIN(PRIORITY_BACKGROUND);
+             __block KCWebViewResponse* webviewResponse = res;
+             BACKGROUND_BEGIN
              [cache prepareImage:url keepMemoryCache:NO usingBlock:^(UIImage *image, NSString *path, BOOL isFromCached)
               {
-                  [res respondWithImage:image];
+                  [webviewResponse respondWithImage:image];
               }];
-             BACKGROUND_GLOBAL_COMMIT
+             BACKGROUND_COMMIT
              
          }];
-        
-        
-//        if([url.scheme isEqualToString:@"http"])
-//        {
-//            [UCWebViewProxy handleRequestsWithHost:url.host path:url.path handler:^(NSURLRequest *req, UCWebViewResponse *res) {
-///                [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:req.URL] queue:queue completionHandler:^(NSURLResponse *netRes, NSData *data, NSError *netErr) {
-////                    if (netErr || ((NSHTTPURLResponse*)netRes).statusCode >= 400) { return [res respondWithError:500 text:@":("]; }
-////                    [res respondWithData:data mimeType:@"image/png"];
-        ////                }];
-//
-//                NSString* filePath = [[NSBundle mainBundle] pathForResource:@"Icon" ofType:@"png"];
-//                UIImage* image = [UIImage imageWithContentsOfFile:filePath];
-//                [res respondWithImage:image];
-//            }];
-//        }
     }
-    
-    //KCLog(@"\n-----------------------\n%@\n-----------------------\n", url.absoluteString);
-    
-    
 }
 
 
