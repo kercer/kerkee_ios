@@ -112,16 +112,21 @@ DEF_SINGLETON(KCImageCache);
 {
 	NSMutableArray* blocks = [self.m_dicLoadingImages objectForKey:key];
 
-	for (UCImageCacheBlock block in blocks)
-	{
-		// It is possible for the block to replace the image with another one;
-		// for example, it may do post-processing and put the processed image
-		// back into the cache under the same key. Because the image may be
-		// changed out from under us, we must look it up anew on every loop.
-		block([self.m_dicImages objectForKey:key]);
-	}
+    if (blocks)
+    {
+        for (UCImageCacheBlock block in blocks)
+        {
+            // It is possible for the block to replace the image with another one;
+            // for example, it may do post-processing and put the processed image
+            // back into the cache under the same key. Because the image may be
+            // changed out from under us, we must look it up anew on every loop.
+            if (block)
+                block([self.m_dicImages objectForKey:key]);
+        }
+        
+        [self.m_dicLoadingImages removeObjectForKey:key];
 
-	[self.m_dicLoadingImages removeObjectForKey:key];
+    }
 }
 
 - (void)imageFromURL:(NSURL*)url usingBlock:(UCImageCacheBlock)block
