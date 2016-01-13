@@ -305,12 +305,14 @@ static NSPredicate* webViewProxyLoopDetection;
 {
     @synchronized(self)
     {
+        if (!requestMatchers) return nil;
         NSArray* requestMatchersTmp = [requestMatchers copy];
+        if (!requestMatchersTmp) return nil;
         unsigned long count = requestMatchersTmp.count;
         for (int i = 0 ; i < count; ++i)
         {
             KCWebViewRequestMatcher* requestMatcher = [requestMatchersTmp objectAtIndex:i];
-            if ([requestMatcher.predicate evaluateWithObject:url])
+            if (requestMatcher && [requestMatcher.predicate evaluateWithObject:url])
             {
                 return requestMatcher;
             }
