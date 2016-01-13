@@ -71,10 +71,12 @@ static NSPredicate* webViewProxyLoopDetection;
 #pragma mark High level API
 - (void)respondWithImage:(KCWebImageType *)aImage
 {
+    if (!aImage) return;
     [self respondWithImage:aImage mimeType:nil];
 }
 - (void)respondWithImage:(KCWebImageType *)aImage mimeType:(NSString *)aMimeType
 {
+    if (!aImage) return;
     if (!aMimeType)
     {
         NSString* extension = m_protocol.request.URL.pathExtension;
@@ -260,6 +262,8 @@ static NSPredicate* webViewProxyLoopDetection;
 // iOS Version
 - (void)_respondWithImage:(UIImage*)aImage mimeType:(NSString*)aMimeType
 {
+    if (!aImage) return;
+    
     NSData* data;
     if ([aMimeType isEqualToString:@"image/jpg"])
     {

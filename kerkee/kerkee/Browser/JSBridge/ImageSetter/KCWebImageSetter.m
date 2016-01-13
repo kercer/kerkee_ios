@@ -68,7 +68,8 @@
              BACKGROUND_BEGIN
              [cache prepareImage:url keepMemoryCache:NO usingBlock:^(UIImage *image, NSString *path, BOOL isFromCached)
               {
-                  [webviewResponse respondWithImage:image];
+                  if (image)
+                      [webviewResponse respondWithImage:image];
               }];
              BACKGROUND_COMMIT
              
