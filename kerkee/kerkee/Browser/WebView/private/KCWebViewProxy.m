@@ -264,7 +264,7 @@ static NSPredicate* webViewProxyLoopDetection;
 {
     if (!aImage) return;
     
-    NSData* data;
+    NSData* data = nil;
     if ([aMimeType isEqualToString:@"image/jpg"])
     {
         data = UIImageJPEGRepresentation(aImage, 1.0);
@@ -273,7 +273,9 @@ static NSPredicate* webViewProxyLoopDetection;
     {
         data = UIImagePNGRepresentation(aImage);
     }
-    [self respondWithData:data mimeType:aMimeType];
+    
+    if (data)
+        [self respondWithData:data mimeType:aMimeType];
 }
 - (NSString*)_contentLength:(NSData*)aData
 {
