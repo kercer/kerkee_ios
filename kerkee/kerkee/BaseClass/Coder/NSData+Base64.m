@@ -278,7 +278,7 @@ char *NewBase64Encode(
 //
 - (NSString *)base64EncodedString
 {
-	size_t outputLength;
+	size_t outputLength = 0;
 	char *outputBuffer =
 		NewBase64Encode([self bytes], [self length], true, &outputLength);
 	

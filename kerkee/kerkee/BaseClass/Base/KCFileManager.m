@@ -1104,6 +1104,7 @@
         CGImageSourceRef sourceRef = CGImageSourceCreateWithURL((CFURLRef)url, NULL);
         NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(sourceRef, 0, NULL));
         
+        CFRelease(sourceRef);
         return metadata;
     }
     

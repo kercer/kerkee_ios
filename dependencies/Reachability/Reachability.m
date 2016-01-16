@@ -100,6 +100,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     {
         id reachability = [[self alloc] initWithReachabilityRef:ref];
 
+        CFAutorelease(ref);
         return reachability;
     }
     
@@ -112,7 +113,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     if (ref) 
     {
         id reachability = [[self alloc] initWithReachabilityRef:ref];
-        
+        CFAutorelease(ref);
         return reachability;
     }
     
@@ -152,6 +153,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         self.reachableOnWWAN = YES;
         self.reachabilityRef = ref;
 
+        CFRetain(self.reachabilityRef);
         // We need to create a serial queue.
         // We allocate this once for the lifetime of the notifier.
 

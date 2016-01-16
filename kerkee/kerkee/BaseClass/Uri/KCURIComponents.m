@@ -141,6 +141,7 @@
         CFStringRef path = CFStringCreateWithSubstring(NULL, CFURLGetString((CFURLRef)aUrl), pathRange);
         self.percentEncodedPath = (__bridge NSString *)path;
         self.percentEncodedPath = [KCUtilURI removeDotSegments:self.percentEncodedPath];
+        CFRelease(path);
     }
     
     CFStringRef query = CFURLCopyQueryString((CFURLRef)aUrl, NULL);
