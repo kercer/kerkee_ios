@@ -188,7 +188,8 @@
 }
 -(void)fetchComplete:(KCXMLHttpRequest*)xmlHttpRequest responseData:(NSDictionary*)aResponseData
 {
-    [self writeCached:xmlHttpRequest propertiesData:aResponseData];
+    if (aResponseData)
+        [self writeCached:xmlHttpRequest propertiesData:aResponseData];
     [self freeXMLHttpRequestObject:[xmlHttpRequest objectId]];
 }
 -(void)fetchFailed:(KCXMLHttpRequest*)xmlHttpRequest didFailWithError:(NSError *)error
