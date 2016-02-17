@@ -80,6 +80,8 @@
     
     float m_threshold;
     BOOL m_ignoreScroll;
+    
+    BOOL m_isPageScrollOn;
 }
 @property (nonatomic,weak)id m_attach;
 
@@ -101,6 +103,7 @@ static int createWebViewID = 0;
         m_webViewID = createWebViewID++;
         m_imageSetter = [[KCWebImageSetter alloc] init];
         m_threshold = 0;
+        m_isPageScrollOn = false;
         
 //        // Add observer for scroll
 //        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
@@ -116,6 +119,7 @@ static int createWebViewID = 0;
         m_webViewID = createWebViewID++;
         m_imageSetter = [[KCWebImageSetter alloc] init];
         m_threshold = 0;
+        m_isPageScrollOn = false;
     }
     return self;
 }
@@ -414,13 +418,24 @@ static int createWebViewID = 0;
     [super scrollViewDidScroll:scrollView];
 //    NSLog(@"ContentOffset  x is  %f,y is %f",scrollView.contentOffset.x,scrollView.contentOffset.y);
     
-    float bottomHeight = scrollView.contentOffset.y + self.frame.size.height;
+    
+    CGFloat scrollX = scrollView.contentOffset.x;
+    CGFloat scrollY = scrollView.contentOffset.y;
+    CGFloat width = self.frame.size.width;
+    CGFloat height = self.frame.size.height;
+    
+    if (m_isPageScrollOn)
+    {
+        [KCApiBridge callbackJSOnPageScroll:self x:scrollX y:scrollY width:width height:height];
+    }
+    
+    float bottomHeight = scrollY + height;
     float contentHeight = self.scrollView.contentSize.height;
     if (bottomHeight >= contentHeight - m_threshold)
     {
         if (!m_ignoreScroll)
         {
-           [KCApiBridge callbackJSOnHitPageBottom:self];
+           [KCApiBridge callbackJSOnHitPageBottom:self y:scrollY];
             m_ignoreScroll = true;
         }
         
@@ -439,7 +454,10 @@ static int createWebViewID = 0;
     m_threshold = aThreshold;
 }
 
-
+- (void)setIsPageScrollOn:(BOOL)aIsPageScrollOn
+{
+    m_isPageScrollOn = aIsPageScrollOn;
+}
 
 #pragma mark -
 #pragma mark api

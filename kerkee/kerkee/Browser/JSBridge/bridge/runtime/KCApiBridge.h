@@ -30,7 +30,8 @@
 
 //- (void)destroy;// destroy webview
 
-+ (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView;
++ (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView y:(CGFloat)aY;
++ (void)callbackJSOnPageScroll:(KCWebView*)aWebView x:(CGFloat)aX y:(CGFloat)aY width:(CGFloat)aWidth height:(CGFloat)aHeight;
 
 
 @end

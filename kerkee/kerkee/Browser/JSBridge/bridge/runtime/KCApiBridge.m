@@ -275,13 +275,23 @@ static NSString* m_js = nil;
     }
 }
 
-
-#pragma mark - 
-+ (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView
++ (void)setPageScroll:(KCWebView*)aWebView argList:(KCArgList *)aArgList
 {
-    [KCJSExecutor callJSOnMainThread:@"if(jsBridgeClient && jsBridgeClient.onHitPageBottom) jsBridgeClient.onHitPageBottom()" WebView:aWebView];
+    [aWebView setIsPageScrollOn:YES];
 }
 
+#pragma mark - 
++ (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView y:(CGFloat)aY
+{
+    NSString* js = [NSString stringWithFormat:@"if(jsBridgeClient && jsBridgeClient.onHitPageBottom) jsBridgeClient.onHitPageBottom(%f)", aY];
+    [KCJSExecutor callJSOnMainThread:js WebView:aWebView];
+}
+
++ (void)callbackJSOnPageScroll:(KCWebView*)aWebView x:(CGFloat)aX y:(CGFloat)aY width:(CGFloat)aWidth height:(CGFloat)aHeight
+{
+    NSString* js = [NSString stringWithFormat:@"if(jsBridgeClient && jsBridgeClient.onPageScroll) jsBridgeClient.onPageScroll(%f,%f,%f,%f)",aX, aY, aWidth, aHeight];
+    [KCJSExecutor callJSOnMainThread:js WebView:aWebView];
+}
 
 
 @end

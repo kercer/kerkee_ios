@@ -29,6 +29,7 @@
 @property (nonatomic, assign) IBOutlet id<KCWebViewProgressDelegate> progressDelegate;
 
 - (void)setHitPageBottomThreshold:(float)aThreshold;
+- (void)setIsPageScrollOn:(BOOL)aIsPageScrollOn;
 
 - (int)getWebViewID;
 - (void)documentReady:(BOOL)aIsReady;
