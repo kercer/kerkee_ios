@@ -100,8 +100,7 @@ static int createWebViewID = 0;
         // Initialization code
         m_webViewID = createWebViewID++;
         m_imageSetter = [[KCWebImageSetter alloc] init];
-        
-        m_threshold = 200;
+        m_threshold = 0;
         
 //        // Add observer for scroll
 //        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
@@ -116,7 +115,7 @@ static int createWebViewID = 0;
     {
         m_webViewID = createWebViewID++;
         m_imageSetter = [[KCWebImageSetter alloc] init];
-        m_threshold = 200;
+        m_threshold = 0;
     }
     return self;
 }
