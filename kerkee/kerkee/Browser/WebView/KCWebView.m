@@ -79,6 +79,7 @@
     KCWebImageSetter* m_imageSetter;
     
     float m_threshold;
+    BOOL m_ignoreScroll;
 }
 @property (nonatomic,weak)id m_attach;
 
@@ -100,6 +101,8 @@ static int createWebViewID = 0;
         m_webViewID = createWebViewID++;
         m_imageSetter = [[KCWebImageSetter alloc] init];
         
+        m_threshold = 200;
+        
 //        // Add observer for scroll
 //        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     }
@@ -113,6 +116,7 @@ static int createWebViewID = 0;
     {
         m_webViewID = createWebViewID++;
         m_imageSetter = [[KCWebImageSetter alloc] init];
+        m_threshold = 200;
     }
     return self;
 }
@@ -413,9 +417,18 @@ static int createWebViewID = 0;
     
     float bottomHeight = scrollView.contentOffset.y + self.frame.size.height;
     float contentHeight = self.scrollView.contentSize.height;
-    if (contentHeight <= bottomHeight+m_threshold)
+    if (bottomHeight >= contentHeight - m_threshold)
     {
-        [KCApiBridge callbackJSOnHitPageBottom:self];
+        if (!m_ignoreScroll)
+        {
+           [KCApiBridge callbackJSOnHitPageBottom:self];
+            m_ignoreScroll = true;
+        }
+        
+    }
+    else
+    {
+        m_ignoreScroll = false;
     }
     
 }
