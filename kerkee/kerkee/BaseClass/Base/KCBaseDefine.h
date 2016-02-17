@@ -64,7 +64,7 @@
 
 #define __KC_LOG__						(__ON__)
 #define __KC_LOG__Brief__               (__OFF__)
-#define __KC_LOG__FILE__			    (__ON__)
+#define __KC_LOG__FILE__			    (__OFF__)
 
 #pragma mark -
 #if defined(__KC_LOG__) && __KC_LOG__

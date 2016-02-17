@@ -277,7 +277,8 @@ static NSString* m_js = nil;
 
 + (void)setPageScroll:(KCWebView*)aWebView argList:(KCArgList *)aArgList
 {
-    [aWebView setIsPageScrollOn:YES];
+    BOOL isScrollOn = [aArgList getBoolean:@"isScrollOn"];
+    [aWebView setIsPageScrollOn:isScrollOn];
 }
 
 #pragma mark - 

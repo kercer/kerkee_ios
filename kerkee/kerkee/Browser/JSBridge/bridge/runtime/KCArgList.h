@@ -19,6 +19,7 @@
 - (id)getObject:(NSString *)aKey;
 - (NSString*)getString:(NSString*)aKey;
 - (KCJSCallback*)getCallback;
+- (BOOL)getBoolean:(NSString*)aKey;
 - (NSString *)toString;
 - (NSInteger)count;
 

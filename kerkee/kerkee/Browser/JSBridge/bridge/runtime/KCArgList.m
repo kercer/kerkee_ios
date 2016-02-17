@@ -91,6 +91,12 @@
     return [self getObject:kJS_callbackId];
 }
 
+- (BOOL)getBoolean:(NSString*)aKey
+{
+    id value = [self getObject:aKey];
+    return (value && ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) ) ? [value boolValue] : false;
+}
+
 - (NSString *)toString
 {
     if(nil == m_Args || [m_Args count] <= 0)
