@@ -23,6 +23,7 @@
 
 static NSString *PRIVATE_SCHEME = @"kcnative";
 static NSString* m_js = nil;
+static BOOL sIsOpenJSLog = true;
 
 @interface KCApiBridge ()
 {
@@ -249,6 +250,20 @@ static NSString* m_js = nil;
 
 #pragma mark --
 
++ (void)setIsOpenJSLog:(KCWebView*)aWebview isOpenJSLog:(BOOL)aIsOpenJSLog
+{
+    sIsOpenJSLog = aIsOpenJSLog;
+    if (aIsOpenJSLog)
+    {
+        [KCJSExecutor callJSFunction:@"jsBridgeClient.openJSLog" WebView:aWebview];
+    }
+    else
+    {
+        [KCJSExecutor callJSFunction:@"jsBridgeClient.closeJSLog" WebView:aWebview];
+    }
+}
+
+
 + (void)JSLog:(KCWebView*)aWebView argList:(KCArgList *)aArgList
 {
     KCLog(@"[JS] %@", [aArgList getObject:@"msg"]);
@@ -259,9 +274,13 @@ static NSString* m_js = nil;
 {
     [aWebView documentReady:YES];
     KCJSCallback* callback = [aArgList getCallback];
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:[[NSNumber alloc] initWithBool:sIsOpenJSLog] forKey:@"isOpenJSLog"];
+    NSString *jsonConfig = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
+    
     if (callback)
     {
-        [callback callbackJS:aWebView];
+        [callback callbackJS:aWebView jsonString:jsonConfig];
     }
 }
 
