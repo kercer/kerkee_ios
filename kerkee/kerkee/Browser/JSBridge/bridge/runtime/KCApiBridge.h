@@ -33,5 +33,7 @@
 + (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView y:(CGFloat)aY;
 + (void)callbackJSOnPageScroll:(KCWebView*)aWebView x:(CGFloat)aX y:(CGFloat)aY width:(CGFloat)aWidth height:(CGFloat)aHeight;
 
++ (void)openGlobalJSLog:(BOOL)aIsOpenJSLog;
++ (void)setIsOpenJSLog:(KCWebView*)aWebview isOpenJSLog:(BOOL)aIsOpenJSLog;
 
 @end

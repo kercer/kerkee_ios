@@ -37,5 +37,8 @@
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId jsonString:(NSString *)aStr;
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId string:(NSString *)aStr;
 
+#pragma mark - config
++ (void)openGlobalJSLog:(BOOL)aIsOpenJSLog;
++ (void)setIsOpenJSLog:(KCWebView*)aWebview isOpenJSLog:(BOOL)aIsOpenJSLog;
 
 @end

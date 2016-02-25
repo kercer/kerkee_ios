@@ -250,6 +250,11 @@ static BOOL sIsOpenJSLog = true;
 
 #pragma mark --
 
++ (void)openGlobalJSLog:(BOOL)aIsOpenJSLog
+{
+    sIsOpenJSLog = aIsOpenJSLog;
+}
+
 + (void)setIsOpenJSLog:(KCWebView*)aWebview isOpenJSLog:(BOOL)aIsOpenJSLog
 {
     sIsOpenJSLog = aIsOpenJSLog;

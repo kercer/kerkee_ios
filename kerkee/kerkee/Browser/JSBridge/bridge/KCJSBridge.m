@@ -146,6 +146,23 @@ public static void callbackJS(KCWebView aWebview, String aCallbackId, JSONArray 
 }
 */
 
+
+/********************************************************/
+/*
+ * config
+ */
+/********************************************************/
++ (void)openGlobalJSLog:(BOOL)aIsOpenJSLog
+{
+    [KCApiBridge openGlobalJSLog:aIsOpenJSLog];
+}
+
++ (void)setIsOpenJSLog:(KCWebView*)aWebview isOpenJSLog:(BOOL)aIsOpenJSLog
+{
+    [KCApiBridge setIsOpenJSLog:aWebview isOpenJSLog:aIsOpenJSLog];
+}
+
+
 /********************************************************/
 /*
  *
