@@ -23,7 +23,7 @@
 
 static NSString *PRIVATE_SCHEME = @"kcnative";
 static NSString* m_js = nil;
-static BOOL sIsOpenJSLog = true;
+static BOOL sIsOpenJSLog = false;
 
 @interface KCApiBridge ()
 {
