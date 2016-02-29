@@ -13,6 +13,8 @@
 
 + (id)compileJS:(NSString *)aJS webview:(KCWebView*)aWebview
 {
+    if (!aJS) return nil;
+    
     NSString *js = [[NSString alloc] initWithFormat:@"JSON.stringify(%@)", aJS];
     NSString* result = [KCJSExecutor callJS:js WebView:aWebview]
     KCAutorelease(js);
