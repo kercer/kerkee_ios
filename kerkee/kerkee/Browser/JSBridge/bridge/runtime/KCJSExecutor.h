@@ -10,6 +10,8 @@
 #import "KCBaseDefine.h"
 #import "KCWebView.h"
 
+#define kJSToJSONString(js) @"JSON.stringify("#js")"
+
 @interface KCJSExecutor : NSObject
 
 

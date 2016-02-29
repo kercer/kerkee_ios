@@ -18,6 +18,7 @@
 #import "KCUriRegister.h"
 #import "KCUriDispatcher.h"
 #import "KCFetchManifest.h"
+#import "KCJSCompileExecutor.h"
 
 
 @interface ViewController ()
@@ -129,6 +130,8 @@
     NSLog(@"scrollHeight: %@", scrollHeight);
     NSLog(@"webview.contentSize.height %f", aWebView.scrollView.contentSize.height);
     NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:aWebView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:[scrollHeight floatValue]];
+    
+    
 //    [aWebView addConstraint:heightConstraint];
     NSLog(@"webview frame %@", NSStringFromCGRect(aWebView.frame));
 }

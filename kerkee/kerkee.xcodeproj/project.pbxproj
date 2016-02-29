@@ -256,6 +256,9 @@
 		DFE100D71C1EC8A300938E43 /* KCStack.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE100D51C1EC8A300938E43 /* KCStack.m */; };
 		DFE100D81C1EC9D900938E43 /* KCStack.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE100D41C1EC8A300938E43 /* KCStack.h */; };
 		DFE100D91C1EC9F300938E43 /* KCUtilURI.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE100D01C1EC47800938E43 /* KCUtilURI.h */; };
+		DFE85A871C83F14B00B5ADD5 /* KCJSCompileExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFE85A881C83F14B00B5ADD5 /* KCJSCompileExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE85A861C83F14B00B5ADD5 /* KCJSCompileExecutor.m */; };
+		DFE85A891C83FB0A00B5ADD5 /* KCJSCompileExecutor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +278,7 @@
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				DFE85A891C83FB0A00B5ADD5 /* KCJSCompileExecutor.h in Copy Files */,
 				DFE100D91C1EC9F300938E43 /* KCUtilURI.h in Copy Files */,
 				DFE100D81C1EC9D900938E43 /* KCStack.h in Copy Files */,
 				DFE100CF1C1EA01400938E43 /* KCString.h in Copy Files */,
@@ -534,6 +538,8 @@
 		DFE100D11C1EC47800938E43 /* KCUtilURI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilURI.m; sourceTree = "<group>"; };
 		DFE100D41C1EC8A300938E43 /* KCStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCStack.h; sourceTree = "<group>"; };
 		DFE100D51C1EC8A300938E43 /* KCStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCStack.m; sourceTree = "<group>"; };
+		DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSCompileExecutor.h; sourceTree = "<group>"; };
+		DFE85A861C83F14B00B5ADD5 /* KCJSCompileExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSCompileExecutor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -680,6 +686,8 @@
 				DF809CA71B9D90FF008B315D /* KCJSDefine.h */,
 				DF809CA81B9D90FF008B315D /* KCMethod.h */,
 				DF809CA91B9D90FF008B315D /* KCMethod.m */,
+				DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */,
+				DFE85A861C83F14B00B5ADD5 /* KCJSCompileExecutor.m */,
 				DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */,
 				DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */,
 				DFBB9E0C1BF0863F00921758 /* KCJSObject.h */,
@@ -1035,6 +1043,7 @@
 				DFE100D61C1EC8A300938E43 /* KCStack.h in Headers */,
 				DFE100CD1C1E9FFF00938E43 /* KCString.h in Headers */,
 				DFE100D21C1EC47800938E43 /* KCUtilURI.h in Headers */,
+				DFE85A871C83F14B00B5ADD5 /* KCJSCompileExecutor.h in Headers */,
 				DFC633551C1985EF008301F3 /* KCFetchManifest.h in Headers */,
 				DF809CB61B9D90FF008B315D /* KCRegister.h in Headers */,
 				DFC3ABFF1B9C17FC009F4775 /* KCBaseDefine.h in Headers */,
@@ -1180,6 +1189,7 @@
 				DFC3AC2C1B9C17FC009F4775 /* KCImagePreCache.m in Sources */,
 				DFC3AC191B9C17FC009F4775 /* NSObject+KCObserver.m in Sources */,
 				DF809CBC1B9D90FF008B315D /* KCMethod.m in Sources */,
+				DFE85A881C83F14B00B5ADD5 /* KCJSCompileExecutor.m in Sources */,
 				DFC3AC1B1B9C17FC009F4775 /* NSObject+KCProperty.m in Sources */,
 				DFC3AC361B9C17FC009F4775 /* KCArchiver.m in Sources */,
 				DFC3AC0F1B9C17FC009F4775 /* NSData+HMAC.m in Sources */,
