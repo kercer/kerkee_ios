@@ -1,4 +1,4 @@
-# Kerkee
+# Kerkee [ ![Download](https://api.bintray.com/packages/zihong/maven/kerkee/images/download.svg) ](https://bintray.com/zihong/maven/kerkee/_latestVersion)
 
 ### Kerkee框架的诞生背景
 Hybrid App兼具了Native App的所有优势，也兼具了Web App使用HTML5跨平台开发低成本的优势。以及具有使用Native扩展Web接口以弥补web无法调用平台性API等优势。Hybrid App也是未来客户端技术的发展趋势。HTML5的出现，市面上已有很多应用（如淘宝、百度搜索、高德地图）使用了Hybrid App的开发模式，但遇到了一些瓶颈（如性能不如预期，无法操作浏览器内部数据流程，无法自定义请求的需求），用户体验没有预期的好。
@@ -9,11 +9,14 @@ Kerkee是一个多主体共存型Hybrid框架，具有跨平台、用户体验�
 
 ### 使用Kerkee案例
 Kerkee的Hybrid架构思想已使用在两款亿级用户量及多款千万级用户量的APP上
->1. UC游戏大厅
->1. 九游游戏中心
->1. 天翼导航
->1. 搜狐新闻客户端
->1. 搜狐News SDK（已应用到搜狐视频客户端中） 
+
+- UC游戏大厅
+- 九游游戏中心
+- 天翼导航
+- 搜狐新闻客户端
+- 搜狐News SDK（已应用到搜狐视频客户端中）
+- 斗米客户端（B端、C端）
+
 
 ### 基于Kerkee框架的开发模式
 
@@ -47,7 +50,7 @@ Kerkee的Hybrid架构思想已使用在两款亿级用户量及多款千万级�
 <br/> Kerkee框架采用一套特殊机制，解决了跨域问题，也就是说开发者可以操作互联网上任何一个Web页面的数据。
 >1. **使客户端架构更清晰**
 <br/> Kerkee框架会使得客户端的架构更为清晰。整体结构，自上而下分层如下图所示：
-<br/> [![client](http://image17-c.poco.cn/mypoco/myphoto/20150926/13/17833415120150926132311066_165.jpg)]()
+<br/> [![client](http://image17-c.poco.cn/mypoco/myphoto/20150926/13/17833415120150926132311066_165.jpg)](http://image17-c.poco.cn/mypoco/myphoto/20150926/13/17833415120150926132311066_165.jpg)
 
 >1. **使用简便**
 <br/> 对于开发者来说，使用简便。
