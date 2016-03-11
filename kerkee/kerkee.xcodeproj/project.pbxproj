@@ -10,8 +10,6 @@
 		DF30750B1B959B01005AA030 /* kerkee.h in Headers */ = {isa = PBXBuildFile; fileRef = DF30750A1B959B01005AA030 /* kerkee.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF3075111B959B01005AA030 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3075051B959B01005AA030 /* kerkee.framework */; };
 		DF3075181B959B01005AA030 /* kerkeeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3075171B959B01005AA030 /* kerkeeTests.m */; };
-		DF44A10B1B9FE3920045092E /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DF44A1091B9FE3920045092E /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF44A10C1B9FE3920045092E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A10A1B9FE3920045092E /* Reachability.m */; };
 		DF44A10F1B9FE5EA0045092E /* KCException.h in Headers */ = {isa = PBXBuildFile; fileRef = DF44A10D1B9FE5EA0045092E /* KCException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF44A1101B9FE5EA0045092E /* KCException.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A10E1B9FE5EA0045092E /* KCException.m */; };
 		DF44A1131B9FE5F20045092E /* KCUncaughtExceptionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,15 +58,6 @@
 		DF809CBC1B9D90FF008B315D /* KCMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = DF809CA91B9D90FF008B315D /* KCMethod.m */; };
 		DF8A2FA51B9FF9D300BD7FB3 /* UIDevice+KCHardware.h in Headers */ = {isa = PBXBuildFile; fileRef = DF8A2FA31B9FF9D300BD7FB3 /* UIDevice+KCHardware.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF8A2FA61B9FF9D300BD7FB3 /* UIDevice+KCHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8A2FA41B9FF9D300BD7FB3 /* UIDevice+KCHardware.m */; };
-		DF8A2FAF1B9FFC4200BD7FB3 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF8A2FA81B9FFC4200BD7FB3 /* SSKeychain.strings */; };
-		DF8A2FB01B9FFC4200BD7FB3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF8A2FAA1B9FFC4200BD7FB3 /* Info.plist */; };
-		DF8A2FB11B9FFC4200BD7FB3 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = DF8A2FAB1B9FFC4200BD7FB3 /* SSKeychain.h */; };
-		DF8A2FB21B9FFC4200BD7FB3 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8A2FAC1B9FFC4200BD7FB3 /* SSKeychain.m */; };
-		DF8A2FB31B9FFC4200BD7FB3 /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */; };
-		DF8A2FB41B9FFC4200BD7FB3 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8A2FAE1B9FFC4200BD7FB3 /* SSKeychainQuery.m */; };
-		DF8F35891BC7727900C79B71 /* SSKeychain.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF8A2FAB1B9FFC4200BD7FB3 /* SSKeychain.h */; };
-		DF8F358A1BC7727900C79B71 /* SSKeychainQuery.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */; };
-		DF8F358B1BC7727900C79B71 /* Reachability.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF44A1091B9FE3920045092E /* Reachability.h */; };
 		DF8F358C1BC7727900C79B71 /* KCURIQuery.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF765C261BA185D30025B0CC /* KCURIQuery.h */; };
 		DF8F358D1BC7727900C79B71 /* KCURIComponents.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF765C221BA175E20025B0CC /* KCURIComponents.h */; };
 		DF8F358E1BC7727900C79B71 /* KCURI.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF765C2A1BA1B5850025B0CC /* KCURI.h */; };
@@ -259,6 +248,14 @@
 		DFE85A871C83F14B00B5ADD5 /* KCJSCompileExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE85A881C83F14B00B5ADD5 /* KCJSCompileExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE85A861C83F14B00B5ADD5 /* KCJSCompileExecutor.m */; };
 		DFE85A891C83FB0A00B5ADD5 /* KCJSCompileExecutor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */; };
+		DFE8A62B1C92D60700EDC868 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A6141C92D60700EDC868 /* Reachability.h */; };
+		DFE8A62C1C92D60700EDC868 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A6151C92D60700EDC868 /* Reachability.m */; };
+		DFE8A62D1C92D60700EDC868 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFE8A6171C92D60700EDC868 /* SSKeychain.strings */; };
+		DFE8A62E1C92D60700EDC868 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFE8A6191C92D60700EDC868 /* Info.plist */; };
+		DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A61A1C92D60700EDC868 /* SSKeychain.h */; };
+		DFE8A6301C92D60700EDC868 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A61B1C92D60700EDC868 /* SSKeychain.m */; };
+		DFE8A6311C92D60700EDC868 /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */; };
+		DFE8A6321C92D60700EDC868 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A61D1C92D60700EDC868 /* SSKeychainQuery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -290,9 +287,6 @@
 				DF54B5E21BF9B4D300F384BF /* KCJSCallback.h in Copy Files */,
 				DFD5455E1BF46DC100770ED0 /* KCModifier.h in Copy Files */,
 				DFBB9E1B1BF0904600921758 /* KCJSObject.h in Copy Files */,
-				DF8F35891BC7727900C79B71 /* SSKeychain.h in Copy Files */,
-				DF8F358A1BC7727900C79B71 /* SSKeychainQuery.h in Copy Files */,
-				DF8F358B1BC7727900C79B71 /* Reachability.h in Copy Files */,
 				DF8F358C1BC7727900C79B71 /* KCURIQuery.h in Copy Files */,
 				DF8F358D1BC7727900C79B71 /* KCURIComponents.h in Copy Files */,
 				DF8F358E1BC7727900C79B71 /* KCURI.h in Copy Files */,
@@ -375,8 +369,6 @@
 		DF3075101B959B01005AA030 /* kerkeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kerkeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF3075161B959B01005AA030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF3075171B959B01005AA030 /* kerkeeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kerkeeTests.m; sourceTree = "<group>"; };
-		DF44A1091B9FE3920045092E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		DF44A10A1B9FE3920045092E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DF44A10D1B9FE5EA0045092E /* KCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCException.h; sourceTree = "<group>"; };
 		DF44A10E1B9FE5EA0045092E /* KCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCException.m; sourceTree = "<group>"; };
 		DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUncaughtExceptionHandler.h; sourceTree = "<group>"; };
@@ -422,12 +414,6 @@
 		DF809CA91B9D90FF008B315D /* KCMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMethod.m; sourceTree = "<group>"; };
 		DF8A2FA31B9FF9D300BD7FB3 /* UIDevice+KCHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+KCHardware.h"; sourceTree = "<group>"; };
 		DF8A2FA41B9FF9D300BD7FB3 /* UIDevice+KCHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+KCHardware.m"; sourceTree = "<group>"; };
-		DF8A2FA91B9FFC4200BD7FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
-		DF8A2FAA1B9FFC4200BD7FB3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF8A2FAB1B9FFC4200BD7FB3 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
-		DF8A2FAC1B9FFC4200BD7FB3 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
-		DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
-		DF8A2FAE1B9FFC4200BD7FB3 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		DF9BCE501C3A5E800097A767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DFBB9E0C1BF0863F00921758 /* KCJSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSObject.h; sourceTree = "<group>"; };
 		DFBB9E0D1BF0863F00921758 /* KCJSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSObject.m; sourceTree = "<group>"; };
@@ -540,6 +526,14 @@
 		DFE100D51C1EC8A300938E43 /* KCStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCStack.m; sourceTree = "<group>"; };
 		DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSCompileExecutor.h; sourceTree = "<group>"; };
 		DFE85A861C83F14B00B5ADD5 /* KCJSCompileExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSCompileExecutor.m; sourceTree = "<group>"; };
+		DFE8A6141C92D60700EDC868 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DFE8A6151C92D60700EDC868 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DFE8A6181C92D60700EDC868 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
+		DFE8A6191C92D60700EDC868 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFE8A61A1C92D60700EDC868 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		DFE8A61B1C92D60700EDC868 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		DFE8A61D1C92D60700EDC868 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -584,7 +578,7 @@
 		DF3075071B959B01005AA030 /* kerkee */ = {
 			isa = PBXGroup;
 			children = (
-				DFC3AC471B9C1811009F4775 /* dependencies */,
+				DFE8A6121C92D60700EDC868 /* dependencies */,
 				DFC3ABB11B9C17FC009F4775 /* BaseClass */,
 				DFC3AB581B9C17F2009F4775 /* Browser */,
 				DF30750A1B959B01005AA030 /* kerkee.h */,
@@ -616,15 +610,6 @@
 				DF3075161B959B01005AA030 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DF44A1081B9FE3920045092E /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				DF44A1091B9FE3920045092E /* Reachability.h */,
-				DF44A10A1B9FE3920045092E /* Reachability.m */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		DF765C161BA16C470025B0CC /* UriDispatcher */ = {
@@ -705,19 +690,6 @@
 				DF8A2FA41B9FF9D300BD7FB3 /* UIDevice+KCHardware.m */,
 			);
 			path = Device;
-			sourceTree = "<group>";
-		};
-		DF8A2FA71B9FFC4200BD7FB3 /* SSKeychain */ = {
-			isa = PBXGroup;
-			children = (
-				DF8A2FA81B9FFC4200BD7FB3 /* SSKeychain.strings */,
-				DF8A2FAA1B9FFC4200BD7FB3 /* Info.plist */,
-				DF8A2FAB1B9FFC4200BD7FB3 /* SSKeychain.h */,
-				DF8A2FAC1B9FFC4200BD7FB3 /* SSKeychain.m */,
-				DF8A2FAD1B9FFC4200BD7FB3 /* SSKeychainQuery.h */,
-				DF8A2FAE1B9FFC4200BD7FB3 /* SSKeychainQuery.m */,
-			);
-			path = SSKeychain;
 			sourceTree = "<group>";
 		};
 		DFBB9E041BF04C2700921758 /* type */ = {
@@ -954,14 +926,35 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		DFC3AC471B9C1811009F4775 /* dependencies */ = {
+		DFE8A6121C92D60700EDC868 /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				DF8A2FA71B9FFC4200BD7FB3 /* SSKeychain */,
-				DF44A1081B9FE3920045092E /* Reachability */,
+				DFE8A6131C92D60700EDC868 /* Reachability */,
+				DFE8A6161C92D60700EDC868 /* SSKeychain */,
 			);
-			name = dependencies;
-			path = ../../dependencies;
+			path = dependencies;
+			sourceTree = SOURCE_ROOT;
+		};
+		DFE8A6131C92D60700EDC868 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8A6141C92D60700EDC868 /* Reachability.h */,
+				DFE8A6151C92D60700EDC868 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		DFE8A6161C92D60700EDC868 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8A6171C92D60700EDC868 /* SSKeychain.strings */,
+				DFE8A6191C92D60700EDC868 /* Info.plist */,
+				DFE8A61A1C92D60700EDC868 /* SSKeychain.h */,
+				DFE8A61B1C92D60700EDC868 /* SSKeychain.m */,
+				DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */,
+				DFE8A61D1C92D60700EDC868 /* SSKeychainQuery.m */,
+			);
+			path = SSKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -978,7 +971,6 @@
 				DF765C2C1BA1B5850025B0CC /* KCURI.h in Headers */,
 				DF8A2FA51B9FF9D300BD7FB3 /* UIDevice+KCHardware.h in Headers */,
 				DF44A1131B9FE5F20045092E /* KCUncaughtExceptionHandler.h in Headers */,
-				DF44A10B1B9FE3920045092E /* Reachability.h in Headers */,
 				DF44A10F1B9FE5EA0045092E /* KCException.h in Headers */,
 				DF809CB81B9D90FF008B315D /* KCClassParser.h in Headers */,
 				DF809CBB1B9D90FF008B315D /* KCMethod.h in Headers */,
@@ -1011,7 +1003,6 @@
 				DFC3AB9E1B9C17F2009F4775 /* KCWebImageSetter.h in Headers */,
 				DFC3AC351B9C17FC009F4775 /* KCArchiver.h in Headers */,
 				DFC3AC061B9C17FC009F4775 /* KCSandbox.h in Headers */,
-				DF8A2FB11B9FFC4200BD7FB3 /* SSKeychain.h in Headers */,
 				DFC3AC431B9C17FC009F4775 /* KCUtilNet.h in Headers */,
 				DFC3ABA91B9C17F2009F4775 /* KCWebView.h in Headers */,
 				DFC3AC371B9C17FC009F4775 /* KCMainBundle.h in Headers */,
@@ -1026,9 +1017,9 @@
 				DFC3AC251B9C17FC009F4775 /* KCDataValidCache.h in Headers */,
 				DFC3ABA41B9C17F2009F4775 /* KCXMLHttpRequestDelegate.h in Headers */,
 				DFC3AC181B9C17FC009F4775 /* NSObject+KCObserver.h in Headers */,
-				DF8A2FB31B9FFC4200BD7FB3 /* SSKeychainQuery.h in Headers */,
 				DFC3ABA21B9C17F2009F4775 /* KCXMLHttpRequest.h in Headers */,
 				DF809CAE1B9D90FF008B315D /* KCApiBridgeManager.h in Headers */,
+				DFE8A62B1C92D60700EDC868 /* Reachability.h in Headers */,
 				DFC3ABAB1B9C17F2009F4775 /* KCWebViewManager.h in Headers */,
 				DFC3AC411B9C17FC009F4775 /* KCUtilMd5.h in Headers */,
 				DFC3AC3B1B9C17FC009F4775 /* KCUtilDevice.h in Headers */,
@@ -1049,10 +1040,12 @@
 				DFC3ABFF1B9C17FC009F4775 /* KCBaseDefine.h in Headers */,
 				DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */,
 				DFC3AC041B9C17FC009F4775 /* KCRuntime.h in Headers */,
+				DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */,
 				DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */,
 				DFC3ABA01B9C17F2009F4775 /* KCWebImageSetterTask.h in Headers */,
 				DFC3AC2B1B9C17FC009F4775 /* KCImagePreCache.h in Headers */,
 				DFD5455C1BF44A3200770ED0 /* KCModifier.h in Headers */,
+				DFE8A6311C92D60700EDC868 /* SSKeychainQuery.h in Headers */,
 				DF809CBA1B9D90FF008B315D /* KCJSDefine.h in Headers */,
 				DFC3AC331B9C17FC009F4775 /* KCLog.h in Headers */,
 				DF30750B1B959B01005AA030 /* kerkee.h in Headers */,
@@ -1139,8 +1132,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF8A2FB01B9FFC4200BD7FB3 /* Info.plist in Resources */,
-				DF8A2FAF1B9FFC4200BD7FB3 /* SSKeychain.strings in Resources */,
+				DFE8A62E1C92D60700EDC868 /* Info.plist in Resources */,
+				DFE8A62D1C92D60700EDC868 /* SSKeychain.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,6 +1161,7 @@
 				DF8A2FA61B9FF9D300BD7FB3 /* UIDevice+KCHardware.m in Sources */,
 				DF54B5E71BF9B55D00F384BF /* KCJSType.m in Sources */,
 				DF7642641C18017B0014789E /* KCAssert.m in Sources */,
+				DFE8A62C1C92D60700EDC868 /* Reachability.m in Sources */,
 				DFC3AC0B1B9C17FC009F4775 /* KCTaskQueue.m in Sources */,
 				DFC3ABA61B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.m in Sources */,
 				DFC3AC171B9C17FC009F4775 /* NSObject+KCObjectInfo.m in Sources */,
@@ -1183,11 +1177,11 @@
 				DFC3AC261B9C17FC009F4775 /* KCDataValidCache.m in Sources */,
 				DFC633561C1985EF008301F3 /* KCFetchManifest.m in Sources */,
 				DFC3AC1D1B9C17FC009F4775 /* NSObject+KCSelector.m in Sources */,
-				DF8A2FB41B9FFC4200BD7FB3 /* SSKeychainQuery.m in Sources */,
 				DFC3AC1F1B9C17FC009F4775 /* NSObject+KCTicker.m in Sources */,
 				DFC6334D1C195EDF008301F3 /* KCUtilJson.m in Sources */,
 				DFC3AC2C1B9C17FC009F4775 /* KCImagePreCache.m in Sources */,
 				DFC3AC191B9C17FC009F4775 /* NSObject+KCObserver.m in Sources */,
+				DFE8A6301C92D60700EDC868 /* SSKeychain.m in Sources */,
 				DF809CBC1B9D90FF008B315D /* KCMethod.m in Sources */,
 				DFE85A881C83F14B00B5ADD5 /* KCJSCompileExecutor.m in Sources */,
 				DFC3AC1B1B9C17FC009F4775 /* NSObject+KCProperty.m in Sources */,
@@ -1202,7 +1196,6 @@
 				DFC3AC3E1B9C17FC009F4775 /* KCUtilFile.m in Sources */,
 				DFC3AC2A1B9C17FC009F4775 /* KCImageCache.m in Sources */,
 				DFC3AC321B9C17FC009F4775 /* NSData+Base64.m in Sources */,
-				DF8A2FB21B9FFC4200BD7FB3 /* SSKeychain.m in Sources */,
 				DFD5455D1BF44A3200770ED0 /* KCModifier.m in Sources */,
 				DF809CB91B9D90FF008B315D /* KCClassParser.m in Sources */,
 				DFC3AC461B9C17FC009F4775 /* KCUtilURL.m in Sources */,
@@ -1210,6 +1203,7 @@
 				DFC3ABB01B9C17F2009F4775 /* UIWebView+KCClean.m in Sources */,
 				DFC3AC301B9C17FC009F4775 /* NSData+AES256.m in Sources */,
 				DFC3ABAE1B9C17F2009F4775 /* KCWebViewProxy.m in Sources */,
+				DFE8A6321C92D60700EDC868 /* SSKeychainQuery.m in Sources */,
 				DFC3AB8A1B9C17F2009F4775 /* KCManifestParser.m in Sources */,
 				DFC3ABA11B9C17F2009F4775 /* KCWebImageSetterTask.m in Sources */,
 				DF5D70BF1BA91859008A8FB2 /* KCUriRegister.m in Sources */,
@@ -1226,7 +1220,6 @@
 				DFC3AC281B9C17FC009F4775 /* KCFileCache.m in Sources */,
 				DF809CAB1B9D90FF008B315D /* KCJSBridge.m in Sources */,
 				DF44A1141B9FE5F20045092E /* KCUncaughtExceptionHandler.m in Sources */,
-				DF44A10C1B9FE3920045092E /* Reachability.m in Sources */,
 				DFC3AC341B9C17FC009F4775 /* KCLog.m in Sources */,
 				DFC3AC051B9C17FC009F4775 /* KCRuntime.m in Sources */,
 				DFC3AC011B9C17FC009F4775 /* KCFileArchiver.m in Sources */,
@@ -1258,10 +1251,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DF8A2FA81B9FFC4200BD7FB3 /* SSKeychain.strings */ = {
+		DFE8A6171C92D60700EDC868 /* SSKeychain.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DF8A2FA91B9FFC4200BD7FB3 /* en */,
+				DFE8A6181C92D60700EDC868 /* en */,
 			);
 			name = SSKeychain.strings;
 			sourceTree = "<group>";
