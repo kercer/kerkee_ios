@@ -14,21 +14,20 @@
 
 +(void)testJSBrige:(KCWebView*)aWebView argList:(KCArgList*)args
 {
-    NSString* jsonInfo = [args getObject:@"info"];
+    NSString* jsonInfo = [args getString:@"info"];
     KCLog(@"%@", jsonInfo);
 }
 
 +(void)commonApi:(KCWebView*)aWebView argList:(KCArgList*)args
 {
-    NSString* jsonInfo = [args getObject:@"info"];
+    NSString* jsonInfo = [args getString:@"info"];
     KCLog(@"%@", jsonInfo);
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:@"OK!" forKey:@"info"];
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
     KCAutorelease(json);
-    //返回
-    
+    //回调
     [KCJSBridge callbackJS:aWebView callBackID:[args getObject:@"callbackId"] jsonString:json];
     
 }

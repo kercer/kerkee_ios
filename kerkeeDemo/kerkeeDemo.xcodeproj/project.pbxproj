@@ -25,11 +25,9 @@
 		DF83DB8C1B959FC5003E3F91 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF83DB711B959FC5003E3F91 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF83DC4E1B95A441003E3F91 /* bridgeLib.js in Resources */ = {isa = PBXBuildFile; fileRef = DF83DC4C1B95A441003E3F91 /* bridgeLib.js */; };
 		DF83DC4F1B95A441003E3F91 /* html.zip in Resources */ = {isa = PBXBuildFile; fileRef = DF83DC4D1B95A441003E3F91 /* html.zip */; };
-		DF83DC5D1B95A45E003E3F91 /* KCChannelModuleApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC521B95A45E003E3F91 /* KCChannelModuleApi.m */; };
-		DF83DC5E1B95A45E003E3F91 /* KCClientInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC541B95A45E003E3F91 /* KCClientInfoApi.m */; };
+		DF83DC5E1B95A45E003E3F91 /* KCApiClientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC541B95A45E003E3F91 /* KCApiClientInfo.m */; };
 		DF83DC5F1B95A45E003E3F91 /* KCClientUI.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC561B95A45E003E3F91 /* KCClientUI.m */; };
 		DF83DC611B95A45E003E3F91 /* KCRegistMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC5A1B95A45E003E3F91 /* KCRegistMgr.m */; };
-		DF83DC621B95A45E003E3F91 /* KCSearchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC5C1B95A45E003E3F91 /* KCSearchApi.m */; };
 		DF83DC861B95CA95003E3F91 /* KCAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC7E1B95CA95003E3F91 /* KCAssistant.m */; };
 		DF83DC871B95CA95003E3F91 /* KCPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC801B95CA95003E3F91 /* KCPlatform.m */; };
 		DF83DC881B95CA95003E3F91 /* KCUrlMaping.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */; };
@@ -120,16 +118,12 @@
 		DF83DB711B959FC5003E3F91 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		DF83DC4C1B95A441003E3F91 /* bridgeLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bridgeLib.js; sourceTree = "<group>"; };
 		DF83DC4D1B95A441003E3F91 /* html.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = html.zip; sourceTree = "<group>"; };
-		DF83DC511B95A45E003E3F91 /* KCChannelModuleApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCChannelModuleApi.h; sourceTree = "<group>"; };
-		DF83DC521B95A45E003E3F91 /* KCChannelModuleApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCChannelModuleApi.m; sourceTree = "<group>"; };
-		DF83DC531B95A45E003E3F91 /* KCClientInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCClientInfoApi.h; sourceTree = "<group>"; };
-		DF83DC541B95A45E003E3F91 /* KCClientInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCClientInfoApi.m; sourceTree = "<group>"; };
+		DF83DC531B95A45E003E3F91 /* KCApiClientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiClientInfo.h; sourceTree = "<group>"; };
+		DF83DC541B95A45E003E3F91 /* KCApiClientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiClientInfo.m; sourceTree = "<group>"; };
 		DF83DC551B95A45E003E3F91 /* KCClientUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCClientUI.h; sourceTree = "<group>"; };
 		DF83DC561B95A45E003E3F91 /* KCClientUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCClientUI.m; sourceTree = "<group>"; };
 		DF83DC591B95A45E003E3F91 /* KCRegistMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCRegistMgr.h; sourceTree = "<group>"; };
 		DF83DC5A1B95A45E003E3F91 /* KCRegistMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCRegistMgr.m; sourceTree = "<group>"; };
-		DF83DC5B1B95A45E003E3F91 /* KCSearchApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSearchApi.h; sourceTree = "<group>"; };
-		DF83DC5C1B95A45E003E3F91 /* KCSearchApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCSearchApi.m; sourceTree = "<group>"; };
 		DF83DC7D1B95CA95003E3F91 /* KCAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCAssistant.h; sourceTree = "<group>"; };
 		DF83DC7E1B95CA95003E3F91 /* KCAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCAssistant.m; sourceTree = "<group>"; };
 		DF83DC7F1B95CA95003E3F91 /* KCPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCPlatform.h; sourceTree = "<group>"; };
@@ -285,16 +279,12 @@
 				DF6300951BF19F270098FB0C /* KCApiJSObjExample.m */,
 				DF65AB7E1B9ECCB000F24874 /* KCApiTest.h */,
 				DF65AB7F1B9ECCB000F24874 /* KCApiTest.m */,
-				DF83DC511B95A45E003E3F91 /* KCChannelModuleApi.h */,
-				DF83DC521B95A45E003E3F91 /* KCChannelModuleApi.m */,
-				DF83DC531B95A45E003E3F91 /* KCClientInfoApi.h */,
-				DF83DC541B95A45E003E3F91 /* KCClientInfoApi.m */,
+				DF83DC531B95A45E003E3F91 /* KCApiClientInfo.h */,
+				DF83DC541B95A45E003E3F91 /* KCApiClientInfo.m */,
 				DF83DC551B95A45E003E3F91 /* KCClientUI.h */,
 				DF83DC561B95A45E003E3F91 /* KCClientUI.m */,
 				DF83DC591B95A45E003E3F91 /* KCRegistMgr.h */,
 				DF83DC5A1B95A45E003E3F91 /* KCRegistMgr.m */,
-				DF83DC5B1B95A45E003E3F91 /* KCSearchApi.h */,
-				DF83DC5C1B95A45E003E3F91 /* KCSearchApi.m */,
 				DFBB9E1D1BF0A82500921758 /* KCApiOverrideJSBridgeClient.h */,
 				DFBB9E1E1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m */,
 				DF6300981BF1A0130098FB0C /* KCJSObjDefine.h */,
@@ -460,7 +450,6 @@
 				DF83DC881B95CA95003E3F91 /* KCUrlMaping.m in Sources */,
 				DF83DB8C1B959FC5003E3F91 /* ZipArchive.mm in Sources */,
 				DF83DA8C1B959D2A003E3F91 /* ViewController.m in Sources */,
-				DF83DC621B95A45E003E3F91 /* KCSearchApi.m in Sources */,
 				DF83DB8A1B959FC5003E3F91 /* unzip.c in Sources */,
 				DF83DC611B95A45E003E3F91 /* KCRegistMgr.m in Sources */,
 				DF5D70C21BA9559D008A8FB2 /* KCActionTest.m in Sources */,
@@ -470,9 +459,8 @@
 				DF83DA861B959D2A003E3F91 /* main.m in Sources */,
 				DF65AB801B9ECCB000F24874 /* KCApiTest.m in Sources */,
 				DF83DC5F1B95A45E003E3F91 /* KCClientUI.m in Sources */,
-				DF83DC5D1B95A45E003E3F91 /* KCChannelModuleApi.m in Sources */,
 				DF83DC861B95CA95003E3F91 /* KCAssistant.m in Sources */,
-				DF83DC5E1B95A45E003E3F91 /* KCClientInfoApi.m in Sources */,
+				DF83DC5E1B95A45E003E3F91 /* KCApiClientInfo.m in Sources */,
 				DF83DB881B959FC5003E3F91 /* ioapi.c in Sources */,
 				DFBB9E1F1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m in Sources */,
 				DF83DC891B95CA95003E3F91 /* KCWidget.m in Sources */,

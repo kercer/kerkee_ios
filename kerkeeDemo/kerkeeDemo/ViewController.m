@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "kerkee.h"
-#import "KCChannelModuleApi.h"
 #import "KCRegistMgr.h"
 #import "KCAssistant.h"
 #import "KCBaseDefine.h"
@@ -25,8 +24,6 @@
 {
     KCWebView* m_webView;
     KCJSBridge* m_jsBridge;
-    
-    
 }
 
 @end
@@ -42,13 +39,12 @@
     KCRelease(assistant);
     
     [KCRegistMgr registAllClass];
-    
     KCLog(@"docment dir:\n%@",KCWebPath_HtmlRootPath);
     
     m_webView = [[KCWebView alloc] initWithFrame:self.view.bounds];
-//    m_webView.delegate = self;
+    //add webview in your view
     [self.view addSubview:m_webView];
-    
+    //you can implement webview delegate
     m_jsBridge = [[KCJSBridge alloc] initWithWebView:m_webView delegate:self];
     
     
@@ -118,12 +114,9 @@
 
 -(void)webView:(KCWebView*)webView identifierForInitialRequest:(NSURLRequest*)initialRequest
 {
-
 }
 
-
 #pragma mark - UIWebView Delegate
-
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView
 {
     NSString *scrollHeight = [aWebView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
@@ -137,12 +130,10 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    
 }
 
 - (BOOL)webView:(UIWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-   
     return YES;
 }
 

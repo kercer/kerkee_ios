@@ -16,7 +16,6 @@
     return kJS_JSObjExampleModule;
 }
 
-
 -(void)objExampleNotStaticFunction:(KCWebView*)aWebView argList:(KCArgList*)args
 {
     KCLog(@"objExampleNotStaticFunction");
@@ -26,5 +25,4 @@
 {
     KCLog(@"objExampleStaticFunction");
 }
-
 @end

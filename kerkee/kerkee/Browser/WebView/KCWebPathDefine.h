@@ -20,25 +20,7 @@
 #define KCWebPath_HtmlLocalPath             ([NSHomeDirectory() stringByAppendingPathComponent:@"Documents/html"])
 
 //zip files
-#define KCWebPath_HtmlRootPath_PLIST        [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/version.plist"]
 #define KCWebPath_HtmlRootPath_ZipFile      [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/html.zip"]
-
-//images
-#define KCWebPath_ImagesPath                [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"cache/webimages"]
-
-//bridge lib
-#define KCWebPath_BridgeLibPath_File        [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"attach/js/bridgeLib.js"]
-
-//config
-#define KCWebPath_ConfigPath_File           [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"conf/urlmapping.conf"]
-
-//应用类的html
-#define KCWebPath_ModulesChannel_File       [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"modules/channel/channel.html"]//一般频道
-#define KCWebPath_ModulesLiveChannel_File   [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"modules/live/live.html"]//直播频道
-#define KCWebPath_ModulesPicsChannel_File   [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"modules/pics/pics.html"]//美图频道
-
-// 搜索本地路径
-#define KCWebPath_ModulesSearch_File        [KCWebPath_HtmlRootPath stringByAppendingPathComponent:@"modules/search/search.html"]
 
 
 //test

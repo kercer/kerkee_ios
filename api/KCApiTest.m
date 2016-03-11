@@ -13,19 +13,21 @@
 #import "KCBaseDefine.h"
 #import "KCJSBridge.h"
 
-
 @implementation KCApiTest
-
 
 +(void)testInfo:(KCWebView*)aWebView argList:(KCArgList*)args
 {
-    NSString* jsonInfo = [args getObject:@"testInfo"];
+    NSString* jsonInfo = [args getString:@"testInfo"];
     KCLog(@"%@", jsonInfo);
     
-    [KCJSBridge callbackJS:aWebView callBackID:[args getObject:@"callbackId"] string:@"This is testInfo callball"];
+    KCJSCallback* callback = [args getCallback];
+    if (callback)
+    {
+        [callback callbackJS:aWebView jsonString:@"{}"];
+    }
     
-    
-
+    //也可以这么回调
+    //[KCJSBridge callbackJS:aWebView callBackID:[args getString:@"callbackId"] string:@"This is testInfo callball"];
 }
 
 @end

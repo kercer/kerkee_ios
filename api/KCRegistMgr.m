@@ -1,23 +1,23 @@
 //
-//  KCRegistMgr.m
-//  sohunews
+//  KCRegistObj.m
+//  kerkee
 //
-//  Created by lijian on 15/8/25.
-//  Copyright (c) 2015年 Sohu.com. All rights reserved.
+//  Designed by zihong
 //
+//  Created by zihong on 15/8/25.
+//  Copyright (c) 2015年 zihong. All rights reserved.
 
 #import "KCRegistMgr.h"
 #import "KCJSObjDefine.h"
 
-#import "KCChannelModuleApi.h"
-#import "KCClientInfoApi.h"
+#import "KCApiClientInfo.h"
 #import "KCClientUI.h"
-#import "KCSearchApi.h"
 #import "KCWidget.h"
 #import "KCApiTest.h"
 #import "KCApiOverrideJSBridgeClient.h"
 #import "KCApiJSObjExample.h"
 
+#import "KCJSDefine.h"
 
 @implementation KCRegistObj
 
@@ -52,9 +52,6 @@
     self = [super init];
     
     if(nil != self){
-        
-        //registArray = NSMutableArray
-        
         registObjArray = [[NSMutableArray alloc] initWithCapacity:10];
     }
     
@@ -63,17 +60,19 @@
 
 + (void)registAllClass
 {
-    [KCJSBridge registClass:[KCChannelModuleApi class] jsObjName:@"channelModule"];
-    [KCJSBridge registClass:[KCClientInfoApi class] jsObjName:@"clientInfo"];
+    //for test
+    [KCJSBridge registClass:[KCApiClientInfo class] jsObjName:@"clientInfo"];
     [KCJSBridge registClass:[KCClientUI class] jsObjName:@"clientUI"];
-    [KCJSBridge registClass:[KCSearchApi class] jsObjName:@"searchModules"];
     [KCJSBridge registClass:[KCWidget class] jsObjName:@"widget"];
     
     //have rewritten jsBridgeClient in kerkee
+    //you can use this way, first you can import "KCJSDefine.h"
+    //[KCJSBridge registClass:[KCApiOverrideJSBridgeClient class] jsObjName:kJS_jsBridgeClient];
     [KCJSBridge registJSBridgeClient:[KCApiOverrideJSBridgeClient class]];
     [KCJSBridge registClass:[KCApiTest class] jsObjName:kJS_TestModule];
     
-//    [KCJSBridge registClass:[KCApiJSObjExample class] jsObjName:kJS_JSObjExampleModule];
+    //you can regist class which inherit from KCJSObject,js call static function
+    //[KCJSBridge registClass:[KCApiJSObjExample class] jsObjName:kJS_JSObjExampleModule];
     [KCJSBridge registObject:[[KCApiJSObjExample alloc]init] ];
 
 }

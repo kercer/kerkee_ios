@@ -23,7 +23,7 @@
 
 static NSString *PRIVATE_SCHEME = @"kcnative";
 static NSString* m_js = nil;
-static BOOL sIsOpenJSLog = false;
+static BOOL sIsOpenJSLog = true;
 
 @interface KCApiBridge ()
 {
@@ -52,7 +52,6 @@ static BOOL sIsOpenJSLog = false;
         {
             NSString *jsFilePath = [[NSBundle mainBundle] pathForResource:@"bridgeLib" ofType:@"js"];
             m_js = [NSString stringWithContentsOfFile:jsFilePath encoding:NSUTF8StringEncoding error:NULL];
-//            m_js = [NSString stringWithContentsOfFile:KCWebPath_BridgeLibPath_File encoding:NSUTF8StringEncoding error:NULL];
             KCRetain(m_js);
         }
     }
