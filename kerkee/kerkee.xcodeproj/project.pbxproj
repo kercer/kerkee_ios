@@ -14,6 +14,7 @@
 		DF44A1101B9FE5EA0045092E /* KCException.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A10E1B9FE5EA0045092E /* KCException.m */; };
 		DF44A1131B9FE5F20045092E /* KCUncaughtExceptionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF44A1141B9FE5F20045092E /* KCUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1121B9FE5F20045092E /* KCUncaughtExceptionHandler.m */; };
+		DF54233F1C9C09EA002C6543 /* Reachability.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE8A6141C92D60700EDC868 /* Reachability.h */; };
 		DF54B5E01BF9B45500F384BF /* KCJSCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */; };
 		DF54B5E11BF9B45500F384BF /* KCJSCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = DF54B5DF1BF9B45500F384BF /* KCJSCallback.m */; };
 		DF54B5E21BF9B4D300F384BF /* KCJSCallback.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */; };
@@ -275,6 +276,7 @@
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				DF54233F1C9C09EA002C6543 /* Reachability.h in Copy Files */,
 				DFE85A891C83FB0A00B5ADD5 /* KCJSCompileExecutor.h in Copy Files */,
 				DFE100D91C1EC9F300938E43 /* KCUtilURI.h in Copy Files */,
 				DFE100D81C1EC9D900938E43 /* KCStack.h in Copy Files */,
