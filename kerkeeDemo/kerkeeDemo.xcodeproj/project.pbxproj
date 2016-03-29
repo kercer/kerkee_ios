@@ -23,7 +23,7 @@
 		DF83DB8A1B959FC5003E3F91 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = DF83DB6C1B959FC5003E3F91 /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF83DB8B1B959FC5003E3F91 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = DF83DB6E1B959FC5003E3F91 /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF83DB8C1B959FC5003E3F91 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF83DB711B959FC5003E3F91 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		DF83DC4E1B95A441003E3F91 /* bridgeLib.js in Resources */ = {isa = PBXBuildFile; fileRef = DF83DC4C1B95A441003E3F91 /* bridgeLib.js */; };
+		DF83DC4E1B95A441003E3F91 /* kerkee.js in Resources */ = {isa = PBXBuildFile; fileRef = DF83DC4C1B95A441003E3F91 /* kerkee.js */; };
 		DF83DC4F1B95A441003E3F91 /* html.zip in Resources */ = {isa = PBXBuildFile; fileRef = DF83DC4D1B95A441003E3F91 /* html.zip */; };
 		DF83DC5E1B95A45E003E3F91 /* KCApiClientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC541B95A45E003E3F91 /* KCApiClientInfo.m */; };
 		DF83DC5F1B95A45E003E3F91 /* KCClientUI.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC561B95A45E003E3F91 /* KCClientUI.m */; };
@@ -116,7 +116,7 @@
 		DF83DB6F1B959FC5003E3F91 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		DF83DB701B959FC5003E3F91 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		DF83DB711B959FC5003E3F91 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
-		DF83DC4C1B95A441003E3F91 /* bridgeLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bridgeLib.js; sourceTree = "<group>"; };
+		DF83DC4C1B95A441003E3F91 /* kerkee.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kerkee.js; sourceTree = "<group>"; };
 		DF83DC4D1B95A441003E3F91 /* html.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = html.zip; sourceTree = "<group>"; };
 		DF83DC531B95A45E003E3F91 /* KCApiClientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiClientInfo.h; sourceTree = "<group>"; };
 		DF83DC541B95A45E003E3F91 /* KCApiClientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiClientInfo.m; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				DF65AB7C1B9EC61B00F24874 /* test.html */,
-				DF83DC4C1B95A441003E3F91 /* bridgeLib.js */,
+				DF83DC4C1B95A441003E3F91 /* kerkee.js */,
 				DF83DC4D1B95A441003E3F91 /* html.zip */,
 			);
 			name = assets;
@@ -424,7 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF83DC4E1B95A441003E3F91 /* bridgeLib.js in Resources */,
+				DF83DC4E1B95A441003E3F91 /* kerkee.js in Resources */,
 				DF83DA8F1B959D2A003E3F91 /* Main.storyboard in Resources */,
 				DF83DA941B959D2A003E3F91 /* LaunchScreen.xib in Resources */,
 				DF65AB7D1B9EC61B00F24874 /* test.html in Resources */,

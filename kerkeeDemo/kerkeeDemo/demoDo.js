@@ -2,7 +2,7 @@
  * Created by jianhuang on 2015/3/28.
  */
 define([
-        'bridgeLib',
+        'kerkee',
         'zepto',
         'api/device/platform',
         'api/nativeUI/widget',
@@ -11,7 +11,7 @@ define([
         'domReady!'
     ],
 
-    function (bridgeLib, $, Platform, Widget, util) {
+    function (kerkee, $, Platform, Widget, util) {
 
         function ChannelDo(){
             this.channelMainBox=$("#channelMainBox");

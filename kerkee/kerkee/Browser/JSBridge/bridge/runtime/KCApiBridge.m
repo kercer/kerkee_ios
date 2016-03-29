@@ -50,7 +50,7 @@ static BOOL sIsOpenJSLog = true;
     {
         if(!m_js)
         {
-            NSString *jsFilePath = [[NSBundle mainBundle] pathForResource:@"bridgeLib" ofType:@"js"];
+            NSString *jsFilePath = [[NSBundle mainBundle] pathForResource:@"kerkee" ofType:@"js"];
             m_js = [NSString stringWithContentsOfFile:jsFilePath encoding:NSUTF8StringEncoding error:NULL];
             KCRetain(m_js);
         }

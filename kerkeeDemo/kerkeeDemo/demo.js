@@ -7,7 +7,7 @@ requirejs.config({
 
     paths: {
         api:"../vendor/api",
-        bridgeLib: "../bridgeLib",
+        kerkee: "../kerkee",
         zepto:"../vendor/lib/zepto.min",
         lazyload:"../vendor/lib/jquery.lazyload",
         underscore: '../vendor/lib/underscore',
@@ -27,8 +27,8 @@ requirejs.config({
     },
 
     shim: {
-        "bridgeLib": {
-            exports: "bridgeLib"
+        "kerkee": {
+            exports: "kerkee"
         },
 
         'zepto':{
