@@ -166,7 +166,7 @@
 
 - (void)loadImageCache:(NSURL*)url
 {
-    //这一句的目前其实是先把image加载到dic中
+    //The purpose of this is the first image is loaded into the dic
     if(m_isOpenFileCache)
     {
         [m_imageCache loadImageFileToCache:url];

@@ -34,7 +34,7 @@
         if (!m_imageCacheManager)
         {
             m_imageCacheManager = [[KCImagePreCache alloc]init];
-            [m_imageCacheManager setIsUseLastPathComponentForKey:YES];
+            [m_imageCacheManager setIsUseLastPathComponentForKey:NO];
             [m_imageCacheManager openFileCache:YES];
         }
     }
@@ -55,8 +55,6 @@
 
 -(void) handleImage:(KCWebImageSetterTask*)aTask
 {
-   
-    
     NSURL *url = aTask.url;
     
     if ([KCUtilURL isImageUrl:url])
