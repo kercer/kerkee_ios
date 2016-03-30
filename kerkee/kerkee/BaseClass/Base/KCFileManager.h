@@ -6,6 +6,7 @@
 
 @interface KCFileManager : NSObject
 
+//the key , you can see the NSFileAttributes
 +(id)attribute:(NSString *)aPath forKey:(NSString *)aKey;
 +(id)attribute:(NSString *)aPath forKey:(NSString *)aKey error:(NSError **)aError;
 
@@ -17,9 +18,21 @@
 
 +(BOOL)copy:(NSString *)path toPath:(NSString *)toPath;
 +(BOOL)copy:(NSString *)path toPath:(NSString *)toPath error:(NSError **)error;
-
 +(BOOL)copy:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite;
 +(BOOL)copy:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite error:(NSError **)error;
+
++(void)copyAsyn:(NSString*)fromPath toPath:(NSString*)toPath block:(void(^)(BOOL aIsSucceed))aBlock;
+
+#pragma mark -
+#pragma mark move
++(BOOL)move:(NSString *)path toPath:(NSString *)toPath;
++(BOOL)move:(NSString *)path toPath:(NSString *)toPath error:(NSError **)error;
++(BOOL)move:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite;
++(BOOL)move:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite error:(NSError **)error;
+
++(void)moveAsyn:(NSString*)fromPath toPath:(NSString*)toPath block:(void(^)(BOOL aIsSucceed))aBlock;
+
+
 
 #pragma mark -
 #pragma mark create
@@ -82,13 +95,6 @@
 
 +(NSArray *)listItemsInDir:(NSString *)path deep:(BOOL)deep;
 
-#pragma mark -
-#pragma mark move
-+(BOOL)move:(NSString *)path toPath:(NSString *)toPath;
-+(BOOL)move:(NSString *)path toPath:(NSString *)toPath error:(NSError **)error;
-
-+(BOOL)move:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite;
-+(BOOL)move:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite error:(NSError **)error;
 
 #pragma mark -
 #pragma mark path
@@ -169,26 +175,29 @@
 +(BOOL)renameItemAtPath:(NSString *)path withName:(NSString *)name;
 +(BOOL)renameItemAtPath:(NSString *)path withName:(NSString *)name error:(NSError **)error;
 
+#pragma mark - size
 +(NSString *)sizeFormatted:(NSNumber *)size;
-
-+(NSString *)sizeFormattedOfDirectoryAtPath:(NSString *)path;
-+(NSString *)sizeFormattedOfDirectoryAtPath:(NSString *)path error:(NSError **)error;
-
++(NSString *)sizeFormattedOfDirAtPath:(NSString *)path;
++(NSString *)sizeFormattedOfDirAtPath:(NSString *)path error:(NSError **)error;
 +(NSString *)sizeFormattedOfFileAtPath:(NSString *)path;
 +(NSString *)sizeFormattedOfFileAtPath:(NSString *)path error:(NSError **)error;
-
 +(NSString *)sizeFormattedOfItemAtPath:(NSString *)path;
 +(NSString *)sizeFormattedOfItemAtPath:(NSString *)path error:(NSError **)error;
 
-+(NSNumber *)sizeOfDirectoryAtPath:(NSString *)path;
-+(NSNumber *)sizeOfDirectoryAtPath:(NSString *)path error:(NSError **)error;
-
++(NSNumber *)sizeOfDirAtPath:(NSString *)path;
++(NSNumber *)sizeOfDirAtPath:(NSString *)path error:(NSError **)error;
 +(NSNumber *)sizeOfFileAtPath:(NSString *)path;
 +(NSNumber *)sizeOfFileAtPath:(NSString *)path error:(NSError **)error;
-
 +(NSNumber *)sizeOfItemAtPath:(NSString *)path;
 +(NSNumber *)sizeOfItemAtPath:(NSString *)path error:(NSError **)error;
++(unsigned long long) sizeOfFileFromStatAtPath:(NSString*) filePath;
++(unsigned long long) sizeOfDirFromStatAtPath:(NSString*) folderPath;
 
++(unsigned long long) freeDiskSpace;
++(unsigned long long) getTotalDiskSpaceInBytes;
+
+
+#pragma mark -
 +(NSURL *)urlForItemAtPath:(NSString *)path;
 
 +(BOOL)writeFileAtPath:(NSString *)path content:(NSObject *)content;
@@ -203,6 +212,13 @@
 +(BOOL)xattrOfItemAtPath:(NSString *)path hasValueForKey:(NSString *)key;
 +(BOOL)xattrOfItemAtPath:(NSString *)path removeValueForKey:(NSString *)key;
 +(BOOL)xattrOfItemAtPath:(NSString *)path setValue:(NSString *)value forKey:(NSString *)key;
+
+
+#pragma mark bund
++(NSMutableData*)readBundleWithFileName:(NSString *)aFilename type:(NSString *)aFiletype;
+
+#pragma mark -
++(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
 
 @end
 

@@ -11,7 +11,7 @@
 #import "KCWebPathDefine.h"
 #import "ZipArchive.h"
 #import "KCBaseDefine.h"
-#import "KCUtilFile.h"
+#import "KCFileManager.h"
 
 @interface KCAssistant()
 {
@@ -95,7 +95,7 @@
     
     KCRelease(zipArchive);
     
-    [KCUtilFile addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:KCWebPath_HtmlRootPath]];
+    [KCFileManager addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:KCWebPath_HtmlRootPath]];
 }
 
 

@@ -1,7 +1,12 @@
 
 #import "KCFileManager.h"
 #import <sys/xattr.h>
+#include "sys/stat.h"
+#include <sys/param.h>
+#include <sys/mount.h>
 #import <objc/runtime.h>
+
+#import "KCTaskQueue.h"
 
 @implementation KCFileManager
 
@@ -142,6 +147,65 @@
         return NO;
     }
 }
+
++(void)copyAsyn:(NSString*)fromPath toPath:(NSString*)toPath block:(void(^)(BOOL aIsSucceed))aBlock
+{
+    BACKGROUND_GLOBAL_BEGIN(PRIORITY_DEFAULT)
+    
+    BOOL isSucceed = [self copy:fromPath toPath:toPath];
+    FOREGROUND_BEGIN
+    if (aBlock)
+        aBlock(isSucceed);
+    FOREGROUND_COMMIT
+    
+    BACKGROUND_GLOBAL_COMMIT
+    
+}
+
++(BOOL)move:(NSString *)path toPath:(NSString *)toPath
+{
+    return [self move:path toPath:toPath overwrite:NO error:nil];
+}
+
+
++(BOOL)move:(NSString *)path toPath:(NSString *)toPath error:(NSError **)error
+{
+    return [self move:path toPath:toPath overwrite:NO error:error];
+}
+
+
++(BOOL)move:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite
+{
+    return [self move:path toPath:toPath overwrite:overwrite error:nil];
+}
+
+
++(BOOL)move:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite error:(NSError **)error
+{
+    if(![self exists:toPath] || (overwrite && [self remove:toPath error:error] && [self isNotError:error]))
+    {
+        return ([self createDirForFilePath:toPath error:error] && [[NSFileManager defaultManager] moveItemAtPath:[self absolutePath:path] toPath:[self absolutePath:toPath] error:error]);
+    }
+    else {
+        return NO;
+    }
+}
+
+
++(void)moveAsyn:(NSString*)fromPath toPath:(NSString*)toPath block:(void(^)(BOOL aIsSucceed))aBlock
+{
+    BACKGROUND_GLOBAL_BEGIN(PRIORITY_DEFAULT)
+    
+    BOOL isSucceed = [self move:fromPath toPath:toPath];
+    FOREGROUND_BEGIN
+    if (aBlock)
+        aBlock(isSucceed);
+    FOREGROUND_COMMIT
+    
+    BACKGROUND_GLOBAL_COMMIT
+}
+
+
 
 
 +(BOOL)createDirForFilePath:(NSString *)path
@@ -450,35 +514,6 @@
     return [NSArray arrayWithArray:absoluteSubpaths];
 }
 
-
-+(BOOL)move:(NSString *)path toPath:(NSString *)toPath
-{
-    return [self move:path toPath:toPath overwrite:NO error:nil];
-}
-
-
-+(BOOL)move:(NSString *)path toPath:(NSString *)toPath error:(NSError **)error
-{
-    return [self move:path toPath:toPath overwrite:NO error:error];
-}
-
-
-+(BOOL)move:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite
-{
-    return [self move:path toPath:toPath overwrite:overwrite error:nil];
-}
-
-
-+(BOOL)move:(NSString *)path toPath:(NSString *)toPath overwrite:(BOOL)overwrite error:(NSError **)error
-{
-    if(![self exists:toPath] || (overwrite && [self remove:toPath error:error] && [self isNotError:error]))
-    {
-        return ([self createDirForFilePath:toPath error:error] && [[NSFileManager defaultManager] moveItemAtPath:[self absolutePath:path] toPath:[self absolutePath:toPath] error:error]);
-    }
-    else {
-        return NO;
-    }
-}
 
 
 +(NSString *)pathForApplicationSupportDirectory
@@ -881,15 +916,15 @@
 }
 
 
-+(NSString *)sizeFormattedOfDirectoryAtPath:(NSString *)path
++(NSString *)sizeFormattedOfDirAtPath:(NSString *)path
 {
-    return [self sizeFormattedOfDirectoryAtPath:path error:nil];
+    return [self sizeFormattedOfDirAtPath:path error:nil];
 }
 
 
-+(NSString *)sizeFormattedOfDirectoryAtPath:(NSString *)path error:(NSError **)error
++(NSString *)sizeFormattedOfDirAtPath:(NSString *)path error:(NSError **)error
 {
-    NSNumber *size = [self sizeOfDirectoryAtPath:path error:error];
+    NSNumber *size = [self sizeOfDirAtPath:path error:error];
     
     if(size != nil && [self isNotError:error])
     {
@@ -938,13 +973,13 @@
 }
 
 
-+(NSNumber *)sizeOfDirectoryAtPath:(NSString *)path
++(NSNumber *)sizeOfDirAtPath:(NSString *)path
 {
-    return [self sizeOfDirectoryAtPath:path error:nil];
+    return [self sizeOfDirAtPath:path error:nil];
 }
 
 
-+(NSNumber *)sizeOfDirectoryAtPath:(NSString *)path error:(NSError **)error
++(NSNumber *)sizeOfDirAtPath:(NSString *)path error:(NSError **)error
 {
     if([self isDir:path error:error])
     {
@@ -1010,6 +1045,55 @@
 +(NSNumber *)sizeOfItemAtPath:(NSString *)path error:(NSError **)error
 {
     return (NSNumber *)[self attribute:path forKey:NSFileSize error:error];
+}
+
++ (unsigned long long) sizeOfFileFromStatAtPath:(NSString*) filePath
+{
+    struct stat st;
+    if(lstat([filePath cStringUsingEncoding:NSUTF8StringEncoding], &st) == 0)
+    {
+        return st.st_size;
+    }
+    return 0;
+}
+
+
++ (unsigned long long) sizeOfDirFromStatAtPath:(NSString*) folderPath
+{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:folderPath]) return 0;
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:folderPath] objectEnumerator];
+    NSString* fileName;
+    long long folderSize = 0;
+    while ((fileName = [childFilesEnumerator nextObject]) != nil)
+    {
+        NSString* fileAbsolutePath = [folderPath stringByAppendingPathComponent:fileName];
+        folderSize += [self sizeOfFileFromStatAtPath:fileAbsolutePath];
+    }
+    return folderSize;
+}
+
+
++(unsigned long long) freeDiskSpace
+{
+    struct statfs buf;
+    long long freespace = -1;
+    if(statfs("/", &buf) >= 0)
+    {
+        freespace = (unsigned long long)buf.f_bsize * buf.f_bfree;
+    }
+    
+    return freespace;
+}
+
++(unsigned long long) getTotalDiskSpaceInBytes
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    struct statfs tStats;
+    statfs([[paths lastObject] UTF8String], &tStats);
+    unsigned long long totalSpace = (unsigned long long)(tStats.f_blocks * tStats.f_bsize);
+    
+    return totalSpace;
 }
 
 
@@ -1231,6 +1315,48 @@
     return (result == 0);
 }
 
+
+
++(NSMutableData*) readBundleWithFileName:(NSString *)aFilename type:(NSString *)aFiletype
+{
+    
+    if(nil == aFilename)
+        return nil;
+    
+    NSBundle * bundle = [NSBundle bundleForClass:[self class]];
+    NSString * path = [bundle pathForResource:aFilename ofType:aFiletype];
+    
+    if(nil == path)
+        return nil;
+    
+    NSMutableData * bundleData = (NSMutableData*)[[NSFileManager defaultManager] contentsAtPath:path];
+    if(nil == bundleData)
+        return nil;
+    
+    return bundleData;
+}
+
++(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath: [URL path]]) {
+        return NO;
+    }
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 5.1) {
+        NSError *error = nil;
+        BOOL success = [URL setResourceValue: [NSNumber numberWithBool: YES]
+                                      forKey: NSURLIsExcludedFromBackupKey error: &error];
+        if(!success){
+            NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+        }
+        return success;
+    } else {
+        const char* filePath = [[URL path] fileSystemRepresentation];
+        const char* attrName = "com.apple.MobileBackup";
+        u_int8_t attrValue = 1;
+        int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+        return result == 0;
+    }
+}
 
 @end
 
