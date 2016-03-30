@@ -19,11 +19,11 @@
 /*!
  * The view is not automatically resized.
  */
-- (void)mh_loadImageFromURL:(NSURL*)url;
+- (void)loadImageFromURL:(NSURL*)url;
 
 @end
 
-typedef void (^UCImageCacheBlock)(UIImage* image);
+typedef void (^KCImageCacheBlock)(UIImage* image);
 
 /*!
  * \warning This class is not thread-safe. You should use it from the main 
@@ -41,8 +41,8 @@ typedef void (^UCImageCacheBlock)(UIImage* image);
 
 AS_SINGLETON(KCImageCache);
 
-- (void)imageFromURL:(NSURL*)url usingBlock:(UCImageCacheBlock)block;
-- (void)imageFromURL:(NSURL*)url cacheInFile:(BOOL)cacheInFile usingBlock:(UCImageCacheBlock)block;
+- (void)imageFromURL:(NSURL*)url usingBlock:(KCImageCacheBlock)block;
+- (void)imageFromURL:(NSURL*)url cacheInFile:(BOOL)cacheInFile usingBlock:(KCImageCacheBlock)block;
 
 - (UIImage*)cachedImageWithURL:(NSURL*)url;
 
@@ -62,7 +62,7 @@ AS_SINGLETON(KCImageCache);
 
 - (NSString*)cacheDirectory;
 
--(void)setM_strCacheDirectory:(NSString*)dirPath;
+-(void)setCacheDirectory:(NSString*)dirPath;
 
 -(void)deleteCachePool;
 

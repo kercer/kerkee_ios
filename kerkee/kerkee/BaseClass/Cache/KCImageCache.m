@@ -14,7 +14,7 @@
 
 @implementation UIImageView (KCImageCache)
 
-- (void)mh_loadImageFromURL:(NSURL*)url
+- (void)loadImageFromURL:(NSURL*)url
 {
 	__block __typeof__(self) blockSelf = self;
 	[[KCImageCache sharedInstance] imageFromURL:url usingBlock:^(UIImage* theImage)
@@ -86,7 +86,7 @@ DEF_SINGLETON(KCImageCache);
 	return m_strCacheDirectory;
 }
 
--(void)setM_strCacheDirectory:(NSString*)dirPath
+-(void)setCacheDirectory:(NSString*)dirPath
 {
     NSFileManager* fileManager = [NSFileManager defaultManager];
     
@@ -114,7 +114,7 @@ DEF_SINGLETON(KCImageCache);
 
     if (blocks)
     {
-        for (UCImageCacheBlock block in blocks)
+        for (KCImageCacheBlock block in blocks)
         {
             // It is possible for the block to replace the image with another one;
             // for example, it may do post-processing and put the processed image
@@ -129,12 +129,12 @@ DEF_SINGLETON(KCImageCache);
     }
 }
 
-- (void)imageFromURL:(NSURL*)url usingBlock:(UCImageCacheBlock)block
+- (void)imageFromURL:(NSURL*)url usingBlock:(KCImageCacheBlock)block
 {
 	[self imageFromURL:url cacheInFile:YES usingBlock:block];
 }
 
-- (void)imageFromURL:(NSURL*)url cacheInFile:(BOOL)cacheInFile usingBlock:(UCImageCacheBlock)block
+- (void)imageFromURL:(NSURL*)url cacheInFile:(BOOL)cacheInFile usingBlock:(KCImageCacheBlock)block
 {
 	NSString* key = [self keyForURL:url];
 
