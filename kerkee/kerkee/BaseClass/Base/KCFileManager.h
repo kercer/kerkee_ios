@@ -62,6 +62,7 @@
 +(BOOL)emptyTemporaryDir;
 
 +(BOOL)exists:(NSString *)path;
++(BOOL)existsFast:(NSString*)path;
 
 +(BOOL)isDir:(NSString *)path;
 +(BOOL)isDir:(NSString *)path error:(NSError **)error;
@@ -154,13 +155,10 @@
 
 +(BOOL)removeFilesInDir:(NSString *)path;
 +(BOOL)removeFilesInDir:(NSString *)path error:(NSError **)error;
-
 +(BOOL)removeFilesInDir:(NSString *)path withExtension:(NSString *)extension;
 +(BOOL)removeFilesInDir:(NSString *)path withExtension:(NSString *)extension error:(NSError **)error;
-
 +(BOOL)removeFilesInDir:(NSString *)path withPrefix:(NSString *)prefix;
 +(BOOL)removeFilesInDir:(NSString *)path withPrefix:(NSString *)prefix error:(NSError **)error;
-
 +(BOOL)removeFilesInDir:(NSString *)path withSuffix:(NSString *)suffix;
 +(BOOL)removeFilesInDir:(NSString *)path withSuffix:(NSString *)suffix error:(NSError **)error;
 

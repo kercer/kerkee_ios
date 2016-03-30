@@ -15,17 +15,20 @@
 
 @interface KCImagePreCache : KCCache
 
-
--(void)prepareImage:(NSURL*)url;
--(void)prepareImageFile:(NSURL *)url;  //不添加到缓存 使用这个接口强制打开缓存，外部设置无效
-
 typedef void (^fetchImageBlock)(UIImage* image, NSString* path, BOOL isFromCached);
 -(void)prepareImage:(NSURL *)url keepMemoryCache:(BOOL)isKeepMemoryCache usingBlock:(fetchImageBlock)block;
+
+//if you want use observr, you can register delegate or remove delegate
+-(void)prepareImage:(NSURL*)url;
+//if you want use observr, you can register delegate or remove delegate
+//Do not add to the cache, Using this interface forced open the cache, the external Settings are invalid
+-(void)prepareImageFile:(NSURL *)url;
 
 -(void)openFileCache:(BOOL)isOpen;
 -(void)setIsUseLastPathComponentForKey:(BOOL)use;
 
 -(void)deleteCachePool;
+-(void)cleanCacheWithBeforeDays:(int)aDays;
 - (void)flushMemory;
 
 // use observer
@@ -36,7 +39,7 @@ typedef void (^fetchImageBlock)(UIImage* image, NSString* path, BOOL isFromCache
 @end
 
 
-@protocol UCImageCacheDelegate <NSObject>
+@protocol KCImageCacheDelegate <NSObject>
 
 -(void)fetchImage:(NSURL*)url Image:(UIImage*)image FromCached:(BOOL)isFromCached;
 -(void)fetchImageFile:(NSURL *)url Path:(NSString*)path FromCached:(BOOL)isFromCached;

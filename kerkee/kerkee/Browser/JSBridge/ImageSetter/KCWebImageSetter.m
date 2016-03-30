@@ -17,10 +17,10 @@
 #import "KCTaskQueue.h"
 #import "KCLog.h"
 
+#define kCleanCacheDays 7
 @interface KCWebImageSetter ()
 {
     KCImagePreCache* m_imageCacheManager;
-    
 }
 @end
 
@@ -36,6 +36,7 @@
             m_imageCacheManager = [[KCImagePreCache alloc]init];
             [m_imageCacheManager setIsUseLastPathComponentForKey:NO];
             [m_imageCacheManager openFileCache:YES];
+            [m_imageCacheManager cleanCacheWithBeforeDays:kCleanCacheDays];
         }
     }
     
@@ -45,6 +46,7 @@
 - (void)dealloc
 {
     [m_imageCacheManager flushMemory];
+    [m_imageCacheManager cleanCacheWithBeforeDays:kCleanCacheDays];
     KCRelease(m_imageCacheManager);
     m_imageCacheManager = nil;
     

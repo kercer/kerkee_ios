@@ -200,6 +200,11 @@
     [m_imageCache deleteCachePool];
 }
 
+-(void)cleanCacheWithBeforeDays:(int)aDays
+{
+    [m_imageCache cleanCacheWithBeforeDays:aDays];
+}
+
 - (void)flushMemory
 {
     [m_imageCache flushMemory];

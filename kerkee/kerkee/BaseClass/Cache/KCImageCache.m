@@ -11,6 +11,8 @@
 #import "KCImageCache.h"
 #import "KCBaseDefine.h"
 #import "KCTaskQueue.h"
+#import "KCFileManager.h"
+#import "NSDate+KCDate.h"
 
 @implementation UIImageView (KCImageCache)
 
@@ -333,7 +335,7 @@ DEF_SINGLETON(KCImageCache);
     NSString* key = [self keyForURL:url];
     NSString* path = nil;
     path = [[self cacheDirectory] stringByAppendingPathComponent:key];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+    if ([KCFileManager existsFast:path])
     {
         return path;
     }
@@ -360,10 +362,30 @@ DEF_SINGLETON(KCImageCache);
     [self flushMemory];
     NSString* cacheDirectoryPath = [self cacheDirectory];
     m_strCacheDirectory = nil;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:cacheDirectoryPath])
+    if ([KCFileManager exists:cacheDirectoryPath])
     {
-        [[NSFileManager defaultManager] removeItemAtPath:cacheDirectoryPath error:nil];
+        [KCFileManager remove:cacheDirectoryPath];
     }
+}
+
+-(void)cleanCacheWithBeforeDays:(int)aDays
+{
+    BACKGROUND_GLOBAL_BEGIN(PRIORITY_DEFAULT)
+    
+    NSArray* list = [KCFileManager listFilesInDir:[self cacheDirectory] deep:YES];
+    NSUInteger count = list.count;
+    for (NSUInteger i = 0; i<count; ++i)
+    {
+        NSString* path = [list objectAtIndex:i];
+        if (path)
+        {
+            NSDate* date = [KCFileManager attributes:path].fileModificationDate;
+            if ([date minutesBeforeDate:[NSDate date]] >= aDays)
+                [KCFileManager remove:path];
+        }
+    }
+    
+    BACKGROUND_GLOBAL_COMMIT
 }
 
 

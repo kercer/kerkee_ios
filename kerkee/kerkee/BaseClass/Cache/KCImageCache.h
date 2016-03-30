@@ -65,6 +65,7 @@ AS_SINGLETON(KCImageCache);
 -(void)setCacheDirectory:(NSString*)dirPath;
 
 -(void)deleteCachePool;
+-(void)cleanCacheWithBeforeDays:(int)aDays;
 
 -(void)setIsUseLastPathComponentForKey:(BOOL)use;
 

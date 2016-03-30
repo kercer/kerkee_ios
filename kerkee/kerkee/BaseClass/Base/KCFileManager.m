@@ -337,6 +337,11 @@
     return [[NSFileManager defaultManager] fileExistsAtPath:[self absolutePath:path]];
 }
 
++(BOOL)existsFast:(NSString*)path
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:path];
+}
+
 
 +(BOOL)isDir:(NSString *)path
 {
