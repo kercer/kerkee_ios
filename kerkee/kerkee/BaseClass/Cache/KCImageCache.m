@@ -380,7 +380,7 @@ DEF_SINGLETON(KCImageCache);
         if (path)
         {
             NSDate* date = [KCFileManager attributes:path].fileModificationDate;
-            if ([date minutesBeforeDate:[NSDate date]] >= aDays)
+            if ([date daysBeforeDate:[NSDate date]] >= aDays)
                 [KCFileManager remove:path];
         }
     }
