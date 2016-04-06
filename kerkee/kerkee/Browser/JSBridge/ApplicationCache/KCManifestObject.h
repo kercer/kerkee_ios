@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KCObject.h"
+#import "KCURI.h"
 
 @interface KCManifestObject : KCObject
 
@@ -16,7 +17,7 @@
 @property (nonatomic, retain) NSArray* mSubManifests;// sub manifests list
 @property (nonatomic, retain) NSArray* mExtras; //extras files, don't delete files
 @property (nonatomic, retain) NSArray* mCacheList;
-@property (nonatomic, retain) NSString* mDekRelativePath; //dek relative path, if dek path is url, it's null
+@property (nonatomic, retain) NSString* mDekRelativePath; //dek relative to manifest path, if dek path is url, it's null
 @property (nonatomic, retain) NSString* mRequiredVersion; //required version;
 @property (nonatomic, retain) NSArray* mCacheDirs;//cache dirs, contains mCacheList' dir, not contains Extras and suManifests dir
 
@@ -26,6 +27,9 @@
 @property (nonatomic, retain) NSString* mDownloadUrl;
 //dek & manifest file Dir, if from server, the VAR is null
 @property (nonatomic, retain) NSString* mDestDir;
+
+@property (nonatomic, retain) KCURI* mBaseUri;  //root uri
+@property (nonatomic, retain) NSString* mRelativePath; //relative to base uri
 
 
 @end

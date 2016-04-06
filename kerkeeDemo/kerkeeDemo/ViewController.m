@@ -82,13 +82,13 @@
 
 -(void)testFetchManifest
 {
-//    KCURI* uriServer = [KCURI parse:@"http://www.linzihong.com/test/html/manifest"];
-//    [KCFetchManifest fetchOneServerManifest:uri block:^(KCManifestObject *aManifestObject) {
-//    }];
-//    [KCFetchManifest fetchServerManifests:uriServer block:^(KCManifestObject *aManifestObject) {
-//        
-//        KCLog(@"%@", aManifestObject);
-//    }];
+    KCURI* uriServer = [KCURI parse:@"http://www.linzihong.com/test/html/manifest"];
+    [KCFetchManifest fetchOneServerManifest:uriServer block:^(KCManifestObject *aManifestObject) {
+    }];
+    [KCFetchManifest fetchServerManifests:uriServer block:^(KCManifestObject *aManifestObject) {
+        
+        KCLog(@"%@", aManifestObject);
+    }];
     
     
     KCURI* uriLocal = [KCURI parse:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/html"] stringByAppendingPathComponent:@"manifest"]];

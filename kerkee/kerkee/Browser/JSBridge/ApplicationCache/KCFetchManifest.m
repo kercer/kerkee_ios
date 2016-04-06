@@ -46,31 +46,69 @@
 
 + (void)fetchOneServerManifest:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock
 {
+    NSString* urlManifest = aUri.URL.absoluteString;
+    int index = [KCString lastIndexOfChar:'/' str:urlManifest];
+    
+    if (index>=0)
+    {
+        // index value can't -1
+        NSString* urlDir = [urlManifest substringToIndex:index];
+        KCURI* uriBase = [KCURI parse:urlDir];
+        
+        NSString* relativePath = [urlManifest substringFromIndex:index];
+        
+        [self fetchOneServerManifest:aUri baseUri:uriBase relativepath:relativePath block:aBlock];
+    }
+
+}
+
++ (void)fetchOneServerManifest:(KCURI*)aUri baseUri:(KCURI*)aBaseUri relativepath:(NSString*)aRelativePath block:(void(^)(KCManifestObject* aManifestObject))aBlock
+{
     if (aUri)
     {
         [self fetchData:aUri.URL finishedBlock:^(NSData *data)
-        {
-            KCManifestParser* parser = [[KCManifestParser alloc] init];
-            KCManifestObject* manifestObject = [parser parserData:data];
-            if (aBlock)
-                aBlock(manifestObject);
-        }];
+         {
+             KCManifestParser* parser = [[KCManifestParser alloc] init];
+             KCManifestObject* manifestObject = [parser parserData:data];
+             if (manifestObject)
+             {
+                 manifestObject.mBaseUri = aBaseUri;
+                 manifestObject.mRelativePath = aRelativePath;
+             }
+             if (aBlock)
+                 aBlock(manifestObject);
+         }];
     }
 }
+
 
 + (void)fetchServerManifests:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock
 {
     NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
     [self fetchServerManifests:aUri outManifests:dic block:aBlock];
-    
-    
 }
 
 + (void)fetchServerManifests:(KCURI*)aUri outManifests:(NSMutableDictionary*)aOutMapManifestObjects block:(void(^)(KCManifestObject* aManifestObject))aBlock
 {
+    NSString* urlManifest = aUri.URL.absoluteString;
+    int index = [KCString lastIndexOfChar:'/' str:urlManifest];
+    if (index >= 0)
+    {
+        // index value can't -1
+        NSString* urlDir = [urlManifest substringToIndex:index];
+        KCURI* uriBase = [KCURI parse:urlDir];
+        
+        NSString* relativePath = [urlManifest substringFromIndex:index];
+        
+        [self fetchServerManifests:aUri outManifests:aOutMapManifestObjects baseUri:uriBase relativepath:relativePath block:aBlock];
+    }
+}
+
++ (void)fetchServerManifests:(KCURI*)aUri outManifests:(NSMutableDictionary*)aOutMapManifestObjects baseUri:(KCURI*)aBaseUri relativepath:(NSString*)aRelativePath block:(void(^)(KCManifestObject* aManifestObject))aBlock
+{
     if (aOutMapManifestObjects == NULL) return;
     
-    [self fetchOneServerManifest:aUri block:^(KCManifestObject *aManifestObject)
+    [self fetchOneServerManifest:aUri baseUri:aBaseUri relativepath:aRelativePath block:^(KCManifestObject *aManifestObject)
     {
         KCManifestObject* mo  = aManifestObject;
         if (mo)
@@ -93,12 +131,15 @@
             NSArray* subManifests = mo.mSubManifests;
             if (subManifests)
             {
+                int indexRelative = [KCString lastIndexOfChar:'/' str:aRelativePath];
+                NSString* relativeBase = [aRelativePath substringToIndex:indexRelative];
                 for (int i = 0; i < subManifests.count; i++)
                 {
                     NSString* subPathManifest = subManifests[i];
                     subPathManifest = [subPathManifest stringByReplacingOccurrencesOfString:@"./" withString:@""];
                     NSString* subUrlManifest = [NSString stringWithFormat:@"%@/%@", urlDir, subPathManifest];
-                    [self fetchServerManifests:[KCURI parse:subUrlManifest] outManifests:aOutMapManifestObjects block:aBlock];
+                    NSString* relativePath = [NSString stringWithFormat:@"%@/%@", relativeBase, subPathManifest];
+                    [self fetchServerManifests:[KCURI parse:subUrlManifest] outManifests:aOutMapManifestObjects baseUri:aBaseUri relativepath:relativePath block:aBlock];
                 }
             }
         }
@@ -113,7 +154,24 @@
     return strPath;
 }
 
-+ (KCManifestObject*)fetchOneLocalManifest:(KCURI*)aUri
++ (KCManifestObject*)fetchOneLocalManifest:(KCURI*)aUri 
+{
+    NSString* urlManifest = aUri.URL.absoluteString;
+    int index = [KCString lastIndexOfChar:'/' str:urlManifest];
+    if (index >= 0)
+    {
+        // index value can't -1
+        NSString* urlDir = [urlManifest substringToIndex:index];
+        KCURI* uriBase = [KCURI parse:urlDir];
+        
+        NSString* relativePath = [urlManifest substringFromIndex:index];
+        
+        return [self fetchOneLocalManifest:aUri baseUri:uriBase relativepath:relativePath];
+    }
+    return nil;
+}
+
++ (KCManifestObject*)fetchOneLocalManifest:(KCURI*)aUri baseUri:(KCURI*)aBaseUri relativepath:(NSString*)aRelativePath
 {
     if (aUri)
     {
@@ -127,22 +185,46 @@
             if (manifestObject)
             {
                 manifestObject.mDestDir = [strPath substring:0 end:[strPath lastIndexOf:kFileSeparator]+1];
+                
+                manifestObject.mBaseUri = aUri;
+                manifestObject.mRelativePath = aRelativePath;
             }
             return manifestObject;
         }
     }
     return nil;
 }
+
+
 + (void)fetchOneLocalManifest:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock
 {
+    NSString* urlManifest = aUri.URL.absoluteString;
+    int index = [KCString lastIndexOfChar:'/' str:urlManifest];
+    
+    if (index>=0)
+    {
+        // index value can't -1
+        NSString* urlDir = [urlManifest substringToIndex:index];
+        KCURI* uriBase = [KCURI parse:urlDir];
+        
+        NSString* relativePath = [urlManifest substringFromIndex:index];
+        
+        [self fetchOneLocalManifest:aUri baseUri:uriBase relativepath:relativePath block:aBlock];
+    }
+
+}
+
++ (void)fetchOneLocalManifest:(KCURI*)aUri baseUri:(KCURI*)aBaseUri relativepath:(NSString*)aRelativePath block:(void(^)(KCManifestObject* aManifestObject))aBlock
+{
     BACKGROUND_GLOBAL_BEGIN(PRIORITY_HIGH)
-    KCManifestObject* manifestObject = [self fetchOneLocalManifest:aUri];
+    KCManifestObject* manifestObject = [self fetchOneLocalManifest:aUri baseUri:aBaseUri relativepath:aRelativePath];
     FOREGROUND_BEGIN
     if (aBlock)
         aBlock(manifestObject);
     FOREGROUND_COMMIT
     BACKGROUND_GLOBAL_COMMIT
 }
+
 
 + (void)fetchLocalManifests:(KCURI*)aUri block:(void(^)(KCManifestObject* aManifestObject))aBlock
 {
@@ -152,9 +234,25 @@
 
 + (void)fetchLocalManifests:(KCURI*)aUri outManifests:(NSMutableDictionary*)aOutMapManifestObjects block:(void(^)(KCManifestObject* aManifestObject))aBlock
 {
+    NSString* urlManifest = aUri.URL.absoluteString;
+    int index = [KCString lastIndexOfChar:'/' str:urlManifest];
+    if (index >= 0)
+    {
+        // index value can't -1
+        NSString* urlDir = [urlManifest substringToIndex:index];
+        KCURI* uriBase = [KCURI parse:urlDir];
+        
+        NSString* relativePath = [urlManifest substringFromIndex:index];
+        
+        [self fetchLocalManifests:aUri outManifests:aOutMapManifestObjects baseUri:uriBase relativepath:relativePath block:aBlock];
+    }
+}
+
++ (void)fetchLocalManifests:(KCURI*)aUri outManifests:(NSMutableDictionary*)aOutMapManifestObjects  baseUri:(KCURI*)aBaseUri relativepath:(NSString*)aRelativePath block:(void(^)(KCManifestObject* aManifestObject))aBlock
+{
     if (aOutMapManifestObjects == NULL) return;
     
-    [self fetchOneLocalManifest:aUri block:^(KCManifestObject *aManifestObject) {
+    [self fetchOneLocalManifest:aUri baseUri:aBaseUri relativepath:aRelativePath block:^(KCManifestObject *aManifestObject) {
         KCManifestObject* mo = aManifestObject;
         if (mo)
         {
@@ -167,13 +265,15 @@
             NSArray* subManifests = mo.mSubManifests;
             if (subManifests)
             {
+                int indexRelative = [KCString lastIndexOfChar:'/' str:aRelativePath];
+                NSString* relativeBase = [aRelativePath substringToIndex:indexRelative];
                 for (int i = 0; i < subManifests.count; i++)
                 {
                     NSString* subPathManifest = subManifests[i];
                     subPathManifest = [subPathManifest stringByReplacingOccurrencesOfString:@"./" withString:@""];
                     NSString* subFullPath = [NSString stringWithFormat:@"%@%@", mo.mDestDir, subPathManifest];
-                    
-                    [self fetchLocalManifests:[KCURI parse:subFullPath] outManifests:aOutMapManifestObjects block:aBlock];
+                    NSString* relativePath = [NSString stringWithFormat:@"%@/%@", relativeBase, subPathManifest];
+                    [self fetchLocalManifests:[KCURI parse:subFullPath] outManifests:aOutMapManifestObjects baseUri:aBaseUri relativepath:relativePath block:aBlock];
                 }
             }
         }
