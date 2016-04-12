@@ -431,7 +431,7 @@ static int createWebViewID = 0;
     
     float bottomHeight = scrollY + height;
     float contentHeight = self.scrollView.contentSize.height;
-    if (height < contentHeight && bottomHeight >= contentHeight - m_threshold)
+    if (scrollY >0 && height < contentHeight && bottomHeight >= contentHeight - m_threshold)
     {
         if (!m_ignoreScroll)
         {
