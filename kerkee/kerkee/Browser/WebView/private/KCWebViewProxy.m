@@ -301,18 +301,18 @@ static NSPredicate* webViewProxyLoopDetection;
 @synthesize proxyResponse=m_proxyResponse, requestMatcher=m_requestMatcher;
 
 
-+ (KCWebViewRequestMatcher *)findRequestMatcher:(NSURL *)url
++ (KCWebViewRequestMatcher *)findRequestMatcher:(NSURL *)aUrl
 {
     @synchronized(self)
     {
-        if (!requestMatchers) return nil;
+        if (!requestMatchers || !aUrl) return nil;
         NSArray* requestMatchersTmp = [requestMatchers copy];
         if (!requestMatchersTmp) return nil;
         unsigned long count = requestMatchersTmp.count;
         for (int i = 0 ; i < count; ++i)
         {
             KCWebViewRequestMatcher* requestMatcher = [requestMatchersTmp objectAtIndex:i];
-            if (requestMatcher && [requestMatcher.predicate evaluateWithObject:url])
+            if (requestMatcher && requestMatcher.predicate && [requestMatcher.predicate evaluateWithObject:aUrl])
             {
                 return requestMatcher;
             }
@@ -324,6 +324,7 @@ static NSPredicate* webViewProxyLoopDetection;
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)aRequest
 {
+    if (!aRequest) return NO;
     NSString* userAgent = aRequest.allHTTPHeaderFields[@"User-Agent"];
     if (userAgent && ![webViewUserAgentTest evaluateWithObject:userAgent]) { return NO; }
     if ([webViewProxyLoopDetection evaluateWithObject:aRequest.URL]) { return NO; }
