@@ -112,7 +112,7 @@ DEF_SINGLETON(KCImageCache);
 
 - (void)notifyBlocksForKey:(NSString*)key
 {
-	NSMutableArray* blocks = [self.m_dicLoadingImages objectForKey:key];
+	NSMutableArray* blocks = [[self.m_dicLoadingImages objectForKey:key] copy];
 
     if (blocks)
     {
