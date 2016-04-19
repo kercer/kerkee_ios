@@ -14,6 +14,49 @@
 
 @implementation KCUtilNet
 
+
+
++ (BOOL) IsEnableWIFI 
+{
+    return ([[Reachability reachabilityForLocalWiFi] currentReachabilityStatus] != NotReachable);
+}
+
++ (BOOL) IsEnable3G 
+{
+    return ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable);
+}
+
++(BOOL)hasNetwork
+{
+//    return ([UCNetUtil networkStatus] != NotReachable);
+    Reachability* reachability = [Reachability reachabilityForInternetConnection];
+    return [reachability isReachable];
+}
+
++(NetworkStatus)networkStatus
+{
+    Reachability* reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus nNetStatus = [reachability currentReachabilityStatus];
+    return nNetStatus;
+}
+
++(NSString*)networkStatusToString
+{
+    NetworkStatus networkStatus = [KCUtilNet networkStatus];
+    switch (networkStatus) {
+        case NotReachable:
+            return @"unknown";
+        case ReachableViaWiFi:
+            return @"wifi";
+        case ReachableViaWWAN:
+            return @"3g";
+    }
+    return @"unknow";
+}
+
+
+
+
 /************************************************************/
 /*
  IMSI 共有 15 位，其结构如下：
