@@ -252,6 +252,7 @@
 		DFE85A871C83F14B00B5ADD5 /* KCJSCompileExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE85A881C83F14B00B5ADD5 /* KCJSCompileExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE85A861C83F14B00B5ADD5 /* KCJSCompileExecutor.m */; };
 		DFE85A891C83FB0A00B5ADD5 /* KCJSCompileExecutor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */; };
+		DFE8A62B1C92D60700EDC868 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A6141C92D60700EDC868 /* Reachability.h */; };
 		DFE8A62C1C92D60700EDC868 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A6151C92D60700EDC868 /* Reachability.m */; };
 		DFE8A62D1C92D60700EDC868 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFE8A6171C92D60700EDC868 /* SSKeychain.strings */; };
 		DFE8A62E1C92D60700EDC868 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFE8A6191C92D60700EDC868 /* Info.plist */; };
@@ -1026,6 +1027,7 @@
 				DFC3AC181B9C17FC009F4775 /* NSObject+KCObserver.h in Headers */,
 				DFC3ABA21B9C17F2009F4775 /* KCXMLHttpRequest.h in Headers */,
 				DF809CAE1B9D90FF008B315D /* KCApiBridgeManager.h in Headers */,
+				DFE8A62B1C92D60700EDC868 /* Reachability.h in Headers */,
 				DFC3ABAB1B9C17F2009F4775 /* KCWebViewManager.h in Headers */,
 				DFC3AC411B9C17FC009F4775 /* KCUtilMd5.h in Headers */,
 				DFC3AC3B1B9C17FC009F4775 /* KCUtilDevice.h in Headers */,
