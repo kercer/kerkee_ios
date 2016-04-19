@@ -9,18 +9,10 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Reachability.h"
 
 @interface KCUtilNet : NSObject
 
 
-+ (BOOL) IsEnableWIFI;
-+ (BOOL) IsEnable3G;
-
-+(BOOL)hasNetwork;
-
-+(NetworkStatus)networkStatus;
-+(NSString*)networkStatusToString;
 
 +(NSString*)getCarrier:(NSString*)aIMSI;
 
