@@ -49,7 +49,7 @@ FOUNDATION_EXPORT const unsigned char kerkeeVersionString[];
 #import "KCMemoryCache.h"
 
 #pragma mark - coder
-#import "NSData+AES256.h"
+//#import "NSData+AES256.h"
 #import "NSData+Base64.h"
 
 #pragma mark - debug

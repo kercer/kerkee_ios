@@ -32,6 +32,7 @@
 		DF83DC871B95CA95003E3F91 /* KCPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC801B95CA95003E3F91 /* KCPlatform.m */; };
 		DF83DC881B95CA95003E3F91 /* KCUrlMaping.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */; };
 		DF83DC891B95CA95003E3F91 /* KCWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC851B95CA95003E3F91 /* KCWidget.m */; };
+		DF8524371CC61FA90046FC44 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8524361CC61FA90046FC44 /* Reachability.m */; };
 		DF9BCE4F1C3A5E3C0097A767 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */; };
 		DFBB9E111BF08BF500921758 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8F35851BC7719500C79B71 /* kerkee.framework */; };
 		DFBB9E121BF08BF500921758 /* kerkee.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF8F35851BC7719500C79B71 /* kerkee.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -133,6 +134,8 @@
 		DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUrlMaping.m; sourceTree = "<group>"; };
 		DF83DC841B95CA95003E3F91 /* KCWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWidget.h; sourceTree = "<group>"; };
 		DF83DC851B95CA95003E3F91 /* KCWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWidget.m; sourceTree = "<group>"; };
+		DF8524351CC61FA90046FC44 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DF8524361CC61FA90046FC44 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerkee.xcodeproj; path = ../kerkee/kerkee.xcodeproj; sourceTree = "<group>"; };
 		DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DFBB9E1D1BF0A82500921758 /* KCApiOverrideJSBridgeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiOverrideJSBridgeClient.h; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 		DF83DB2E1B959FC5003E3F91 /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				DF8524341CC61FA90046FC44 /* Reachability */,
 				DF83DB651B959FC5003E3F91 /* ZipArchive */,
 			);
 			name = dependencies;
@@ -308,6 +312,15 @@
 			);
 			name = kerkeeSDK;
 			path = ../kerkeeSDK;
+			sourceTree = "<group>";
+		};
+		DF8524341CC61FA90046FC44 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DF8524351CC61FA90046FC44 /* Reachability.h */,
+				DF8524361CC61FA90046FC44 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		DF8F35801BC7719500C79B71 /* Products */ = {
@@ -461,6 +474,7 @@
 				DF83DC5F1B95A45E003E3F91 /* KCClientUI.m in Sources */,
 				DF83DC861B95CA95003E3F91 /* KCAssistant.m in Sources */,
 				DF83DC5E1B95A45E003E3F91 /* KCApiClientInfo.m in Sources */,
+				DF8524371CC61FA90046FC44 /* Reachability.m in Sources */,
 				DF83DB881B959FC5003E3F91 /* ioapi.c in Sources */,
 				DFBB9E1F1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m in Sources */,
 				DF83DC891B95CA95003E3F91 /* KCWidget.m in Sources */,
