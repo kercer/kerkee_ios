@@ -162,10 +162,14 @@ static NSPredicate* webViewProxyLoopDetection;
     {
         m_headers[@"Content-Length"] = [self _contentLength:aData];
     }
-    NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
-    [m_protocol.client URLProtocol:m_protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
-    [m_protocol.client URLProtocol:m_protocol didLoadData:aData];
-    [m_protocol.client URLProtocolDidFinishLoading:m_protocol];
+    @synchronized (m_protocol)
+    {
+        NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
+        [m_protocol.client URLProtocol:m_protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
+        [m_protocol.client URLProtocol:m_protocol didLoadData:aData];
+        [m_protocol.client URLProtocolDidFinishLoading:m_protocol];
+    }
+
 }
 - (NSString*) _mimeTypeOf:(NSString*)pathExtension
 {
@@ -303,9 +307,9 @@ static NSPredicate* webViewProxyLoopDetection;
 
 + (KCWebViewRequestMatcher *)findRequestMatcher:(NSURL *)aUrl
 {
-    @synchronized(self)
+    if (!requestMatchers || !aUrl) return nil;
+    @synchronized(requestMatchers)
     {
-        if (!requestMatchers || !aUrl) return nil;
         NSArray* requestMatchersTmp = [requestMatchers copy];
         if (!requestMatchersTmp) return nil;
         unsigned long count = requestMatchersTmp.count;
