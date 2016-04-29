@@ -321,6 +321,7 @@ static KCDataValidCache* instance = nil;
 
 - (id)getCache:(NSString*)key
 {
+    if (!m_dicCache || !key) return nil;
     NSDictionary* dic = [m_dicCache objectForKey:key];
     if(!dic || dic.count == 0) return nil;
     NSNumber* numDate = [dic objectForKey:KExpires];
