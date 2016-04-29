@@ -162,7 +162,7 @@ static NSPredicate* webViewProxyLoopDetection;
     {
         m_headers[@"Content-Length"] = [self _contentLength:aData];
     }
-    @synchronized (m_protocol)
+    @synchronized (self)
     {
         NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
         [m_protocol.client URLProtocol:m_protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
@@ -393,7 +393,7 @@ static NSPredicate* webViewProxyLoopDetection;
 {
     [KCWebViewProxy removeAllHandlers];
     webViewUserAgentTest = [NSPredicate predicateWithFormat:@"self MATCHES '^Mozilla.*Mac OS X.*'"];
-    webViewProxyLoopDetection = [NSPredicate predicateWithFormat:@"self.fragment MATCHES '__webviewproxyreq__'"];
+    webViewProxyLoopDetection = [NSPredicate predicateWithFormat:@"self.fragment ENDSWITH '__webviewproxyreq__'"];
     // e.g. "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mobile/10A403"
     [NSURLProtocol registerClass:[KCWebViewURLProtocol class]];
 }
