@@ -426,8 +426,11 @@ static NSPredicate* webViewProxyLoopDetection;
 }
 + (void)handleRequestsMatching:(NSPredicate*)aPredicate handler:(KCWebViewHandler)aHandler
 {
-    // Match on any property of NSURL, e.g. "scheme MATCHES 'http' AND host MATCHES 'www.google.com'"
-    [requestMatchers addObject:[KCWebViewRequestMatcher matchWithPredicate:aPredicate handler:aHandler]];
+    @synchronized (requestMatchers)
+    {
+        // Match on any property of NSURL, e.g. "scheme MATCHES 'http' AND host MATCHES 'www.google.com'"
+        [requestMatchers addObject:[KCWebViewRequestMatcher matchWithPredicate:aPredicate handler:aHandler]];
+    }
 }
 + (NSString *)_normalizePath:(NSString *)path
 {
