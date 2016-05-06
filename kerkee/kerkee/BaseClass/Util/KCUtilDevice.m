@@ -9,8 +9,8 @@
 
 
 #import "KCUtilDevice.h"
-//#include <sys/types.h>
 #include <sys/sysctl.h>
+#include <spawn.h>
 
 
 @implementation KCUtilDevice
@@ -46,11 +46,17 @@ static const char * __jb_app = NULL;
 		return YES;
 	}
     
-	// method 3
-	if ( 0 == system("ls") )
-	{
-		return YES;
-	}
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+    // method 3
+    if ( 0 == system("ls") )
+    {
+        return YES;
+    }
+    
+#pragma GCC diagnostic pop
+    
+
     
     return NO;
 }
