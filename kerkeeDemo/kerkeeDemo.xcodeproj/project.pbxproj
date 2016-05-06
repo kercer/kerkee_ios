@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF046CE41CDC8101003CA85C /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF046CE31CDC8101003CA85C /* kerkee.framework */; };
+		DF046D091CDC849D003CA85C /* KCAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CF41CDC849D003CA85C /* KCAssistant.m */; };
+		DF046D0A1CDC849D003CA85C /* KCPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CF61CDC849D003CA85C /* KCPlatform.m */; };
+		DF046D0B1CDC849D003CA85C /* KCUrlMaping.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CF91CDC849D003CA85C /* KCUrlMaping.m */; };
+		DF046D0C1CDC849D003CA85C /* KCWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CFB1CDC849D003CA85C /* KCWidget.m */; };
+		DF046D0D1CDC849D003CA85C /* KCApiClientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CFD1CDC849D003CA85C /* KCApiClientInfo.m */; };
+		DF046D0E1CDC849D003CA85C /* KCApiJSObjExample.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CFF1CDC849D003CA85C /* KCApiJSObjExample.m */; };
+		DF046D0F1CDC849D003CA85C /* KCApiOverrideJSBridgeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046D011CDC849D003CA85C /* KCApiOverrideJSBridgeClient.m */; };
+		DF046D101CDC849D003CA85C /* KCApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046D031CDC849D003CA85C /* KCApiTest.m */; };
+		DF046D111CDC849D003CA85C /* KCClientUI.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046D051CDC849D003CA85C /* KCClientUI.m */; };
+		DF046D121CDC849D003CA85C /* KCRegistMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046D081CDC849D003CA85C /* KCRegistMgr.m */; };
 		DF5D70C21BA9559D008A8FB2 /* KCActionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5D70C11BA9559D008A8FB2 /* KCActionTest.m */; };
-		DF6300961BF19F270098FB0C /* KCApiJSObjExample.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6300951BF19F270098FB0C /* KCApiJSObjExample.m */; };
 		DF65AB7D1B9EC61B00F24874 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = DF65AB7C1B9EC61B00F24874 /* test.html */; };
-		DF65AB801B9ECCB000F24874 /* KCApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF65AB7F1B9ECCB000F24874 /* KCApiTest.m */; };
 		DF83DA861B959D2A003E3F91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DA851B959D2A003E3F91 /* main.m */; };
 		DF83DA891B959D2A003E3F91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DA881B959D2A003E3F91 /* AppDelegate.m */; };
 		DF83DA8C1B959D2A003E3F91 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DA8B1B959D2A003E3F91 /* ViewController.m */; };
@@ -25,48 +34,38 @@
 		DF83DB8C1B959FC5003E3F91 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF83DB711B959FC5003E3F91 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF83DC4E1B95A441003E3F91 /* kerkee.js in Resources */ = {isa = PBXBuildFile; fileRef = DF83DC4C1B95A441003E3F91 /* kerkee.js */; };
 		DF83DC4F1B95A441003E3F91 /* html.zip in Resources */ = {isa = PBXBuildFile; fileRef = DF83DC4D1B95A441003E3F91 /* html.zip */; };
-		DF83DC5E1B95A45E003E3F91 /* KCApiClientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC541B95A45E003E3F91 /* KCApiClientInfo.m */; };
-		DF83DC5F1B95A45E003E3F91 /* KCClientUI.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC561B95A45E003E3F91 /* KCClientUI.m */; };
-		DF83DC611B95A45E003E3F91 /* KCRegistMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC5A1B95A45E003E3F91 /* KCRegistMgr.m */; };
-		DF83DC861B95CA95003E3F91 /* KCAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC7E1B95CA95003E3F91 /* KCAssistant.m */; };
-		DF83DC871B95CA95003E3F91 /* KCPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC801B95CA95003E3F91 /* KCPlatform.m */; };
-		DF83DC881B95CA95003E3F91 /* KCUrlMaping.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */; };
-		DF83DC891B95CA95003E3F91 /* KCWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DC851B95CA95003E3F91 /* KCWidget.m */; };
 		DF8524371CC61FA90046FC44 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8524361CC61FA90046FC44 /* Reachability.m */; };
 		DF9BCE4F1C3A5E3C0097A767 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */; };
-		DFBB9E111BF08BF500921758 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8F35851BC7719500C79B71 /* kerkee.framework */; };
-		DFBB9E121BF08BF500921758 /* kerkee.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF8F35851BC7719500C79B71 /* kerkee.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DFBB9E1F1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DFBB9E1E1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DF046CCC1CDC7D40003CA85C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF046CC71CDC7D40003CA85C /* kerkeeSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DF046CAD1CDC4E96003CA85C;
+			remoteInfo = kerkeeSDK;
+		};
+		DF046CCE1CDC7D40003CA85C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF046CC71CDC7D40003CA85C /* kerkeeSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DF046CB71CDC4E96003CA85C;
+			remoteInfo = kerkeeSDKTests;
+		};
+		DF046CDC1CDC7E83003CA85C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF046CC71CDC7D40003CA85C /* kerkeeSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DF046CAC1CDC4E96003CA85C;
+			remoteInfo = kerkeeSDK;
+		};
 		DF83DA9A1B959D2A003E3F91 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DF83DA781B959D2A003E3F91 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DF83DA7F1B959D2A003E3F91;
 			remoteInfo = kerkeeDemo;
-		};
-		DF8F35841BC7719500C79B71 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DF3075051B959B01005AA030;
-			remoteInfo = kerkee;
-		};
-		DF8F35861BC7719500C79B71 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DF3075101B959B01005AA030;
-			remoteInfo = kerkeeTests;
-		};
-		DFBB9E131BF08BF500921758 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = DF3075041B959B01005AA030;
-			remoteInfo = kerkee;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -77,7 +76,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DFBB9E121BF08BF500921758 /* kerkee.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,14 +83,33 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF046CC71CDC7D40003CA85C /* kerkeeSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerkeeSDK.xcodeproj; path = ../kerkeeSDK/kerkeeSDK.xcodeproj; sourceTree = "<group>"; };
+		DF046CE31CDC8101003CA85C /* kerkee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kerkee.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/kerkee-egtuhlhgsgsifucqcbbqqgvuavzp/Build/Products/Debug-iphonesimulator/kerkee.framework"; sourceTree = "<group>"; };
+		DF046CF31CDC849D003CA85C /* KCAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCAssistant.h; sourceTree = "<group>"; };
+		DF046CF41CDC849D003CA85C /* KCAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCAssistant.m; sourceTree = "<group>"; };
+		DF046CF51CDC849D003CA85C /* KCPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCPlatform.h; sourceTree = "<group>"; };
+		DF046CF61CDC849D003CA85C /* KCPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCPlatform.m; sourceTree = "<group>"; };
+		DF046CF71CDC849D003CA85C /* KCSDKJSDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSDKJSDefine.h; sourceTree = "<group>"; };
+		DF046CF81CDC849D003CA85C /* KCUrlMaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUrlMaping.h; sourceTree = "<group>"; };
+		DF046CF91CDC849D003CA85C /* KCUrlMaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUrlMaping.m; sourceTree = "<group>"; };
+		DF046CFA1CDC849D003CA85C /* KCWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWidget.h; sourceTree = "<group>"; };
+		DF046CFB1CDC849D003CA85C /* KCWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWidget.m; sourceTree = "<group>"; };
+		DF046CFC1CDC849D003CA85C /* KCApiClientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiClientInfo.h; sourceTree = "<group>"; };
+		DF046CFD1CDC849D003CA85C /* KCApiClientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiClientInfo.m; sourceTree = "<group>"; };
+		DF046CFE1CDC849D003CA85C /* KCApiJSObjExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiJSObjExample.h; sourceTree = "<group>"; };
+		DF046CFF1CDC849D003CA85C /* KCApiJSObjExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiJSObjExample.m; sourceTree = "<group>"; };
+		DF046D001CDC849D003CA85C /* KCApiOverrideJSBridgeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiOverrideJSBridgeClient.h; sourceTree = "<group>"; };
+		DF046D011CDC849D003CA85C /* KCApiOverrideJSBridgeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiOverrideJSBridgeClient.m; sourceTree = "<group>"; };
+		DF046D021CDC849D003CA85C /* KCApiTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiTest.h; sourceTree = "<group>"; };
+		DF046D031CDC849D003CA85C /* KCApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiTest.m; sourceTree = "<group>"; };
+		DF046D041CDC849D003CA85C /* KCClientUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCClientUI.h; sourceTree = "<group>"; };
+		DF046D051CDC849D003CA85C /* KCClientUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCClientUI.m; sourceTree = "<group>"; };
+		DF046D061CDC849D003CA85C /* KCJSObjDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSObjDefine.h; sourceTree = "<group>"; };
+		DF046D071CDC849D003CA85C /* KCRegistMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCRegistMgr.h; sourceTree = "<group>"; };
+		DF046D081CDC849D003CA85C /* KCRegistMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCRegistMgr.m; sourceTree = "<group>"; };
 		DF5D70C01BA9559D008A8FB2 /* KCActionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCActionTest.h; sourceTree = "<group>"; };
 		DF5D70C11BA9559D008A8FB2 /* KCActionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCActionTest.m; sourceTree = "<group>"; };
-		DF6300941BF19F270098FB0C /* KCApiJSObjExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiJSObjExample.h; sourceTree = "<group>"; };
-		DF6300951BF19F270098FB0C /* KCApiJSObjExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiJSObjExample.m; sourceTree = "<group>"; };
-		DF6300981BF1A0130098FB0C /* KCJSObjDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KCJSObjDefine.h; sourceTree = "<group>"; };
 		DF65AB7C1B9EC61B00F24874 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
-		DF65AB7E1B9ECCB000F24874 /* KCApiTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiTest.h; sourceTree = "<group>"; };
-		DF65AB7F1B9ECCB000F24874 /* KCApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiTest.m; sourceTree = "<group>"; };
 		DF83DA801B959D2A003E3F91 /* kerkeeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kerkeeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF83DA841B959D2A003E3F91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF83DA851B959D2A003E3F91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,27 +136,9 @@
 		DF83DB711B959FC5003E3F91 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		DF83DC4C1B95A441003E3F91 /* kerkee.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = kerkee.js; sourceTree = "<group>"; };
 		DF83DC4D1B95A441003E3F91 /* html.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = html.zip; sourceTree = "<group>"; };
-		DF83DC531B95A45E003E3F91 /* KCApiClientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiClientInfo.h; sourceTree = "<group>"; };
-		DF83DC541B95A45E003E3F91 /* KCApiClientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiClientInfo.m; sourceTree = "<group>"; };
-		DF83DC551B95A45E003E3F91 /* KCClientUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCClientUI.h; sourceTree = "<group>"; };
-		DF83DC561B95A45E003E3F91 /* KCClientUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCClientUI.m; sourceTree = "<group>"; };
-		DF83DC591B95A45E003E3F91 /* KCRegistMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCRegistMgr.h; sourceTree = "<group>"; };
-		DF83DC5A1B95A45E003E3F91 /* KCRegistMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCRegistMgr.m; sourceTree = "<group>"; };
-		DF83DC7D1B95CA95003E3F91 /* KCAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCAssistant.h; sourceTree = "<group>"; };
-		DF83DC7E1B95CA95003E3F91 /* KCAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCAssistant.m; sourceTree = "<group>"; };
-		DF83DC7F1B95CA95003E3F91 /* KCPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCPlatform.h; sourceTree = "<group>"; };
-		DF83DC801B95CA95003E3F91 /* KCPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCPlatform.m; sourceTree = "<group>"; };
-		DF83DC811B95CA95003E3F91 /* KCSDKJSDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSDKJSDefine.h; sourceTree = "<group>"; };
-		DF83DC821B95CA95003E3F91 /* KCUrlMaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUrlMaping.h; sourceTree = "<group>"; };
-		DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUrlMaping.m; sourceTree = "<group>"; };
-		DF83DC841B95CA95003E3F91 /* KCWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWidget.h; sourceTree = "<group>"; };
-		DF83DC851B95CA95003E3F91 /* KCWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWidget.m; sourceTree = "<group>"; };
 		DF8524351CC61FA90046FC44 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DF8524361CC61FA90046FC44 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerkee.xcodeproj; path = ../kerkee/kerkee.xcodeproj; sourceTree = "<group>"; };
 		DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		DFBB9E1D1BF0A82500921758 /* KCApiOverrideJSBridgeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiOverrideJSBridgeClient.h; sourceTree = "<group>"; };
-		DFBB9E1E1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiOverrideJSBridgeClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +146,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF046CE41CDC8101003CA85C /* kerkee.framework in Frameworks */,
 				DF9BCE4F1C3A5E3C0097A767 /* libz.tbd in Frameworks */,
-				DFBB9E111BF08BF500921758 /* kerkee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,13 +161,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF046CC81CDC7D40003CA85C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DF046CCD1CDC7D40003CA85C /* kerkeeSDK.framework */,
+				DF046CCF1CDC7D40003CA85C /* kerkeeSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF046CF11CDC849D003CA85C /* apiExample */ = {
+			isa = PBXGroup;
+			children = (
+				DF046CF21CDC849D003CA85C /* hepler */,
+				DF046CFC1CDC849D003CA85C /* KCApiClientInfo.h */,
+				DF046CFD1CDC849D003CA85C /* KCApiClientInfo.m */,
+				DF046CFE1CDC849D003CA85C /* KCApiJSObjExample.h */,
+				DF046CFF1CDC849D003CA85C /* KCApiJSObjExample.m */,
+				DF046D001CDC849D003CA85C /* KCApiOverrideJSBridgeClient.h */,
+				DF046D011CDC849D003CA85C /* KCApiOverrideJSBridgeClient.m */,
+				DF046D021CDC849D003CA85C /* KCApiTest.h */,
+				DF046D031CDC849D003CA85C /* KCApiTest.m */,
+				DF046D041CDC849D003CA85C /* KCClientUI.h */,
+				DF046D051CDC849D003CA85C /* KCClientUI.m */,
+				DF046D061CDC849D003CA85C /* KCJSObjDefine.h */,
+				DF046D071CDC849D003CA85C /* KCRegistMgr.h */,
+				DF046D081CDC849D003CA85C /* KCRegistMgr.m */,
+			);
+			name = apiExample;
+			path = ../apiExample;
+			sourceTree = "<group>";
+		};
+		DF046CF21CDC849D003CA85C /* hepler */ = {
+			isa = PBXGroup;
+			children = (
+				DF046CF31CDC849D003CA85C /* KCAssistant.h */,
+				DF046CF41CDC849D003CA85C /* KCAssistant.m */,
+				DF046CF51CDC849D003CA85C /* KCPlatform.h */,
+				DF046CF61CDC849D003CA85C /* KCPlatform.m */,
+				DF046CF71CDC849D003CA85C /* KCSDKJSDefine.h */,
+				DF046CF81CDC849D003CA85C /* KCUrlMaping.h */,
+				DF046CF91CDC849D003CA85C /* KCUrlMaping.m */,
+				DF046CFA1CDC849D003CA85C /* KCWidget.h */,
+				DF046CFB1CDC849D003CA85C /* KCWidget.m */,
+			);
+			path = hepler;
+			sourceTree = "<group>";
+		};
 		DF83DA771B959D2A003E3F91 = {
 			isa = PBXGroup;
 			children = (
+				DF046CE31CDC8101003CA85C /* kerkee.framework */,
+				DF046CC71CDC7D40003CA85C /* kerkeeSDK.xcodeproj */,
 				DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */,
-				DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */,
-				DF83DC7C1B95CA95003E3F91 /* kerkeeSDK */,
-				DF83DC501B95A45E003E3F91 /* api */,
+				DF046CF11CDC849D003CA85C /* apiExample */,
 				DF83DC4B1B95A441003E3F91 /* assets */,
 				DF83DB2E1B959FC5003E3F91 /* dependencies */,
 				DF83DA821B959D2A003E3F91 /* kerkeeDemo */,
@@ -276,44 +322,6 @@
 			path = ../assets;
 			sourceTree = "<group>";
 		};
-		DF83DC501B95A45E003E3F91 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				DF6300941BF19F270098FB0C /* KCApiJSObjExample.h */,
-				DF6300951BF19F270098FB0C /* KCApiJSObjExample.m */,
-				DF65AB7E1B9ECCB000F24874 /* KCApiTest.h */,
-				DF65AB7F1B9ECCB000F24874 /* KCApiTest.m */,
-				DF83DC531B95A45E003E3F91 /* KCApiClientInfo.h */,
-				DF83DC541B95A45E003E3F91 /* KCApiClientInfo.m */,
-				DF83DC551B95A45E003E3F91 /* KCClientUI.h */,
-				DF83DC561B95A45E003E3F91 /* KCClientUI.m */,
-				DF83DC591B95A45E003E3F91 /* KCRegistMgr.h */,
-				DF83DC5A1B95A45E003E3F91 /* KCRegistMgr.m */,
-				DFBB9E1D1BF0A82500921758 /* KCApiOverrideJSBridgeClient.h */,
-				DFBB9E1E1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m */,
-				DF6300981BF1A0130098FB0C /* KCJSObjDefine.h */,
-			);
-			name = api;
-			path = ../api;
-			sourceTree = "<group>";
-		};
-		DF83DC7C1B95CA95003E3F91 /* kerkeeSDK */ = {
-			isa = PBXGroup;
-			children = (
-				DF83DC7D1B95CA95003E3F91 /* KCAssistant.h */,
-				DF83DC7E1B95CA95003E3F91 /* KCAssistant.m */,
-				DF83DC7F1B95CA95003E3F91 /* KCPlatform.h */,
-				DF83DC801B95CA95003E3F91 /* KCPlatform.m */,
-				DF83DC811B95CA95003E3F91 /* KCSDKJSDefine.h */,
-				DF83DC821B95CA95003E3F91 /* KCUrlMaping.h */,
-				DF83DC831B95CA95003E3F91 /* KCUrlMaping.m */,
-				DF83DC841B95CA95003E3F91 /* KCWidget.h */,
-				DF83DC851B95CA95003E3F91 /* KCWidget.m */,
-			);
-			name = kerkeeSDK;
-			path = ../kerkeeSDK;
-			sourceTree = "<group>";
-		};
 		DF8524341CC61FA90046FC44 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,15 +329,6 @@
 				DF8524361CC61FA90046FC44 /* Reachability.m */,
 			);
 			path = Reachability;
-			sourceTree = "<group>";
-		};
-		DF8F35801BC7719500C79B71 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DF8F35851BC7719500C79B71 /* kerkee.framework */,
-				DF8F35871BC7719500C79B71 /* kerkeeTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,7 +346,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				DFBB9E141BF08BF500921758 /* PBXTargetDependency */,
+				DF046CDD1CDC7E83003CA85C /* PBXTargetDependency */,
 			);
 			name = kerkeeDemo;
 			productName = kerkeeDemo;
@@ -403,8 +402,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = DF8F35801BC7719500C79B71 /* Products */;
-					ProjectRef = DF8F357F1BC7719500C79B71 /* kerkee.xcodeproj */;
+					ProductGroup = DF046CC81CDC7D40003CA85C /* Products */;
+					ProjectRef = DF046CC71CDC7D40003CA85C /* kerkeeSDK.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -416,18 +415,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		DF8F35851BC7719500C79B71 /* kerkee.framework */ = {
+		DF046CCD1CDC7D40003CA85C /* kerkeeSDK.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = kerkee.framework;
-			remoteRef = DF8F35841BC7719500C79B71 /* PBXContainerItemProxy */;
+			path = kerkeeSDK.framework;
+			remoteRef = DF046CCC1CDC7D40003CA85C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DF8F35871BC7719500C79B71 /* kerkeeTests.xctest */ = {
+		DF046CCF1CDC7D40003CA85C /* kerkeeSDKTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = kerkeeTests.xctest;
-			remoteRef = DF8F35861BC7719500C79B71 /* PBXContainerItemProxy */;
+			path = kerkeeSDKTests.xctest;
+			remoteRef = DF046CCE1CDC7D40003CA85C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -460,26 +459,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF83DC881B95CA95003E3F91 /* KCUrlMaping.m in Sources */,
+				DF046D091CDC849D003CA85C /* KCAssistant.m in Sources */,
+				DF046D0C1CDC849D003CA85C /* KCWidget.m in Sources */,
 				DF83DB8C1B959FC5003E3F91 /* ZipArchive.mm in Sources */,
 				DF83DA8C1B959D2A003E3F91 /* ViewController.m in Sources */,
+				DF046D101CDC849D003CA85C /* KCApiTest.m in Sources */,
 				DF83DB8A1B959FC5003E3F91 /* unzip.c in Sources */,
-				DF83DC611B95A45E003E3F91 /* KCRegistMgr.m in Sources */,
+				DF046D0D1CDC849D003CA85C /* KCApiClientInfo.m in Sources */,
 				DF5D70C21BA9559D008A8FB2 /* KCActionTest.m in Sources */,
+				DF046D0B1CDC849D003CA85C /* KCUrlMaping.m in Sources */,
 				DF83DA891B959D2A003E3F91 /* AppDelegate.m in Sources */,
+				DF046D121CDC849D003CA85C /* KCRegistMgr.m in Sources */,
 				DF83DB891B959FC5003E3F91 /* mztools.c in Sources */,
+				DF046D0E1CDC849D003CA85C /* KCApiJSObjExample.m in Sources */,
 				DF83DB8B1B959FC5003E3F91 /* zip.c in Sources */,
+				DF046D0F1CDC849D003CA85C /* KCApiOverrideJSBridgeClient.m in Sources */,
+				DF046D111CDC849D003CA85C /* KCClientUI.m in Sources */,
 				DF83DA861B959D2A003E3F91 /* main.m in Sources */,
-				DF65AB801B9ECCB000F24874 /* KCApiTest.m in Sources */,
-				DF83DC5F1B95A45E003E3F91 /* KCClientUI.m in Sources */,
-				DF83DC861B95CA95003E3F91 /* KCAssistant.m in Sources */,
-				DF83DC5E1B95A45E003E3F91 /* KCApiClientInfo.m in Sources */,
 				DF8524371CC61FA90046FC44 /* Reachability.m in Sources */,
+				DF046D0A1CDC849D003CA85C /* KCPlatform.m in Sources */,
 				DF83DB881B959FC5003E3F91 /* ioapi.c in Sources */,
-				DFBB9E1F1BF0A82500921758 /* KCApiOverrideJSBridgeClient.m in Sources */,
-				DF83DC891B95CA95003E3F91 /* KCWidget.m in Sources */,
-				DF6300961BF19F270098FB0C /* KCApiJSObjExample.m in Sources */,
-				DF83DC871B95CA95003E3F91 /* KCPlatform.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,15 +493,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DF046CDD1CDC7E83003CA85C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = kerkeeSDK;
+			targetProxy = DF046CDC1CDC7E83003CA85C /* PBXContainerItemProxy */;
+		};
 		DF83DA9B1B959D2A003E3F91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DF83DA7F1B959D2A003E3F91 /* kerkeeDemo */;
 			targetProxy = DF83DA9A1B959D2A003E3F91 /* PBXContainerItemProxy */;
-		};
-		DFBB9E141BF08BF500921758 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = kerkee;
-			targetProxy = DFBB9E131BF08BF500921758 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
