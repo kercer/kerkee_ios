@@ -20,6 +20,7 @@
     NSString*   m_path;
     NSString*   m_query;
     NSString*   m_fragment;
+    NSArray* m_pathSegments;
 }
 
 /**
@@ -107,5 +108,7 @@
 @property (nonatomic, copy, readonly) NSString *percentEncodedPath;
 @property (nonatomic, copy) NSString *percentEncodedQuery;
 @property (nonatomic, copy, readonly) NSString *percentEncodedFragment;
+
+- (NSArray*)getPathSegments;
 
 @end

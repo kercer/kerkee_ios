@@ -15,6 +15,8 @@
 #import "KCJSDefine.h"
 #import "KCTaskQueue.h"
 #import "KCDataValidCache.h"
+#import "KCURI.h"
+#import "KCString.h"
 
 
 
@@ -86,6 +88,32 @@
     NSString *userAgent = [self objectInArgList:aArgs forKey:@"useragent" defaultValue:@"iOS"];
     NSString *referer = [aArgs getObject:@"referer"];
     NSString *cookie = [aArgs getObject:@"cookie"];
+    NSString *scheme = [aArgs getString:@"scheme"];
+    NSString *host = [aArgs getString:@"host"];
+    NSString *port = [self objectInArgList:aArgs forKey:@"port" defaultValue:@""];
+    NSString *href = [aArgs getString:@"href"];
+    
+    
+    
+    KCURI* uriUrl = [KCURI parse:url];
+    BOOL isRelative = [uriUrl isRelative];
+    if (isRelative)
+    {
+        NSArray* list = [uriUrl getPathSegments];
+        NSUInteger nSegmentCount = list.count;
+        if (nSegmentCount > 0)
+        {
+            NSString* tmpPath = [url startsWithChar:'/'] ? url : [NSString stringWithFormat:@"/%@", url];
+            NSString* tmpPort = port.length > 0 ? [NSString stringWithFormat:@":%@", port] : @"";
+            url = [NSString stringWithFormat:@"%@//%@%@%@",scheme, host, tmpPort, tmpPath];
+            KCLog(@"%@", url);
+        }
+        else
+        {
+            url = href;
+        }
+    }
+    
     
     [xhr open:method url:url userAgent:userAgent referer:referer cookie:cookie];
     

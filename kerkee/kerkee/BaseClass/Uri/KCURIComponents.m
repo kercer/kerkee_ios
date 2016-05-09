@@ -533,6 +533,21 @@
     return self.scheme.hash + self.percentEncodedUser.hash + self.percentEncodedPassword.hash + self.percentEncodedPassword.hash + self.percentEncodedHost.hash + self.port.hash + self.percentEncodedPath.hash + self.percentEncodedQuery.hash + self.percentEncodedFragment.hash;
 }
 
+- (NSArray*)createPathSegments
+{
+    NSArray *segments = [m_path componentsSeparatedByString: @"/"];
+    return segments;
+}
+
+
+- (NSArray*)getPathSegments
+{
+    if (!m_pathSegments)
+        m_pathSegments = [self createPathSegments];
+    return m_pathSegments;
+}
+
+
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone *)zone;

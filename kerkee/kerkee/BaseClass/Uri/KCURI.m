@@ -85,4 +85,19 @@
     return m_uriComponents.URL;
 }
 
+- (BOOL)isAbsolute
+{
+    return ![self isRelative];
+}
+
+- (BOOL)isRelative
+{
+    return m_uriComponents && m_uriComponents.scheme == nil;
+}
+
+- (NSArray*)getPathSegments
+{
+    return m_uriComponents.getPathSegments;
+}
+
 @end

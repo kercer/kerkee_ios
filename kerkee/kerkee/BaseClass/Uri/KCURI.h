@@ -72,4 +72,17 @@
 - (NSURL *)URL;
 
 
+/**
+ Returns the uri is absolute
+ */
+- (BOOL)isAbsolute;
+
+/**
+ Returns the uri is relative
+ */
+- (BOOL)isRelative;
+
+- (NSArray*)getPathSegments;
+
+
 @end

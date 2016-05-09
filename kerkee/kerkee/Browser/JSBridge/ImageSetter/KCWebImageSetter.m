@@ -70,6 +70,8 @@
               {
                   if (image)
                       [webviewResponse respondWithImage:image];
+                  else
+                      [webviewResponse respondWithStatusCode:404 text:@"Not Found"];
               }];
              BACKGROUND_COMMIT
              

@@ -210,7 +210,7 @@ DEF_SINGLETON(KCImageCache);
         }
         else
         {
-            KCLog(@"KCImageCache requestFinished ERROR! NO IMAGE");
+            KCLog(@"KCImageCache requestFinished ERROR! NO IMAGE \n url=%@",url);
         }
         
         [self notifyBlocksForKey:key];
