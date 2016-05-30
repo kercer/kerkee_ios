@@ -162,7 +162,7 @@ static NSPredicate* webViewProxyLoopDetection;
     {
         m_headers[@"Content-Length"] = [self _contentLength:aData];
     }
-    @synchronized (self)
+    @synchronized (m_protocol.client)
     {
         NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
         [m_protocol.client URLProtocol:m_protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
