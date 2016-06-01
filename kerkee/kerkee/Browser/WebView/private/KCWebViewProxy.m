@@ -17,6 +17,39 @@ static NSMutableArray* requestMatchers;
 static NSPredicate* webViewUserAgentTest;
 static NSPredicate* webViewProxyLoopDetection;
 
+
+#define WORKAROUND_MUTABLE_COPY_LEAK 1
+
+#if WORKAROUND_MUTABLE_COPY_LEAK
+// required to workaround http://openradar.appspot.com/11596316
+@interface NSURLRequest(MutableCopyWorkaround)
+
+- (id) mutableCopyWorkaround;
+
+@end
+#endif
+
+#if WORKAROUND_MUTABLE_COPY_LEAK
+@implementation NSURLRequest(MutableCopyWorkaround)
+
+- (id) mutableCopyWorkaround {
+    NSMutableURLRequest *mutableURLRequest = [[NSMutableURLRequest alloc] initWithURL:[self URL]
+                                                                          cachePolicy:[self cachePolicy]
+                                                                      timeoutInterval:[self timeoutInterval]];
+    [mutableURLRequest setAllHTTPHeaderFields:[self allHTTPHeaderFields]];
+    if ([self HTTPBodyStream]) {
+        [mutableURLRequest setHTTPBodyStream:[self HTTPBodyStream]];
+    } else {
+        [mutableURLRequest setHTTPBody:[self HTTPBody]];
+    }
+    [mutableURLRequest setHTTPMethod:[self HTTPMethod]];
+    
+    return mutableURLRequest;
+}
+
+@end
+#endif
+
 // A request matcher, which matches a UIWebView request to a registered WebViewProxyHandler
 @interface KCWebViewRequestMatcher : NSObject
 @property (strong,nonatomic) NSPredicate* predicate;
@@ -33,6 +66,8 @@ static NSPredicate* webViewProxyLoopDetection;
     return matcher;
 }
 @end
+
+
 
 // This is the proxy response object, through which we send responses
 @implementation KCWebViewResponse
@@ -350,8 +385,15 @@ static NSPredicate* webViewProxyLoopDetection;
 {
     if (self = [super initWithRequest:aRequest cachedResponse:aCachedResponse client:aClient])
     {
+        NSMutableURLRequest *connectionRequest =
+#if WORKAROUND_MUTABLE_COPY_LEAK
+        [[self request] mutableCopyWorkaround];
+#else
+        [[self request] mutableCopy];
+#endif
+        
         // TODO How to handle cachedResponse?
-        m_correctedRequest = aRequest.mutableCopy;
+        m_correctedRequest = connectionRequest;
         NSString* correctedFragment;
         if (m_correctedRequest.URL.fragment)
         {
