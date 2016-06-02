@@ -199,10 +199,22 @@ static NSPredicate* webViewProxyLoopDetection;
     }
     @synchronized (m_protocol.client)
     {
-        NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
-        [m_protocol.client URLProtocol:m_protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
-        [m_protocol.client URLProtocol:m_protocol didLoadData:aData];
-        [m_protocol.client URLProtocolDidFinishLoading:m_protocol];
+        @try
+        {
+            NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
+            [m_protocol.client URLProtocol:m_protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
+            [m_protocol.client URLProtocol:m_protocol didLoadData:aData];
+            [m_protocol.client URLProtocolDidFinishLoading:m_protocol];
+        }
+        @catch (NSException *exception)
+        {
+            [self pipeError:[NSError errorWithDomain:m_protocol.request.URL.absoluteString code:404 userInfo:nil]];
+            KCLog(@"%@", exception);
+        }
+        @finally
+        {
+        }
+
     }
 
 }
