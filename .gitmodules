@@ -1,0 +1,3 @@
+[submodule "kerdb"]
+	path = kerdb
+	url = https://github.com/kercer/kerdb.git
