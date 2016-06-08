@@ -9,7 +9,7 @@
 //
 
 
-#import "KCApiSDKTest.h"
+#import "KCApiPlusTest.h"
 #import "KCBaseDefine.h"
 #import "KCJSBridge.h"
 

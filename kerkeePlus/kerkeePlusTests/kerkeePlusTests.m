@@ -1,6 +1,6 @@
 //
-//  kerkeeSDKTests.m
-//  kerkeeSDKTests
+//  kerkeePlusTests.m
+//  kerkeePlusTests
 //
 //  Created by zihong on 16/5/6.
 //  Copyright © 2016年 zihong. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface kerkeeSDKTests : XCTestCase
+@interface kerkeePlusTests : XCTestCase
 
 @end
 
-@implementation kerkeeSDKTests
+@implementation kerkeePlusTests
 
 - (void)setUp {
     [super setUp];
