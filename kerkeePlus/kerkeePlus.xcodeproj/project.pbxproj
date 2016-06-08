@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF046CB11CDC4E96003CA85C /* kerkeeSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = DF046CB01CDC4E96003CA85C /* kerkeeSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF046CB81CDC4E96003CA85C /* kerkeeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF046CAD1CDC4E96003CA85C /* kerkeeSDK.framework */; };
-		DF046CBD1CDC4E96003CA85C /* kerkeeSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CBC1CDC4E96003CA85C /* kerkeeSDKTests.m */; };
-		DF046CE81CDC817B003CA85C /* KCApiSDKTest.h in Headers */ = {isa = PBXBuildFile; fileRef = DF046CE61CDC817B003CA85C /* KCApiSDKTest.h */; };
-		DF046CE91CDC817B003CA85C /* KCApiSDKTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CE71CDC817B003CA85C /* KCApiSDKTest.m */; };
+		DF046CB81CDC4E96003CA85C /* kerkeePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF046CAD1CDC4E96003CA85C /* kerkeePlus.framework */; };
 		DF046CEB1CDC81DC003CA85C /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF046CD71CDC7DD6003CA85C /* kerkee.framework */; };
+		DF6879DD1D07F36600302A4A /* KCApiSDKTest.h in Headers */ = {isa = PBXBuildFile; fileRef = DF6879D91D07F36600302A4A /* KCApiSDKTest.h */; };
+		DF6879DE1D07F36600302A4A /* KCApiSDKTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6879DA1D07F36600302A4A /* KCApiSDKTest.m */; };
+		DF6879DF1D07F36600302A4A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF6879DB1D07F36600302A4A /* Info.plist */; };
+		DF6879E01D07F36600302A4A /* kerkeeSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = DF6879DC1D07F36600302A4A /* kerkeeSDK.h */; };
+		DF6879E41D07F38A00302A4A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF6879E21D07F38A00302A4A /* Info.plist */; };
+		DF6879E51D07F38A00302A4A /* kerkeeSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6879E31D07F38A00302A4A /* kerkeeSDKTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,15 +49,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DF046CAD1CDC4E96003CA85C /* kerkeeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = kerkeeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF046CB01CDC4E96003CA85C /* kerkeeSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kerkeeSDK.h; sourceTree = "<group>"; };
-		DF046CB21CDC4E96003CA85C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF046CB71CDC4E96003CA85C /* kerkeeSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kerkeeSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF046CBC1CDC4E96003CA85C /* kerkeeSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kerkeeSDKTests.m; sourceTree = "<group>"; };
-		DF046CBE1CDC4E96003CA85C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF046CAD1CDC4E96003CA85C /* kerkeePlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = kerkeePlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF046CB71CDC4E96003CA85C /* kerkeePlus.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kerkeePlus.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF046CD11CDC7DD5003CA85C /* kerkee.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerkee.xcodeproj; path = /Users/zihong/Desktop/workspace/kercer/kerkee_ios/kerkeeDemo/../kerkee/kerkee.xcodeproj; sourceTree = "<absolute>"; };
-		DF046CE61CDC817B003CA85C /* KCApiSDKTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiSDKTest.h; sourceTree = "<group>"; };
-		DF046CE71CDC817B003CA85C /* KCApiSDKTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiSDKTest.m; sourceTree = "<group>"; };
+		DF6879D91D07F36600302A4A /* KCApiSDKTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiSDKTest.h; sourceTree = "<group>"; };
+		DF6879DA1D07F36600302A4A /* KCApiSDKTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiSDKTest.m; sourceTree = "<group>"; };
+		DF6879DB1D07F36600302A4A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF6879DC1D07F36600302A4A /* kerkeeSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kerkeeSDK.h; sourceTree = "<group>"; };
+		DF6879E21D07F38A00302A4A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF6879E31D07F38A00302A4A /* kerkeeSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kerkeeSDKTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF046CB81CDC4E96003CA85C /* kerkeeSDK.framework in Frameworks */,
+				DF046CB81CDC4E96003CA85C /* kerkeePlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,8 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				DF046CD11CDC7DD5003CA85C /* kerkee.xcodeproj */,
-				DF046CAF1CDC4E96003CA85C /* kerkeeSDK */,
-				DF046CBB1CDC4E96003CA85C /* kerkeeSDKTests */,
+				DF6879D71D07F36600302A4A /* kerkeePlus */,
+				DF6879E11D07F38A00302A4A /* kerkeePlusTests */,
 				DF046CAE1CDC4E96003CA85C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,29 +93,10 @@
 		DF046CAE1CDC4E96003CA85C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DF046CAD1CDC4E96003CA85C /* kerkeeSDK.framework */,
-				DF046CB71CDC4E96003CA85C /* kerkeeSDKTests.xctest */,
+				DF046CAD1CDC4E96003CA85C /* kerkeePlus.framework */,
+				DF046CB71CDC4E96003CA85C /* kerkeePlus.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		DF046CAF1CDC4E96003CA85C /* kerkeeSDK */ = {
-			isa = PBXGroup;
-			children = (
-				DF046CE51CDC817B003CA85C /* api */,
-				DF046CB01CDC4E96003CA85C /* kerkeeSDK.h */,
-				DF046CB21CDC4E96003CA85C /* Info.plist */,
-			);
-			path = kerkeeSDK;
-			sourceTree = "<group>";
-		};
-		DF046CBB1CDC4E96003CA85C /* kerkeeSDKTests */ = {
-			isa = PBXGroup;
-			children = (
-				DF046CBC1CDC4E96003CA85C /* kerkeeSDKTests.m */,
-				DF046CBE1CDC4E96003CA85C /* Info.plist */,
-			);
-			path = kerkeeSDKTests;
 			sourceTree = "<group>";
 		};
 		DF046CD21CDC7DD5003CA85C /* Products */ = {
@@ -125,13 +108,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DF046CE51CDC817B003CA85C /* api */ = {
+		DF6879D71D07F36600302A4A /* kerkeePlus */ = {
 			isa = PBXGroup;
 			children = (
-				DF046CE61CDC817B003CA85C /* KCApiSDKTest.h */,
-				DF046CE71CDC817B003CA85C /* KCApiSDKTest.m */,
+				DF6879D81D07F36600302A4A /* api */,
+				DF6879DB1D07F36600302A4A /* Info.plist */,
+				DF6879DC1D07F36600302A4A /* kerkeeSDK.h */,
+			);
+			path = kerkeePlus;
+			sourceTree = "<group>";
+		};
+		DF6879D81D07F36600302A4A /* api */ = {
+			isa = PBXGroup;
+			children = (
+				DF6879D91D07F36600302A4A /* KCApiSDKTest.h */,
+				DF6879DA1D07F36600302A4A /* KCApiSDKTest.m */,
 			);
 			path = api;
+			sourceTree = "<group>";
+		};
+		DF6879E11D07F38A00302A4A /* kerkeePlusTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF6879E21D07F38A00302A4A /* Info.plist */,
+				DF6879E31D07F38A00302A4A /* kerkeeSDKTests.m */,
+			);
+			path = kerkeePlusTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,17 +143,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF046CE81CDC817B003CA85C /* KCApiSDKTest.h in Headers */,
-				DF046CB11CDC4E96003CA85C /* kerkeeSDK.h in Headers */,
+				DF6879DD1D07F36600302A4A /* KCApiSDKTest.h in Headers */,
+				DF6879E01D07F36600302A4A /* kerkeeSDK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		DF046CAC1CDC4E96003CA85C /* kerkeeSDK */ = {
+		DF046CAC1CDC4E96003CA85C /* kerkeePlus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DF046CC11CDC4E96003CA85C /* Build configuration list for PBXNativeTarget "kerkeeSDK" */;
+			buildConfigurationList = DF046CC11CDC4E96003CA85C /* Build configuration list for PBXNativeTarget "kerkeePlus" */;
 			buildPhases = (
 				DF046CA81CDC4E96003CA85C /* Sources */,
 				DF046CA91CDC4E96003CA85C /* Frameworks */,
@@ -163,14 +165,14 @@
 			dependencies = (
 				DF046CDB1CDC7DE0003CA85C /* PBXTargetDependency */,
 			);
-			name = kerkeeSDK;
+			name = kerkeePlus;
 			productName = kerkeeSDK;
-			productReference = DF046CAD1CDC4E96003CA85C /* kerkeeSDK.framework */;
+			productReference = DF046CAD1CDC4E96003CA85C /* kerkeePlus.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DF046CB61CDC4E96003CA85C /* kerkeeSDKTests */ = {
+		DF046CB61CDC4E96003CA85C /* kerkeePlusTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DF046CC41CDC4E96003CA85C /* Build configuration list for PBXNativeTarget "kerkeeSDKTests" */;
+			buildConfigurationList = DF046CC41CDC4E96003CA85C /* Build configuration list for PBXNativeTarget "kerkeePlusTests" */;
 			buildPhases = (
 				DF046CB31CDC4E96003CA85C /* Sources */,
 				DF046CB41CDC4E96003CA85C /* Frameworks */,
@@ -181,9 +183,9 @@
 			dependencies = (
 				DF046CBA1CDC4E96003CA85C /* PBXTargetDependency */,
 			);
-			name = kerkeeSDKTests;
+			name = kerkeePlusTests;
 			productName = kerkeeSDKTests;
-			productReference = DF046CB71CDC4E96003CA85C /* kerkeeSDKTests.xctest */;
+			productReference = DF046CB71CDC4E96003CA85C /* kerkeePlus.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -203,7 +205,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DF046CA71CDC4E96003CA85C /* Build configuration list for PBXProject "kerkeeSDK" */;
+			buildConfigurationList = DF046CA71CDC4E96003CA85C /* Build configuration list for PBXProject "kerkeePlus" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -221,8 +223,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				DF046CAC1CDC4E96003CA85C /* kerkeeSDK */,
-				DF046CB61CDC4E96003CA85C /* kerkeeSDKTests */,
+				DF046CAC1CDC4E96003CA85C /* kerkeePlus */,
+				DF046CB61CDC4E96003CA85C /* kerkeePlusTests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +251,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF6879E41D07F38A00302A4A /* Info.plist in Resources */,
+				DF6879DF1D07F36600302A4A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF046CE91CDC817B003CA85C /* KCApiSDKTest.m in Sources */,
+				DF6879DE1D07F36600302A4A /* KCApiSDKTest.m in Sources */,
+				DF6879E51D07F38A00302A4A /* kerkeeSDKTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +279,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF046CBD1CDC4E96003CA85C /* kerkeeSDKTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +287,7 @@
 /* Begin PBXTargetDependency section */
 		DF046CBA1CDC4E96003CA85C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DF046CAC1CDC4E96003CA85C /* kerkeeSDK */;
+			target = DF046CAC1CDC4E96003CA85C /* kerkeePlus */;
 			targetProxy = DF046CB91CDC4E96003CA85C /* PBXContainerItemProxy */;
 		};
 		DF046CDB1CDC7DE0003CA85C /* PBXTargetDependency */ = {
@@ -394,8 +398,8 @@
 				INFOPLIST_FILE = kerkeeSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kercer.kerkeeSDK;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kercer.kerkeePlus;
+				PRODUCT_NAME = kerkeePlus;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -410,8 +414,8 @@
 				INFOPLIST_FILE = kerkeeSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kercer.kerkeeSDK;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kercer.kerkeePlus;
+				PRODUCT_NAME = kerkeePlus;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -422,7 +426,7 @@
 				INFOPLIST_FILE = kerkeeSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kercer.kerkeeSDKTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = kerkeePlus;
 			};
 			name = Debug;
 		};
@@ -432,14 +436,14 @@
 				INFOPLIST_FILE = kerkeeSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kercer.kerkeeSDKTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = kerkeePlus;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DF046CA71CDC4E96003CA85C /* Build configuration list for PBXProject "kerkeeSDK" */ = {
+		DF046CA71CDC4E96003CA85C /* Build configuration list for PBXProject "kerkeePlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF046CBF1CDC4E96003CA85C /* Debug */,
@@ -448,7 +452,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DF046CC11CDC4E96003CA85C /* Build configuration list for PBXNativeTarget "kerkeeSDK" */ = {
+		DF046CC11CDC4E96003CA85C /* Build configuration list for PBXNativeTarget "kerkeePlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF046CC21CDC4E96003CA85C /* Debug */,
@@ -457,7 +461,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DF046CC41CDC4E96003CA85C /* Build configuration list for PBXNativeTarget "kerkeeSDKTests" */ = {
+		DF046CC41CDC4E96003CA85C /* Build configuration list for PBXNativeTarget "kerkeePlusTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF046CC51CDC4E96003CA85C /* Debug */,
