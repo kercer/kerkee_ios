@@ -182,8 +182,7 @@
 				DF046D071CDC849D003CA85C /* KCRegistMgr.h */,
 				DF046D081CDC849D003CA85C /* KCRegistMgr.m */,
 			);
-			name = apiExample;
-			path = ../apiExample;
+			path = apiExample;
 			sourceTree = "<group>";
 		};
 		DF046CF21CDC849D003CA85C /* hepler */ = {
@@ -283,8 +282,7 @@
 				DF8524341CC61FA90046FC44 /* Reachability */,
 				DF83DB651B959FC5003E3F91 /* ZipArchive */,
 			);
-			name = dependencies;
-			path = ../dependencies;
+			path = dependencies;
 			sourceTree = "<group>";
 		};
 		DF83DB651B959FC5003E3F91 /* ZipArchive */ = {
@@ -320,8 +318,7 @@
 				DF83DC4C1B95A441003E3F91 /* kerkee.js */,
 				DF83DC4D1B95A441003E3F91 /* html.zip */,
 			);
-			name = assets;
-			path = ../assets;
+			path = assets;
 			sourceTree = "<group>";
 		};
 		DF8524341CC61FA90046FC44 /* Reachability */ = {
