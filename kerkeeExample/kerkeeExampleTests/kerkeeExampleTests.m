@@ -1,6 +1,6 @@
 //
-//  kerkeeDemoTests.m
-//  kerkeeDemoTests
+//  kerkeeExampleTests.m
+//  kerkeeExampleTests
 //
 //  Created by zihong on 15/8/25.
 //  Copyright (c) 2015年 zihong. All rights reserved.
@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface kerkeeDemoTests : XCTestCase
+@interface kerkeeExampleTests : XCTestCase
 
 @end
 
-@implementation kerkeeDemoTests
+@implementation kerkeeExampleTests
 
 - (void)setUp {
     [super setUp];

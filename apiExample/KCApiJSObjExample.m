@@ -1,6 +1,6 @@
 //
 //  KCApiJSObjExample.m
-//  kerkeeDemo
+//  kerkeeExample
 //
 //  Created by zihong on 2015-11-10.
 //  Copyright © 2015 zihong. All rights reserved.

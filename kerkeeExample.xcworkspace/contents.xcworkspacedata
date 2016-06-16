@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:kerkeeDemo/kerkeeDemo.xcodeproj">
+      location = "group:kerkeeExample/kerkeeExample.xcodeproj">
    </FileRef>
 </Workspace>
