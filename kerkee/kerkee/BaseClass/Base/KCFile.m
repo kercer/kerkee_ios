@@ -155,17 +155,6 @@ static NSString* join(NSString* prefix, NSString* suffix)
 }
 
 
-- (NSString*)getPath
-{
-    return m_path;
-}
-
-- (BOOL)isAbsolute
-{
-    if (!m_path) return false;
-    return [KCFileManager isAbsolute:m_path];
-}
-
 - (BOOL)canExecute
 {
     if (!m_path) return false;
@@ -273,6 +262,24 @@ static NSString* join(NSString* prefix, NSString* suffix)
     KCFile* file = [[KCFile alloc] initWithPath:tempParent];
     KCAutorelease(file);
     return file;
+}
+
+- (NSString*)getPath
+{
+    return m_path;
+}
+
+- (NSUInteger)hash
+{
+    NSUInteger hash = [[self getPath] hash];
+    hash = hash ^ 1234321;
+    return hash;
+}
+
+- (BOOL)isAbsolute
+{
+    if (!m_path) return false;
+    return [KCFileManager isAbsolute:m_path];
 }
 
 - (KCURI*)toURI

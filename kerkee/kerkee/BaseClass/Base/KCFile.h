@@ -145,6 +145,15 @@
 - (NSString*)getPath;
 
 /**
+ * Returns an integer hash code for the receiver. Any two objects for which
+ * equals returns true must return the same hash code.
+ *
+ * @return this files's hash value.
+ * @see #equals
+ */
+- (NSUInteger)hash;
+
+/**
  * Indicates if this file's pathname is absolute. Whether a pathname is
  * absolute is platform specific. On iOS & Android, absolute paths start with
  * the character '/'.
