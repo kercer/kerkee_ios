@@ -23,7 +23,7 @@
 		DF5D70BF1BA91859008A8FB2 /* KCUriRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5D70BD1BA91859008A8FB2 /* KCUriRegister.m */; };
 		DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C1F1BA171CF0025B0CC /* KCUriActionDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF5D70C41BA95A8C008A8FB2 /* KCUriDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C171BA16C860025B0CC /* KCUriDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF69A5821D13E4030049C628 /* KCFile.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5801D13E4030049C628 /* KCFile.h */; };
+		DF69A5821D13E4030049C628 /* KCFile.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5801D13E4030049C628 /* KCFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF69A5831D13E4030049C628 /* KCFile.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5811D13E4030049C628 /* KCFile.m */; };
 		DF69A5841D13FF520049C628 /* KCFile.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF69A5801D13E4030049C628 /* KCFile.h */; };
 		DF74CC341BFAE49D00346F1A /* KCJSType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF54B5E41BF9B55D00F384BF /* KCJSType.h */; };
@@ -1010,7 +1010,6 @@
 				DFC3AC181B9C17FC009F4775 /* NSObject+KCObserver.h in Headers */,
 				DFC3ABA21B9C17F2009F4775 /* KCXMLHttpRequest.h in Headers */,
 				DF809CAE1B9D90FF008B315D /* KCApiBridgeManager.h in Headers */,
-				DF69A5821D13E4030049C628 /* KCFile.h in Headers */,
 				DFC3ABAB1B9C17F2009F4775 /* KCWebViewManager.h in Headers */,
 				DFC3AC411B9C17FC009F4775 /* KCUtilMd5.h in Headers */,
 				DFC3AC3B1B9C17FC009F4775 /* KCUtilDevice.h in Headers */,
@@ -1034,6 +1033,7 @@
 				DFC3ABFF1B9C17FC009F4775 /* KCBaseDefine.h in Headers */,
 				DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */,
 				DFC3AC041B9C17FC009F4775 /* KCRuntime.h in Headers */,
+				DF69A5821D13E4030049C628 /* KCFile.h in Headers */,
 				DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */,
 				DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */,
 				DFC3ABA01B9C17F2009F4775 /* KCWebImageSetterTask.h in Headers */,

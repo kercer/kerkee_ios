@@ -130,9 +130,38 @@ static NSString* join(NSString* prefix, NSString* suffix)
     return self;
 }
 
+- (id)initWitURI:(KCURI*)aURI
+{
+    if (aURI)
+    {
+        [self checkURI:aURI];
+        m_path = fixSlashes(aURI.components.path);
+    }
+    
+    return self;
+}
+
+
+- (void)checkURI:(KCURI*)aURI
+{
+    NSAssert(aURI.isAbsolute, @"URI is not absolute:");
+    NSAssert([@"file" isEqualToString:aURI.components.scheme], @"Expected file scheme in URI");
+    NSAssert(aURI.components.path != NULL && aURI.components.path.length>0, @"Expected non-empty path in URI");
+    NSAssert(aURI.components.user == NULL && aURI.components.password == NULL, @"Found authority in URI");
+    NSAssert(aURI.components.query == NULL, @"Found query in URI");
+    NSAssert(aURI.components.fragment == NULL, @"Found fragment in URI");
+}
+
+
 - (NSString*)getPath
 {
     return m_path;
+}
+
+- (BOOL)isAbsolute
+{
+    if (!m_path) return false;
+    return m_path.length > 0 && [m_path characterAtIndex:0] == kSeparatorChar;
 }
 
 - (BOOL)canExecute
@@ -153,5 +182,40 @@ static NSString* join(NSString* prefix, NSString* suffix)
     return [KCFileManager isWritable:m_path];
 }
 
+- (BOOL)remove
+{
+    if (!m_path) return false;
+    NSError* error = nil;
+    return [KCFileManager remove:m_path error:&error];
+}
+
+- (NSError*)removeItem
+{
+    if (!m_path) return false;
+    NSError* error = nil;
+    [KCFileManager remove:m_path error:&error];
+    return error;
+}
+
+- (BOOL)equals:(id)aObj
+{
+    if (![aObj isKindOfClass:KCFile.class])
+    {
+        return false;
+    }
+    if (!m_path) return false;
+    return [m_path isEqualToString:[(KCFile*)aObj getPath]];
+}
+
+- (BOOL)exists
+{
+    if (!m_path) return false;
+    return [KCFileManager existsFast:m_path];
+}
+
+- (KCURI*)toURI
+{
+    return nil;
+}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <KCURI.h>
 
 @interface KCFile : NSObject
 
@@ -40,6 +41,19 @@
 - (id)initWithFile:(KCFile*)aDirFile name:(NSString*)aName;
 
 /**
+ * Constructs a new File using the path of the specified KCURI. uri
+ * needs to be an absolute and hierarchical Unified Resource Identifier with
+ * file scheme and non-empty path component, but with undefined authority,
+ * query or fragment components.
+ *
+ * @param uri
+ *            the Unified Resource Identifier that is used to construct this
+ *            file.
+ * @see #toURI
+ */
+- (id)initWitURI:(KCURI*)aURI;
+
+/**
  * Tests whether or not this process is allowed to execute this file.
  * Note that this is a best-effort result; the only way to be certain is
  * to actually attempt the operation.
@@ -61,8 +75,57 @@
 - (BOOL)canWrite;
 
 /**
+ * Deletes this file. Directories must be empty before they will be deleted.
+ *
+ * Callers must check the return value.
+ *
+ * @return true if this file was deleted, false otherwise.
+ */
+- (BOOL)remove;
+- (NSError*)removeItem;
+
+/**
+ * Compares aObj to this file and returns true if they
+ * represent the <em>same</em> object using a path specific comparison.
+ *
+ * @param obj
+ *            the object to compare this file with.
+ * @return true if  aObj is the same as this object, false otherwise.
+ */
+- (BOOL)equals:(id)aObj;
+
+/**
+ * Returns a boolean indicating whether this file can be found on the
+ * underlying file system.
+ *
+ * @return true if this file exists, false otherwise.
+ */
+- (BOOL)exists;
+
+
+/**
  * Returns the path of this file.
  */
 - (NSString*)getPath;
+
+/**
+ * Indicates if this file's pathname is absolute. Whether a pathname is
+ * absolute is platform specific. On iOS & Android, absolute paths start with
+ * the character '/'.
+ *
+ * @return true if this file's pathname is absolute,  false
+ *         otherwise.
+ * @see #getPath
+ */
+- (BOOL)isAbsolute;
+
+/**
+ * Returns a Uniform Resource Identifier for this file. The URI is system
+ * dependent and may not be transferable between different operating / file
+ * systems.
+ *
+ * @return an KCURI for this file.
+ */
+- (KCURI*)toURI;
 
 @end
