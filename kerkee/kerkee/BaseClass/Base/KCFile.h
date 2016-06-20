@@ -114,6 +114,30 @@
  */
 - (KCFile*)getAbsoluteFile;
 
+/**
+ * Returns the name of the file or directory represented by this file.
+ *
+ * @return this file's name or an empty string if there is no name part in
+ *         the file's path.
+ */
+- (NSString*)getName;
+
+/**
+ * Returns the pathname of the parent of this file. This is the path up to
+ * but not including the last name. nil is returned if there is no parent.
+ *
+ * @return this file's parent pathname or nil.
+ */
+- (NSString*)getParent;
+
+/**
+ * Returns a new file made from the pathname of the parent of this file.
+ * This is the path up to but not including the last name. nil is
+ * returned when there is no parent.
+ *
+ * @return a new file representing this file's parent or nil.
+ */
+- (KCFile*)getParentFile;
 
 /**
  * Returns the path of this file.

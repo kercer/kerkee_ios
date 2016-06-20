@@ -88,7 +88,19 @@
     return -1;
 }
 
-- (int)lastIndexOfStringWithChar:(char)aChar
+- (int)indexOfChar:(char)aChar
+{
+    int lenth = (int)self.length;
+    for (int i = 0; i < lenth; ++i)
+    {
+        char c = [self characterAtIndex:i];
+        if (aChar == c)
+            return i;
+    }
+    return -1;
+}
+
+- (int)lastIndexOfChar:(char)aChar
 {
     
     int lenth = (int)self.length;

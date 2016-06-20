@@ -23,7 +23,8 @@
 - (NSString *)trim:(NSString *)aString;
 - (int)indexOf:(NSString*)aSearch;
 - (int)indexOf:(NSString*)aSearch startIndex:(NSUInteger)aStartIndex;
-- (int)lastIndexOfStringWithChar:(char)aChar;
+- (int)indexOfChar:(char)aChar;
+- (int)lastIndexOfChar:(char)aChar;
 - (int)lastIndexOf:(NSString*)aSearch;
 - (NSString *)replaceAll:(NSString*)aTarget with:(NSString*)aWith;
 -(NSString *)substring:(NSUInteger)aStart;

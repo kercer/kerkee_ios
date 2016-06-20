@@ -10,6 +10,7 @@
 #import "string.h"
 #import "KCFileManager.h"
 #import "KCBaseDefine.h"
+#import "KCString.h"
 
 #define kSeparatorChar '/'
 
@@ -223,6 +224,53 @@ static NSString* join(NSString* prefix, NSString* suffix)
 - (KCFile*)getAbsoluteFile
 {
     KCFile* file = [[KCFile alloc] initWithPath:[self getAbsolutePath]];
+    KCAutorelease(file);
+    return file;
+}
+
+- (NSString*)getName
+{
+    if (!m_path) return nil;
+    int separatorIndex =[m_path lastIndexOfChar:kSeparatorChar];
+    return (separatorIndex < 0) ? m_path : [m_path substring:separatorIndex+1];
+//    lastPathComponent:  /tmp/”   --->     “tmp”
+//    return [m_path lastPathComponent];
+}
+
+- (NSString*)getParent
+{
+    if (!m_path) return nil;
+    NSUInteger length = m_path.length;
+    NSUInteger firstInPath = 0;
+    if (kSeparatorChar == '\\' && length > (2) && [m_path characterAtIndex:1] == ':')
+    {
+        firstInPath = 2;
+    }
+    int index = [m_path lastIndexOfChar:kSeparatorChar];
+    if (index == -1 && firstInPath > 0) {
+        index = 2;
+    }
+    if (index == -1 || [m_path characterAtIndex:length-1] == kSeparatorChar)
+    {
+        return nil;
+    }
+    
+    if ([m_path indexOfChar:kSeparatorChar] == index && [m_path characterAtIndex:firstInPath] == kSeparatorChar)
+    {
+        return [m_path substring:0 end:index+1];
+    }
+    
+    return [m_path substring:0 end:index];
+}
+
+- (KCFile*)getParentFile
+{
+    NSString* tempParent = [self getParent];
+    if (tempParent == nil)
+    {
+        return nil;
+    }
+    KCFile* file = [[KCFile alloc] initWithPath:tempParent];
     KCAutorelease(file);
     return file;
 }
