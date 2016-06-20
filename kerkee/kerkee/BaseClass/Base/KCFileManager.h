@@ -6,6 +6,25 @@
 
 @interface KCFileManager : NSObject
 
+/**
+ * Indicates if this file's pathname is absolute. Whether a pathname is
+ * absolute is platform specific. On iOS & Android, absolute paths start with
+ * the character '/'.
+ *
+ * @return true if this file's pathname is absolute,  false
+ *         otherwise.
+ * @see #getPath
+ */
++ (BOOL)isAbsolute:(NSString *)aPath;
+/**
+ * Returns the absolute path of this file. An absolute path is a path that starts at a root
+ * of the file system. On Android, there is only one root: /.
+ */
++(NSString *)absolutePath:(NSString *)path;
+
++(NSString *)matchingAbsoluteDirectoryForPath:(NSString *)aPath;
+
+
 //the key , you can see the NSFileAttributes
 +(id)attribute:(NSString *)aPath forKey:(NSString *)aKey;
 +(id)attribute:(NSString *)aPath forKey:(NSString *)aKey error:(NSError **)aError;

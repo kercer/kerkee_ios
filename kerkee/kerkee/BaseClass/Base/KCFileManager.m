@@ -11,7 +11,7 @@
 @implementation KCFileManager
 
 
-+(NSMutableArray *)absoluteDirectories
++(NSMutableArray *)allAbsoluteDirectories
 {
     static NSMutableArray *directories = nil;
     static dispatch_once_t token;
@@ -38,20 +38,20 @@
 }
 
 
-+(NSString *)absoluteDirectoryForPath:(NSString *)path
++(NSString *)matchingAbsoluteDirectoryForPath:(NSString *)aPath
 {
-    [self assertPath:path];
+    [self assertPath:aPath];
     
-    if([path isEqualToString:@"/"])
+    if([aPath isEqualToString:@"/"])
     {
         return nil;
     }
     
-    NSMutableArray *directories = [self absoluteDirectories];
+    NSMutableArray *directories = [self allAbsoluteDirectories];
     
     for(NSString *directory in directories)
     {
-        NSRange indexOfDirectoryInPath = [path rangeOfString:directory];
+        NSRange indexOfDirectoryInPath = [aPath rangeOfString:directory];
         
         if(indexOfDirectoryInPath.location == 0)
         {
@@ -63,19 +63,24 @@
 }
 
 
-+(NSString *)absolutePath:(NSString *)path
++ (BOOL)isAbsolute:(NSString *)aPath
 {
-    [self assertPath:path];
+    if (!aPath) return false;
+    return aPath.length > 0 && [aPath characterAtIndex:0] == '/';
+}
+
+
++(NSString *)absolutePath:(NSString *)aPath
+{
+    [self assertPath:aPath];
     
-    NSString *defaultDirectory = [self absoluteDirectoryForPath:path];
-    
-    if(defaultDirectory != nil)
+    if ([self isAbsolute:aPath])
     {
-        return path;
+        return aPath;
     }
     else
     {
-        return [self pathForDocumentsDirectoryWithPath:path];
+        return [self pathForDocumentsDirectoryWithPath:aPath];
     }
 }
 

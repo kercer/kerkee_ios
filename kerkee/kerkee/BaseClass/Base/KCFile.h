@@ -102,6 +102,18 @@
  */
 - (BOOL)exists;
 
+/**
+ * Returns the absolute path of this file. An absolute path is a path that starts at a root
+ * of the file system. On Android, there is only one root: /.
+ */
+- (NSString*)getAbsolutePath;
+
+/**
+ * Returns a new file constructed using the absolute path of this file.
+ * Equivalent to create KCFile(getAbsolutePath()).
+ */
+- (KCFile*)getAbsoluteFile;
+
 
 /**
  * Returns the path of this file.
@@ -118,6 +130,7 @@
  * @see #getPath
  */
 - (BOOL)isAbsolute;
+
 
 /**
  * Returns a Uniform Resource Identifier for this file. The URI is system

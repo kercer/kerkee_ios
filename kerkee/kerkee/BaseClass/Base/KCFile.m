@@ -9,6 +9,7 @@
 #import "KCFile.h"
 #import "string.h"
 #import "KCFileManager.h"
+#import "KCBaseDefine.h"
 
 #define kSeparatorChar '/'
 
@@ -161,7 +162,7 @@ static NSString* join(NSString* prefix, NSString* suffix)
 - (BOOL)isAbsolute
 {
     if (!m_path) return false;
-    return m_path.length > 0 && [m_path characterAtIndex:0] == kSeparatorChar;
+    return [KCFileManager isAbsolute:m_path];
 }
 
 - (BOOL)canExecute
@@ -211,6 +212,19 @@ static NSString* join(NSString* prefix, NSString* suffix)
 {
     if (!m_path) return false;
     return [KCFileManager existsFast:m_path];
+}
+
+- (NSString*)getAbsolutePath
+{
+    if (!m_path) return nil;
+    return [KCFileManager absolutePath:m_path];
+}
+
+- (KCFile*)getAbsoluteFile
+{
+    KCFile* file = [[KCFile alloc] initWithPath:[self getAbsolutePath]];
+    KCAutorelease(file);
+    return file;
 }
 
 - (KCURI*)toURI
