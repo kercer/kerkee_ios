@@ -32,14 +32,18 @@ static NSPredicate* webViewProxyLoopDetection;
 #if WORKAROUND_MUTABLE_COPY_LEAK
 @implementation NSURLRequest(MutableCopyWorkaround)
 
-- (id) mutableCopyWorkaround {
+- (id) mutableCopyWorkaround
+{
     NSMutableURLRequest *mutableURLRequest = [[NSMutableURLRequest alloc] initWithURL:[self URL]
                                                                           cachePolicy:[self cachePolicy]
                                                                       timeoutInterval:[self timeoutInterval]];
     [mutableURLRequest setAllHTTPHeaderFields:[self allHTTPHeaderFields]];
-    if ([self HTTPBodyStream]) {
+    if ([self HTTPBodyStream])
+    {
         [mutableURLRequest setHTTPBodyStream:[self HTTPBodyStream]];
-    } else {
+    }
+    else
+    {
         [mutableURLRequest setHTTPBody:[self HTTPBody]];
     }
     [mutableURLRequest setHTTPMethod:[self HTTPMethod]];
@@ -67,7 +71,107 @@ static NSPredicate* webViewProxyLoopDetection;
 }
 @end
 
+#pragma mark - Protocol
+// The NSURLProtocol implementation that allows us to intercept requests.
+@interface KCWebViewURLProtocol : NSURLProtocol
+{
+    NSMutableURLRequest* m_correctedRequest;
+    
+    KCWebViewResponse* m_proxyResponse;
+    KCWebViewRequestMatcher* m_requestMatcher;
+}
+@property (strong, nonatomic, readonly) NSURLRequest* correctedRequest;
+@property (strong,nonatomic) KCWebViewResponse* proxyResponse;
+@property (strong,nonatomic) KCWebViewRequestMatcher* requestMatcher;
++ (KCWebViewRequestMatcher*)findRequestMatcher:(NSURL*)url;
+@end
+@implementation KCWebViewURLProtocol
+@synthesize proxyResponse=m_proxyResponse, requestMatcher=m_requestMatcher, correctedRequest = m_correctedRequest;
 
+
++ (KCWebViewRequestMatcher *)findRequestMatcher:(NSURL *)aUrl
+{
+    if (!requestMatchers || !aUrl) return nil;
+    @synchronized(requestMatchers)
+    {
+        NSArray* requestMatchersTmp = [requestMatchers copy];
+        if (!requestMatchersTmp) return nil;
+        unsigned long count = requestMatchersTmp.count;
+        for (int i = 0 ; i < count; ++i)
+        {
+            KCWebViewRequestMatcher* requestMatcher = [requestMatchersTmp objectAtIndex:i];
+            if (requestMatcher && requestMatcher.predicate && [requestMatcher.predicate evaluateWithObject:aUrl])
+            {
+                return requestMatcher;
+            }
+        }
+    }
+    return nil;
+}
+
+
++ (BOOL)canInitWithRequest:(NSURLRequest *)aRequest
+{
+    if (!aRequest) return NO;
+    NSString* userAgent = aRequest.allHTTPHeaderFields[@"User-Agent"];
+    if (userAgent && ![webViewUserAgentTest evaluateWithObject:userAgent]) { return NO; }
+    if ([webViewProxyLoopDetection evaluateWithObject:aRequest.URL]) { return NO; }
+    return ([self findRequestMatcher:aRequest.URL] != nil);
+}
+
++ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)aRequest
+{
+    return aRequest;
+}
+
++ (BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b
+{
+    // TODO Implement this here, or expose it through WebViewProxyResponse?
+    return NO;
+}
+
+- (id)initWithRequest:(NSURLRequest *)aRequest cachedResponse:(NSCachedURLResponse *)aCachedResponse client:(id<NSURLProtocolClient>)aClient
+{
+    if (self = [super initWithRequest:aRequest cachedResponse:aCachedResponse client:aClient])
+    {
+        NSMutableURLRequest *connectionRequest =
+#if WORKAROUND_MUTABLE_COPY_LEAK
+        [[self request] mutableCopyWorkaround];
+#else
+        [[self request] mutableCopy];
+#endif
+        
+        // TODO How to handle cachedResponse?
+        m_correctedRequest = connectionRequest;
+        NSString* correctedFragment;
+        if (m_correctedRequest.URL.fragment)
+        {
+            correctedFragment = @"__webviewproxyreq__";
+        }
+        else
+        {
+            correctedFragment = @"#__webviewproxyreq__";
+        }
+        m_correctedRequest.URL = [NSURL URLWithString:[aRequest.URL.absoluteString stringByAppendingString:correctedFragment]];
+        
+        self.requestMatcher = [self.class findRequestMatcher:aRequest.URL];
+        self.proxyResponse = [[KCWebViewResponse alloc] _initWithRequest:aRequest protocol:self];
+    }
+    return self;
+}
+- (void)startLoading
+{
+    self.requestMatcher.handler(m_correctedRequest, self.proxyResponse);
+}
+- (void)stopLoading
+{
+    m_correctedRequest = nil;
+    [self.proxyResponse _stopLoading];
+    self.proxyResponse = nil;
+}
+@end
+
+#pragma mark - Response
 
 // This is the proxy response object, through which we send responses
 @implementation KCWebViewResponse
@@ -80,6 +184,7 @@ static NSPredicate* webViewProxyLoopDetection;
     
     NSURLCacheStoragePolicy m_cachePolicy;
 }
+
 @synthesize cachePolicy=m_cachePolicy, request=m_request;
 - (id)_initWithRequest:(NSURLRequest *)aRequest protocol:(NSURLProtocol*)aProtocol
 {
@@ -182,6 +287,7 @@ static NSPredicate* webViewProxyLoopDetection;
 - (void)respondWithData:(NSData *)aData mimeType:(NSString *)aMimeType statusCode:(NSInteger)aStatusCode
 {
     if (m_stopped) { return; }
+    if (!m_protocol) { return; }
     if (!m_headers[@"Content-Type"])
     {
         if (!aMimeType)
@@ -201,10 +307,18 @@ static NSPredicate* webViewProxyLoopDetection;
     {
         @try
         {
+            KCWebViewURLProtocol* protocol = (KCWebViewURLProtocol*)m_protocol;
+
             NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
-            [m_protocol.client URLProtocol:m_protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
-            [m_protocol.client URLProtocol:m_protocol didLoadData:aData];
-            [m_protocol.client URLProtocolDidFinishLoading:m_protocol];
+            
+            if (protocol.correctedRequest && protocol.proxyResponse)
+                [protocol.client URLProtocol:protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
+            
+            if (protocol.correctedRequest && protocol.proxyResponse)
+                [protocol.client URLProtocol:protocol didLoadData:aData];
+            
+            if (protocol.correctedRequest && protocol.proxyResponse)
+                [protocol.client URLProtocolDidFinishLoading:protocol];
         }
         @catch (NSException *exception)
         {
@@ -336,103 +450,7 @@ static NSPredicate* webViewProxyLoopDetection;
 
 @end
 
-// The NSURLProtocol implementation that allows us to intercept requests.
-@interface KCWebViewURLProtocol : NSURLProtocol
-@property (strong,nonatomic) KCWebViewResponse* proxyResponse;
-@property (strong,nonatomic) KCWebViewRequestMatcher* requestMatcher;
-+ (KCWebViewRequestMatcher*)findRequestMatcher:(NSURL*)url;
-@end
-@implementation KCWebViewURLProtocol
-{
-    NSMutableURLRequest* m_correctedRequest;
-    
-    KCWebViewResponse* m_proxyResponse;
-    KCWebViewRequestMatcher* m_requestMatcher;
-}
-@synthesize proxyResponse=m_proxyResponse, requestMatcher=m_requestMatcher;
 
-
-+ (KCWebViewRequestMatcher *)findRequestMatcher:(NSURL *)aUrl
-{
-    if (!requestMatchers || !aUrl) return nil;
-    @synchronized(requestMatchers)
-    {
-        NSArray* requestMatchersTmp = [requestMatchers copy];
-        if (!requestMatchersTmp) return nil;
-        unsigned long count = requestMatchersTmp.count;
-        for (int i = 0 ; i < count; ++i)
-        {
-            KCWebViewRequestMatcher* requestMatcher = [requestMatchersTmp objectAtIndex:i];
-            if (requestMatcher && requestMatcher.predicate && [requestMatcher.predicate evaluateWithObject:aUrl])
-            {
-                return requestMatcher;
-            }
-        }
-    }
-    return nil;
-}
-
-
-+ (BOOL)canInitWithRequest:(NSURLRequest *)aRequest
-{
-    if (!aRequest) return NO;
-    NSString* userAgent = aRequest.allHTTPHeaderFields[@"User-Agent"];
-    if (userAgent && ![webViewUserAgentTest evaluateWithObject:userAgent]) { return NO; }
-    if ([webViewProxyLoopDetection evaluateWithObject:aRequest.URL]) { return NO; }
-    return ([self findRequestMatcher:aRequest.URL] != nil);
-}
-
-+ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)aRequest
-{
-    return aRequest;
-}
-
-+ (BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b
-{
-    // TODO Implement this here, or expose it through WebViewProxyResponse?
-    return NO;
-}
-
-- (id)initWithRequest:(NSURLRequest *)aRequest cachedResponse:(NSCachedURLResponse *)aCachedResponse client:(id<NSURLProtocolClient>)aClient
-{
-    if (self = [super initWithRequest:aRequest cachedResponse:aCachedResponse client:aClient])
-    {
-        NSMutableURLRequest *connectionRequest =
-#if WORKAROUND_MUTABLE_COPY_LEAK
-        [[self request] mutableCopyWorkaround];
-#else
-        [[self request] mutableCopy];
-#endif
-        
-        // TODO How to handle cachedResponse?
-        m_correctedRequest = connectionRequest;
-        NSString* correctedFragment;
-        if (m_correctedRequest.URL.fragment)
-        {
-            correctedFragment = @"__webviewproxyreq__";
-        }
-        else
-        {
-            correctedFragment = @"#__webviewproxyreq__";
-        }
-        m_correctedRequest.URL = [NSURL URLWithString:[aRequest.URL.absoluteString stringByAppendingString:correctedFragment]];
-        
-        self.requestMatcher = [self.class findRequestMatcher:aRequest.URL];
-        self.proxyResponse = [[KCWebViewResponse alloc] _initWithRequest:aRequest protocol:self];
-    }
-    return self;
-}
-- (void)startLoading
-{
-    self.requestMatcher.handler(m_correctedRequest, self.proxyResponse);
-}
-- (void)stopLoading
-{
-    m_correctedRequest = nil;
-    [self.proxyResponse _stopLoading];
-    self.proxyResponse = nil;
-}
-@end
 
 
 // This is the actual WebViewProxy API
