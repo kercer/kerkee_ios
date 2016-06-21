@@ -82,6 +82,20 @@
  */
 - (BOOL)isRelative;
 
+/**
+ * Gets the decoded path segments.
+ *
+ * @return decoded path segments, each without a leading or trailing '/'
+ */
 - (NSArray*)getPathSegments;
+
+/**
+ * Gets the decoded last segment in the path.
+ *
+ * @return the decoded last segment or nil if the path is empty
+ */
+- (NSString*)getLastPathSegment;
+
+- (NSString*)description;
 
 @end

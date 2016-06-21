@@ -40,7 +40,7 @@
 
 #pragma mark - API
 
-+ (BOOL)archiveRootObject:(id <NSCoding>)aRootObject forKey:(NSString*)aKey
++ (BOOL)archiveFile:(id <NSCoding>)aRootObject forKey:(NSString*)aKey
 {
     aKey = [aKey stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
     if (aKey.length == 0)
@@ -60,7 +60,7 @@
     }
 }
 
-+ (id)unarchiveObjectForKey:(NSString*)aKey
++ (id)unarchiveFile:(NSString*)aKey
 {
     id object = nil;
     @try
@@ -74,9 +74,9 @@
     return object;
 }
 
-+ (id)unarchiveObjectForKey:(NSString*)aKey defaultObject:(id(^)())aDefaultObject
++ (id)unarchiveFile:(NSString*)aKey defaultObject:(id(^)())aDefaultObject
 {
-    id object = [self unarchiveObjectForKey:aKey];
+    id object = [self unarchiveFile:aKey];
     if (object == nil)
     {
         object = aDefaultObject();
@@ -84,9 +84,9 @@
     return object;
 }
 
-+ (id)unarchiveObjectForKey:(NSString*)aKey failure:(void(^)())failure
++ (id)unarchiveFile:(NSString*)aKey failure:(void(^)())failure
 {
-    id object = [self unarchiveObjectForKey:aKey];
+    id object = [self unarchiveFile:aKey];
     if (object == nil)
     {
         failure();
@@ -95,11 +95,11 @@
 }
 
 
-+ (BOOL)removeArchiveForKey:(NSString*)aKey
++ (BOOL)removeArchiveFile:(NSString*)aKey
 {
     BOOL result = YES;
     NSString* filePath = [self _filePathForKey:aKey];
-    if ([self archiveExistsForKey:aKey])
+    if ([self archiveFileExists:aKey])
     {
         NSError* error = nil;
         result = [NSFileManager.defaultManager removeItemAtPath:filePath
@@ -112,7 +112,7 @@
     return result;
 }
 
-+ (BOOL)archiveExistsForKey:(NSString*)aKey
++ (BOOL)archiveFileExists:(NSString*)aKey
 {
     return [KCUtilFile isExist:[self _filePathForKey:aKey]];
 }
@@ -127,6 +127,15 @@
     
 }
 
++ (NSData *)archive:(NSObject *)aObj
+{
+    return [NSKeyedArchiver archivedDataWithRootObject:aObj];
+}
+
++ (NSObject *)unarchive:(NSData *)aData
+{
+    return [NSKeyedUnarchiver unarchiveObjectWithData:aData];
+}
 
 
 @end

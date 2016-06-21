@@ -547,6 +547,17 @@
     return m_pathSegments;
 }
 
+- (NSString*)getLastPathSegment
+{
+    NSString* segment = nil;
+    NSArray* list = [self getPathSegments];
+    if(list && list.count > 0)
+    {
+        segment = [list objectAtIndex:list.count-1];
+    }
+    return segment;
+}
+
 
 #pragma mark NSCopying
 

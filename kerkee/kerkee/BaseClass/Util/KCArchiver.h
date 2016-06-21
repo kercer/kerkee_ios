@@ -14,14 +14,16 @@
 
 #pragma mark - API
 
-+ (BOOL)archiveRootObject:(id <NSCoding>)aRootObject forKey:(NSString*)aKey;
++ (NSData*)archive:(NSObject *)aObj;
++ (NSObject*)unarchive:(NSData *)aData;
 
-+ (id)unarchiveObjectForKey:(NSString*)aKey;
-+ (id)unarchiveObjectForKey:(NSString*)aKey defaultObject:(id(^)())aDefaultObject;
-+ (id)unarchiveObjectForKey:(NSString*)aKey failure:(void(^)())failure;
++ (BOOL)archiveFile:(id <NSCoding>)aRootObject forKey:(NSString*)aKey;
++ (id)unarchiveFile:(NSString*)aKey;
++ (id)unarchiveFile:(NSString*)aKey defaultObject:(id(^)())aDefaultObject;
++ (id)unarchiveFile:(NSString*)aKey failure:(void(^)())failure;
 
-+ (BOOL)removeArchiveForKey:(NSString*)aKey;
-+ (BOOL)archiveExistsForKey:(NSString*)aKey;
++ (BOOL)removeArchiveFile:(NSString*)aKey;
++ (BOOL)archiveFileExists:(NSString*)aKey;
 
 + (NSString*)path;
 

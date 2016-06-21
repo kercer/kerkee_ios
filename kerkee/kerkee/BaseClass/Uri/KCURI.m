@@ -100,6 +100,11 @@
     return m_uriComponents.getPathSegments;
 }
 
+- (NSString*)getLastPathSegment
+{
+    return m_uriComponents.getLastPathSegment;
+}
+
 - (NSString*)description
 {
     return self.URL.absoluteString;
