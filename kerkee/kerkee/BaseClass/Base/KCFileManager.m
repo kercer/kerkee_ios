@@ -303,11 +303,13 @@
             
             return (created && [self isNotError:error]);
         }
-        else {
+        else
+        {
             return NO;
         }
     }
-    else {
+    else
+    {
         return NO;
     }
 }
@@ -882,6 +884,14 @@
     return success;
 }
 
++(BOOL)renameItemAtPath:(NSString*)aPath toPath:(NSString*)aToPath
+{
+    return [self renameItemAtPath:aPath toPath:aToPath error:nil];
+}
++(BOOL)renameItemAtPath:(NSString*)aPath toPath:(NSString*)aToPath error:(NSError **)aError
+{
+    return [self move:aPath toPath:aToPath error:aError];
+}
 
 +(BOOL)renameItemAtPath:(NSString *)path withName:(NSString *)name
 {

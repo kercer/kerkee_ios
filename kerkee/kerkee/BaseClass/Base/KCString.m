@@ -124,7 +124,36 @@
     
     return -1;
 }
-
+- (NSString*)replaceChar:(char)aOldChar withChar:(char)aNewChar
+{
+    const char* src = [self cStringUsingEncoding:NSUTF8StringEncoding];
+    int length = (int)strlen(src);
+    char* newString = malloc((length+1)*sizeof(char));
+    memset(newString, 0, (length+1)*sizeof(char));
+    int idx = 0;
+    int last = length;
+    while (idx < last)
+    {
+        if (src[idx] == aOldChar)
+        {
+            newString[idx] = aNewChar;
+        }
+        else
+        {
+            newString[idx] = src[idx];
+        }
+        idx++;
+    }
+    
+    NSString *newReplaceString = [NSString stringWithCString:newString encoding:NSUTF8StringEncoding];
+    if (newString)
+    {
+        free(newString);
+        newString = NULL;
+    }
+    
+    return newReplaceString;
+}
 - (NSString *)replaceAll:(NSString*)aTarget with:(NSString*)aWith
 {
     NSMutableString *buffer = [NSMutableString stringWithString:self];

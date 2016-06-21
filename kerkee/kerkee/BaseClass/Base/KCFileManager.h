@@ -189,8 +189,10 @@
 
 #pragma mark - rename
 
-+(BOOL)renameItemAtPath:(NSString *)path withName:(NSString *)name;
-+(BOOL)renameItemAtPath:(NSString *)path withName:(NSString *)name error:(NSError **)error;
++(BOOL)renameItemAtPath:(NSString*)aPath toPath:(NSString*)aToPath;
++(BOOL)renameItemAtPath:(NSString*)aPath toPath:(NSString*)aToPath error:(NSError **)aError;
++(BOOL)renameItemAtPath:(NSString *)aPath withName:(NSString *)aName;
++(BOOL)renameItemAtPath:(NSString *)aPath withName:(NSString *)aName error:(NSError **)aError;
 
 #pragma mark - size
 +(NSString *)sizeFormatted:(NSNumber *)size;

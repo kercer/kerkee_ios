@@ -100,4 +100,14 @@
     return m_uriComponents.getPathSegments;
 }
 
+- (NSString*)description
+{
+    return self.URL.absoluteString;
+}
+
+- (NSString*)debugDescription
+{
+    return self.URL.absoluteString;
+}
+
 @end

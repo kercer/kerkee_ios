@@ -84,5 +84,4 @@
 
 - (NSArray*)getPathSegments;
 
-
 @end

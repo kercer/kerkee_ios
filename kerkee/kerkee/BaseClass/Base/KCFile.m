@@ -17,6 +17,7 @@
 @interface KCFile ()
 {
     NSString* m_path;
+//    char m_separatorChar;
 }
 
 @end
@@ -92,6 +93,7 @@ static NSString* join(NSString* prefix, NSString* suffix)
 {
     if (self = [super init])
     {
+//        m_separatorChar = kSeparatorChar;
     }
     return self;
 }
@@ -100,6 +102,7 @@ static NSString* join(NSString* prefix, NSString* suffix)
 {
     if (self = [super init])
     {
+//        m_separatorChar = kSeparatorChar;
         m_path = fixSlashes(aPath);
     }
     return self;
@@ -109,6 +112,7 @@ static NSString* join(NSString* prefix, NSString* suffix)
 {
     if (self = [super init])
     {
+//        m_separatorChar = kSeparatorChar;
         if (aDirPath == NULL || aDirPath.length == 0)
         {
             m_path = fixSlashes(aName);
@@ -138,6 +142,7 @@ static NSString* join(NSString* prefix, NSString* suffix)
     {
         [self checkURI:aURI];
         m_path = fixSlashes(aURI.components.path);
+//        m_separatorChar = kSeparatorChar;
     }
     
     return self;
@@ -282,9 +287,95 @@ static NSString* join(NSString* prefix, NSString* suffix)
     return [KCFileManager isAbsolute:m_path];
 }
 
+- (BOOL)isDir
+{
+    if (!m_path) return false;
+    return [KCFileManager isDir:m_path];
+}
+
+- (BOOL)isFile
+{
+    if (!m_path) return false;
+    return [KCFileManager isFile:m_path];
+}
+
+- (BOOL)mkdirs
+{
+    if (!m_path) return false;
+    return [KCFileManager createDirForPath:m_path];
+}
+
+- (BOOL)createNewFile
+{
+    if (!m_path) return false;
+    return [KCFileManager createFile:m_path];
+}
+
+- (BOOL)renameTo:(KCFile*)aNewPath
+{
+    if (!m_path || !aNewPath || !aNewPath.getPath) return false;
+    return [KCFileManager renameItemAtPath:m_path toPath:[aNewPath getPath]  error:nil];
+}
+
+- (NSString*)description
+{
+    return m_path;
+}
+
+- (NSString*)debugDescription
+{
+    return m_path;
+}
+
+- (NSString*)toString
+{
+    return m_path;
+}
+
 - (KCURI*)toURI
 {
-    return nil;
+    NSString* name = [self getAbsoluteName];
+    if (![name startsWithChar:'/'])
+    {
+        return [[KCURI alloc] initWithString:[NSString stringWithFormat:@"file:///%@", name]];
+    }
+    else if ([name startsWith:@"//"])
+    {
+        return [[KCURI alloc] initWithString:[NSString stringWithFormat:@"file:%@", name]];
+    }
+    return [[KCURI alloc] initWithString:[NSString stringWithFormat:@"file://%@", name]];
+}
+
+- (NSURL*)toURL
+{
+    NSString* name = [self getAbsoluteName];
+    if (![name startsWithChar:'/'])
+    {
+        return [NSURL URLWithString:[NSString stringWithFormat:@"file:///%@", name]];
+    }
+    else if ([name startsWith:@"//"])
+    {
+        return [NSURL URLWithString:[NSString stringWithFormat:@"file:%@", name]];
+    }
+    return [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", name]];
+}
+
+// TODO: is this really necessary, or can it be replaced with getAbsolutePath?
+- (NSString*)getAbsoluteName
+{
+    KCFile* f = [self getAbsoluteFile];
+    NSString* name = f.getPath;
+    
+    if (f.isDir && [name characterAtIndex:(name.length - 1)] != kSeparatorChar)
+    {
+        // Directories must end with a slash
+        name = [NSString stringWithFormat:@"%@/", name];
+    }
+//    if (m_separatorChar != '/')
+//    { // Must convert slashes.
+//        name = [name replaceChar:kSeparatorChar withChar:'/'];
+//    }
+    return name;
 }
 
 @end

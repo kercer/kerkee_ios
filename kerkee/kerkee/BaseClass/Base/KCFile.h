@@ -164,6 +164,49 @@
  */
 - (BOOL)isAbsolute;
 
+/**
+ * Indicates if this file represents a <em>directory</em> on the
+ * underlying file system.
+ *
+ * @return true if this file is a directory, false
+ *         otherwise.
+ */
+- (BOOL)isDir;
+
+/**
+ * Indicates if this file represents a <em>file</em> on the underlying
+ * file system.
+ *
+ * @return true if this file is a file, false otherwise.
+ */
+- (BOOL)isFile;
+
+/*
+ * Creates the directory named by this file, creating missing parent
+ * directories if necessary.
+ */
+- (BOOL)mkdirs;
+
+/**
+ * Creates a new, empty file on the file system according to the path
+ * information stored in this file. This method returns true if it creates
+ * a file, false if the file already existed. Note that it returns false
+ * even if the file is not a file (because it's a directory, say).
+ */
+- (BOOL)createNewFile;
+
+/**
+ * Renames this file to  aNewPath. This operation is supported for both
+ * files and directories.
+ */
+- (BOOL)renameTo:(KCFile*)aNewPath;
+
+/**
+ * Returns a string containing a concise, human-readable description of this
+ * file.
+ */
+- (NSString*)description;
+- (NSString*)toString;
 
 /**
  * Returns a Uniform Resource Identifier for this file. The URI is system
@@ -173,5 +216,12 @@
  * @return an KCURI for this file.
  */
 - (KCURI*)toURI;
+
+/**
+ * Returns a Uniform Resource Locator for this file. The URL is system
+ * dependent and may not be transferable between different operating / file
+ * systems.
+ */
+- (NSURL*)toURL;
 
 @end
