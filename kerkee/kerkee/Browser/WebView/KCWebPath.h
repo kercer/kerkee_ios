@@ -14,6 +14,8 @@
 
 @interface KCWebPath : NSObject
 
-
+- (void)setRootPath:(NSString*)aPath;
+- (NSString*)getRootPath;
+- (NSString*)getResRootPath;
 
 @end

@@ -10,6 +10,7 @@
 
 #import "KCWebPath.h"
 #import "KCBaseDefine.h"
+#import <KCFile.h>
 
 #define kDefaultRootPath ([NSHomeDirectory() stringByAppendingPathComponent:@"Documents"])
 #define kDefaultResRootPath ([NSHomeDirectory() stringByAppendingPathComponent:@"Documents/html"])
@@ -41,7 +42,7 @@
 
 
 //@ aPath is webview root path,if path if null, use default root path
--(void)setRootPath:(NSString*)aPath
+- (void)setRootPath:(NSString*)aPath
 {
     m_rootPath = aPath;
 }
@@ -57,11 +58,13 @@
     return m_rootPath;
 }
 
-//-(NSString*)getResRootPath
-//{
-//    NSURL* resUri = [[NSURL alloc] initWithString:[self getRootPath]];
-//    
-//}
+-(NSString*)getResRootPath
+{
+    KCFile* file = [[KCFile alloc] initWithPath:[self getRootPath] name:@"html"];
+    
+    return file.getAbsolutePath;
+    
+}
 
 
 
