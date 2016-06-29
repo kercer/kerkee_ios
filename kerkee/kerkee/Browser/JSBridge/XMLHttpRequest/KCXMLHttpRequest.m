@@ -143,7 +143,7 @@
     
 //    mConnection = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self];
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     mConnection = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:self delegateQueue:queue];
     
     if (mConnection)
@@ -243,8 +243,9 @@ didReceiveResponse:(NSURLResponse *)aResponse
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)aData
 {
     [mReceivedData appendData:aData];
-    
+    FOREGROUND_BEGIN
     [self notifyFetchReceiveData:aData];
+    FOREGROUND_COMMIT
 }
 
 #pragma mark -- NSURLSessionTaskDelegate
@@ -275,13 +276,17 @@ didReceiveResponse:(NSURLResponse *)aResponse
         
         NSDictionary* dic = [self returnResult:m_webview statusCode:code  statusText:statusText responseText:receivedData];
         
+        FOREGROUND_BEGIN
         [self notifyFetchComplete:dic];
+        FOREGROUND_COMMIT
     }
     else
     {
         KCLog(@">>>>> %@, URL:%@", aError.localizedDescription, mRequest.URL);
         
+        FOREGROUND_BEGIN
         [self notifyFetchFailed:aError];
+        FOREGROUND_COMMIT
     }
 }
 
@@ -318,7 +323,7 @@ didReceiveResponse:(NSURLResponse *)aResponse
 #pragma mark --
 - (void)callJSSetProperties:(NSDictionary *)aProperties
 {
-    [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:m_webview];
+    [KCJSExecutor callJSFunctionOnMainThread:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:m_webview];
 }
 
 - (void)handleHeaders:(NSHTTPURLResponse *)response

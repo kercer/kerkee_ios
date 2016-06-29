@@ -36,7 +36,17 @@
         result = [webview stringByEvaluatingJavaScriptFromString:js];
     return result;
 }
-
++ (void)callJSFunctionOnMainThread:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview
+{
+    NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonObj options:0 error:nil] encoding:NSUTF8StringEncoding];
+    if (!json) return;
+    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, json];
+    KCAutorelease(json);
+    KCAutorelease(js);
+    if (js)
+        [webview performSelectorOnMainThread:@selector(stringByEvaluatingJavaScriptFromString:) withObject:js waitUntilDone:NO];
+    return ;
+}
 
 + (void)callJSFunctionOnMainThread:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview
 {
