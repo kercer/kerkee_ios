@@ -155,10 +155,12 @@
     }
     else
     {
+        FOREGROUND_BEGIN
         if ([self.delegate respondsToSelector:@selector(fetchFailed:didFailWithError:)])
         {
             [self.delegate fetchFailed:self didFailWithError:nil];
         }
+        FOREGROUND_COMMIT
     }
     
 }
@@ -243,9 +245,7 @@ didReceiveResponse:(NSURLResponse *)aResponse
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)aData
 {
     [mReceivedData appendData:aData];
-    FOREGROUND_BEGIN
     [self notifyFetchReceiveData:aData];
-    FOREGROUND_COMMIT
 }
 
 #pragma mark -- NSURLSessionTaskDelegate
@@ -276,17 +276,13 @@ didReceiveResponse:(NSURLResponse *)aResponse
         
         NSDictionary* dic = [self returnResult:m_webview statusCode:code  statusText:statusText responseText:receivedData];
         
-        FOREGROUND_BEGIN
         [self notifyFetchComplete:dic];
-        FOREGROUND_COMMIT
     }
     else
     {
         KCLog(@">>>>> %@, URL:%@", aError.localizedDescription, mRequest.URL);
         
-        FOREGROUND_BEGIN
         [self notifyFetchFailed:aError];
-        FOREGROUND_COMMIT
     }
 }
 
@@ -295,27 +291,33 @@ didReceiveResponse:(NSURLResponse *)aResponse
 
 -(void)notifyFetchReceiveData:(NSData *)aData
 {
+    FOREGROUND_BEGIN
     if([m_delegate respondsToSelector:@selector(fetchReceiveData:didReceiveData:)])
     {
         [m_delegate fetchReceiveData:self didReceiveData:aData];
     }
+    FOREGROUND_COMMIT
 }
 
 -(void)notifyFetchComplete:(NSDictionary*)aResponseData
 {
+    FOREGROUND_BEGIN
     if([m_delegate respondsToSelector:@selector(fetchComplete:responseData:)])
     {
         [m_delegate fetchComplete:self responseData:aResponseData];
     }
+    FOREGROUND_COMMIT
 }
 
 
 -(void)notifyFetchFailed:(NSError*)aError
 {
+    FOREGROUND_BEGIN
     if ([m_delegate respondsToSelector:@selector(fetchFailed:didFailWithError:)])
     {
         [m_delegate fetchFailed:self didFailWithError:aError];
     }
+    FOREGROUND_COMMIT
 }
 
 

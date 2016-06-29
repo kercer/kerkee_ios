@@ -78,6 +78,7 @@
 
 - (void)open:(KCWebView*)aWebView argList:(KCArgList *)aArgs
 {
+    BACKGROUND_BEGIN
     KCXMLHttpRequest *xhr = [self getXHR:aWebView argList:aArgs];
     if (!xhr)
     {
@@ -92,8 +93,6 @@
     NSString *host = [aArgs getString:@"host"];
     NSString *port = [self objectInArgList:aArgs forKey:@"port" defaultValue:@""];
     NSString *href = [aArgs getString:@"href"];
-    
-    
     
     KCURI* uriUrl = [KCURI parse:url];
     BOOL isRelative = [uriUrl isRelative];
@@ -116,11 +115,12 @@
     
     
     [xhr open:method url:url userAgent:userAgent referer:referer cookie:cookie];
-    
+    BACKGROUND_COMMIT
 }
 
 - (void)send:(KCWebView*)aWebView argList:(KCArgList *)aArgs
 {
+    BACKGROUND_BEGIN
     KCXMLHttpRequest *xhr = [self getXHR:aWebView argList:aArgs];
     if (xhr)
     {
@@ -137,6 +137,7 @@
             }
         }
     }
+    BACKGROUND_COMMIT
 }
 
 - (void)setRequestHeader:(KCWebView*)aWebView argList:(KCArgList *)aArgs
@@ -208,7 +209,9 @@
         NSString* strObjectID = [aObjectID stringValue];
         
         KCXMLHttpRequest *xhr = [m_xhrMap objectForKey:[self keyFromWebViewAndId:aWebView objectID:aObjectID]];
+        FOREGROUND_BEGIN
         [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", strObjectID] WebView:[xhr webview]];
+        FOREGROUND_COMMIT
 
         [m_xhrMap removeObjectForKey:[self keyFromWebViewAndId:aWebView objectID:aObjectID]];
 //            KCLog(@"==~~~ free object %d, %@", mRequestMap.count, objectId);
@@ -225,13 +228,17 @@
 }
 -(void)fetchComplete:(KCXMLHttpRequest*)xmlHttpRequest responseData:(NSDictionary*)aResponseData
 {
+    BACKGROUND_BEGIN
     if (aResponseData)
         [self writeCached:xmlHttpRequest propertiesData:aResponseData];
     [self freeXMLHttpRequestObject:xmlHttpRequest.webview  objectID:[xmlHttpRequest objectId]];
+    BACKGROUND_COMMIT
 }
 -(void)fetchFailed:(KCXMLHttpRequest*)xmlHttpRequest didFailWithError:(NSError *)error
 {
+    BACKGROUND_BEGIN
     [self freeXMLHttpRequestObject:xmlHttpRequest.webview  objectID:[xmlHttpRequest objectId]];
+    BACKGROUND_COMMIT
 }
 
 
@@ -278,7 +285,9 @@
                 KCRelease(dicMutableProperties);
                 NSNumber *objectId = [aXHR objectId];
                 [dicMutableProperties setObject:objectId forKey:@"id"];
+                FOREGROUND_BEGIN
                 [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:dicMutableProperties WebView:aXHR.webview];
+                FOREGROUND_COMMIT
                 
                 return YES;
             }
