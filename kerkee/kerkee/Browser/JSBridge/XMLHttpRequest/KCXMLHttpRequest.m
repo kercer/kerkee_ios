@@ -235,9 +235,9 @@
 didReceiveResponse:(NSURLResponse *)aResponse
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))aCompletionHandler
 {
-    [self handleHeaders:(NSHTTPURLResponse *)aResponse];
-    
     aCompletionHandler(NSURLSessionResponseAllow);
+    
+    [self handleHeaders:(NSHTTPURLResponse *)aResponse];
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)aData

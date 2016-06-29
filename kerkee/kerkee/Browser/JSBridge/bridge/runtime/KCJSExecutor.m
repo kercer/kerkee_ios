@@ -7,7 +7,7 @@
 //
 
 #import "KCJSExecutor.h"
-
+#import "KCTaskQueue.h"
 
 @implementation KCJSExecutor
 
@@ -44,14 +44,22 @@
     KCAutorelease(json);
     KCAutorelease(js);
     if (js)
-        [webview performSelectorOnMainThread:@selector(stringByEvaluatingJavaScriptFromString:) withObject:js waitUntilDone:NO];
-    return ;
+    {
+        FOREGROUND_BEGIN
+        [webview stringByEvaluatingJavaScriptFromString:js];
+        FOREGROUND_COMMIT
+    }
 }
 
 + (void)callJSFunctionOnMainThread:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview
 {
     NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, jsonObj];
-    [webview performSelectorOnMainThread:@selector(stringByEvaluatingJavaScriptFromString:) withObject:js waitUntilDone:NO];
+    if (js)
+    {
+        FOREGROUND_BEGIN
+        [webview stringByEvaluatingJavaScriptFromString:js];
+        FOREGROUND_COMMIT
+    }
 }
 
 + (NSString *)callJSFunction:(NSString *)function withArg:(NSString *)aArg WebView:(KCWebView*)webview
