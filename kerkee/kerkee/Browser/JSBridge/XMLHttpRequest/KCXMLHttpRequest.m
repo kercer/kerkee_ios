@@ -11,6 +11,7 @@
 #import "KCBaseDefine.h"
 #import "KCApiBridge.h"
 #import "KCJSExecutor.h"
+#import "KCTaskQueue.h"
 
 #define UNSET               0
 #define OPENED              1
@@ -18,15 +19,15 @@
 #define LOADING             3
 #define DONE                4
 
-@interface KCXMLHttpRequest ()
+@interface KCXMLHttpRequest () <NSURLSessionDelegate>
 {
-    NSNumber *mObjectId;
-    NSURLConnection *mConnection;
-    NSMutableURLRequest *mRequest;
-    NSString *mResponseCharset; // for example: gbk, gb2312, etc.
-    NSMutableData *mReceivedData;
+    NSNumber* mObjectId;
+    NSURLSession* mConnection;
+    NSMutableURLRequest* mRequest;
+    NSString* mResponseCharset; // for example: gbk, gb2312, etc.
+    NSMutableData* mReceivedData;
     
-    NSDictionary *mHeaderProperties;
+    NSDictionary* mHeaderProperties;
     
     BOOL mAborted;
     int mState;
@@ -140,10 +141,17 @@
     
     mAborted = false;
     
-    mConnection = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self];
+//    mConnection = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self];
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    mConnection = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:self delegateQueue:queue];
+    
     if (mConnection)
     {
         mReceivedData = [[NSMutableData alloc] init];
+        
+        NSURLSessionDataTask *dataTask = [mConnection dataTaskWithRequest:mRequest];
+        [dataTask resume];
     }
     else
     {
@@ -152,7 +160,7 @@
             [self.delegate fetchFailed:self didFailWithError:nil];
         }
     }
-    [mConnection start];
+    
 }
 
 - (void)send:(NSString *)data
@@ -206,7 +214,8 @@
     if (!mAborted && mState != DONE)
     {
         mAborted = true;
-        [mConnection cancel];
+        [mConnection invalidateAndCancel];
+        mConnection = nil;
     }
 }
 
@@ -214,53 +223,67 @@
 #pragma mark --
 #pragma mark net delegate
 
-- (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)aResponse
+#pragma mark -- NSURLSessionDelegate
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error
 {
-    [self handleHeaders:(NSHTTPURLResponse *)aResponse];
+    KCLog(@"didBecomeInvalidWithError");
 }
 
-- (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)aData
+
+#pragma mark -- NSURLSessionDataDelegate
+- (void)URLSession:(NSURLSession *)aSession dataTask:(NSURLSessionDataTask *)aDataTask
+didReceiveResponse:(NSURLResponse *)aResponse
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))aCompletionHandler
+{
+    [self handleHeaders:(NSHTTPURLResponse *)aResponse];
+    
+    aCompletionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)aData
 {
     [mReceivedData appendData:aData];
-
+    
     [self notifyFetchReceiveData:aData];
 }
 
-- (void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)aError
+#pragma mark -- NSURLSessionTaskDelegate
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)aError
 {
-    KCLog(@">>>>> %@, URL:%@", aError.localizedDescription, mRequest.URL);
-
-    [self notifyFetchFailed:aError];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)aConnection
-{
-    NSStringEncoding encoding = NSUTF8StringEncoding;
-    if (mResponseCharset)
+    if (aError == nil)
     {
-        CFStringEncoding cfStringEncoding = CFStringConvertIANACharSetNameToEncoding((__bridge CFStringRef)mResponseCharset);
-        encoding = CFStringConvertEncodingToNSStringEncoding(cfStringEncoding);
+        NSStringEncoding encoding = NSUTF8StringEncoding;
+        if (mResponseCharset)
+        {
+            CFStringEncoding cfStringEncoding = CFStringConvertIANACharSetNameToEncoding((__bridge CFStringRef)mResponseCharset);
+            encoding = CFStringConvertEncodingToNSStringEncoding(cfStringEncoding);
+        }
+        
+        NSString* receivedData = [[NSString alloc] initWithData:mReceivedData encoding:encoding];
+        KCAutorelease(receivedData);
+        
+        NSNumber* codeNumber = [mHeaderProperties objectForKey:@"status"];
+        int code = 200;
+        if (codeNumber)
+        {
+            code = [codeNumber intValue];
+        }
+        NSString* tmpStatusText = [mHeaderProperties objectForKey:@"statusText"];
+        NSString* statusText = @"OK";
+        if (tmpStatusText)
+            statusText = tmpStatusText;
+        
+        NSDictionary* dic = [self returnResult:m_webview statusCode:code  statusText:statusText responseText:receivedData];
+        
+        [self notifyFetchComplete:dic];
     }
-    
-    NSString* receivedData = [[NSString alloc] initWithData:mReceivedData encoding:encoding];
-    KCAutorelease(receivedData);
-    
-    NSNumber* codeNumber = [mHeaderProperties objectForKey:@"status"];
-    int code = 200;
-    if (codeNumber)
+    else
     {
-        code = [codeNumber intValue];
+        KCLog(@">>>>> %@, URL:%@", aError.localizedDescription, mRequest.URL);
+        
+        [self notifyFetchFailed:aError];
     }
-    NSString* tmpStatusText = [mHeaderProperties objectForKey:@"statusText"];
-    NSString* statusText = @"OK";
-    if (tmpStatusText)
-        statusText = tmpStatusText;
-    
-    NSDictionary* dic = [self returnResult:m_webview statusCode:code  statusText:statusText responseText:receivedData];
-
-    [self notifyFetchComplete:dic];
 }
-
 
 #pragma mark --
 #pragma mark fetch notify
