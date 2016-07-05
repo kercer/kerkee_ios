@@ -141,7 +141,6 @@
     
     mAborted = false;
     
-//    mConnection = [[NSURLConnection alloc] initWithRequest:mRequest delegate:self];
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     mConnection = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:self delegateQueue:queue];
@@ -151,7 +150,8 @@
         mReceivedData = [[NSMutableData alloc] init];
         
         NSURLSessionDataTask *dataTask = [mConnection dataTaskWithRequest:mRequest];
-        [dataTask resume];
+        if (dataTask)
+            [dataTask resume];
     }
     else
     {

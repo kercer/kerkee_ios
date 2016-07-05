@@ -311,13 +311,13 @@ static NSPredicate* webViewProxyLoopDetection;
 
             NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
             
-            if (protocol.correctedRequest && protocol.proxyResponse)
+            if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocol:didReceiveResponse:cacheStoragePolicy:)])
                 [protocol.client URLProtocol:protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
             
-            if (protocol.correctedRequest && protocol.proxyResponse)
+            if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocol:didLoadData:)])
                 [protocol.client URLProtocol:protocol didLoadData:aData];
             
-            if (protocol.correctedRequest && protocol.proxyResponse)
+            if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocolDidFinishLoading:)])
                 [protocol.client URLProtocolDidFinishLoading:protocol];
         }
         @catch (NSException *exception)

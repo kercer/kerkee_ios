@@ -78,7 +78,7 @@
 
 - (void)open:(KCWebView*)aWebView argList:(KCArgList *)aArgs
 {
-    BACKGROUND_BEGIN
+//    BACKGROUND_BEGIN
     KCXMLHttpRequest *xhr = [self getXHR:aWebView argList:aArgs];
     if (!xhr)
     {
@@ -115,12 +115,12 @@
     
     
     [xhr open:method url:url userAgent:userAgent referer:referer cookie:cookie];
-    BACKGROUND_COMMIT
+//    BACKGROUND_COMMIT
 }
 
 - (void)send:(KCWebView*)aWebView argList:(KCArgList *)aArgs
 {
-    BACKGROUND_BEGIN
+//    BACKGROUND_BEGIN
     KCXMLHttpRequest *xhr = [self getXHR:aWebView argList:aArgs];
     if (xhr)
     {
@@ -137,7 +137,7 @@
             }
         }
     }
-    BACKGROUND_COMMIT
+//    BACKGROUND_COMMIT
 }
 
 - (void)setRequestHeader:(KCWebView*)aWebView argList:(KCArgList *)aArgs
