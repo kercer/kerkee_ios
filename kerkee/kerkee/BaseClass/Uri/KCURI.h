@@ -25,7 +25,7 @@
  @param url The URL.
  @param resolve Whether to resolve relative URLs
  */
-- (id)initWithURL:(NSURL *)aUrl resolvingAgainstBaseURL:(BOOL)aIsResolve;
+- (instancetype)initWithURL:(NSURL *)aUrl resolvingAgainstBaseURL:(BOOL)aIsResolve;
 
 
 /**
@@ -33,8 +33,11 @@
  
  If the URLString is malformed, `nil` is returned.
  */
-- (id)initWithString:(NSString *)aURLString;
+- (instancetype)initWithString:(NSString *)aURLString;
+- (instancetype)initWithString:(NSString *)aURLString relativeToURI:(KCURI*)aBaseURI;
 
++ (instancetype)URIWithString:(NSString*)aURLString;
++ (instancetype)URIWithString:(NSString*)aURLString relativeToURI:(KCURI*)aBaseURI;
 
 /**
  parse the uri string to KCURI
@@ -42,6 +45,18 @@
  @param aUriString  is uri string
  */
 +(KCURI*) parse:(NSString*)aUriString;
+
+
+/**
+ Returns a KCURI created from the `KCURI` relative to a base URI.
+ 
+ If the `KCURIComponents` has an authority component (user, password, host or port)
+ and a path component, then the path must either begin with `/` or be an empty
+ string. If the `KCURIComponents` does not have an authority component (user, password, host or port)
+ and has a path component, the path component must not start with `//`. If those
+ requirements are not met, `nil` is returned.
+ */
+- (KCURI*)URIRelativeToURL:(KCURI*)aBaseURL;
 
 
 /**

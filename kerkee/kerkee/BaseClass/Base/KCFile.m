@@ -14,10 +14,11 @@
 
 #define kSeparatorChar '/'
 
+static NSString* sSeparator;
+
 @interface KCFile ()
 {
     NSString* m_path;
-//    char m_separatorChar;
 }
 
 @end
@@ -88,6 +89,22 @@ static NSString* join(NSString* prefix, NSString* suffix)
 }
 
 @implementation KCFile
+
+__attribute__((constructor))
+static void initializeSetting()
+{
+    sSeparator = [NSString stringWithFormat:@"%c", kSeparatorChar];
+}
+
++ (char)separatorChar
+{
+    return kSeparatorChar;
+}
+
++ (NSString*)separator;
+{
+    return sSeparator;
+}
 
 - (id)init
 {

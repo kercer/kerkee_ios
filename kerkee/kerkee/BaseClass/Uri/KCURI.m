@@ -20,7 +20,7 @@
 
 @implementation KCURI
 
-- (id)initWithURL:(NSURL *)aUrl resolvingAgainstBaseURL:(BOOL)aIsResolve
+- (instancetype)initWithURL:(NSURL *)aUrl resolvingAgainstBaseURL:(BOOL)aIsResolve
 {
     if (self = [super init])
     {
@@ -29,7 +29,7 @@
     return self;
 }
 
-- (id)initWithString:(NSString *)aURLString
+- (instancetype)initWithString:(NSString *)aURLString
 {
     NSURL *url = [[NSURL alloc] initWithString:aURLString];
     if (!url)
@@ -42,6 +42,52 @@
     
     KCRelease(url);
     return self;
+}
+
+- (instancetype)initWithString:(NSString *)aURLString relativeToURI:(KCURI*)aBaseURI
+{
+    if (aBaseURI)
+    {
+        if (aURLString)
+        {
+            KCURI* uri = [[KCURI alloc] initWithString:aURLString];
+            NSURL* url = [uri.components URLRelativeToURL:aBaseURI.URL];
+            self = [self initWithURL:url resolvingAgainstBaseURL:YES];
+        }
+        else
+        {
+            self = [self initWithURL:aBaseURI.URL resolvingAgainstBaseURL:YES];
+        }
+
+    }
+    else
+    {
+        self = [self initWithString:aURLString];
+    }
+    return self;
+}
+
++ (instancetype)URIWithString:(NSString*)aURLString
+{
+    return [self URIWithString:aURLString relativeToURI:nil];
+}
+
++ (instancetype)URIWithString:(NSString*)aURLString relativeToURI:(KCURI*)aBaseURI
+{
+    KCURI* uri = [[KCURI alloc] initWithString:aURLString relativeToURI:aBaseURI];
+    KCAutorelease(uri);
+    return uri;
+}
+
+- (KCURI*)URIRelativeToURL:(KCURI*)aBaseURL
+{
+    if (!aBaseURL) return self;
+    if (m_uriComponents)
+    {
+        NSURL* url = [m_uriComponents URLRelativeToURL:aBaseURL.URL];
+        return [[KCURI alloc] initWithURL:url resolvingAgainstBaseURL:YES];
+    }
+    return nil;
 }
 
 

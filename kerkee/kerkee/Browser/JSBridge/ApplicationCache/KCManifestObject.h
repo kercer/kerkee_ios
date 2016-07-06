@@ -31,5 +31,6 @@
 @property (nonatomic, retain) KCURI* mBaseUri;  //root uri
 @property (nonatomic, retain) NSString* mRelativePath; //relative to base uri
 
+-(KCURI*)manifestURI;
 
 @end

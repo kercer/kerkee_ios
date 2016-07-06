@@ -7,7 +7,16 @@
 //
 
 #import "KCManifestObject.h"
+#import <KCBaseDefine.h>
 
 @implementation KCManifestObject
+
+-(KCURI*)manifestURI
+{
+    KCURI* uri = [[KCURI alloc] initWithString:self.mRelativePath relativeToURI:self.mBaseUri];
+    KCAutorelease(uri);
+    return uri;
+}
+
 
 @end

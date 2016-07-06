@@ -12,6 +12,20 @@
 @interface KCFile : NSObject
 
 /**
+ * The system-dependent character used to separate components in filenames ('/').
+ * Use of this (rather than hard-coding '/') helps portability to other operating systems.
+ *
+ * <p>This field is initialized from the system property "file.separator".
+ * Later changes to that property will have no effect on this field or this class.
+ */
++ (char)separatorChar;
+
+/**
+ The system-dependent string used to separate components in filenames ('/').
+ */
++ (NSString*)separator;
+
+/**
  * Constructs a new file using the specified path.
  *
  * @param aPath
