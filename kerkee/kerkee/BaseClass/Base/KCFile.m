@@ -59,6 +59,7 @@ static NSString* fixSlashes(NSString* origPath)
     if (lastWasSlash && newLength > 1)
     {
         newLength--;
+        newPath[newLength] = '\0';
     }
     
     NSString *newPathString = [NSString stringWithCString:newPath encoding:NSUTF8StringEncoding];

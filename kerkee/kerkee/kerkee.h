@@ -83,3 +83,10 @@ FOUNDATION_EXPORT const unsigned char kerkeeVersionString[];
 #import "KCWebPathDefine.h"
 
 #import "KCJSObject.h"
+
+#pragma mark - uri
+#import "KCURI.h"
+
+#pragma mark - file
+#import "KCFile.h"
+

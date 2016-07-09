@@ -23,6 +23,7 @@
 		DF5D70BF1BA91859008A8FB2 /* KCUriRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5D70BD1BA91859008A8FB2 /* KCUriRegister.m */; };
 		DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C1F1BA171CF0025B0CC /* KCUriActionDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF5D70C41BA95A8C008A8FB2 /* KCUriDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C171BA16C860025B0CC /* KCUriDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF66B3611D30EFDC00CE0382 /* KCUtilJson.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC6334A1C195EDF008301F3 /* KCUtilJson.h */; };
 		DF69A5821D13E4030049C628 /* KCFile.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5801D13E4030049C628 /* KCFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF69A5831D13E4030049C628 /* KCFile.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5811D13E4030049C628 /* KCFile.m */; };
 		DF69A5841D13FF520049C628 /* KCFile.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF69A5801D13E4030049C628 /* KCFile.h */; };
@@ -222,7 +223,7 @@
 		DFC3AC441B9C17FC009F4775 /* KCUtilNet.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABFC1B9C17FC009F4775 /* KCUtilNet.m */; };
 		DFC3AC451B9C17FC009F4775 /* KCUtilURL.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3ABFD1B9C17FC009F4775 /* KCUtilURL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3AC461B9C17FC009F4775 /* KCUtilURL.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3ABFE1B9C17FC009F4775 /* KCUtilURL.m */; };
-		DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC6334A1C195EDF008301F3 /* KCUtilJson.h */; };
+		DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC6334A1C195EDF008301F3 /* KCUtilJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC6334D1C195EDF008301F3 /* KCUtilJson.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC6334B1C195EDF008301F3 /* KCUtilJson.m */; };
 		DFC633551C1985EF008301F3 /* KCFetchManifest.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC633531C1985EF008301F3 /* KCFetchManifest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC633561C1985EF008301F3 /* KCFetchManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC633541C1985EF008301F3 /* KCFetchManifest.m */; };
@@ -276,6 +277,7 @@
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				DF66B3611D30EFDC00CE0382 /* KCUtilJson.h in Copy Files */,
 				DF69A5841D13FF520049C628 /* KCFile.h in Copy Files */,
 				DFD43FB51CAB8BC7005CBB7C /* KCDirWatcher.h in Copy Files */,
 				DFE85A891C83FB0A00B5ADD5 /* KCJSCompileExecutor.h in Copy Files */,
@@ -958,6 +960,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */,
 				DF5D70C41BA95A8C008A8FB2 /* KCUriDispatcher.h in Headers */,
 				DF765C241BA175E20025B0CC /* KCURIComponents.h in Headers */,
 				DF765C281BA185D30025B0CC /* KCURIQuery.h in Headers */,
@@ -1035,7 +1038,6 @@
 				DFC3AC041B9C17FC009F4775 /* KCRuntime.h in Headers */,
 				DF69A5821D13E4030049C628 /* KCFile.h in Headers */,
 				DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */,
-				DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */,
 				DFC3ABA01B9C17F2009F4775 /* KCWebImageSetterTask.h in Headers */,
 				DFC3AC2B1B9C17FC009F4775 /* KCImagePreCache.h in Headers */,
 				DFD5455C1BF44A3200770ED0 /* KCModifier.h in Headers */,
