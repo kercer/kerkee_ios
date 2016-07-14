@@ -305,30 +305,19 @@ static NSPredicate* webViewProxyLoopDetection;
     }
     @synchronized (m_protocol.client)
     {
-        @try
-        {
-            KCWebViewURLProtocol* protocol = (KCWebViewURLProtocol*)m_protocol;
+        KCWebViewURLProtocol* protocol = (KCWebViewURLProtocol*)m_protocol;
 
-            NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
+        NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:m_protocol.request.URL statusCode:aStatusCode HTTPVersion:@"HTTP/1.1" headerFields:m_headers];
             
-            if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocol:didReceiveResponse:cacheStoragePolicy:)])
-                [protocol.client URLProtocol:protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
+//      if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocol:didReceiveResponse:cacheStoragePolicy:)])
+        [protocol.client URLProtocol:protocol didReceiveResponse:response cacheStoragePolicy:m_cachePolicy];
             
-            if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocol:didLoadData:)])
-                [protocol.client URLProtocol:protocol didLoadData:aData];
+//      if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocol:didLoadData:)])
+        [protocol.client URLProtocol:protocol didLoadData:aData];
             
-            if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocolDidFinishLoading:)])
-                [protocol.client URLProtocolDidFinishLoading:protocol];
-        }
-        @catch (NSException *exception)
-        {
-            [self pipeError:[NSError errorWithDomain:m_protocol.request.URL.absoluteString code:404 userInfo:nil]];
-            KCLog(@"%@", exception);
-        }
-        @finally
-        {
-        }
-
+//      if (protocol.correctedRequest && protocol.proxyResponse && protocol.client && [protocol.client respondsToSelector:@selector(URLProtocolDidFinishLoading:)])
+        [protocol.client URLProtocolDidFinishLoading:protocol];
+        
     }
 
 }
@@ -455,13 +444,9 @@ static NSPredicate* webViewProxyLoopDetection;
 
 // This is the actual WebViewProxy API
 @implementation KCWebViewProxy
-+ (void)load
-{
-#if ! __has_feature(objc_arc)
-    [NSException raise:@"ARC_Required" format:@"WebViewProxy requires Automatic Reference Counting (ARC) to function properly. Bailing."];
-#endif
-}
-+ (void)initialize
+
+__attribute__((constructor))
+static void initializeSetting()
 {
     [KCWebViewProxy removeAllHandlers];
     webViewUserAgentTest = [NSPredicate predicateWithFormat:@"self MATCHES '^Mozilla.*Mac OS X.*'"];
@@ -469,6 +454,17 @@ static NSPredicate* webViewProxyLoopDetection;
     // e.g. "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mobile/10A403"
     [NSURLProtocol registerClass:[KCWebViewURLProtocol class]];
 }
+
++ (void)load
+{
+#if ! __has_feature(objc_arc)
+    [NSException raise:@"ARC_Required" format:@"WebViewProxy requires Automatic Reference Counting (ARC) to function properly. Bailing."];
+#endif
+}
+//+ (void)initialize
+//{
+//
+//}
 + (void)removeAllHandlers
 {
     requestMatchers = [NSMutableArray array];
