@@ -52,7 +52,7 @@
 + (instancetype)queryWithURL:(NSURL *)aUrl;
 {
     // Always resolve, since unlike paths there's no way for two queries to be in some way concatenated
-    CFURLRef cfURL = CFURLCopyAbsoluteURL((CFURLRef)aUrl);
+    CFURLRef cfURL = CFURLCopyAbsoluteURL((__bridge_retained CFURLRef)aUrl);
     
     NSString *string = (NSString *)CFBridgingRelease(CFURLCopyQueryString(cfURL,
                                                         NULL));  // leave unescaped
