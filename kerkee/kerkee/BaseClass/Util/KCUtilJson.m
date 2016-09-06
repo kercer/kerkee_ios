@@ -21,7 +21,7 @@ NSError *KCErrorWithMessage(NSString *message)
     return [[NSError alloc] initWithDomain:KCErrorDomain code:0 userInfo:errorInfo];
 }
 
-NSString *KCJSONStringify(id jsonObject, NSError **error)
+NSString *KCJSONStringify(id aJsonObject, NSError **error)
 {
     static SEL JSONKitSelector = NULL;
     static NSSet<Class> *collectionTypes;
@@ -37,19 +37,19 @@ NSString *KCJSONStringify(id jsonObject, NSError **error)
     });
     
     // Use JSONKit if available and object is not a fragment
-    if (JSONKitSelector && [collectionTypes containsObject:[jsonObject classForCoder]]) {
-        return ((NSString *(*)(id, SEL, int, NSError **))objc_msgSend)(jsonObject, JSONKitSelector, 0, error);
+    if (JSONKitSelector && [collectionTypes containsObject:[aJsonObject classForCoder]]) {
+        return ((NSString *(*)(id, SEL, int, NSError **))objc_msgSend)(aJsonObject, JSONKitSelector, 0, error);
     }
     
     // Use Foundation JSON method
     NSData *jsonData = [NSJSONSerialization
-                        dataWithJSONObject:jsonObject
+                        dataWithJSONObject:aJsonObject
                         options:(NSJSONWritingOptions)NSJSONReadingAllowFragments
                         error:error];
     return jsonData ? [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] : nil;
 }
 
-static id _KCJSONParse(NSString *jsonString, BOOL mutable, NSError **error)
+static id _KCJSONParse(NSString *aJsonString, BOOL mutable, NSError **error)
 {
     static SEL JSONKitSelector = NULL;
     static SEL JSONKitMutableSelector = NULL;
@@ -62,17 +62,17 @@ static id _KCJSONParse(NSString *jsonString, BOOL mutable, NSError **error)
         }
     });
     
-    if (jsonString) {
+    if (aJsonString) {
         
         // Use JSONKit if available and string is not a fragment
         if (JSONKitSelector) {
-            NSInteger length = jsonString.length;
+            NSInteger length = aJsonString.length;
             for (NSInteger i = 0; i < length; i++) {
-                unichar c = [jsonString characterAtIndex:i];
+                unichar c = [aJsonString characterAtIndex:i];
                 if (strchr("{[", c)) {
                     static const int options = (1 << 2); // loose unicode
                     SEL selector = mutable ? JSONKitMutableSelector : JSONKitSelector;
-                    return ((id (*)(id, SEL, int, NSError **))objc_msgSend)(jsonString, selector, options, error);
+                    return ((id (*)(id, SEL, int, NSError **))objc_msgSend)(aJsonString, selector, options, error);
                 }
                 if (!strchr(" \r\n\t", c)) {
                     break;
@@ -81,12 +81,12 @@ static id _KCJSONParse(NSString *jsonString, BOOL mutable, NSError **error)
         }
         
         // Use Foundation JSON method
-        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *jsonData = [aJsonString dataUsingEncoding:NSUTF8StringEncoding];
         if (!jsonData) {
-            jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+            jsonData = [aJsonString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
             if (jsonData) {
                 KCLog(@"KCJSONParse received the following string, which could "
-                      "not be losslessly converted to UTF8 data: '%@'", jsonString);
+                      "not be losslessly converted to UTF8 data: '%@'", aJsonString);
             } else {
                 NSString *errorMessage = @"KCJSONParse received invalid UTF8 data";
                 if (error) {
@@ -108,14 +108,14 @@ static id _KCJSONParse(NSString *jsonString, BOOL mutable, NSError **error)
     return nil;
 }
 
-id KCJSONParse(NSString *jsonString, NSError **error)
+id KCJSONParse(NSString *aJsonString, NSError **error)
 {
-    return _KCJSONParse(jsonString, NO, error);
+    return _KCJSONParse(aJsonString, NO, error);
 }
 
-id KCJSONParseMutable(NSString *jsonString, NSError **error)
+id KCJSONParseMutable(NSString *aJsonString, NSError **error)
 {
-    return _KCJSONParse(jsonString, YES, error);
+    return _KCJSONParse(aJsonString, YES, error);
 }
 
 id KCJSONClean(id object)

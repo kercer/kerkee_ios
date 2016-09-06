@@ -10,9 +10,9 @@
 #import "KCBaseDefine.h"
 
 // JSON serialization/deserialization
-KC_EXTERN NSString *KCJSONStringify(id jsonObject, NSError **error);
-KC_EXTERN id KCJSONParse(NSString *jsonString, NSError **error);
-KC_EXTERN id KCJSONParseMutable(NSString *jsonString, NSError **error);
+KC_EXTERN NSString *KCJSONStringify(id aJsonObject, NSError **error);
+KC_EXTERN id KCJSONParse(NSString *aJsonString, NSError **error);
+KC_EXTERN id KCJSONParseMutable(NSString *aJsonString, NSError **error);
 
 // Strip non JSON-safe values from an object graph
 KC_EXTERN id KCJSONClean(id object);
