@@ -37,6 +37,14 @@
 #endif
 
 
+#undef KC_weak
+#if __has_feature(objc_arc_weak)
+#define KC_weak weak
+#else
+#define KC_weak unsafe_unretained
+#endif
+
+
 
 // ----------------------------------
 // Option values

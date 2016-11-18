@@ -117,7 +117,7 @@
 }
 
 #pragma mark - UIWebView Delegate
-- (void)webViewDidFinishLoad:(UIWebView *)aWebView
+- (void)webViewDidFinishLoad:(KCWebView *)aWebView
 {
     NSString *scrollHeight = [aWebView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
     NSLog(@"scrollHeight: %@", scrollHeight);
@@ -128,11 +128,11 @@
     NSLog(@"webview frame %@", NSStringFromCGRect(aWebView.frame));
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+- (void)webView:(KCWebView *)webView didFailLoadWithError:(NSError *)error
 {
 }
 
-- (BOOL)webView:(UIWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (BOOL)webView:(KCWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     return YES;
 }

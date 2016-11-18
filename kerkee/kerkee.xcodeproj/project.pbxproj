@@ -40,6 +40,10 @@
 		DF765C291BA185D30025B0CC /* KCURIQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DF765C271BA185D30025B0CC /* KCURIQuery.m */; };
 		DF765C2C1BA1B5850025B0CC /* KCURI.h in Headers */ = {isa = PBXBuildFile; fileRef = DF765C2A1BA1B5850025B0CC /* KCURI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF765C2D1BA1B5850025B0CC /* KCURI.m in Sources */ = {isa = PBXBuildFile; fileRef = DF765C2B1BA1B5850025B0CC /* KCURI.m */; };
+		DF7CE66C1DDD936500821A37 /* KCNewWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = DF7CE6681DDD936500821A37 /* KCNewWebView.h */; };
+		DF7CE66D1DDD936500821A37 /* KCNewWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7CE6691DDD936500821A37 /* KCNewWebView.m */; };
+		DF7CE6741DDDBDE900821A37 /* KCWeakScriptMessageDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF7CE6721DDDBDE900821A37 /* KCWeakScriptMessageDelegate.h */; };
+		DF7CE6751DDDBDE900821A37 /* KCWeakScriptMessageDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7CE6731DDDBDE900821A37 /* KCWeakScriptMessageDelegate.m */; };
 		DF809C941B9D7867008B315D /* KCWebPathDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = DF809C931B9D73A8008B315D /* KCWebPathDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF809CAA1B9D90FF008B315D /* KCJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = DF809C961B9D90FF008B315D /* KCJSBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF809CAB1B9D90FF008B315D /* KCJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = DF809C971B9D90FF008B315D /* KCJSBridge.m */; };
@@ -398,6 +402,10 @@
 		DF765C271BA185D30025B0CC /* KCURIQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCURIQuery.m; sourceTree = "<group>"; };
 		DF765C2A1BA1B5850025B0CC /* KCURI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCURI.h; sourceTree = "<group>"; };
 		DF765C2B1BA1B5850025B0CC /* KCURI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCURI.m; sourceTree = "<group>"; };
+		DF7CE6681DDD936500821A37 /* KCNewWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCNewWebView.h; sourceTree = "<group>"; };
+		DF7CE6691DDD936500821A37 /* KCNewWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCNewWebView.m; sourceTree = "<group>"; };
+		DF7CE6721DDDBDE900821A37 /* KCWeakScriptMessageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWeakScriptMessageDelegate.h; sourceTree = "<group>"; };
+		DF7CE6731DDDBDE900821A37 /* KCWeakScriptMessageDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWeakScriptMessageDelegate.m; sourceTree = "<group>"; };
 		DF809C931B9D73A8008B315D /* KCWebPathDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KCWebPathDefine.h; sourceTree = "<group>"; };
 		DF809C961B9D90FF008B315D /* KCJSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSBridge.h; sourceTree = "<group>"; };
 		DF809C971B9D90FF008B315D /* KCJSBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSBridge.m; sourceTree = "<group>"; };
@@ -774,6 +782,10 @@
 		DFC3AB7D1B9C17F2009F4775 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
+				DF7CE6721DDDBDE900821A37 /* KCWeakScriptMessageDelegate.h */,
+				DF7CE6731DDDBDE900821A37 /* KCWeakScriptMessageDelegate.m */,
+				DF7CE6681DDD936500821A37 /* KCNewWebView.h */,
+				DF7CE6691DDD936500821A37 /* KCNewWebView.m */,
 				DFC3AB7E1B9C17F2009F4775 /* KCWebPath.h */,
 				DFC3AB7F1B9C17F2009F4775 /* KCWebPath.m */,
 				DF809C931B9D73A8008B315D /* KCWebPathDefine.h */,
@@ -1018,6 +1030,7 @@
 				DFC3AC3B1B9C17FC009F4775 /* KCUtilDevice.h in Headers */,
 				DFC3AC161B9C17FC009F4775 /* NSObject+KCObjectInfo.h in Headers */,
 				DFC3AC001B9C17FC009F4775 /* KCFileArchiver.h in Headers */,
+				DF7CE66C1DDD936500821A37 /* KCNewWebView.h in Headers */,
 				DFC3AC291B9C17FC009F4775 /* KCImageCache.h in Headers */,
 				DF809CAC1B9D90FF008B315D /* KCApiBridge.h in Headers */,
 				DF7642631C18017B0014789E /* KCAssert.h in Headers */,
@@ -1028,6 +1041,7 @@
 				DFE100CD1C1E9FFF00938E43 /* KCString.h in Headers */,
 				DFE100D21C1EC47800938E43 /* KCUtilURI.h in Headers */,
 				DFE85A871C83F14B00B5ADD5 /* KCJSCompileExecutor.h in Headers */,
+				DF7CE6741DDDBDE900821A37 /* KCWeakScriptMessageDelegate.h in Headers */,
 				DFC633551C1985EF008301F3 /* KCFetchManifest.h in Headers */,
 				DFD43FB31CAB8741005CBB7C /* KCDirWatcher.h in Headers */,
 				DF809CB61B9D90FF008B315D /* KCRegister.h in Headers */,
@@ -1178,6 +1192,7 @@
 				DFC3AC191B9C17FC009F4775 /* NSObject+KCObserver.m in Sources */,
 				DFE8A6301C92D60700EDC868 /* SSKeychain.m in Sources */,
 				DF809CBC1B9D90FF008B315D /* KCMethod.m in Sources */,
+				DF7CE66D1DDD936500821A37 /* KCNewWebView.m in Sources */,
 				DFE85A881C83F14B00B5ADD5 /* KCJSCompileExecutor.m in Sources */,
 				DFC3AC1B1B9C17FC009F4775 /* NSObject+KCProperty.m in Sources */,
 				DFC3AC361B9C17FC009F4775 /* KCArchiver.m in Sources */,
@@ -1201,6 +1216,7 @@
 				DFC3AB8A1B9C17F2009F4775 /* KCManifestParser.m in Sources */,
 				DFC3ABA11B9C17F2009F4775 /* KCWebImageSetterTask.m in Sources */,
 				DF5D70BF1BA91859008A8FB2 /* KCUriRegister.m in Sources */,
+				DF7CE6751DDDBDE900821A37 /* KCWeakScriptMessageDelegate.m in Sources */,
 				DFC3ABAC1B9C17F2009F4775 /* KCWebViewManager.m in Sources */,
 				DFC3AC381B9C17FC009F4775 /* KCMainBundle.m in Sources */,
 				DF809CB31B9D90FF008B315D /* KCArgList.m in Sources */,

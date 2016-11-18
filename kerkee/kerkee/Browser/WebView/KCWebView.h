@@ -19,9 +19,7 @@
 @end
 
 @interface KCWebView : UIWebView
-{
-    
-}
+
 
 @property (nonatomic, assign) int resourceCount;
 @property (nonatomic, assign) int resourceCompletedCount;

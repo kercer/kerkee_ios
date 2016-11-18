@@ -133,19 +133,6 @@
     [KCJSExecutor callbackJS:aWebView callbackId:aCallbackId string:aStr];
 }
 
-/*
-
-public static void callbackJS(KCWebView aWebview, String aCallbackId, JSONObject aJSONObject)
-{
-    KCApiBridge.callbackJS(aWebview, aCallbackId, aJSONObject);
-}
-
-public static void callbackJS(KCWebView aWebview, String aCallbackId, JSONArray aJSONArray)
-{
-    KCApiBridge.callbackJS(aWebview, aCallbackId, aJSONArray);
-}
-*/
-
 
 /********************************************************/
 /*
@@ -162,44 +149,6 @@ public static void callbackJS(KCWebView aWebview, String aCallbackId, JSONArray 
     [KCApiBridge setIsOpenJSLog:aWebview isOpenJSLog:aIsOpenJSLog];
 }
 
-
-/********************************************************/
-/*
- *
- */
-/********************************************************/
-- (BOOL)isExitAsset
-{
-    /*
-     String cfgPath = mWebView.getWebPath().getCfgPath();
-     File file = new File(cfgPath);
-     if (file.exists())
-     return true;
-     */
-    return NO;
-}
-
-- (void)copyAssetHtmlDir
-{
-    /*
-    KCAssetTool assetTool = new KCAssetTool(mWebView.getContext());
-    try
-    {
-        assetTool.copyDir("html", mWebView.getWebPath().getResRootPath());
-    }
-    catch (IOException e)
-    {
-        e.printStackTrace();
-    }
-     */
-}
-
-
-- (NSString *)getResRootPath
-{
-    //return mWebView == null ? null : mWebView.getWebPath().getResRootPath();
-    return nil;
-}
 
 
 @end
