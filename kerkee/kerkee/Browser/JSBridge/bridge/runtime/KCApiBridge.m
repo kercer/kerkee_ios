@@ -150,7 +150,7 @@ static BOOL sIsOpenJSLog = true;
     {
         [webView evaluateJavaScript:@"typeof WebViewJSBridge == 'object'" completionHandler:^(id _Nullable result, NSError * _Nullable error)
         {
-            if ([result isEqualToString:@"true"])
+            if (![result isEqualToString:@"true"])
             {
                 [webView evaluateJavaScript:m_js completionHandler:nil];
             }
@@ -239,16 +239,12 @@ static BOOL sIsOpenJSLog = true;
             
         }
          
-//         if (aResult == NULL)
-//             return;
-//         [self onNotified:webView];
+         if (aResult == NULL)
+             return;
+         [self onNotified:webView];
         
     }];
     
-//    while ((jsonMessages = [self fetchJSONMessagesFromJSSide:webView]))
-//    {
-//
-//    }
 }
 
 

@@ -138,7 +138,7 @@
 
 - (void)initUIWebView
 {
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:self.bounds];
+    KCUIWebView* webView = [[KCUIWebView alloc] initWithFrame:self.bounds];
     webView.backgroundColor = [UIColor clearColor];
     webView.allowsInlineMediaPlayback = YES;
     webView.mediaPlaybackRequiresUserAction = NO;
