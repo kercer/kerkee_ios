@@ -11,17 +11,22 @@
 
 @implementation KCJSCompileExecutor
 
-+ (id)compileJS:(NSString *)aJS webview:(KCWebView*)aWebview
++ (void)compileJS:(NSString *)aJS inWebView:(KCWebView*)aWebview completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    if (!aJS) return nil;
+    if (!aJS)
+    {
+        NSError* err = [[NSError alloc] initWithDomain:@"JS not NULL" code:-1 userInfo:nil];
+        aCompletionHandler(nil, err);
+        return ;
+    }
     
     NSString *js = [[NSString alloc] initWithFormat:@"JSON.stringify(%@)", aJS];
-    NSString* result = [KCJSExecutor callJS:js WebView:aWebview]
+    [KCJSExecutor callJS:js inWebView:aWebview completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+        id resultObj = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        aCompletionHandler(resultObj, nil);
+    }]
     KCAutorelease(js);
     
-    id resultObj = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-    
-    return resultObj;
 }
 
 @end

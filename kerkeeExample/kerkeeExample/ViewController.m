@@ -119,10 +119,10 @@
 #pragma mark - UIWebView Delegate
 - (void)webViewDidFinishLoad:(KCWebView *)aWebView
 {
-    NSString *scrollHeight = [aWebView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
-    NSLog(@"scrollHeight: %@", scrollHeight);
+//    NSString *scrollHeight = [aWebView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
+//    NSLog(@"scrollHeight: %@", scrollHeight);
     NSLog(@"webview.contentSize.height %f", aWebView.scrollView.contentSize.height);
-    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:aWebView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:[scrollHeight floatValue]];
+//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:aWebView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:[scrollHeight floatValue]];
     
 //    [aWebView addConstraint:heightConstraint];
     NSLog(@"webview frame %@", NSStringFromCGRect(aWebView.frame));

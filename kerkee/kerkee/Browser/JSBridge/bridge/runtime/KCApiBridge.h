@@ -13,7 +13,7 @@
 #import "KCWebView.h"
 #import "KCRegister.h"
 
-@protocol KCApiBridgeDelegate <UIWebViewDelegate>
+@protocol KCApiBridgeDelegate <KCWebViewDelegate>
 
 @optional
 -(void) parseCustomApi:(NSURL*)aURL;
@@ -21,7 +21,7 @@
 @end
 
 
-@interface KCApiBridge : NSObject <UIWebViewDelegate,KCWebViewProgressDelegate>
+@interface KCApiBridge : NSObject <KCWebViewDelegate,KCWebViewProgressDelegate>
 
 @property(nonatomic, strong) NSString *attachApiScheme;//附加的协议主题 需要实现parseCustomApi接口
 

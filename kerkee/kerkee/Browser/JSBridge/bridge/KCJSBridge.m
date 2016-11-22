@@ -95,26 +95,26 @@
 
 + (void)callJSOnMainThread:(KCWebView *)aWebView jsString:(NSString *)aJS
 {
-    [KCJSExecutor callJSOnMainThread:aJS WebView:aWebView];
+    [KCJSExecutor callJSOnMainThread:aJS inWebView:aWebView completionHandler:nil];
 }
 
 + (void)callJS:(KCWebView *)aWebView jsString:(NSString *)aJS
 {
-    [KCJSExecutor callJS:aJS WebView:aWebView];
+    [KCJSExecutor callJS:aJS inWebView:aWebView completionHandler:nil];
 }
 
 + (void)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview
 {
-    [KCJSExecutor callJSFunction:function withJSONObject:jsonObj WebView:webview];
+    [KCJSExecutor callJSFunction:function withJSONObject:jsonObj inWebView:webview completionHandler:nil];
 }
-+ (void)callJSFunction:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview
++ (void)callJSFunction:(NSString *)function withJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview
 {
-    [KCJSExecutor callJSFunction:function withJJSONString:jsonObj WebView:webview];
+    [KCJSExecutor callJSFunction:function withJSONString:jsonObj inWebView:webview completionHandler:nil];
 }
 //
 + (void)callJSFunctionOnMainThread:(KCWebView *)aWebView funName:(NSString *)aFunName args:(NSString *)aArgs
 {
-    [KCJSExecutor callJSFunctionOnMainThread:aFunName withJJSONString:aArgs WebView:aWebView];
+    [KCJSExecutor callJSFunctionOnMainThread:aFunName withJSONString:aArgs inWebView:aWebView completionHandler:nil];
 }
 
 //

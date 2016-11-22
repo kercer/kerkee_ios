@@ -24,115 +24,129 @@
  messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\r" withString:@"\\r"];
  messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\f" withString:@"\\f"];
  */
-+ (NSString *)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview
++ (void)callJSFunction:(NSString*)aFunction withJSONObject:(NSDictionary*)aJsonObj inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    NSString* result = @"";
-    NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonObj options:0 error:nil] encoding:NSUTF8StringEncoding];
-    if (!json) return result;
-    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, json];
+    NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:aJsonObj options:0 error:nil] encoding:NSUTF8StringEncoding];
+    if (!json)
+    {
+        NSError* err = [[NSError alloc] initWithDomain:@"CallJSFunction Json Error" code:-1 userInfo:nil];
+        aCompletionHandler(nil, err);
+        return ;
+    }
+    
+    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", aFunction, json];
     KCAutorelease(json);
     KCAutorelease(js);
+    
     if (js)
-        result = [webview stringByEvaluatingJavaScriptFromString:js];
-    return result;
+    {
+        [aWebView evaluateJavaScript:js completionHandler:aCompletionHandler];
+    }
 }
-+ (void)callJSFunctionOnMainThread:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview
++ (void)callJSFunctionOnMainThread:(NSString*)aFunction withJSONObject:(NSDictionary*)aJsonObj inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonObj options:0 error:nil] encoding:NSUTF8StringEncoding];
-    if (!json) return;
-    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, json];
+    NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:aJsonObj options:0 error:nil] encoding:NSUTF8StringEncoding];
+    if (!json)
+    {
+        NSError* err = [[NSError alloc] initWithDomain:@"CallJSFunction Json Error" code:-1 userInfo:nil];
+        aCompletionHandler(nil, err);
+        return;
+    }
+    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", aFunction, json];
     KCAutorelease(json);
     KCAutorelease(js);
     if (js)
     {
         FOREGROUND_BEGIN
-        [webview stringByEvaluatingJavaScriptFromString:js];
+        [aWebView evaluateJavaScript:js completionHandler:aCompletionHandler];
         FOREGROUND_COMMIT
     }
 }
 
-+ (void)callJSFunctionOnMainThread:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview
++ (void)callJSFunctionOnMainThread:(NSString*)aFunction withJSONString:(NSString*)aJsonString inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, jsonObj];
+    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", aFunction, aJsonString];
     if (js)
     {
         FOREGROUND_BEGIN
-        [webview stringByEvaluatingJavaScriptFromString:js];
+        [aWebView evaluateJavaScript:js completionHandler:aCompletionHandler];
         FOREGROUND_COMMIT
     }
 }
 
-+ (NSString *)callJSFunction:(NSString *)function withArg:(NSString *)aArg WebView:(KCWebView*)webview
++ (void)callJSFunction:(NSString*)aFunction withArg:(NSString *)aArg inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, aArg];
+    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", aFunction, aArg];
     KCAutorelease(js);
-    return [webview stringByEvaluatingJavaScriptFromString:js];
+    [aWebView evaluateJavaScript:js completionHandler:aCompletionHandler];
 }
 
-+ (NSString *)callJSFunction:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview
++ (void)callJSFunction:(NSString*)aFunction withJSONString:(NSString *)aJsonString inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", function, jsonObj];
+    NSString *js = [[NSString alloc] initWithFormat:@"%@(%@)", aFunction, aJsonString];
     KCAutorelease(js);
-    return [webview stringByEvaluatingJavaScriptFromString:js];
+    [aWebView evaluateJavaScript:js completionHandler:aCompletionHandler];
 }
 
-+ (NSString *)callJSFunction:(NSString *)function WebView:(KCWebView*)webview
++ (void)callJSFunction:(NSString*)aFunction  inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"%@()", function];
+    NSString *js = [[NSString alloc] initWithFormat:@"%@()", aFunction];
     KCAutorelease(js);
-    return [webview stringByEvaluatingJavaScriptFromString:js];
+    [aWebView evaluateJavaScript:js completionHandler:aCompletionHandler];
 }
 
-+ (NSString *)callJS:(NSString *)js WebView:(KCWebView*)webview
++ (void)callJS:(NSString*)aJS inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    return [webview stringByEvaluatingJavaScriptFromString:js];
+    [aWebView evaluateJavaScript:aJS completionHandler:aCompletionHandler];
 }
 
-+ (void)callJSOnMainThread:(NSString *)js WebView:(KCWebView*)webview
++ (void)callJSOnMainThread:(NSString*)aJS inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
-    [webview performSelectorOnMainThread:@selector(stringByEvaluatingJavaScriptFromString:) withObject:js waitUntilDone:NO];
+    FOREGROUND_BEGIN
+    [aWebView evaluateJavaScript:aJS completionHandler:aCompletionHandler];
+    FOREGROUND_COMMIT
 }
 
 
 + (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId
 {
     NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@)", aCallbackId];
-    [self callJS:js WebView:aWebview];
+    [self callJS:js inWebView:aWebview completionHandler:nil];
     KCRelease(js);
 }
 
 + (void)callbackJSOnMainThread:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId
 {
     NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@)", aCallbackId];
-    [self callJSOnMainThread:js WebView:aWebview];
+    [self callJSOnMainThread:js inWebView:aWebview completionHandler:nil];
     KCRelease(js);
 }
 
 + (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId jsonString:(NSString *)aJsonString
 {
     NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", aCallbackId, aJsonString];
-    [self callJS:js WebView:aWebview];
+    [self callJS:js inWebView:aWebview completionHandler:nil];
     KCRelease(js);
 }
 
 + (void)callbackJSOnMainThread:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId jsonString:(NSString *)aJsonString
 {
     NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", aCallbackId, aJsonString];
-    [self callJSOnMainThread:js WebView:aWebview];
+    [self callJSOnMainThread:js inWebView:aWebview completionHandler:nil];
     KCRelease(js);
 }
 
 + (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId string:(NSString *)aString
 {
     NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, \"%@\")", aCallbackId, aString];
-    [self callJS:js WebView:aWebview];
+    [self callJS:js inWebView:aWebview completionHandler:nil];
     KCRelease(js);
 }
 
 + (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId unquotedString:(NSString *)aUnquotedString;
 {
     NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, %@)", aCallbackId, aUnquotedString];
-    [self callJS:js WebView:aWebview];
+    [self callJS:js inWebView:aWebview completionHandler:nil];
     KCRelease(js);
 }
 

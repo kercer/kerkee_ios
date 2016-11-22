@@ -2,421 +2,689 @@
 //  KCWebView.m
 //  kerkee
 //
-//  Created by zihong on 15/8/25.
-//  Copyright (c) 2015年 zihong. All rights reserved.
+//  Created by zihong on 2016/11/17.
+//  Copyright © 2016年 zihong. All rights reserved.
 //
 
-
 #import "KCWebView.h"
-#import "KCJSBridge.h"
-#import "KCBaseDefine.h"
-#import "KCWebImageSetter.h"
-#import "KCWebImageSetterTask.h"
-#import "UIWebView+KCClean.h"
+#import <dlfcn.h>
+#import <WebKit/WebKit.h>
+#import <TargetConditionals.h>
 #import "KCApiBridge.h"
-#import <objc/runtime.h>
-#import "KCLog.h"
 
 
-@class WebView;
-@class WebScriptObject;
-
-
-@interface UIWebView ()
+@interface KCWebView () <UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate>
 {
-
-}
-
-//http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/WebKit/Protocols/WebFrameLoadDelegate_Protocol/Reference/Reference.html
-- (void)webView:(id)sender didStartProvisionalLoadForFrame:(void *)frame;
-- (void)webView:(WebView *)sender willCloseFrame:(void *)frame;
-- (void)webView:(WebView *)sender didCommitLoadForFrame:(void *)frame;
-- (void)webView:(WebView *)sender didFinishLoadForFrame:(void *)frame;
-- (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(void *)frame;
-- (void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(void *)frame;
-- (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(void *)frame;
-
-- (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowObject forFrame:(void *)frame;
-
-
-//http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/WebKit/Protocols/WebResourceLoadDelegate_Protocol/Reference/Reference.html
-- (id)webView:(id)sender identifierForInitialRequest:(id)initialRequest fromDataSource:(id)dataSource;
-- (NSURLRequest *)webView:(id)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(id)dataSource;
-- (void)webView:(id)sender resource:(id)resource didFinishLoadingFromDataSource:(id)dataSource;
-- (void)webView:(id)sender resource:(id)resource didFailLoadingWithError:(id)error fromDataSource:(id)dataSource;
-
-- (void)webView:(id)sender resource:(id)identifier didReceiveResponse:(NSURLResponse *)response fromDataSource:(id)dataSource;
-- (void)webView:(id)sender resource:(id)identifier didReceiveContentLength:(NSUInteger)length fromDataSource:(id)dataSource;
-
-
-//http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/WebKit/Protocols/WebPolicyDelegate_Protocol/Reference/Reference.html
-- (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(void *)frame decisionListener:(id)listener;
-- (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id)listener;
-
-
-
-//http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/WebKit/Protocols/WebUIDelegate_Protocol/Reference/Reference.html
-- (void)webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(void *)frame;
-- (BOOL)webView:(WebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(void *)frame;
-- (NSString *)webView:(WebView *)sender runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(void *)frame;
-- (void)webViewClose:(WebView *)sender;
-
-
-//基类API
-- (void) _updateViewSettings;
-- (id) _documentView;
-//- (id) _scrollView;
-//- (id) _scroller;
-- (id) webView;
-
-@end
-
-
-@interface KCWebView ()
-{
-    int m_webViewID;
+    BOOL m_isUsingUIWebView;
+    id m_realWebView;
+    BOOL m_scalesPageToFit;
+    
     BOOL m_isDocumentReady;
-    KCWebImageSetter* m_imageSetter;
     
     float m_threshold;
     BOOL m_ignoreScroll;
     
     BOOL m_isPageScrollOn;
 }
-@property (nonatomic,weak)id m_attach;
+
+@property (nonatomic, assign) double estimatedProgress;
+@property (nonatomic, strong) NSURLRequest* originRequest;
+@property (nonatomic, strong) NSURLRequest* currentRequest;
+
+@property (nonatomic, copy) NSString* title;
 
 @end
 
 @implementation KCWebView
 
+@synthesize isUsingUIWebView = m_isUsingUIWebView;
+@synthesize realWebView = m_realWebView;
+@synthesize scalesPageToFit = m_scalesPageToFit;
+
+@synthesize delegate = m_delegate;
 @synthesize progressDelegate;
-@synthesize resourceCount;
-@synthesize resourceCompletedCount;
 
 
-static int createWebViewID = 0;
-- (id)initWithFrame:(CGRect)frame
+#pragma mark - init
+- (instancetype)initWithCoder:(NSCoder*)coder
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        m_webViewID = createWebViewID++;
-        m_imageSetter = [[KCWebImageSetter alloc] init];
-        m_threshold = 0;
-        m_isPageScrollOn = false;
-        
-//        // Add observer for scroll
-//        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+    self = [super initWithCoder:coder];
+    if (self)
+    {
+        [self initWebView];
     }
     return self;
 }
-
-- (id)init
+- (instancetype)init
 {
-    self = [super init];
-    if(self)
+    return [self initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+}
+- (instancetype)initWithFrame:(CGRect)aFrame
+{
+    return [self initWithFrame:aFrame usingUIWebView:NO];
+}
+- (instancetype)initWithFrame:(CGRect)aFrame usingUIWebView:(BOOL)aIsUsingUIWebView
+{
+    self = [super initWithFrame:aFrame];
+    if (self)
     {
-        m_webViewID = createWebViewID++;
-        m_imageSetter = [[KCWebImageSetter alloc] init];
-        m_threshold = 0;
-        m_isPageScrollOn = false;
+        m_isUsingUIWebView = aIsUsingUIWebView;
+        [self initWebView];
     }
     return self;
 }
-
-//#pragma mark - KVO
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-//    if ([keyPath isEqualToString:@"contentOffset"])
-//    {
-//         CGPoint contentOffset = self.scrollView.contentOffset;
-//        
-//        KCLog(@"%f, %f", contentOffset.x, contentOffset.y);
-//    }
-//}
-
-
-- (void)dealloc
+- (void)initWebView
 {
-//    [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
-    KCRelease(m_imageSetter);
-    [self cleanForDealloc];
+    m_threshold = 0;
+    m_isPageScrollOn = false;
     
-    KCDealloc(super);
-}
-
-- (id)getAttach
-{
-    return self.m_attach;
-}
-
-- (void)setAttach:(id)aAttch
-{
-    self.m_attach = aAttch;
-}
-
-- (NSString *) description
-{
-    NSString* des = [NSString stringWithFormat:@"<%s: %p, %@>", class_getName([self class]), self, [[[self request] URL] absoluteString]];
-    KCLog(@"%@",des);
-    return des;
-}
-
-
-//static void $UIWebViewWebViewDelegate$webView$addMessageToConsole$(id self, SEL sel, WebView *view, NSDictionary *message)
-//{
-//}
-//
-//- (void) webView:(WebView *)view addMessageToConsole:(NSDictionary *)message
-//{
-////    if ([self.delegate respondsToSelector:@selector(webView:addMessageToConsole:)])
-////        [self.delegate webView:view addMessageToConsole:message];
-//    
-////    if ([UIWebView instancesRespondToSelector:@selector(webView:addMessageToConsole:)])
-////        [super webView:view addMessageToConsole:message];
-//}
-
-
-#pragma -
-#pragma mark WebFrameLoadDelegate (Frame Load Delegate Messages)
-//这个委派方法是在html里面的内容被加载之前或者获得新的请求后重新加载资源之前会被调用到的，它一般会在 [[myWebView mainFrame] loadRequest:...]之后就被调用。所以适合我们在这里进行初始化工作
-- (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(void *)frame
-{
-    [super webView:sender didStartProvisionalLoadForFrame:frame];
-}
-
-//当data source从provisional转换到committed时发生
-//不起作用，为什么
-- (void)webView:(WebView *)sender willCloseFrame:(void *)frame
-{
-    if ([UIWebView instancesRespondToSelector:@selector(webView:willCloseFrame:)])
-        [super webView:sender willCloseFrame:frame];
-}
-
-//当data source从provisional转换到committed时发生
-- (void)webView:(WebView *)sender didCommitLoadForFrame:(void *)frame
-{
-    if ([UIWebView instancesRespondToSelector:@selector(webView:didCommitLoadForFrame:)])
-        [super webView:sender didCommitLoadForFrame:frame];
-}
-
-//当所有数据都以接收完成后发生
-- (void)webView:(WebView *)sender didFinishLoadForFrame:(void *)frame
-{
-    if([UIWebView instancesRespondToSelector:@selector(webView:didFinishLoadForFrame:)])
-        [super webView:sender didFinishLoadForFrame:frame];
-}
-
-//当接收到frame的标题时发生（会发生多次）
-- (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(void *)frame
-{
-    if([UIWebView instancesRespondToSelector:@selector(webView:didReceiveTitle:forFrame:)])
-        [super webView:sender didReceiveTitle:title forFrame:frame];
-}
-
-
-- (void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(void *)frame
-{
-    if ([UIWebView instancesRespondToSelector:@selector(webView:didFailLoadWithError:forFrame:)])
-        [super webView:sender didFailLoadWithError:error forFrame:frame];
-}
-
-//发生在不能接收到数据的时候，此类错误发生在诸如bad url等无法正常访问页面的情况。webView:didFailLoadWithError:forFrame发生在data source已经成为committed，但在后续获取数据时出现了错误时发生
-- (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(void *)frame
-{
-    if([UIWebView instancesRespondToSelector:@selector(webView:didFailProvisionalLoadWithError:forFrame:)])
-        [super webView:sender didFailProvisionalLoadWithError:error forFrame:frame];
-}
-
-
-//WebScript Messages
-
-- (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowObject forFrame:(void *)frame
-{
-    if ([UIWebView instancesRespondToSelector:@selector(webView:didClearWindowObject:forFrame:)])
-        [super webView:sender didClearWindowObject:windowObject forFrame:frame];
-}
-
-
-#pragma mark -
-#pragma mark WebResourceLoadDelegate
-
-//Returns an identifier object used to track the progress of loading a single resource.
-//when load resource,was called first，return the application-defined resource identifier
-- (id)webView:(id)sender identifierForInitialRequest:(id)initialRequest fromDataSource:(id)dataSource
-{
-    
-//    if([UIWebView instancesRespondToSelector:@selector(webView:identifierForInitialRequest:fromDataSource:)])
-//        return [super webView:sender identifierForInitialRequest:initialRequest fromDataSource:dataSource];
-    
-    
-    if ([self.progressDelegate respondsToSelector:@selector(webView:identifierForInitialRequest:)])
+    Class wkWebView = NSClassFromString(@"WKWebView");
+    if (wkWebView && m_isUsingUIWebView == NO)
     {
-        [self.progressDelegate webView:self identifierForInitialRequest:initialRequest];
+        [self initWKWebView];
+        m_isUsingUIWebView = NO;
     }
-    
-    if([initialRequest isKindOfClass:[NSURLRequest class]])
+    else
     {
-        NSURLRequest *rqt = (NSURLRequest *)initialRequest;
-        if(nil != m_imageSetter)
+        [self initUIWebView];
+        m_isUsingUIWebView = YES;
+    }
+    [self.realWebView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:nil];
+    self.scalesPageToFit = YES;
+    
+    [self.realWebView setFrame:self.bounds];
+    [self.realWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    [self addSubview:self.realWebView];
+}
+
+- (void)initWKWebView
+{
+    WKWebViewConfiguration* configuration = [[NSClassFromString(@"WKWebViewConfiguration") alloc] init];
+    configuration.userContentController = [NSClassFromString(@"WKUserContentController") new];
+    
+    WKPreferences* preferences = [NSClassFromString(@"WKPreferences") new];
+    preferences.javaScriptCanOpenWindowsAutomatically = YES;
+    configuration.preferences = preferences;
+    
+    WKWebView* webView = [[NSClassFromString(@"WKWebView") alloc] initWithFrame:self.bounds configuration:configuration];
+    webView.UIDelegate = self;
+    webView.navigationDelegate = self;
+
+    webView.backgroundColor = [UIColor clearColor];
+    webView.opaque = NO;
+
+    [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+    [webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
+    m_realWebView = webView;
+}
+
+//called after WKWebView loadRequest
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
+{
+    if ([keyPath isEqualToString:@"estimatedProgress"])
+    {
+        self.estimatedProgress = [change[NSKeyValueChangeNewKey] doubleValue];
+    }
+    else if ([keyPath isEqualToString:@"title"])
+    {
+        self.title = change[NSKeyValueChangeNewKey];
+    }
+    else
+    {
+        [self willChangeValueForKey:keyPath];
+        [self didChangeValueForKey:keyPath];
+    }
+}
+
+- (void)initUIWebView
+{
+    UIWebView* webView = [[UIWebView alloc] initWithFrame:self.bounds];
+    webView.backgroundColor = [UIColor clearColor];
+    webView.allowsInlineMediaPlayback = YES;
+    webView.mediaPlaybackRequiresUserAction = NO;
+    
+    webView.opaque = NO;
+    for (UIView* subview in [webView.scrollView subviews])
+    {
+        if ([subview isKindOfClass:[UIImageView class]])
         {
-            [m_imageSetter handleImage:[KCWebImageSetterTask create:self url:rqt.URL]];
+            ((UIImageView*)subview).image = nil;
+            subview.backgroundColor = [UIColor clearColor];
+        }
+    }
+
+    webView.delegate = self;
+//    self.webViewProgress = [[KCWebViewProgress alloc] init];
+//    webView.delegate = m_webViewProgress;
+//    m_webViewProgress.webViewProxyDelegate = self;
+//    m_webViewProgress.progressDelegate = self;
+
+    m_realWebView = webView;
+}
+- (void)addScriptMessageHandler:(id<WKScriptMessageHandler>)aScriptMessageHandler name:(NSString *)aName
+{
+    if (!m_isUsingUIWebView)
+    {
+        WKWebViewConfiguration* configuration = [(WKWebView*)self.realWebView configuration];
+        [configuration.userContentController addScriptMessageHandler:aScriptMessageHandler name:aName];
+    }
+}
+- (void)removeScriptMessageHandlerForName:(NSString *)aName
+{
+    if ([m_realWebView isKindOfClass:NSClassFromString(@"WKWebView")])
+    {
+        [[(WKWebView *)m_realWebView configuration].userContentController removeScriptMessageHandlerForName:aName];
+    }
+}
+- (JSContext *)jsContext
+{
+    if (m_isUsingUIWebView)
+    {
+        return [(UIWebView*)self.realWebView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidFinishLoad:(UIWebView*)webView
+{
+    self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    if (self.originRequest == nil)
+    {
+        self.originRequest = webView.request;
+    }
+    [self notifyWebViewDidFinishLoad];
+}
+- (void)webViewDidStartLoad:(UIWebView*)webView
+{
+    [self notifyWebViewDidStartLoad];
+}
+- (void)webView:(UIWebView*)webView didFailLoadWithError:(NSError*)error
+{
+    [self notifyWebViewDidFailLoadWithError:error];
+}
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    BOOL resultBOOL = [self notifyWebViewShouldStartLoadWithRequest:request navigationType:navigationType];
+    return resultBOOL;
+}
+//- (void)webViewProgress:(KCWebViewProgress*)webViewProgress updateProgress:(CGFloat)progress
+//{
+//    self.estimatedProgress = progress;
+//}
+
+
+#pragma mark - WKNavigationDelegate
+- (void)webView:(WKWebView*)webView decidePolicyForNavigationAction:(WKNavigationAction*)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
+    BOOL resultBOOL = [self notifyWebViewShouldStartLoadWithRequest:navigationAction.request navigationType:navigationAction.navigationType];
+    BOOL isLoadingDisableScheme = [self isLoadingWKWebViewDisableScheme:navigationAction.request.URL];
+
+    if (resultBOOL && !isLoadingDisableScheme)
+    {
+        self.currentRequest = navigationAction.request;
+        if (navigationAction.targetFrame == nil)
+        {
+            [webView loadRequest:navigationAction.request];
+        }
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+    else
+    {
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
+}
+- (void)webView:(WKWebView*)webView didStartProvisionalNavigation:(WKNavigation*)navigation
+{
+    [self notifyWebViewDidStartLoad];
+}
+- (void)webView:(WKWebView*)webView didFinishNavigation:(WKNavigation*)navigation
+{
+    [self notifyWebViewDidFinishLoad];
+}
+- (void)webView:(WKWebView*)webView didFailProvisionalNavigation:(WKNavigation*)navigation withError:(NSError*)error
+{
+    [self notifyWebViewDidFailLoadWithError:error];
+}
+- (void)webView:(WKWebView*)webView didFailNavigation:(WKNavigation*)navigation withError:(NSError*)error
+{
+    [self notifyWebViewDidFailLoadWithError:error];
+}
+
+
+#pragma mark - WKUIDelegate
+// TODO
+
+
+
+#pragma mark - Notify Delegate
+- (void)notifyWebViewDidFinishLoad
+{
+    if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
+    {
+        [self.delegate webViewDidFinishLoad:self];
+    }
+}
+- (void)notifyWebViewDidStartLoad
+{
+    if ([self.delegate respondsToSelector:@selector(webViewDidStartLoad:)])
+    {
+        [self.delegate webViewDidStartLoad:self];
+    }
+}
+- (void)notifyWebViewDidFailLoadWithError:(NSError*)error
+{
+    if ([self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
+    {
+        [self.delegate webView:self didFailLoadWithError:error];
+    }
+}
+- (BOOL)notifyWebViewShouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(NSInteger)navigationType
+{
+    BOOL resultBOOL = YES;
+    if ([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
+    {
+        if (navigationType == -1)
+        {
+            navigationType = UIWebViewNavigationTypeOther;
+        }
+        resultBOOL = [self.delegate webView:self shouldStartLoadWithRequest:request navigationType:navigationType];
+    }
+    return resultBOOL;
+}
+
+
+#pragma mark - private
+
+- (void)setDelegate:(id<KCWebViewDelegate>)delegate
+{
+    m_delegate = delegate;
+    if (m_isUsingUIWebView)
+    {
+        UIWebView* webView = self.realWebView;
+        webView.delegate = nil;
+        webView.delegate = self;
+    }
+    else
+    {
+        WKWebView* webView = self.realWebView;
+        webView.UIDelegate = nil;
+        webView.navigationDelegate = nil;
+        webView.UIDelegate = self;
+        webView.navigationDelegate = self;
+    }
+}
+
+- (BOOL)isLoadingWKWebViewDisableScheme:(NSURL*)url
+{
+    BOOL retValue = NO;
+    
+    //WKWebview doesn't recognize the protocol type：phone numbers, email address, maps, etc.
+    if ([url.scheme isEqualToString:@"tel"])
+    {
+        UIApplication* app = [UIApplication sharedApplication];
+        if ([app canOpenURL:url])
+        {
+            [app openURL:url];
+            retValue = YES;
         }
     }
     
-    return [NSNumber numberWithInt:resourceCount++];
+    return retValue;
 }
 
-//发生多次，在资源请求被发送之前
-- (NSURLRequest *)webView:(id)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(id)dataSource
+#pragma mark - 基础方法
+
+- (UIScrollView*)scrollView
 {
-    if ([UIWebView instancesRespondToSelector:@selector(webView:resource:willSendRequest:redirectResponse:fromDataSource:)])
+    return [(id)self.realWebView scrollView];
+}
+
+- (id)loadRequest:(NSURLRequest*)aRequest
+{
+    self.originRequest = aRequest;
+    self.currentRequest = aRequest;
+
+    if (m_isUsingUIWebView)
     {
-        request = [super webView:sender resource:identifier willSendRequest:request redirectResponse:redirectResponse fromDataSource:dataSource];
+        [(UIWebView*)self.realWebView loadRequest:aRequest];
+        return nil;
     }
-    
-    return request;
-}
-
-- (void)webView:(id)sender resource:(id)resource didFailLoadingWithError:(id)error fromDataSource:(id)dataSource
-{
-    [super webView:sender resource:resource didFailLoadingWithError:error fromDataSource:dataSource];
-    resourceCompletedCount++;
-    
-    if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveResourceNumber:totalResources:)])
+    else
     {
-        [self.progressDelegate webView:self didReceiveResourceNumber:resourceCompletedCount totalResources:resourceCount];
-    }
-    
-}
-
-//当资源的所有数据返回后发生
--(void)webView:(id)sender resource:(id)resource didFinishLoadingFromDataSource:(id)dataSource
-{
-    [super webView:sender resource:resource didFinishLoadingFromDataSource:dataSource];
-    resourceCompletedCount++;
-    
-    if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveResourceNumber:totalResources:)])
-    {
-        [self.progressDelegate webView:self didReceiveResourceNumber:resourceCompletedCount totalResources:resourceCount];
-    }
-    
-}
-
-//当请求的资源返回第一个字节时发生
-- (void)webView:(id)sender resource:(id)identifier didReceiveResponse:(NSURLResponse *)response fromDataSource:(id)dataSource
-{
-    [super webView:sender resource:identifier didReceiveResponse:response fromDataSource:dataSource];
-}
-
-//发送0次或多次，直到资源的所有数据返回成功
-- (void)webView:(id)sender resource:(id)identifier didReceiveContentLength:(NSUInteger)length fromDataSource:(id)dataSource
-{
-    [super webView:sender resource:identifier didReceiveContentLength:length fromDataSource:dataSource];
-}
-
-
-#pragma mark -
-#pragma mark WebPolicyDelegate
-
-- (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(void *)frame decisionListener:(id)listener
-{
-    if([UIWebView instancesRespondToSelector:@selector(webView:decidePolicyForNavigationAction:request:frame:decisionListener:)])
-    {
-        [super webView:sender decidePolicyForNavigationAction:actionInformation request:request frame:frame decisionListener:listener];
+        return [(WKWebView*)self.realWebView loadRequest:aRequest];
     }
 }
-
-- (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id)listener
+- (id)loadHTMLString:(NSString*)aString baseURL:(nullable NSURL*)aBaseURL
 {
-    if([UIWebView instancesRespondToSelector:@selector(webView:decidePolicyForNewWindowAction:request:newFrameName:decisionListener:)])
-        [super webView:webView decidePolicyForNewWindowAction:actionInformation request:request newFrameName:frameName decisionListener:listener];
+    if (m_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView loadHTMLString:aString baseURL:aBaseURL];
+        return nil;
+    }
+    else
+    {
+        return [(WKWebView*)self.realWebView loadHTMLString:aString baseURL:aBaseURL];
+    }
+}
+- (NSURLRequest*)currentRequest
+{
+    if (m_isUsingUIWebView)
+    {
+        return [(UIWebView*)self.realWebView request];
+    }
+    else
+    {
+        return _currentRequest;
+    }
+}
+- (NSURL*)URL
+{
+    if (m_isUsingUIWebView)
+    {
+        return [(UIWebView*)self.realWebView request].URL;
+    }
+    else
+    {
+        return [(WKWebView*)self.realWebView URL];
+    }
+}
+- (BOOL)isLoading
+{   
+    return [self.realWebView isLoading];
+}
+- (BOOL)canGoBack
+{
+    return [self.realWebView canGoBack];
+}
+- (BOOL)canGoForward
+{
+    return [self.realWebView canGoForward];
+}
+
+- (id)goBack
+{
+    if (m_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView goBack];
+        return nil;
+    }
+    else
+    {
+        return [(WKWebView*)self.realWebView goBack];
+    }
+}
+- (id)goForward
+{
+    if (m_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView goForward];
+        return nil;
+    }
+    else
+    {
+        return [(WKWebView*)self.realWebView goForward];
+    }
+}
+- (id)reload
+{
+    if (m_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView reload];
+        return nil;
+    }
+    else
+    {
+        return [(WKWebView*)self.realWebView reload];
+    }
+}
+- (id)reloadFromOrigin
+{
+    if (m_isUsingUIWebView)
+    {
+        if (self.originRequest)
+        {
+            [self evaluateJavaScript:[NSString stringWithFormat:@"window.location.replace('%@')", self.originRequest.URL.absoluteString] completionHandler:nil];
+        }
+        return nil;
+    }
+    else
+    {
+        return [(WKWebView*)self.realWebView reloadFromOrigin];
+    }
+}
+- (void)stopLoading
+{
+    [self.realWebView stopLoading];
+}
+
+- (void)evaluateJavaScript:(NSString *)aJavaScriptString completionHandler:(void (^ _Nullable)(_Nullable id, NSError* _Nullable error))aCompletionHandler
+{
+    if (m_isUsingUIWebView)
+    {
+        NSString* result = [(UIWebView*)self.realWebView stringByEvaluatingJavaScriptFromString:aJavaScriptString];
+        if (aCompletionHandler)
+        {
+            aCompletionHandler(result, nil);
+        }
+    }
+    else
+    {
+        return [(WKWebView*)self.realWebView evaluateJavaScript:aJavaScriptString completionHandler:aCompletionHandler];
+    }
+}
+
+- (void)setScalesPageToFit:(BOOL)scalesPageToFit
+{
+    if (m_isUsingUIWebView)
+    {
+        UIWebView* webView = m_realWebView;
+        webView.scalesPageToFit = scalesPageToFit;
+    }
+    else
+    {
+        if (m_scalesPageToFit == scalesPageToFit)
+        {
+            return;
+        }
+
+        WKWebView* webView = m_realWebView;
+
+        NSString* jScript =
+        @"var head = document.getElementsByTagName('head')[0];\
+        var hasViewPort = 0;\
+        var metas = head.getElementsByTagName('meta');\
+        for (var i = metas.length; i>=0 ; i--) {\
+            var m = metas[i];\
+            if (m.name == 'viewport') {\
+                hasViewPort = 1;\
+                break;\
+            }\
+        }; \
+        if(hasViewPort == 0) { \
+            var meta = document.createElement('meta'); \
+            meta.name = 'viewport'; \
+            meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; \
+            head.appendChild(meta);\
+        }";
+        
+        WKUserContentController *userContentController = webView.configuration.userContentController;
+        NSMutableArray<WKUserScript *> *array = [userContentController.userScripts mutableCopy];
+        WKUserScript* fitWKUScript = nil;
+        for (WKUserScript* wkUScript in array)
+        {
+            if ([wkUScript.source isEqual:jScript])
+            {
+                fitWKUScript = wkUScript;
+                break;
+            }
+        }
+        if (scalesPageToFit)
+        {
+            if (!fitWKUScript)
+            {
+                fitWKUScript = [[NSClassFromString(@"WKUserScript") alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+                [userContentController addUserScript:fitWKUScript];
+            }
+        }
+        else {
+            if (fitWKUScript)
+            {
+                [array removeObject:fitWKUScript];
+            }
+            
+            [userContentController removeAllUserScripts];
+            for (WKUserScript* wkUScript in array)
+            {
+                [userContentController addUserScript:wkUScript];
+            }
+        }
+    }
+    m_scalesPageToFit = scalesPageToFit;
+}
+- (BOOL)scalesPageToFit
+{
+    if (m_isUsingUIWebView)
+    {
+        return [m_realWebView scalesPageToFit];
+    }
+    else
+    {
+        return m_scalesPageToFit;
+    }
+}
+
+- (NSInteger)countOfHistory
+{
+    if (m_isUsingUIWebView)
+    {
+        UIWebView* webView = self.realWebView;
+
+        int count = [[webView stringByEvaluatingJavaScriptFromString:@"window.history.length"] intValue];
+        if (count)
+        {
+            return count;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+    else
+    {
+        WKWebView* webView = self.realWebView;
+        return webView.backForwardList.backList.count;
+    }
+}
+- (void)gobackWithStep:(NSInteger)aStep
+{
+    if (self.canGoBack == NO)
+        return;
+
+    if (aStep > 0)
+    {
+        NSInteger historyCount = self.countOfHistory;
+        if (aStep >= historyCount)
+        {
+            aStep = historyCount - 1;
+        }
+
+        if (m_isUsingUIWebView)
+        {
+            UIWebView* webView = self.realWebView;
+            [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"window.history.go(-%ld)", (long)aStep]];
+        }
+        else
+        {
+            WKWebView* webView = self.realWebView;
+            WKBackForwardListItem* backItem = webView.backForwardList.backList[aStep];
+            [webView goToBackForwardListItem:backItem];
+        }
+    }
+    else
+    {
+        [self goBack];
+    }
+}
+#pragma mark -  如果没有找到方法 去realWebView 中调用
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    BOOL hasResponds = [super respondsToSelector:aSelector];
+    if (hasResponds == NO)
+    {
+        hasResponds = [self.delegate respondsToSelector:aSelector];
+    }
+    if (hasResponds == NO)
+    {
+        hasResponds = [self.realWebView respondsToSelector:aSelector];
+    }
+    return hasResponds;
+}
+- (NSMethodSignature*)methodSignatureForSelector:(SEL)selector
+{
+    NSMethodSignature* methodSign = [super methodSignatureForSelector:selector];
+    if (methodSign == nil)
+    {
+        if ([self.realWebView respondsToSelector:selector])
+        {
+            methodSign = [self.realWebView methodSignatureForSelector:selector];
+        }
+        else
+        {
+            methodSign = [(id)self.delegate methodSignatureForSelector:selector];
+        }
+    }
+    return methodSign;
+}
+- (void)forwardInvocation:(NSInvocation*)invocation
+{
+    if ([self.realWebView respondsToSelector:invocation.selector])
+    {
+        [invocation invokeWithTarget:self.realWebView];
+    }
+    else
+    {
+        [invocation invokeWithTarget:self.delegate];
+    }
 }
 
 
 
-#pragma mark -
-#pragma mark WebUIDelegate
-
-//实现一下shouldRunJavaScriptXX 回调出去 在此暂时不实现，注掉做个备忘
-
-//不执行，为什么
-- (void)webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(void *)frame
+#pragma mark --
+- (void)documentReady:(BOOL)aIsReady
 {
-    if ([UIWebView instancesRespondToSelector:@selector(webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:)])
-            [super webView:sender runJavaScriptAlertPanelWithMessage:message initiatedByFrame:frame];
+    m_isDocumentReady = aIsReady;
 }
 
-- (BOOL)webView:(WebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(void *)frame
+- (BOOL)isDocumentReady
 {
-    if ([UIWebView instancesRespondToSelector:@selector(webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:)])
-            return [super webView:sender runJavaScriptConfirmPanelWithMessage:message initiatedByFrame:frame];
-    return NO;
-}
-
-- (NSString *)webView:(WebView *)sender runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(void *)frame
-{
-    if ([UIWebView instancesRespondToSelector:@selector(webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:)])
-            return [super webView:sender runJavaScriptTextInputPanelWithPrompt:prompt defaultText:defaultText initiatedByFrame:frame];
-    return nil;
+    return m_isDocumentReady;
 }
 
 
-- (void)webViewClose:(WebView *)sender
+- (void)setHitPageBottomThreshold:(float)aThreshold
 {
-    if ([UIWebView instancesRespondToSelector:@selector(webViewClose:)])
-        [super webViewClose:sender];
+    m_threshold = aThreshold;
 }
 
-
-
-#pragma mark -
-#pragma mark Base API
-- (void) _updateViewSettings
+- (void)setIsPageScrollOn:(BOOL)aIsPageScrollOn
 {
-    [super _updateViewSettings];
+    m_isPageScrollOn = aIsPageScrollOn;
 }
-
--(id) _documentView
-{
-    return [super _documentView];
-}
-
-//- (void) dispatchEvent:(NSString *)event
-//{
-//    [[self _documentView] dispatchEvent:event];
-//}
-//
-//- (void) reloadFromOrigin
-//{
-//    //[[[self _documentView] webView] reloadFromOrigin:nil];
-//}
-//
-//- (UIScrollView *) scrollView
-//{
-//    if ([self respondsToSelector:@selector(_scrollView)])
-//        return [self _scrollView];
-//    else if ([self respondsToSelector:@selector(_scroller)])
-//        return (UIScrollView *) [self _scroller];
-//    else return nil;
-//}
-//
-//- (void) setNeedsLayout
-//{
-//    [super setNeedsLayout];
-//    
-//    WebFrame *frame([[[self _documentView] webView] mainFrame]);
-//    if ([frame respondsToSelector:@selector(setNeedsLayout)])
-//        [frame setNeedsLayout];
-//}
 
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 {
-//    NSString *scrollHeight = [self stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
-    [super scrollViewDidScroll:scrollView];
-//    NSLog(@"ContentOffset  x is  %f,y is %f",scrollView.contentOffset.x,scrollView.contentOffset.y);
+//    //    NSString *scrollHeight = [self stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
+//    [super scrollViewDidScroll:scrollView];
+//    //    NSLog(@"ContentOffset  x is  %f,y is %f",scrollView.contentOffset.x,scrollView.contentOffset.y);
     
     
     CGFloat scrollX = scrollView.contentOffset.x;
@@ -435,7 +703,7 @@ static int createWebViewID = 0;
     {
         if (!m_ignoreScroll)
         {
-           [KCApiBridge callbackJSOnHitPageBottom:self y:scrollY];
+            [KCApiBridge callbackJSOnHitPageBottom:self y:scrollY];
             m_ignoreScroll = true;
         }
         
@@ -447,37 +715,33 @@ static int createWebViewID = 0;
     
 }
 
-
-
-- (void)setHitPageBottomThreshold:(float)aThreshold
-{
-    m_threshold = aThreshold;
-}
-
-- (void)setIsPageScrollOn:(BOOL)aIsPageScrollOn
-{
-    m_isPageScrollOn = aIsPageScrollOn;
-}
-
 #pragma mark -
-#pragma mark api
-- (int)getWebViewID
+- (void)dealloc
 {
-    return m_webViewID;
+    [self loadHTMLString:@"" baseURL:nil];
+    
+    if (m_isUsingUIWebView)
+    {
+        UIWebView* webView = m_realWebView;
+        webView.delegate = nil;
+    }
+    else
+    {
+        WKWebView* webView = m_realWebView;
+        webView.UIDelegate = nil;
+        webView.navigationDelegate = nil;
+
+        [webView removeObserver:self forKeyPath:@"estimatedProgress"];
+        [webView removeObserver:self forKeyPath:@"title"];
+    }
+    [m_realWebView removeObserver:self forKeyPath:@"loading"];
+    [m_realWebView scrollView].delegate = nil;
+    [m_realWebView stopLoading];
+    [(UIWebView*)m_realWebView loadHTMLString:@"" baseURL:nil];
+    [m_realWebView stopLoading];
+    [m_realWebView removeFromSuperview];
+    m_realWebView = nil;
+    m_delegate = nil;
+    
 }
-
-- (void)documentReady:(BOOL)aIsReady
-{
-    m_isDocumentReady = aIsReady;
-}
-
-- (BOOL)isDocumentReady
-{
-    return m_isDocumentReady;
-}
-
-
 @end
-
-
-

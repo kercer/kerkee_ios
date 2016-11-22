@@ -31,7 +31,7 @@
 
 + (void)callJS:(KCWebView *)aWebView jsString:(NSString *)aJS;
 + (void)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview;
-+ (void)callJSFunction:(NSString *)function withJJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview;
++ (void)callJSFunction:(NSString *)function withJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview;
 
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId;
 + (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId jsonString:(NSString *)aStr;

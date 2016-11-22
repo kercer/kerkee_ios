@@ -34,7 +34,7 @@ static BOOL sIsOpenJSLog = true;
 
 /* notified when a message is pushed/delievered on the JS side */
 - (void) onNotified:(KCWebView *)webView;
-- (NSArray *) fetchJSONMessagesFromJSSide:(KCWebView *)webView;
+- (void)fetchJSONMessagesFromJSSide:(KCWebView *)aWebView completionHandler:(void (^)(id aResult, NSError*  aError))aCompletionHandler;
 
 @end
 
@@ -114,7 +114,7 @@ static BOOL sIsOpenJSLog = true;
 {
     if ([request.URL.scheme isEqualToString:PRIVATE_SCHEME])
     {
-        [KCJSExecutor callJS:@"ApiBridge.prepareProcessingMessages()" WebView:webView];
+        [KCJSExecutor callJS:@"ApiBridge.prepareProcessingMessages()" inWebView:webView completionHandler:nil];
         [self onNotified:webView];
     }
     /*
@@ -145,10 +145,16 @@ static BOOL sIsOpenJSLog = true;
 
 
 - (void)webViewDidFinishLoad:(KCWebView *)webView
-{    
-    if (m_js !=nil && ![[webView stringByEvaluatingJavaScriptFromString:@"typeof WebViewJSBridge == 'object'"] isEqualToString:@"true"])
+{
+    if (m_js != nil)
     {
-        [webView stringByEvaluatingJavaScriptFromString:m_js];
+        [webView evaluateJavaScript:@"typeof WebViewJSBridge == 'object'" completionHandler:^(id _Nullable result, NSError * _Nullable error)
+        {
+            if ([result isEqualToString:@"true"])
+            {
+                [webView evaluateJavaScript:m_js completionHandler:nil];
+            }
+        }];
     }
     
     if(self.m_userDelegate != nil && [self.m_userDelegate respondsToSelector:@selector(webViewDidFinishLoad:)])
@@ -168,10 +174,12 @@ static BOOL sIsOpenJSLog = true;
 
 - (void)onNotified:(KCWebView *)webView
 {
-    NSArray *jsonMessages;
-    while ((jsonMessages = [self fetchJSONMessagesFromJSSide:webView]))
-    {
-//        KCLog(@"%@", jsonMessages);
+    [self fetchJSONMessagesFromJSSide:webView completionHandler:^(id aResult, NSError *aError)
+     {
+        NSArray *jsonMessages;
+        jsonMessages = (NSArray*)aResult;
+        
+        //        KCLog(@"%@", jsonMessages);
         for (NSDictionary *jsonObj in jsonMessages)
         {
             KCClassParser *parser = [KCClassParser createParser:jsonObj];
@@ -196,7 +204,7 @@ static BOOL sIsOpenJSLog = true;
                 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                 if(clz && [clz respondsToSelector:method])
                 {
-                     [clz performSelector:method withObject:webView withObject:argList];
+                    [clz performSelector:method withObject:webView withObject:argList];
                 }
                 else
                 {
@@ -210,41 +218,53 @@ static BOOL sIsOpenJSLog = true;
                 #pragma clang diagnostic pop
                 
                 
-//                NSArray* methodList = [kcCls getMethods:methodName];
-//                if (methodList && methodList.count > 0)
-//                {
-//                    KCMethod* method = methodList[0];
-//                    KCLog(@"%d", method.modifier.getModifiers);
-//                    if ([method isStatic])
-//                    {
-//                        [method invoke:clz, webView, argList, nil];
-//                    }
-//                    else
-//                    {
-//                        KCJSObject* receiver = [KCRegister getJSObject:jsClzName];
-//                        [method invoke:receiver, webView, argList, nil];
-//                    }
-//                }
+                //                NSArray* methodList = [kcCls getMethods:methodName];
+                //                if (methodList && methodList.count > 0)
+                //                {
+                //                    KCMethod* method = methodList[0];
+                //                    KCLog(@"%d", method.modifier.getModifiers);
+                //                    if ([method isStatic])
+                //                    {
+                //                        [method invoke:clz, webView, argList, nil];
+                //                    }
+                //                    else
+                //                    {
+                //                        KCJSObject* receiver = [KCRegister getJSObject:jsClzName];
+                //                        [method invoke:receiver, webView, argList, nil];
+                //                    }
+                //                }
                 
                 //KCLog(@"method ---------------------> %@", methodName);
             }
             
         }
-    }
+         
+//         if (aResult == NULL)
+//             return;
+//         [self onNotified:webView];
+        
+    }];
+    
+//    while ((jsonMessages = [self fetchJSONMessagesFromJSSide:webView]))
+//    {
+//
+//    }
 }
 
 
-- (NSArray *)fetchJSONMessagesFromJSSide:(KCWebView *)webview
+- (void)fetchJSONMessagesFromJSSide:(KCWebView *)aWebView completionHandler:(void (^)(id aResult, NSError*  aError))aCompletionHandler
 {
-    NSString *jsonStrMsg = [KCJSExecutor callJS:@"ApiBridge.fetchMessages()" WebView:webview];
-
-    if (jsonStrMsg && [jsonStrMsg length] > 0)
+    [KCJSExecutor callJS:@"ApiBridge.fetchMessages()" inWebView:aWebView completionHandler:^(id _Nullable jsonStrMsg, NSError * _Nullable error)
     {
-        //KCLog(@"jsonMsg----:\n%@",jsonStrMsg);
-        return [NSJSONSerialization JSONObjectWithData:[jsonStrMsg dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-    }
+        if (jsonStrMsg && [jsonStrMsg length] > 0)
+        {
+            //KCLog(@"jsonMsg----:\n%@",jsonStrMsg);
+           id result = [NSJSONSerialization JSONObjectWithData:[jsonStrMsg dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+            aCompletionHandler(result, nil);
+            
+        }
+    }];
     
-    return nil;
 }
 
 #pragma mark --
@@ -259,11 +279,11 @@ static BOOL sIsOpenJSLog = true;
     sIsOpenJSLog = aIsOpenJSLog;
     if (aIsOpenJSLog)
     {
-        [KCJSExecutor callJSFunction:@"jsBridgeClient.openJSLog" WebView:aWebview];
+        [KCJSExecutor callJSFunction:@"jsBridgeClient.openJSLog" inWebView:aWebview completionHandler:nil];
     }
     else
     {
-        [KCJSExecutor callJSFunction:@"jsBridgeClient.closeJSLog" WebView:aWebview];
+        [KCJSExecutor callJSFunction:@"jsBridgeClient.closeJSLog" inWebView:aWebview completionHandler:nil];
     }
 }
 
@@ -308,13 +328,13 @@ static BOOL sIsOpenJSLog = true;
 + (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView y:(CGFloat)aY
 {
     NSString* js = [NSString stringWithFormat:@"if(jsBridgeClient && jsBridgeClient.onHitPageBottom) jsBridgeClient.onHitPageBottom(%f)", aY];
-    [KCJSExecutor callJSOnMainThread:js WebView:aWebView];
+    [KCJSExecutor callJSOnMainThread:js inWebView:aWebView completionHandler:nil];
 }
 
 + (void)callbackJSOnPageScroll:(KCWebView*)aWebView x:(CGFloat)aX y:(CGFloat)aY width:(CGFloat)aWidth height:(CGFloat)aHeight
 {
     NSString* js = [NSString stringWithFormat:@"if(jsBridgeClient && jsBridgeClient.onPageScroll) jsBridgeClient.onPageScroll(%f,%f,%f,%f)",aX, aY, aWidth, aHeight];
-    [KCJSExecutor callJSOnMainThread:js WebView:aWebView];
+    [KCJSExecutor callJSOnMainThread:js inWebView:aWebView completionHandler:nil];
 }
 
 

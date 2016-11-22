@@ -325,7 +325,7 @@ didReceiveResponse:(NSURLResponse *)aResponse
 #pragma mark --
 - (void)callJSSetProperties:(NSDictionary *)aProperties
 {
-    [KCJSExecutor callJSFunctionOnMainThread:@"XMLHttpRequest.setProperties" withJSONObject:aProperties WebView:m_webview];
+    [KCJSExecutor callJSFunctionOnMainThread:@"XMLHttpRequest.setProperties" withJSONObject:aProperties inWebView:m_webview completionHandler:nil];
 }
 
 - (void)handleHeaders:(NSHTTPURLResponse *)response

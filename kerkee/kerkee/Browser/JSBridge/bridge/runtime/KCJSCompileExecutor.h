@@ -10,8 +10,12 @@
 #import "KCBaseDefine.h"
 #import "KCWebView.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KCJSCompileExecutor : NSObject
 
-+ (id)compileJS:(NSString *)aJS webview:(KCWebView*)aWebview;
++ (void)compileJS:(NSString *)aJS inWebView:(KCWebView*)aWebview completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler;
 
 @end
+
+NS_ASSUME_NONNULL_END

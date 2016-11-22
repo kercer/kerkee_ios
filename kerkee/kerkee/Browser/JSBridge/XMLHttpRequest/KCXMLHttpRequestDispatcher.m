@@ -210,7 +210,7 @@
         
         KCXMLHttpRequest *xhr = [m_xhrMap objectForKey:[self keyFromWebViewAndId:aWebView objectID:aObjectID]];
         FOREGROUND_BEGIN
-        [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", strObjectID] WebView:[xhr webview]];
+        [KCJSExecutor callJS:[[NSString alloc] initWithFormat:@"XMLHttpRequest.deleteObject(%@)", strObjectID] inWebView:[xhr webview] completionHandler:nil];
         FOREGROUND_COMMIT
 
         [m_xhrMap removeObjectForKey:[self keyFromWebViewAndId:aWebView objectID:aObjectID]];
@@ -286,7 +286,7 @@
                 NSNumber *objectId = [aXHR objectId];
                 [dicMutableProperties setObject:objectId forKey:@"id"];
                 FOREGROUND_BEGIN
-                [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:dicMutableProperties WebView:aXHR.webview];
+                [KCJSExecutor callJSFunction:@"XMLHttpRequest.setProperties" withJSONObject:dicMutableProperties inWebView:aXHR.webview completionHandler:nil];
                 FOREGROUND_COMMIT
                 
                 return YES;
