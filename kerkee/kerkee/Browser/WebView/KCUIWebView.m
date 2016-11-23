@@ -62,7 +62,7 @@
 - (void)webViewClose:(WebView *)sender;
 
 
-//基类API
+//super API
 - (void) _updateViewSettings;
 - (id) _documentView;
 //- (id) _scrollView;
@@ -75,9 +75,6 @@
 @interface KCUIWebView ()
 {
     int m_webViewID;
-    
-    KCWebImageSetter* m_imageSetter;
-    
 }
 @property (nonatomic,weak)id m_attach;
 
@@ -97,8 +94,6 @@ static int createWebViewID = 0;
     if (self) {
         // Initialization code
         m_webViewID = createWebViewID++;
-        m_imageSetter = [[KCWebImageSetter alloc] init];
-
         
 //        // Add observer for scroll
 //        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
@@ -112,7 +107,6 @@ static int createWebViewID = 0;
     if(self)
     {
         m_webViewID = createWebViewID++;
-        m_imageSetter = [[KCWebImageSetter alloc] init];
     }
     return self;
 }
@@ -131,7 +125,7 @@ static int createWebViewID = 0;
 - (void)dealloc
 {
 //    [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
-    KCRelease(m_imageSetter);
+    
     [self cleanForDealloc];
     
     KCDealloc(super);
@@ -171,35 +165,35 @@ static int createWebViewID = 0;
 
 #pragma -
 #pragma mark WebFrameLoadDelegate (Frame Load Delegate Messages)
-//这个委派方法是在html里面的内容被加载之前或者获得新的请求后重新加载资源之前会被调用到的，它一般会在 [[myWebView mainFrame] loadRequest:...]之后就被调用。所以适合我们在这里进行初始化工作
+//The delegate method is inside the HTML content is loaded before or get a new request to reload after resources will be called to the before, which typically in [[myWebView mainFrame] loadRequest:...And then be invoked.So are suitable for initialized we are here to work
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(void *)frame
 {
     [super webView:sender didStartProvisionalLoadForFrame:frame];
 }
 
-//当data source从provisional转换到committed时发生
-//不起作用，为什么
+//When the data source from the provisional to committed to occur
+//why?
 - (void)webView:(WebView *)sender willCloseFrame:(void *)frame
 {
     if ([UIWebView instancesRespondToSelector:@selector(webView:willCloseFrame:)])
         [super webView:sender willCloseFrame:frame];
 }
 
-//当data source从provisional转换到committed时发生
+//When the data source from the provisional to committed to occur
 - (void)webView:(WebView *)sender didCommitLoadForFrame:(void *)frame
 {
     if ([UIWebView instancesRespondToSelector:@selector(webView:didCommitLoadForFrame:)])
         [super webView:sender didCommitLoadForFrame:frame];
 }
 
-//当所有数据都以接收完成后发生
+//When after completion of all data to receive
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(void *)frame
 {
     if([UIWebView instancesRespondToSelector:@selector(webView:didFinishLoadForFrame:)])
         [super webView:sender didFinishLoadForFrame:frame];
 }
 
-//当接收到frame的标题时发生（会发生多次）
+//Occurs when the title of the received frame (happens many times)
 - (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(void *)frame
 {
     if([UIWebView instancesRespondToSelector:@selector(webView:didReceiveTitle:forFrame:)])
@@ -218,7 +212,7 @@ static int createWebViewID = 0;
         [super webView:sender didFailLoadWithError:error forFrame:frame];
 }
 
-//发生在不能接收到数据的时候，此类错误发生在诸如bad url等无法正常访问页面的情况。webView:didFailLoadWithError:forFrame发生在data source已经成为committed，但在后续获取数据时出现了错误时发生
+//Happen when cannot receive data, this kind of error occurred in such as bad url to access the page.WebView: didFailLoadWithError: forFrame occurred in data source has been committed, but in the subsequent appeared when get the data error occurs
 - (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(void *)frame
 {
     if([UIWebView instancesRespondToSelector:@selector(webView:didFailProvisionalLoadWithError:forFrame:)])
@@ -252,19 +246,10 @@ static int createWebViewID = 0;
         [self.progressDelegate webView:self identifierForInitialRequest:initialRequest];
     }
     
-    if([initialRequest isKindOfClass:[NSURLRequest class]])
-    {
-        NSURLRequest *rqt = (NSURLRequest *)initialRequest;
-        if(nil != m_imageSetter)
-        {
-            [m_imageSetter handleImage:[KCWebImageSetterTask create:self url:rqt.URL]];
-        }
-    }
-    
     return [NSNumber numberWithInt:resourceCount++];
 }
 
-//发生多次，在资源请求被发送之前
+//Happened many times, before the resource request is sent
 - (NSURLRequest *)webView:(id)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(id)dataSource
 {
     if ([UIWebView instancesRespondToSelector:@selector(webView:resource:willSendRequest:redirectResponse:fromDataSource:)])
@@ -287,7 +272,7 @@ static int createWebViewID = 0;
     
 }
 
-//当资源的所有数据返回后发生
+//When resources are all of the data returned
 -(void)webView:(id)sender resource:(id)resource didFinishLoadingFromDataSource:(id)dataSource
 {
     [super webView:sender resource:resource didFinishLoadingFromDataSource:dataSource];
@@ -300,13 +285,13 @@ static int createWebViewID = 0;
     
 }
 
-//当请求的资源返回第一个字节时发生
+//When resources are all of the data returned
 - (void)webView:(id)sender resource:(id)identifier didReceiveResponse:(NSURLResponse *)response fromDataSource:(id)dataSource
 {
     [super webView:sender resource:identifier didReceiveResponse:response fromDataSource:dataSource];
 }
 
-//发送0次或多次，直到资源的所有数据返回成功
+//Send 0 or more times, until all data resources return success
 - (void)webView:(id)sender resource:(id)identifier didReceiveContentLength:(NSUInteger)length fromDataSource:(id)dataSource
 {
     [super webView:sender resource:identifier didReceiveContentLength:length fromDataSource:dataSource];
@@ -335,9 +320,7 @@ static int createWebViewID = 0;
 #pragma mark -
 #pragma mark WebUIDelegate
 
-//实现一下shouldRunJavaScriptXX 回调出去 在此暂时不实现，注掉做个备忘
-
-//不执行，为什么
+//not call,why?
 - (void)webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(void *)frame
 {
     if ([UIWebView instancesRespondToSelector:@selector(webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:)])

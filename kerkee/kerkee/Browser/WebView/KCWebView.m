@@ -12,6 +12,7 @@
 #import <TargetConditionals.h>
 #import "KCApiBridge.h"
 #import "NSObject+KCSelector.h"
+#import "KCWebImageSetter.h"
 
 
 @interface KCWebView () <UIWebViewDelegate, KCWebViewProgressDelegate, WKNavigationDelegate, WKUIDelegate>
@@ -26,6 +27,8 @@
     BOOL m_ignoreScroll;
     
     BOOL m_isPageScrollOn;
+    
+    KCWebImageSetter* m_imageSetter;
 }
 
 @property (nonatomic, assign) double estimatedProgress;
@@ -96,6 +99,8 @@
     [self.realWebView setFrame:self.bounds];
     [self.realWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     [self addSubview:self.realWebView];
+    
+    m_imageSetter = [[KCWebImageSetter alloc] init];
 }
 
 - (void)initWKWebView
@@ -239,6 +244,15 @@
         if ([self.progressDelegate respondsToSelector:@selector(webView:identifierForInitialRequest:)])
         {
             [self.progressDelegate webView:self identifierForInitialRequest:aInitialRequest];
+        }
+    }
+    
+    if([aInitialRequest isKindOfClass:[NSURLRequest class]])
+    {
+        NSURLRequest *rqt = (NSURLRequest *)aInitialRequest;
+        if(nil != m_imageSetter)
+        {
+            [m_imageSetter handleImage:[KCWebImageSetterTask create:self url:rqt.URL]];
         }
     }
 }
@@ -772,6 +786,8 @@
 #pragma mark -
 - (void)dealloc
 {
+    KCRelease(m_imageSetter);
+    m_imageSetter = nil;
     [self loadHTMLString:@"" baseURL:nil];
     
     if (m_isUsingUIWebView)

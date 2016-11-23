@@ -15,9 +15,6 @@
 #import "KCWebImageSetterTask.h"
 
 @interface KCWebImageSetter : KCObject
-{
-    
-}
 
 -(void) handleImage:(KCWebImageSetterTask*)aTask;
 
