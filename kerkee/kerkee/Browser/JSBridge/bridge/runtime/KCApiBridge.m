@@ -120,8 +120,11 @@ static BOOL sIsOpenJSLog = true;
 {
     if ([request.URL.scheme isEqualToString:PRIVATE_SCHEME])
     {
-        [KCJSExecutor callJS:@"ApiBridge.prepareProcessingMessages()" inWebView:webView completionHandler:nil];
+        [KCJSExecutor callJS:@"ApiBridge.prepareProcessingMessages()" inWebView:webView completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+        }];
+        
         [self onNotified:webView];
+        
     }
     /*
     else if (attachApiScheme && [request.URL.scheme isEqualToString:attachApiScheme])
@@ -156,7 +159,7 @@ static BOOL sIsOpenJSLog = true;
     {
         [webView evaluateJavaScript:@"typeof WebViewJSBridge == 'object'" completionHandler:^(id _Nullable result, NSError * _Nullable error)
         {
-            if (![result isEqualToString:@"true"])
+            if (([result isKindOfClass:NSString.class] && ![result isEqualToString:@"true"]) || ([result isKindOfClass:NSNumber.class] && !result))
             {
                 [webView evaluateJavaScript:m_js completionHandler:nil];
             }
@@ -258,7 +261,7 @@ static BOOL sIsOpenJSLog = true;
 {
     [KCJSExecutor callJS:@"ApiBridge.fetchMessages()" inWebView:aWebView completionHandler:^(id _Nullable jsonStrMsg, NSError * _Nullable error)
     {
-        if (jsonStrMsg && [jsonStrMsg length] > 0)
+        if (jsonStrMsg && ![jsonStrMsg isKindOfClass:NSNull.class] && [jsonStrMsg length] > 0)
         {
             //KCLog(@"jsonMsg----:\n%@",jsonStrMsg);
            id result = [NSJSONSerialization JSONObjectWithData:[jsonStrMsg dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
