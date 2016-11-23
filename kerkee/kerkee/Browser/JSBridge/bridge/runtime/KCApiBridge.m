@@ -106,6 +106,12 @@ static BOOL sIsOpenJSLog = true;
         [self.m_userDelegate performSelectorSafetyWithArgs:@selector(webView:didReceiveResourceNumber:totalResources:), aWebView, aResourceNumber, aTotalResources, nil];
 }
 
+-(void)webView:(id)aWebView didReceiveTitle:(NSString *)aTitle
+{
+    if (self.m_userDelegate)
+        [self.m_userDelegate performSelectorSafetyWithArgs:@selector(webView:didReceiveTitle:), aWebView, aTitle, nil];
+}
+
 
 #pragma mark --
 #pragma mark UIWebViewDelegate

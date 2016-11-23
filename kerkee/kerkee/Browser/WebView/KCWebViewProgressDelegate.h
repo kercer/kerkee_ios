@@ -13,8 +13,9 @@
 
 @protocol KCWebViewProgressDelegate <NSObject>
 @optional
--(void)webView:(id)webView identifierForInitialRequest:(NSURLRequest*)initialRequest;
--(void) webView:(id)webView didReceiveResourceNumber:(int)resourceNumber totalResources:(int)totalResources;
+-(void)webView:(id)aWebView identifierForInitialRequest:(NSURLRequest*)aInitialRequest;
+-(void)webView:(id)aWebView didReceiveResourceNumber:(int)aResourceNumber totalResources:(int)aTotalResources;
+-(void)webView:(id)aWebView didReceiveTitle:(NSString *)aTitle;
 @end
 
 #endif /* KCWebViewProgressDelegate_h */

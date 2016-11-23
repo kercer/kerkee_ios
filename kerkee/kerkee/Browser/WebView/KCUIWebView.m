@@ -204,6 +204,11 @@ static int createWebViewID = 0;
 {
     if([UIWebView instancesRespondToSelector:@selector(webView:didReceiveTitle:forFrame:)])
         [super webView:sender didReceiveTitle:title forFrame:frame];
+    
+    if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveTitle:)])
+    {
+        [self.progressDelegate webView:self didReceiveTitle:title];
+    }
 }
 
 

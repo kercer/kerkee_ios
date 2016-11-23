@@ -11,9 +11,10 @@
 #import <WebKit/WebKit.h>
 #import <TargetConditionals.h>
 #import "KCApiBridge.h"
+#import "NSObject+KCSelector.h"
 
 
-@interface KCWebView () <UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate>
+@interface KCWebView () <UIWebViewDelegate, KCWebViewProgressDelegate, WKNavigationDelegate, WKUIDelegate>
 {
     BOOL m_isUsingUIWebView;
     id m_realWebView;
@@ -128,6 +129,15 @@
     else if ([keyPath isEqualToString:@"title"])
     {
         self.title = change[NSKeyValueChangeNewKey];
+        
+        if (self.progressDelegate)
+        {
+            if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveTitle:)])
+            {
+                [self.progressDelegate webView:self didReceiveTitle:self.title];
+            }
+        }
+        
     }
     else
     {
@@ -154,6 +164,7 @@
     }
 
     webView.delegate = self;
+    webView.progressDelegate = self;
 //    self.webViewProgress = [[KCWebViewProgress alloc] init];
 //    webView.delegate = m_webViewProgress;
 //    m_webViewProgress.webViewProxyDelegate = self;
@@ -193,7 +204,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView*)webView
 {
-    self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+//    self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     if (self.originRequest == nil)
     {
         self.originRequest = webView.request;
@@ -217,6 +228,45 @@
 //{
 //    self.estimatedProgress = progress;
 //}
+
+
+#pragma mark --
+#pragma mark KCWebViewProgressDelegate
+-(void)webView:(KCUIWebView*)aWebView identifierForInitialRequest:(NSURLRequest*)aInitialRequest
+{
+    if (self.progressDelegate)
+    {
+        if ([self.progressDelegate respondsToSelector:@selector(webView:identifierForInitialRequest:)])
+        {
+            [self.progressDelegate webView:self identifierForInitialRequest:aInitialRequest];
+        }
+    }
+}
+
+-(void) webView:(KCUIWebView*)aWebView didReceiveResourceNumber:(int)aResourceNumber totalResources:(int)aTotalResources
+{
+    if (self.progressDelegate)
+    {
+        if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveResourceNumber:totalResources:)])
+        {
+            [self.progressDelegate webView:self didReceiveResourceNumber:aResourceNumber totalResources:aTotalResources];
+        }
+    }
+}
+
+-(void)webView:(id)aWebView didReceiveTitle:(NSString *)aTitle
+{
+    self.title = aTitle;
+    
+    if (self.progressDelegate)
+    {
+        if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveTitle:)])
+        {
+            [self.progressDelegate webView:self didReceiveTitle:aTitle];
+        }
+    }
+}
+
 
 
 #pragma mark - WKNavigationDelegate
@@ -261,6 +311,8 @@
 // TODO
 
 
+
+#pragma mark - Notify 
 
 #pragma mark - Notify Delegate
 - (void)notifyWebViewDidFinishLoad
@@ -338,7 +390,7 @@
     return retValue;
 }
 
-#pragma mark - 基础方法
+#pragma mark --
 
 - (UIScrollView*)scrollView
 {
@@ -611,7 +663,9 @@
         [self goBack];
     }
 }
-#pragma mark -  如果没有找到方法 去realWebView 中调用
+#pragma mark --
+//If there is no find a way to call realWebView
+
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
     BOOL hasResponds = [super respondsToSelector:aSelector];
