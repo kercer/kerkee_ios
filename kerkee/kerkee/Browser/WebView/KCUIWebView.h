@@ -24,7 +24,6 @@
 @property (nonatomic, assign) id<KCWebViewProgressDelegate> progressDelegate;
 
 
-
 - (int)getWebViewID;
 
 

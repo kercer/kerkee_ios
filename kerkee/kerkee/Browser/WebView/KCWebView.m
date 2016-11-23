@@ -15,6 +15,12 @@
 #import "KCWebImageSetter.h"
 
 
+@interface KCUIWebView ()
+{
+}
+@property (nonatomic, assign) id scrollViewDelegate;
+@end
+
 @interface KCWebView () <UIWebViewDelegate, KCWebViewProgressDelegate, WKNavigationDelegate, WKUIDelegate>
 {
     BOOL m_isUsingUIWebView;
@@ -158,6 +164,8 @@
     webView.allowsInlineMediaPlayback = YES;
     webView.mediaPlaybackRequiresUserAction = NO;
     
+    webView.scrollViewDelegate = self;
+    
     webView.opaque = NO;
     for (UIView* subview in [webView.scrollView subviews])
     {
@@ -170,10 +178,6 @@
 
     webView.delegate = self;
     webView.progressDelegate = self;
-//    self.webViewProgress = [[KCWebViewProgress alloc] init];
-//    webView.delegate = m_webViewProgress;
-//    m_webViewProgress.webViewProxyDelegate = self;
-//    m_webViewProgress.progressDelegate = self;
 
     m_realWebView = webView;
 }

@@ -16,6 +16,7 @@
 #import "KCApiBridge.h"
 #import <objc/runtime.h>
 #import "KCLog.h"
+#import "NSObject+KCSelector.h"
 
 
 @class WebView;
@@ -24,8 +25,8 @@
 
 @interface UIWebView ()
 {
-
 }
+
 
 //http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/WebKit/Protocols/WebFrameLoadDelegate_Protocol/Reference/Reference.html
 - (void)webView:(id)sender didStartProvisionalLoadForFrame:(void *)frame;
@@ -77,6 +78,7 @@
     int m_webViewID;
 }
 @property (nonatomic,weak)id m_attach;
+@property (nonatomic, assign) id scrollViewDelegate;
 
 @end
 
@@ -393,8 +395,6 @@ static int createWebViewID = 0;
 
 
 
-
-
 #pragma mark -
 #pragma mark api
 - (int)getWebViewID
@@ -402,6 +402,20 @@ static int createWebViewID = 0;
     return m_webViewID;
 }
 
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate
+
+// any offset changes
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if ([UIWebView instancesRespondToSelector:@selector(scrollViewDidScroll:)])
+        [super scrollViewDidScroll:scrollView];
+    if (self.scrollViewDelegate)
+    {
+        [self.scrollViewDelegate performSelectorSafetyWithArgs:@selector(scrollViewDidScroll:), scrollView, nil];
+    }
+}
 
 
 @end
