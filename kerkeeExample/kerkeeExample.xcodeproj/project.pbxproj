@@ -141,6 +141,7 @@
 		DF8524351CC61FA90046FC44 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DF8524361CC61FA90046FC44 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DF9BCE4E1C3A5E3C0097A767 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		DFCF9A871DED65AA00039A95 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +222,7 @@
 				DF83DA821B959D2A003E3F91 /* kerkeeExample */,
 				DF83DA9C1B959D2A003E3F91 /* kerkeeExampleTests */,
 				DF83DA811B959D2A003E3F91 /* Products */,
+				DFCF9A861DED65AA00039A95 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -328,6 +330,14 @@
 				DF8524361CC61FA90046FC44 /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		DFCF9A861DED65AA00039A95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFCF9A871DED65AA00039A95 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

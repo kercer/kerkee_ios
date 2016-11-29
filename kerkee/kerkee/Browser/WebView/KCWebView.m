@@ -13,11 +13,13 @@
 #import "KCApiBridge.h"
 #import "NSObject+KCSelector.h"
 #import "KCWebImageSetter.h"
-
+#import "KCWKWebView.h"
 
 @interface KCUIWebView ()
-{
-}
+@property (nonatomic, assign) id scrollViewDelegate;
+@end
+
+@interface KCWKWebView ()
 @property (nonatomic, assign) id scrollViewDelegate;
 @end
 
@@ -120,9 +122,11 @@
     preferences.javaScriptCanOpenWindowsAutomatically = YES;
     configuration.preferences = preferences;
     
-    WKWebView* webView = [[NSClassFromString(@"WKWebView") alloc] initWithFrame:self.bounds configuration:configuration];
+    KCWKWebView* webView = [[NSClassFromString(@"KCWKWebView") alloc] initWithFrame:self.bounds configuration:configuration];
     webView.UIDelegate = self;
     webView.navigationDelegate = self;
+    
+    webView.scrollViewDelegate = self;
 
     webView.backgroundColor = [UIColor clearColor];
     webView.opaque = NO;
