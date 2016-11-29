@@ -43,6 +43,8 @@
 
 @property (nonatomic, copy) NSString* title;
 
+@property (nonatomic, readonly) id realWebView;
+
 @end
 
 @implementation KCWebView

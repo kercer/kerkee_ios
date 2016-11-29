@@ -35,7 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) id<KCWebViewProgressDelegate> progressDelegate;
 
-@property (nonatomic, readonly) id realWebView;
 @property (nonatomic, readonly) BOOL isUsingUIWebView;
 //Estimate the page loaded
 @property (nonatomic, readonly) double estimatedProgress;
