@@ -41,7 +41,7 @@
     [KCRegistMgr registAllClass];
     KCLog(@"docment dir:\n%@",KCWebPath_HtmlRootPath);
     
-    m_webView = [[KCWebView alloc] initWithFrame:self.view.bounds];
+    m_webView = [[KCWebView alloc] initWithFrame:self.view.bounds usingUIWebView:NO];
     //add webview in your view
     [self.view addSubview:m_webView];
     //you can implement webview delegate
