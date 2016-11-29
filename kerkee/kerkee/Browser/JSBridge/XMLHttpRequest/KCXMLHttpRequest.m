@@ -331,7 +331,8 @@ didReceiveResponse:(NSURLResponse *)aResponse
 - (void)handleHeaders:(NSHTTPURLResponse *)response
 {
     NSString* contentType = [response.allHeaderFields objectForKey:@"Content-Type"];
-    [self readCharset:contentType];
+    if (contentType != nil && contentType.length > 0)
+        [self readCharset:contentType];
     
     mHeaderProperties = [[NSDictionary alloc] initWithObjectsAndKeys:
                    [mObjectId stringValue], @"id",
