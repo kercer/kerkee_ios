@@ -37,6 +37,8 @@
     BOOL m_isPageScrollOn;
     
     KCWebImageSetter* m_imageSetter;
+    
+    int m_webViewID;
 }
 
 @property (nonatomic, assign) double estimatedProgress;
@@ -46,6 +48,8 @@
 @property (nonatomic, copy) NSString* title;
 
 @property (nonatomic, readonly) id realWebView;
+
+@property (nonatomic,weak)id m_attach;
 
 @end
 
@@ -58,6 +62,8 @@
 @synthesize delegate = m_delegate;
 @synthesize progressDelegate;
 
+
+static int createWebViewID = 0;
 
 #pragma mark - init
 - (instancetype)initWithCoder:(NSCoder*)coder
@@ -89,6 +95,7 @@
 }
 - (void)initWebView
 {
+    m_webViewID = createWebViewID++;
     m_threshold = 0;
     m_isPageScrollOn = false;
     
@@ -755,6 +762,20 @@
     m_isPageScrollOn = aIsPageScrollOn;
 }
 
+- (int)getWebViewID
+{
+    return m_webViewID;
+}
+
+- (id)getAttach
+{
+    return self.m_attach;
+}
+
+- (void)setAttach:(id)aAttch
+{
+    self.m_attach = aAttch;
+}
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate

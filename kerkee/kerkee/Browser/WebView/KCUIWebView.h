@@ -24,10 +24,9 @@
 @property (nonatomic, assign) id<KCWebViewProgressDelegate> progressDelegate;
 
 
-- (int)getWebViewID;
 
 
-- (id)getAttach;
-- (void)setAttach:(id)aAttch;
+
+
 
 @end

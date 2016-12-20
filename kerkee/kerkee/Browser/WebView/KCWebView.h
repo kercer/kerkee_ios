@@ -78,6 +78,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setHitPageBottomThreshold:(float)aThreshold;
 - (void)setIsPageScrollOn:(BOOL)aIsPageScrollOn;
 
+- (int)getWebViewID;
+- (id)getAttach;
+- (void)setAttach:(id)aAttch;
+
 /* @abstract Evaluates the given JavaScript string.
  @param javaScriptString The JavaScript string to evaluate.
  @param completionHandler A block to invoke when script evaluation completes or fails.

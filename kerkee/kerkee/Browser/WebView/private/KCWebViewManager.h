@@ -11,15 +11,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "KCSingleton.h"
+#import "KCWebView.h"
 
 @interface KCWebViewManager : NSObject
 
 AS_SINGLETON(KCWebViewManager);
 
 
--(void)addWithID:(NSInteger)webViewID WebView:(UIWebView*)webView;
+-(void)addWithID:(NSInteger)webViewID WebView:(KCWebView*)webView;
 -(void)removeWithID:(NSInteger)webViewID;
--(UIWebView*)getWebViewWithID:(NSInteger)webViewID;
+-(KCWebView*)getWebViewWithID:(NSInteger)webViewID;
 
 -(NSArray*)webViewList;
 

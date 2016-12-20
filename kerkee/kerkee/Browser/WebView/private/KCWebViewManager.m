@@ -44,7 +44,7 @@ DEF_SINGLETON(KCWebViewManager);
     return [NSString stringWithFormat:@"%ld", (long)intValue];
 }
 
--(void)addWithID:(NSInteger)webViewID WebView:(UIWebView*)webView
+-(void)addWithID:(NSInteger)webViewID WebView:(KCWebView*)webView
 {
     [m_dicWebView setObject:webView forKey:[self intToString:webViewID]];
     KCLog(@"addWithID:WebViewID:%ld>>>>>Count:%lu", (long)webViewID, (unsigned long)m_dicWebView.count);
@@ -57,7 +57,7 @@ DEF_SINGLETON(KCWebViewManager);
     KCLog(@"removeWithID:WebViewID:%ld>>>>>Count:%lu", (long)webViewID, (unsigned long)m_dicWebView.count);
 }
 
--(UIWebView*)getWebViewWithID:(NSInteger)webViewID
+-(KCWebView*)getWebViewWithID:(NSInteger)webViewID
 {
     return [m_dicWebView objectForKey:[self intToString:webViewID]];
 }

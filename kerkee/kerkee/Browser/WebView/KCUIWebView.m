@@ -75,9 +75,9 @@
 
 @interface KCUIWebView ()
 {
-    int m_webViewID;
+    
 }
-@property (nonatomic,weak)id m_attach;
+
 @property (nonatomic, assign) id scrollViewDelegate;
 
 @end
@@ -89,13 +89,13 @@
 @synthesize resourceCompletedCount;
 
 
-static int createWebViewID = 0;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        m_webViewID = createWebViewID++;
+        
         
 //        // Add observer for scroll
 //        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
@@ -108,7 +108,6 @@ static int createWebViewID = 0;
     self = [super init];
     if(self)
     {
-        m_webViewID = createWebViewID++;
     }
     return self;
 }
@@ -133,15 +132,7 @@ static int createWebViewID = 0;
     KCDealloc(super);
 }
 
-- (id)getAttach
-{
-    return self.m_attach;
-}
 
-- (void)setAttach:(id)aAttch
-{
-    self.m_attach = aAttch;
-}
 
 - (NSString *) description
 {
@@ -397,10 +388,7 @@ static int createWebViewID = 0;
 
 #pragma mark -
 #pragma mark api
-- (int)getWebViewID
-{
-    return m_webViewID;
-}
+
 
 
 #pragma mark -
