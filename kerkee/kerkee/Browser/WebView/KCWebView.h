@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithFrame:(CGRect)aFrame;
 - (instancetype)initWithFrame:(CGRect)aFrame usingUIWebView:(BOOL)aIsUsingUIWebView; 
 
+@property (nonatomic, readonly) id realWebView;
+
 // Will agent to WKUIDelegate WKNavigationDelegate internal unrealized callback.
 @property (weak, nonatomic) id<KCWebViewDelegate> delegate;
 
@@ -38,8 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL isUsingUIWebView;
 //Estimate the page loaded
 @property (nonatomic, readonly) double estimatedProgress;
-
-@property (nonatomic, readonly) NSURLRequest* originRequest;
 
 // Only above ios7 UIWebView can get, WKWebView please use the following method.
 // ToDo integrate the two
@@ -59,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)loadHTMLString:(NSString*)aString baseURL:(nullable NSURL*)aBaseURL;
 
 @property (nonatomic, readonly, copy) NSString* title;
+@property (nonatomic, readonly) NSURLRequest* originRequest;
 @property (nonatomic, readonly) NSURLRequest* currentRequest;
 @property (nonatomic, readonly) NSURL* URL;
 

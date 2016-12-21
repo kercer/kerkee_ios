@@ -29,6 +29,12 @@
 		DF69A5821D13E4030049C628 /* KCFile.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5801D13E4030049C628 /* KCFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF69A5831D13E4030049C628 /* KCFile.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5811D13E4030049C628 /* KCFile.m */; };
 		DF69A5841D13FF520049C628 /* KCFile.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF69A5801D13E4030049C628 /* KCFile.h */; };
+		DF6A1F411E0A38BB00709677 /* KCButton.h in Headers */ = {isa = PBXBuildFile; fileRef = DF6A1F3B1E0A38BB00709677 /* KCButton.h */; };
+		DF6A1F421E0A38BB00709677 /* KCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6A1F3C1E0A38BB00709677 /* KCButton.m */; };
+		DF6A1F431E0A38BB00709677 /* UIActionSheet+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = DF6A1F3D1E0A38BB00709677 /* UIActionSheet+Blocks.h */; };
+		DF6A1F441E0A38BB00709677 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6A1F3E1E0A38BB00709677 /* UIActionSheet+Blocks.m */; };
+		DF6A1F451E0A38BB00709677 /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = DF6A1F3F1E0A38BB00709677 /* UIAlertView+Blocks.h */; };
+		DF6A1F461E0A38BB00709677 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6A1F401E0A38BB00709677 /* UIAlertView+Blocks.m */; };
 		DF74CC341BFAE49D00346F1A /* KCJSType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF54B5E41BF9B55D00F384BF /* KCJSType.h */; };
 		DF75C2C41BB29BCA00CAD3CA /* KCJSExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF75C2C51BB29BCA00CAD3CA /* KCJSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */; };
@@ -396,6 +402,12 @@
 		DF5D70BD1BA91859008A8FB2 /* KCUriRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUriRegister.m; sourceTree = "<group>"; };
 		DF69A5801D13E4030049C628 /* KCFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCFile.h; sourceTree = "<group>"; };
 		DF69A5811D13E4030049C628 /* KCFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCFile.m; sourceTree = "<group>"; };
+		DF6A1F3B1E0A38BB00709677 /* KCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCButton.h; sourceTree = "<group>"; };
+		DF6A1F3C1E0A38BB00709677 /* KCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCButton.m; sourceTree = "<group>"; };
+		DF6A1F3D1E0A38BB00709677 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		DF6A1F3E1E0A38BB00709677 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		DF6A1F3F1E0A38BB00709677 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		DF6A1F401E0A38BB00709677 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		DF75C2C21BB29BCA00CAD3CA /* KCJSExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSExecutor.h; sourceTree = "<group>"; };
 		DF75C2C31BB29BCA00CAD3CA /* KCJSExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSExecutor.m; sourceTree = "<group>"; };
 		DF7642611C18017B0014789E /* KCAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = KCAssert.h; path = ../../Browser/JSBridge/bridge/executors/KCAssert.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -633,6 +645,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DF6A1F3A1E0A38BB00709677 /* alertView */ = {
+			isa = PBXGroup;
+			children = (
+				DF6A1F3B1E0A38BB00709677 /* KCButton.h */,
+				DF6A1F3C1E0A38BB00709677 /* KCButton.m */,
+				DF6A1F3D1E0A38BB00709677 /* UIActionSheet+Blocks.h */,
+				DF6A1F3E1E0A38BB00709677 /* UIActionSheet+Blocks.m */,
+				DF6A1F3F1E0A38BB00709677 /* UIAlertView+Blocks.h */,
+				DF6A1F401E0A38BB00709677 /* UIAlertView+Blocks.m */,
+			);
+			path = alertView;
+			sourceTree = "<group>";
+		};
 		DF765C161BA16C470025B0CC /* UriDispatcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +816,7 @@
 		DFC3AB7D1B9C17F2009F4775 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
+				DF6A1F3A1E0A38BB00709677 /* alertView */,
 				DF5CADF11DE4458E00BD72C0 /* KCWebViewProgressDelegate.h */,
 				DF7CE6721DDDBDE900821A37 /* KCWeakScriptMessageDelegate.h */,
 				DF7CE6731DDDBDE900821A37 /* KCWeakScriptMessageDelegate.m */,
@@ -989,6 +1015,7 @@
 				DF765C241BA175E20025B0CC /* KCURIComponents.h in Headers */,
 				DF765C281BA185D30025B0CC /* KCURIQuery.h in Headers */,
 				DF5D70BE1BA91859008A8FB2 /* KCUriRegister.h in Headers */,
+				DF6A1F411E0A38BB00709677 /* KCButton.h in Headers */,
 				DF765C2C1BA1B5850025B0CC /* KCURI.h in Headers */,
 				DF8A2FA51B9FF9D300BD7FB3 /* UIDevice+KCHardware.h in Headers */,
 				DF44A1131B9FE5F20045092E /* KCUncaughtExceptionHandler.h in Headers */,
@@ -1011,6 +1038,7 @@
 				DFC3AC121B9C17FC009F4775 /* NSObject+KCCoding.h in Headers */,
 				DFC3AC101B9C17FC009F4775 /* NSDate+KCDate.h in Headers */,
 				DFC3AB891B9C17F2009F4775 /* KCManifestParser.h in Headers */,
+				DF6A1F451E0A38BB00709677 /* UIAlertView+Blocks.h in Headers */,
 				DFC3AC3F1B9C17FC009F4775 /* KCUtilGzip.h in Headers */,
 				DFC3AC391B9C17FC009F4775 /* KCUtilCoding.h in Headers */,
 				DFC3AC1E1B9C17FC009F4775 /* NSObject+KCTicker.h in Headers */,
@@ -1061,6 +1089,7 @@
 				DF75C2C41BB29BCA00CAD3CA /* KCJSExecutor.h in Headers */,
 				DF54B5E01BF9B45500F384BF /* KCJSCallback.h in Headers */,
 				DFC3ABFF1B9C17FC009F4775 /* KCBaseDefine.h in Headers */,
+				DF6A1F431E0A38BB00709677 /* UIActionSheet+Blocks.h in Headers */,
 				DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */,
 				DFC3AC041B9C17FC009F4775 /* KCRuntime.h in Headers */,
 				DF69A5821D13E4030049C628 /* KCFile.h in Headers */,
@@ -1187,6 +1216,7 @@
 				DFC3AC0B1B9C17FC009F4775 /* KCTaskQueue.m in Sources */,
 				DFC3ABA61B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.m in Sources */,
 				DFC3AC171B9C17FC009F4775 /* NSObject+KCObjectInfo.m in Sources */,
+				DF6A1F421E0A38BB00709677 /* KCButton.m in Sources */,
 				DFC3AC231B9C17FC009F4775 /* KCCache.m in Sources */,
 				DFC3AC151B9C17FC009F4775 /* NSObject+KCNotification.m in Sources */,
 				DF44A1101B9FE5EA0045092E /* KCException.m in Sources */,
@@ -1237,6 +1267,7 @@
 				DFD43FB41CAB8741005CBB7C /* KCDirWatcher.m in Sources */,
 				DFE100CE1C1E9FFF00938E43 /* KCString.m in Sources */,
 				DFC3AC401B9C17FC009F4775 /* KCUtilGzip.m in Sources */,
+				DF6A1F441E0A38BB00709677 /* UIActionSheet+Blocks.m in Sources */,
 				DFC3AC111B9C17FC009F4775 /* NSDate+KCDate.m in Sources */,
 				DF765C1A1BA16C860025B0CC /* KCUriDispatcher.m in Sources */,
 				DF69A5831D13E4030049C628 /* KCFile.m in Sources */,
@@ -1253,6 +1284,7 @@
 				DFE100D31C1EC47800938E43 /* KCUtilURI.m in Sources */,
 				DFC3ABA31B9C17F2009F4775 /* KCXMLHttpRequest.m in Sources */,
 				DFCF9A8C1DED664500039A95 /* KCWKWebView.m in Sources */,
+				DF6A1F461E0A38BB00709677 /* UIAlertView+Blocks.m in Sources */,
 				DF809CB51B9D90FF008B315D /* KCClass.m in Sources */,
 				DF75C2C51BB29BCA00CAD3CA /* KCJSExecutor.m in Sources */,
 			);

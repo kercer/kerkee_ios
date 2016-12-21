@@ -14,6 +14,7 @@
 #import "NSObject+KCSelector.h"
 #import "KCWebImageSetter.h"
 #import "KCWKWebView.h"
+#import "UIAlertView+Blocks.h"
 
 @interface KCUIWebView ()
 @property (nonatomic, assign) id scrollViewDelegate;
@@ -46,8 +47,6 @@
 @property (nonatomic, strong) NSURLRequest* currentRequest;
 
 @property (nonatomic, copy) NSString* title;
-
-@property (nonatomic, readonly) id realWebView;
 
 @property (nonatomic,weak)id m_attach;
 
@@ -341,6 +340,19 @@ static int createWebViewID = 0;
 #pragma mark - WKUIDelegate
 // TODO
 
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
+{
+    KCButton* item1 = [KCButton buttonWithLabel:@"确定"];
+    item1.action = ^
+    {
+        completionHandler();
+    };
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message cancelButton:item1 otherButtons: nil];
+    
+    [alert show];
+    KCRelease(alert);
+    
+}
 
 
 #pragma mark - Notify 
