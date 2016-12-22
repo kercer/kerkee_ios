@@ -51,11 +51,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)countOfHistory;
 - (void)gobackWithStep:(NSInteger)aStep;
 
+//@property (nonatomic, readonly) NSString* originUserAgent;
+
+
 
 #pragma mark - API
 @property (nonatomic, readonly) UIScrollView* scrollView;
 
 - (id)loadRequest:(NSURLRequest*)aRequest;
+- (id)loadFileURL:(NSURL *)aURL allowingReadAccessToURL:(NSURL *)aReadAccessURL API_AVAILABLE(macosx(10.11), ios(9.0));
 - (id)loadHTMLString:(NSString*)aString baseURL:(nullable NSURL*)aBaseURL;
 
 @property (nonatomic, readonly, copy) NSString* title;
