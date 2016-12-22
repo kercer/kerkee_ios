@@ -421,7 +421,7 @@ static int createWebViewID = 0;
     BOOL retValue = NO;
     
     //WKWebview doesn't recognize the protocol type：phone numbers, email address, maps, etc.
-    if ([url.scheme isEqualToString:@"tel"])
+    if ([url.scheme isEqualToString:@"tel"] || [url.absoluteString containsString:@"ituns.apple.com"])
     {
         UIApplication* app = [UIApplication sharedApplication];
         if ([app canOpenURL:url])
