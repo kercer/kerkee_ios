@@ -15,6 +15,7 @@
 #import "KCWebImageSetter.h"
 #import "KCWKWebView.h"
 #import "UIAlertView+Blocks.h"
+#import "KCUtilDevice.h"
 
 @interface KCUIWebView ()
 @property (nonatomic, assign) id scrollViewDelegate;
@@ -99,7 +100,7 @@ static int createWebViewID = 0;
     m_isPageScrollOn = false;
     
     Class wkWebView = NSClassFromString(@"WKWebView");
-    if (wkWebView && m_isUsingUIWebView == NO)
+    if (wkWebView && m_isUsingUIWebView == NO && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0"))
     {
         [self initWKWebView];
         m_isUsingUIWebView = NO;
@@ -455,6 +456,23 @@ static int createWebViewID = 0;
         return [(WKWebView*)self.realWebView loadRequest:aRequest];
     }
 }
+
+- (id)loadFileURL:(NSURL *)aURL allowingReadAccessToURL:(NSURL *)aReadAccessURL
+{
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:aURL];
+    self.originRequest = request;
+    self.currentRequest = request;
+    if (m_isUsingUIWebView)
+    {
+        return [self loadRequest:request];
+    }
+    else
+    {
+        return [(WKWebView*)self.realWebView loadFileURL:aURL allowingReadAccessToURL:aReadAccessURL];
+    }
+}
+
+
 - (id)loadHTMLString:(NSString*)aString baseURL:(nullable NSURL*)aBaseURL
 {
     if (m_isUsingUIWebView)
