@@ -8,6 +8,17 @@
 
 #import "KCWKWebView.h"
 #import "NSObject+KCSelector.h"
+#import <objc/runtime.h>
+#import <objc/message.h>
+
+
+@interface WKWebView()
+{
+}
+
+-(void)_updateVisibleContentRects;
+
+@end
 
 @interface KCWKWebView()
 
@@ -39,6 +50,12 @@
     {
         [self.scrollViewDelegate performSelectorSafetyWithArgs:@selector(scrollViewDidScroll:), scrollView, nil];
     }
+
+    if ([self respondsToSelector:@selector(_updateVisibleContentRects)]) {
+        ((void(*)(id,SEL,BOOL))objc_msgSend)(self,@selector(_updateVisibleContentRects),NO);
+    }
+    
+    
 }
 
 @end
