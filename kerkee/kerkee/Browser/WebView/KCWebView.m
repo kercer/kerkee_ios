@@ -264,14 +264,14 @@ static int createWebViewID = 0;
         }
     }
     
-    if([aInitialRequest isKindOfClass:[NSURLRequest class]])
-    {
-        NSURLRequest *rqt = (NSURLRequest *)aInitialRequest;
-        if(nil != m_imageSetter)
-        {
-            [m_imageSetter handleImage:[KCWebImageSetterTask create:self url:rqt.URL]];
-        }
-    }
+//    if([aInitialRequest isKindOfClass:[NSURLRequest class]])
+//    {
+//        NSURLRequest *rqt = (NSURLRequest *)aInitialRequest;
+//        if(nil != m_imageSetter)
+//        {
+//            [m_imageSetter handleImage:[KCWebImageSetterTask create:self url:rqt.URL]];
+//        }
+//    }
 }
 
 -(void) webView:(KCUIWebView*)aWebView didReceiveResourceNumber:(int)aResourceNumber totalResources:(int)aTotalResources
