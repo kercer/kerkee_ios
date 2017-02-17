@@ -128,6 +128,7 @@
 //    [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
     
     [self cleanForDealloc];
+    self.scrollViewDelegate = nil;
     
     KCDealloc(super);
 }

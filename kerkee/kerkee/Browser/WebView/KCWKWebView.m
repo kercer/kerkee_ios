@@ -10,6 +10,7 @@
 #import "NSObject+KCSelector.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
+#import "KCBaseDefine.h"
 
 
 @interface WKWebView()
@@ -56,6 +57,14 @@
     }
     
     
+}
+
+
+- (void)dealloc
+{
+    self.scrollViewDelegate = nil;
+    
+    KCDealloc(super);
 }
 
 @end

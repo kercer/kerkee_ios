@@ -60,7 +60,7 @@
 @synthesize scalesPageToFit = m_scalesPageToFit;
 
 @synthesize delegate = m_delegate;
-@synthesize progressDelegate;
+@synthesize progressDelegate = m_progressDelegate;
 
 
 static int createWebViewID = 0;
@@ -154,11 +154,11 @@ static int createWebViewID = 0;
     {
         self.title = change[NSKeyValueChangeNewKey];
         
-        if (self.progressDelegate)
+        if (m_progressDelegate)
         {
-            if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveTitle:)])
+            if ([m_progressDelegate respondsToSelector:@selector(webView:didReceiveTitle:)])
             {
-                [self.progressDelegate webView:self didReceiveTitle:self.title];
+                [m_progressDelegate webView:self didReceiveTitle:self.title];
             }
         }
         
@@ -256,11 +256,11 @@ static int createWebViewID = 0;
 #pragma mark KCWebViewProgressDelegate
 -(void)webView:(KCUIWebView*)aWebView identifierForInitialRequest:(NSURLRequest*)aInitialRequest
 {
-    if (self.progressDelegate)
+    if (m_progressDelegate)
     {
-        if ([self.progressDelegate respondsToSelector:@selector(webView:identifierForInitialRequest:)])
+        if ([m_progressDelegate respondsToSelector:@selector(webView:identifierForInitialRequest:)])
         {
-            [self.progressDelegate webView:self identifierForInitialRequest:aInitialRequest];
+            [m_progressDelegate webView:self identifierForInitialRequest:aInitialRequest];
         }
     }
     
@@ -276,11 +276,11 @@ static int createWebViewID = 0;
 
 -(void) webView:(KCUIWebView*)aWebView didReceiveResourceNumber:(int)aResourceNumber totalResources:(int)aTotalResources
 {
-    if (self.progressDelegate)
+    if (m_progressDelegate)
     {
-        if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveResourceNumber:totalResources:)])
+        if ([m_progressDelegate respondsToSelector:@selector(webView:didReceiveResourceNumber:totalResources:)])
         {
-            [self.progressDelegate webView:self didReceiveResourceNumber:aResourceNumber totalResources:aTotalResources];
+            [m_progressDelegate webView:self didReceiveResourceNumber:aResourceNumber totalResources:aTotalResources];
         }
     }
 }
@@ -289,11 +289,11 @@ static int createWebViewID = 0;
 {
     self.title = aTitle;
     
-    if (self.progressDelegate)
+    if (m_progressDelegate)
     {
-        if ([self.progressDelegate respondsToSelector:@selector(webView:didReceiveTitle:)])
+        if ([m_progressDelegate respondsToSelector:@selector(webView:didReceiveTitle:)])
         {
-            [self.progressDelegate webView:self didReceiveTitle:aTitle];
+            [m_progressDelegate webView:self didReceiveTitle:aTitle];
         }
     }
 }
@@ -853,14 +853,16 @@ static int createWebViewID = 0;
     
     if (m_isUsingUIWebView)
     {
-        UIWebView* webView = m_realWebView;
+        KCUIWebView* webView = m_realWebView;
         webView.delegate = nil;
+        webView.scrollViewDelegate = nil;
     }
     else
     {
-        WKWebView* webView = m_realWebView;
+        KCWKWebView* webView = m_realWebView;
         webView.UIDelegate = nil;
         webView.navigationDelegate = nil;
+        webView.scrollViewDelegate = nil;
 
         [webView removeObserver:self forKeyPath:@"estimatedProgress"];
         [webView removeObserver:self forKeyPath:@"title"];
@@ -872,7 +874,9 @@ static int createWebViewID = 0;
     [m_realWebView stopLoading];
     [m_realWebView removeFromSuperview];
     m_realWebView = nil;
+    m_progressDelegate = nil;
     m_delegate = nil;
     
+    KCDealloc(super);
 }
 @end

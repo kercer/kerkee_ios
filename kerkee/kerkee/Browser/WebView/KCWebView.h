@@ -33,9 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) id realWebView;
 
 // Will agent to WKUIDelegate WKNavigationDelegate internal unrealized callback.
-@property (weak, nonatomic) id<KCWebViewDelegate> delegate;
+@property (assign, nonatomic) id<KCWebViewDelegate> delegate;
 
-@property (weak, nonatomic) id<KCWebViewProgressDelegate> progressDelegate;
+@property (assign, nonatomic) id<KCWebViewProgressDelegate> progressDelegate;
 
 @property (nonatomic, readonly) BOOL isUsingUIWebView;
 //Estimate the page loaded
