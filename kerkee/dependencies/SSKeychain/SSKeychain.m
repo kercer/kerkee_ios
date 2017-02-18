@@ -7,6 +7,7 @@
 //
 
 #import "SSKeychain.h"
+#import <SSKeychainQuery.h>
 
 NSString *const kSSKeychainErrorDomain = @"com.samsoffes.sskeychain";
 NSString *const kSSKeychainAccountKey = @"acct";

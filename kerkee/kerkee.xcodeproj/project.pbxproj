@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF01E19E1E584A51005602A9 /* SSKeychain.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE8A61A1C92D60700EDC868 /* SSKeychain.h */; };
+		DF01E19F1E584A51005602A9 /* SSKeychainQuery.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */; };
 		DF30750B1B959B01005AA030 /* kerkee.h in Headers */ = {isa = PBXBuildFile; fileRef = DF30750A1B959B01005AA030 /* kerkee.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF3075111B959B01005AA030 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3075051B959B01005AA030 /* kerkee.framework */; };
 		DF3075181B959B01005AA030 /* kerkeeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3075171B959B01005AA030 /* kerkeeTests.m */; };
@@ -268,9 +270,9 @@
 		DFE85A891C83FB0A00B5ADD5 /* KCJSCompileExecutor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */; };
 		DFE8A62D1C92D60700EDC868 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFE8A6171C92D60700EDC868 /* SSKeychain.strings */; };
 		DFE8A62E1C92D60700EDC868 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFE8A6191C92D60700EDC868 /* Info.plist */; };
-		DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A61A1C92D60700EDC868 /* SSKeychain.h */; };
+		DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A61A1C92D60700EDC868 /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE8A6301C92D60700EDC868 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A61B1C92D60700EDC868 /* SSKeychain.m */; };
-		DFE8A6311C92D60700EDC868 /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */; };
+		DFE8A6311C92D60700EDC868 /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE8A6321C92D60700EDC868 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A61D1C92D60700EDC868 /* SSKeychainQuery.m */; };
 /* End PBXBuildFile section */
 
@@ -291,6 +293,8 @@
 			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				DF01E19E1E584A51005602A9 /* SSKeychain.h in Copy Files */,
+				DF01E19F1E584A51005602A9 /* SSKeychainQuery.h in Copy Files */,
 				DF5CADF31DE4513100BD72C0 /* KCWebViewProgressDelegate.h in Copy Files */,
 				DF5CADF21DE450FA00BD72C0 /* KCWebView.h in Copy Files */,
 				DF66B3611D30EFDC00CE0382 /* KCUtilJson.h in Copy Files */,
@@ -1010,6 +1014,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */,
+				DFE8A6311C92D60700EDC868 /* SSKeychainQuery.h in Headers */,
 				DFC6334C1C195EDF008301F3 /* KCUtilJson.h in Headers */,
 				DF5D70C41BA95A8C008A8FB2 /* KCUriDispatcher.h in Headers */,
 				DF765C241BA175E20025B0CC /* KCURIComponents.h in Headers */,
@@ -1093,11 +1099,9 @@
 				DF5D70C31BA95A25008A8FB2 /* KCUriActionDelegate.h in Headers */,
 				DFC3AC041B9C17FC009F4775 /* KCRuntime.h in Headers */,
 				DF69A5821D13E4030049C628 /* KCFile.h in Headers */,
-				DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */,
 				DFC3ABA01B9C17F2009F4775 /* KCWebImageSetterTask.h in Headers */,
 				DFC3AC2B1B9C17FC009F4775 /* KCImagePreCache.h in Headers */,
 				DFD5455C1BF44A3200770ED0 /* KCModifier.h in Headers */,
-				DFE8A6311C92D60700EDC868 /* SSKeychainQuery.h in Headers */,
 				DF809CBA1B9D90FF008B315D /* KCJSDefine.h in Headers */,
 				DFC3AC331B9C17FC009F4775 /* KCLog.h in Headers */,
 				DF30750B1B959B01005AA030 /* kerkee.h in Headers */,
