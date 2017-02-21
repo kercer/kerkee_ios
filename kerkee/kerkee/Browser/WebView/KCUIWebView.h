@@ -21,7 +21,7 @@
 @property (nonatomic, assign) int resourceCount;
 @property (nonatomic, assign) int resourceCompletedCount;
 
-@property (nonatomic, assign) id<KCWebViewProgressDelegate> progressDelegate;
+@property (nonatomic, weak) id<KCWebViewProgressDelegate> progressDelegate;
 
 
 

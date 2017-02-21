@@ -23,7 +23,7 @@
 
 @interface KCWKWebView()
 
-@property (nonatomic, assign) id scrollViewDelegate;
+@property (nonatomic, weak) id scrollViewDelegate;
 
 @end
 
