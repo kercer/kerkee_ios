@@ -19,6 +19,8 @@
 		DF046D121CDC849D003CA85C /* KCRegistMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046D081CDC849D003CA85C /* KCRegistMgr.m */; };
 		DF5D70C21BA9559D008A8FB2 /* KCActionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5D70C11BA9559D008A8FB2 /* KCActionTest.m */; };
 		DF65AB7D1B9EC61B00F24874 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = DF65AB7C1B9EC61B00F24874 /* test.html */; };
+		DF7DE09B1E8908ED003CE747 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7DE08A1E890726003CE747 /* kerkee.framework */; };
+		DF7DE09C1E8908ED003CE747 /* kerkee.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF7DE08A1E890726003CE747 /* kerkee.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF83DA861B959D2A003E3F91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DA851B959D2A003E3F91 /* main.m */; };
 		DF83DA891B959D2A003E3F91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DA881B959D2A003E3F91 /* AppDelegate.m */; };
 		DF83DA8C1B959D2A003E3F91 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83DA8B1B959D2A003E3F91 /* ViewController.m */; };
@@ -52,6 +54,13 @@
 			remoteGlobalIDString = DF3075101B959B01005AA030;
 			remoteInfo = kerkeeTests;
 		};
+		DF7DE09D1E8908ED003CE747 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF095ECC1D12611F002FD240 /* kerkee.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DF3075041B959B01005AA030;
+			remoteInfo = kerkee;
+		};
 		DF83DA9A1B959D2A003E3F91 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DF83DA781B959D2A003E3F91 /* Project object */;
@@ -68,6 +77,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				DF7DE09C1E8908ED003CE747 /* kerkee.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF9BCE4F1C3A5E3C0097A767 /* libz.tbd in Frameworks */,
+				DF7DE09B1E8908ED003CE747 /* kerkee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +351,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DF7DE09E1E8908ED003CE747 /* PBXTargetDependency */,
 			);
 			name = kerkeeExample;
 			productName = kerkeeDemo;
@@ -486,6 +498,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DF7DE09E1E8908ED003CE747 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = kerkee;
+			targetProxy = DF7DE09D1E8908ED003CE747 /* PBXContainerItemProxy */;
+		};
 		DF83DA9B1B959D2A003E3F91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DF83DA7F1B959D2A003E3F91 /* kerkeeExample */;
