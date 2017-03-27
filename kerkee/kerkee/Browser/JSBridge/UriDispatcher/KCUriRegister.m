@@ -89,6 +89,7 @@
         if ([action accept:aUriData.components.host path:aUriData.components.path])
         {
             [action invokeAction:[aUriData getQueries]];
+            break;
         }
     }
 }
