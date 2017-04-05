@@ -126,22 +126,21 @@ static BOOL sIsOpenJSLog = true;
         [self onNotified:webView];
         
     }
-    /*
-    else if (attachApiScheme && [request.URL.scheme isEqualToString:attachApiScheme])
-    {
-        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(parseCustomApi:)])
-        {
-            [self.delegate parseCustomApi:request.URL];
-        }
-    }
-    */
-
+    
+//    if (attachApiScheme && [request.URL.scheme isEqualToString:attachApiScheme])
+//    {
+//        if (self.m_userDelegate != nil && [self.m_userDelegate respondsToSelector:@selector(parseCustomApi:)])
+//        {
+//            [self.m_userDelegate parseCustomApi:request.URL];
+//        }
+//    }
+    
     if (self.m_userDelegate != nil && [self.m_userDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
     {
         return [self.m_userDelegate webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
     }
 
-    return NO;
+    return YES;
 }
 
 - (void)webViewDidStartLoad:(KCWebView *)webView
