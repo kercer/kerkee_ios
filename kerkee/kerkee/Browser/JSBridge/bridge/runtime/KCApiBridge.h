@@ -13,22 +13,12 @@
 #import "KCWebView.h"
 #import "KCRegister.h"
 
-@protocol KCApiBridgeDelegate <KCWebViewDelegate>
-
-@optional
--(void) parseCustomApi:(NSURL*)aURL;
-
-@end
-
 
 @interface KCApiBridge : NSObject <KCWebViewDelegate,KCWebViewProgressDelegate>
 
-@property(nonatomic, strong) NSString *attachApiScheme;//附加的协议主题 需要实现parseCustomApi接口
 
 
 + (id)apiBridgeWithWebView:(KCWebView *)aWebView delegate:(id)userDelegate;
-
-//- (void)destroy;// destroy webview
 
 + (void)callbackJSOnHitPageBottom:(KCWebView*)aWebView y:(CGFloat)aY;
 + (void)callbackJSOnPageScroll:(KCWebView*)aWebView x:(CGFloat)aX y:(CGFloat)aY width:(CGFloat)aWidth height:(CGFloat)aHeight;

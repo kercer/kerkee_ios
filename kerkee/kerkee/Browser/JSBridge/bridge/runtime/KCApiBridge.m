@@ -40,9 +40,6 @@ static BOOL sIsOpenJSLog = true;
 
 @implementation KCApiBridge
 
-//@synthesize delegate = _delegate;
-@synthesize attachApiScheme;
-
 
 -(id)init;
 {
@@ -60,7 +57,6 @@ static BOOL sIsOpenJSLog = true;
 
 - (void)dealloc
 {
-    self.attachApiScheme = nil;
     self.m_userDelegate = nil;
     
     KCDealloc(super);
@@ -126,14 +122,6 @@ static BOOL sIsOpenJSLog = true;
         [self onNotified:webView];
         
     }
-    
-//    if (attachApiScheme && [request.URL.scheme isEqualToString:attachApiScheme])
-//    {
-//        if (self.m_userDelegate != nil && [self.m_userDelegate respondsToSelector:@selector(parseCustomApi:)])
-//        {
-//            [self.m_userDelegate parseCustomApi:request.URL];
-//        }
-//    }
     
     if (self.m_userDelegate != nil && [self.m_userDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
     {
