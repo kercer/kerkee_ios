@@ -138,7 +138,7 @@
 
 + (void)callbackJS:(KCWebView*)aWebview callbackId:(NSString *)aCallbackId string:(NSString *)aString
 {
-    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, \"%@\")", aCallbackId, aString];
+    NSString *js = [[NSString alloc] initWithFormat:@"ApiBridge.onCallback(%@, '%@')", aCallbackId, aString];
     [self callJS:js inWebView:aWebview completionHandler:nil];
     KCRelease(js);
 }
