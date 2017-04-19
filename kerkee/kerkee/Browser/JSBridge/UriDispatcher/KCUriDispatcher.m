@@ -83,7 +83,6 @@ DEF_SINGLETON(KCUriDispatcher);
     {
         m_defaultScheme = aScheme;
         uriRegister = [self addUriRegisterWithScheme:aScheme];
-        
     }
     return uriRegister;
 }
@@ -103,6 +102,20 @@ DEF_SINGLETON(KCUriDispatcher);
     return uriRegister;
 }
 
++(KCUriRegister*)getUriRegisterWithScheme:(NSString*)aScheme
+{
+    return [[KCUriDispatcher sharedInstance] getUriRegisterWithScheme:aScheme];
+}
+-(KCUriRegister*)getUriRegisterWithScheme:(NSString*)aScheme
+{
+    KCUriRegister* uriRegister = nil;
+    if (aScheme && aScheme.length > 0 && m_uriRgisterMap)
+    {
+        uriRegister = [m_uriRgisterMap objectForKey:aScheme];
+    }
+    return uriRegister;
+}
+
 +(KCUriRegister*)addUriRegisterWithScheme:(NSString*)aScheme
 {
     return [[KCUriDispatcher sharedInstance] addUriRegisterWithScheme:aScheme];
@@ -117,6 +130,8 @@ DEF_SINGLETON(KCUriDispatcher);
     }
     return uriRegister;
 }
+
+
 
 #pragma mark -
 #pragma mark id<KCUriRegisterDelegate>

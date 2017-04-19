@@ -30,6 +30,11 @@
 +(KCUriRegister*)defaultUriRegister;
 
 /**
+ get uri register with scheme,if you get default uri register,you can use defaultUriRegister method
+ */
++(KCUriRegister*)getUriRegisterWithScheme:(NSString*)aScheme;
+
+/**
  * add Uri Register
  */
 +(KCUriRegister*)addUriRegisterWithScheme:(NSString*)aScheme;
