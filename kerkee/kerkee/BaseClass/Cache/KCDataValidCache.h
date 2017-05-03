@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import "KCCache.h"
 
-//暂不继承或组合UCFileCache,可更灵活扩展
+//暂不继承或组合KCFileCache,可更灵活扩展
 @interface KCDataValidCache : KCCache
 
 + (KCDataValidCache*) defaultCache;

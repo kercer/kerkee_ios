@@ -13,7 +13,7 @@
 @implementation KCCache
 
 
-//#pragma mark UCCache
+//#pragma mark KCCache
 //- (BOOL)hasCached:(NSString *)key
 //{
 //    return NO;
