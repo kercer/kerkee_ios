@@ -216,7 +216,18 @@ static KCDataValidCache* instance = nil;
 
 - (NSObject *)unserialize:(NSData *)data
 {
-    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    @try
+    {
+        return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    @catch (NSException *exception)
+    {
+        return nil;
+    }
+    @finally
+    {
+    }
+    
 }
 
 
