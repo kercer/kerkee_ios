@@ -134,7 +134,18 @@
 
 + (NSObject *)unarchive:(NSData *)aData
 {
-    return [NSKeyedUnarchiver unarchiveObjectWithData:aData];
+    @try
+    {
+        return [NSKeyedUnarchiver unarchiveObjectWithData:aData];
+    }
+    @catch (NSException *exception)
+    {
+        return nil;
+    }
+    @finally
+    {
+    }
+    
 }
 
 
