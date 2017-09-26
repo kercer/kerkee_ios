@@ -226,9 +226,10 @@
 #pragma mark net delegate
 
 #pragma mark -- NSURLSessionDelegate
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error
+- (void)URLSession:(NSURLSession *)aResponse didBecomeInvalidWithError:(nullable NSError *)aError
 {
-    KCLog(@"didBecomeInvalidWithError");
+    [self returnError:m_webview statusCode:0 statusText:@"abort"];
+//    KCLog(@"didBecomeInvalidWithError");
 }
 
 
