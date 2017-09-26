@@ -95,8 +95,9 @@
 
 - (NSString *)urlByAppendingDict:(NSDictionary *)params
 {
+    NSString* paramsToken = (params != nil && params.count > 0) ? @"?" :@"";
     NSURL * parsedURL = [NSURL URLWithString:self];
-	NSString * queryPrefix = parsedURL.query ? @"&" : @"?";
+	NSString * queryPrefix = parsedURL.query ? @"&" : paramsToken;
 	NSString * query = [self queryStringFromDictionary:params];
 	return [NSString stringWithFormat:@"%@%@%@", self, queryPrefix, query];
 }
