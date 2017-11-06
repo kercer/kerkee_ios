@@ -67,6 +67,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSURLRequest* currentRequest;
 @property (nonatomic, readonly) NSURL* URL;
 
+/*! @abstract The custom user agent string or nil if no custom user agent string has been set.
+ */
+@property (nullable, nonatomic, copy) NSString *customUserAgent;
+
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
 @property (nonatomic, readonly) BOOL canGoBack;
 @property (nonatomic, readonly) BOOL canGoForward;

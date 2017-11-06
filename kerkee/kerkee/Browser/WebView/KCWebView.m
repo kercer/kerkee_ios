@@ -16,6 +16,8 @@
 #import "KCWKWebView.h"
 #import "UIAlertView+Blocks.h"
 #import "KCUtilDevice.h"
+#import "KCUtilWebView.h"
+
 
 @interface KCUIWebView ()
 @property (nonatomic, assign) id scrollViewDelegate;
@@ -23,6 +25,10 @@
 
 @interface KCWKWebView ()
 @property (nonatomic, assign) id scrollViewDelegate;
+@end
+
+@interface KCUtilWebView ()
++ (void)setWebViewUserAgent:(NSString*)aUserAgent webView:(KCWebView*)aWebView;
 @end
 
 @interface KCWebView () <UIWebViewDelegate, KCWebViewProgressDelegate, WKNavigationDelegate, WKUIDelegate>
@@ -41,6 +47,7 @@
     KCWebImageSetter* m_imageSetter;
     
     int m_webViewID;
+    NSString* m_customUserAgent;
 }
 
 @property (nonatomic, assign) double estimatedProgress;
@@ -61,6 +68,7 @@
 
 @synthesize delegate = m_delegate;
 @synthesize progressDelegate = m_progressDelegate;
+@synthesize customUserAgent = m_customUserAgent;
 
 
 static int createWebViewID = 0;
@@ -142,6 +150,7 @@ static int createWebViewID = 0;
     [webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     m_realWebView = webView;
 }
+
 
 //called after WKWebView loadRequest
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
@@ -301,7 +310,15 @@ static int createWebViewID = 0;
 
 
 #pragma mark - WKNavigationDelegate
-- (void)webView:(WKWebView*)webView decidePolicyForNavigationAction:(WKNavigationAction*)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+/*! @abstract Decides whether to allow or cancel a navigation.
+ @param webView The web view invoking the delegate method.
+ @param navigationAction Descriptive information about the action
+ triggering the navigation request.
+ @param decisionHandler The decision handler to call to allow or cancel the
+ navigation. The argument is one of the constants of the enumerated type WKNavigationActionPolicy.
+ @discussion If you do not implement this method, the web view will load the request or, if appropriate, forward it to another application.
+ */
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
     BOOL resultBOOL = [self notifyWebViewShouldStartLoadWithRequest:navigationAction.request navigationType:navigationAction.navigationType];
     BOOL isLoadingDisableScheme = [self isLoadingWKWebViewDisableScheme:navigationAction.request.URL];
@@ -320,19 +337,43 @@ static int createWebViewID = 0;
         decisionHandler(WKNavigationActionPolicyCancel);
     }
 }
-- (void)webView:(WKWebView*)webView didStartProvisionalNavigation:(WKNavigation*)navigation
+
+/*! @abstract Invoked when a main frame navigation starts.
+ @param webView The web view invoking the delegate method.
+ @param navigation The navigation.
+ */
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation
 {
     [self notifyWebViewDidStartLoad];
 }
-- (void)webView:(WKWebView*)webView didFinishNavigation:(WKNavigation*)navigation
+
+/*! @abstract Invoked when a main frame navigation completes.
+ @param webView The web view invoking the delegate method.
+ @param navigation The navigation.
+ */
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation
 {
     [self notifyWebViewDidFinishLoad];
 }
-- (void)webView:(WKWebView*)webView didFailProvisionalNavigation:(WKNavigation*)navigation withError:(NSError*)error
+
+/*! @abstract Invoked when an error occurs while starting to load data for
+ the main frame.
+ @param webView The web view invoking the delegate method.
+ @param navigation The navigation.
+ @param error The error that occurred.
+ */
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
 {
     [self notifyWebViewDidFailLoadWithError:error];
 }
-- (void)webView:(WKWebView*)webView didFailNavigation:(WKNavigation*)navigation withError:(NSError*)error
+
+/*! @abstract Invoked when an error occurs during a committed main frame
+ navigation.
+ @param webView The web view invoking the delegate method.
+ @param navigation The navigation.
+ @param error The error that occurred.
+ */
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
 {
     [self notifyWebViewDidFailLoadWithError:error];
 }
@@ -340,7 +381,6 @@ static int createWebViewID = 0;
 
 #pragma mark - WKUIDelegate
 // TODO
-
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
 {
     KCButton* item1 = [KCButton buttonWithLabel:@"确定"];
@@ -507,6 +547,13 @@ static int createWebViewID = 0;
         return [(WKWebView*)self.realWebView URL];
     }
 }
+
+- (void)setCustomUserAgent:(NSString *)aCustomUserAgent
+{
+    m_customUserAgent = aCustomUserAgent;
+    [KCUtilWebView setWebViewUserAgent:aCustomUserAgent webView:self];
+}
+
 - (BOOL)isLoading
 {   
     return [self.realWebView isLoading];

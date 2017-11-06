@@ -16,6 +16,8 @@
 		DF44A1101B9FE5EA0045092E /* KCException.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A10E1B9FE5EA0045092E /* KCException.m */; };
 		DF44A1131B9FE5F20045092E /* KCUncaughtExceptionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF44A1141B9FE5F20045092E /* KCUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1121B9FE5F20045092E /* KCUncaughtExceptionHandler.m */; };
+		DF537D061FB05C8B00E3B6D7 /* KCUtilWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = DF537D041FB05C8B00E3B6D7 /* KCUtilWebView.h */; };
+		DF537D071FB05C8B00E3B6D7 /* KCUtilWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF537D051FB05C8B00E3B6D7 /* KCUtilWebView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF54B5E01BF9B45500F384BF /* KCJSCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF54B5E11BF9B45500F384BF /* KCJSCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = DF54B5DF1BF9B45500F384BF /* KCJSCallback.m */; };
 		DF54B5E21BF9B4D300F384BF /* KCJSCallback.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */; };
@@ -397,6 +399,8 @@
 		DF44A10E1B9FE5EA0045092E /* KCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCException.m; sourceTree = "<group>"; };
 		DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUncaughtExceptionHandler.h; sourceTree = "<group>"; };
 		DF44A1121B9FE5F20045092E /* KCUncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUncaughtExceptionHandler.m; sourceTree = "<group>"; };
+		DF537D041FB05C8B00E3B6D7 /* KCUtilWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KCUtilWebView.h; sourceTree = "<group>"; };
+		DF537D051FB05C8B00E3B6D7 /* KCUtilWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KCUtilWebView.m; sourceTree = "<group>"; };
 		DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSCallback.h; sourceTree = "<group>"; };
 		DF54B5DF1BF9B45500F384BF /* KCJSCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSCallback.m; sourceTree = "<group>"; };
 		DF54B5E41BF9B55D00F384BF /* KCJSType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSType.h; sourceTree = "<group>"; };
@@ -834,6 +838,8 @@
 				DFCF9A891DED664500039A95 /* KCWKWebView.h */,
 				DFCF9A8A1DED664500039A95 /* KCWKWebView.m */,
 				DFC3AB821B9C17F2009F4775 /* private */,
+				DF537D041FB05C8B00E3B6D7 /* KCUtilWebView.h */,
+				DF537D051FB05C8B00E3B6D7 /* KCUtilWebView.m */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -1072,6 +1078,7 @@
 				DFC3AC181B9C17FC009F4775 /* NSObject+KCObserver.h in Headers */,
 				DFC3ABA21B9C17F2009F4775 /* KCXMLHttpRequest.h in Headers */,
 				DF809CAE1B9D90FF008B315D /* KCApiBridgeManager.h in Headers */,
+				DF537D061FB05C8B00E3B6D7 /* KCUtilWebView.h in Headers */,
 				DFC3ABAB1B9C17F2009F4775 /* KCWebViewManager.h in Headers */,
 				DFC3AC411B9C17FC009F4775 /* KCUtilMd5.h in Headers */,
 				DFC3AC3B1B9C17FC009F4775 /* KCUtilDevice.h in Headers */,
@@ -1275,6 +1282,7 @@
 				DFC3AC111B9C17FC009F4775 /* NSDate+KCDate.m in Sources */,
 				DF765C1A1BA16C860025B0CC /* KCUriDispatcher.m in Sources */,
 				DF69A5831D13E4030049C628 /* KCFile.m in Sources */,
+				DF537D071FB05C8B00E3B6D7 /* KCUtilWebView.m in Sources */,
 				DFC3AC091B9C17FC009F4775 /* KCSingleton.m in Sources */,
 				DFC3AC031B9C17FC009F4775 /* KCObject.m in Sources */,
 				DFC3AC281B9C17FC009F4775 /* KCFileCache.m in Sources */,
@@ -1373,6 +1381,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1421,6 +1430,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
