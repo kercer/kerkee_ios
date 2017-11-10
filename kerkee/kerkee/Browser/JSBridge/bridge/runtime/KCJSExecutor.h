@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)callJSFunction:(NSString *)aFunction  inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler;
 
++ (void)callJS:(NSString *)aJS inWebView:(KCWebView*)aWebView;
 + (void)callJS:(NSString *)aJS inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler;
 
 + (void)callJSOnMainThread:(NSString*)aJS inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler;

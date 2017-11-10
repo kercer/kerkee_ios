@@ -95,6 +95,10 @@
     [aWebView evaluateJavaScript:js completionHandler:aCompletionHandler];
 }
 
++ (void)callJS:(NSString *)aJS inWebView:(KCWebView*)aWebView
+{
+    [self callJS:aJS inWebView:aWebView completionHandler:nil];
+}
 + (void)callJS:(NSString*)aJS inWebView:(KCWebView*)aWebView completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))aCompletionHandler
 {
     [aWebView evaluateJavaScript:aJS completionHandler:aCompletionHandler];

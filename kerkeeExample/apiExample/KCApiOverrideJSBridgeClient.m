@@ -28,7 +28,7 @@
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
     KCAutorelease(json);
     //回调
-    [KCJSBridge callbackJS:aWebView callBackID:[args getObject:@"callbackId"] jsonString:json];
+    [KCJSExecutor callbackJS:aWebView callbackId:[args getObject:@"callbackId"] jsonString:json];
     
 }
 

@@ -25,17 +25,7 @@
 + (KCClass*)removeClass:(NSString*)aJSObjName;
 + (KCClass*)getClass:(NSString*)aJSObjName;
 
-#pragma mark - callJS
-+ (void)callJSOnMainThread:(KCWebView *)aWebView jsString:(NSString *)aJS;
-+ (void)callJSFunctionOnMainThread:(KCWebView *)aWebView funName:(NSString *)aFunName args:(NSString *)aArgs;
-
-+ (void)callJS:(KCWebView *)aWebView jsString:(NSString *)aJS;
-+ (void)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview;
-+ (void)callJSFunction:(NSString *)function withJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview;
-
-+ (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId;
-+ (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId jsonString:(NSString *)aStr;
-+ (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId string:(NSString *)aStr;
+#pragma mark - call js use KCJSExecutor or KCJSCompileExecutor
 
 #pragma mark - config
 + (void)openGlobalJSLog:(BOOL)aIsOpenJSLog;

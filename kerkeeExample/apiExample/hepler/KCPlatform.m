@@ -121,7 +121,7 @@
     
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
     if(nil != json){
-        [KCJSBridge callbackJS:aWebView callBackID:callbackId jsonString:json];
+        [KCJSExecutor callbackJS:aWebView callbackId:callbackId jsonString:json];
     }
 }
 
@@ -150,7 +150,7 @@
     
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
     if(nil != json){
-        [KCJSBridge callbackJS:aWebView callBackID:callbackId jsonString:json];
+        [KCJSExecutor callbackJS:aWebView callbackId:callbackId jsonString:json];
     }
 }
 

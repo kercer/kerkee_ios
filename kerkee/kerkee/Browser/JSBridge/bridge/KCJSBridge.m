@@ -87,55 +87,6 @@
 
 /********************************************************/
 /*
- * js call
- */
-/********************************************************/
-
-#pragma mark - callJS
-
-+ (void)callJSOnMainThread:(KCWebView *)aWebView jsString:(NSString *)aJS
-{
-    [KCJSExecutor callJSOnMainThread:aJS inWebView:aWebView completionHandler:nil];
-}
-
-+ (void)callJS:(KCWebView *)aWebView jsString:(NSString *)aJS
-{
-    [KCJSExecutor callJS:aJS inWebView:aWebView completionHandler:nil];
-}
-
-+ (void)callJSFunction:(NSString *)function withJSONObject:(NSDictionary *)jsonObj WebView:(KCWebView*)webview
-{
-    [KCJSExecutor callJSFunction:function withJSONObject:jsonObj inWebView:webview completionHandler:nil];
-}
-+ (void)callJSFunction:(NSString *)function withJSONString:(NSString *)jsonObj WebView:(KCWebView*)webview
-{
-    [KCJSExecutor callJSFunction:function withJSONString:jsonObj inWebView:webview completionHandler:nil];
-}
-//
-+ (void)callJSFunctionOnMainThread:(KCWebView *)aWebView funName:(NSString *)aFunName args:(NSString *)aArgs
-{
-    [KCJSExecutor callJSFunctionOnMainThread:aFunName withJSONString:aArgs inWebView:aWebView completionHandler:nil];
-}
-
-//
-+ (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId
-{
-    [KCJSExecutor callbackJS:aWebView callbackId:aCallbackId];
-}
-
-+ (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId jsonString:(NSString *)aStr
-{
-    [KCJSExecutor callbackJS:aWebView callbackId:aCallbackId jsonString:aStr];
-}
-
-+ (void)callbackJS:(KCWebView *)aWebView callBackID:(NSString *)aCallbackId string:(NSString *)aStr
-{
-    [KCJSExecutor callbackJS:aWebView callbackId:aCallbackId string:aStr];
-}
-
-
-/********************************************************/
-/*
  * config
  */
 /********************************************************/

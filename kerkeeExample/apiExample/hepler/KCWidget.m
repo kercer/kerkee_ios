@@ -39,7 +39,7 @@
     NSString *callbackId = [aArgList getObject:kKerkeeSDK_CallbackId];
     if(nil == callbackId)
         return;
-    [KCJSBridge callbackJS:aWebView callBackID:callbackId jsonString:json];
+    [KCJSExecutor callbackJS:aWebView callbackId:callbackId jsonString:json];
 }
 + (void)onSetImage:(KCWebView *)aWebView argList:(KCArgList *)aArgList
 {
