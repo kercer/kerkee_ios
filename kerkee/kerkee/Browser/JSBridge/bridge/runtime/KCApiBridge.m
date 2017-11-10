@@ -118,9 +118,8 @@ static BOOL sIsOpenJSLog = true;
     {
         [KCJSExecutor callJS:@"ApiBridge.prepareProcessingMessages()" inWebView:webView completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         }];
-        
         [self onNotified:webView];
-        
+        return NO;
     }
     
     if (self.m_userDelegate != nil && [self.m_userDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
