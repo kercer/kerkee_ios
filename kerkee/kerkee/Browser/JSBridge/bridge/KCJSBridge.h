@@ -4,8 +4,8 @@
 //
 //  Designed by zihong
 //
-//  Created by lijian on 15/8/25.
-//  Copyright (c) 2015年 lijian. All rights reserved.
+//  Created by zihong on 15/8/25.
+//  Copyright (c) 2015年 zihong. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

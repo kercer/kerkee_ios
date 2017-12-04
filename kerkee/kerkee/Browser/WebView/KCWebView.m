@@ -365,6 +365,13 @@ static int createWebViewID = 0;
     [self notifyWebViewDidFailLoadWithError:error];
 }
 
+/*! @abstract Invoked when the web view's web content process is terminated.
+ @param webView The web view whose underlying web content process was terminated.
+ */
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView
+{
+    [webView reload];
+}
 
 #pragma mark - WKUIDelegate
 // TODO
