@@ -145,7 +145,7 @@ static BOOL sIsOpenJSLog = true;
     {
         [webView evaluateJavaScript:@"typeof WebViewJSBridge == 'object'" completionHandler:^(id _Nullable result, NSError * _Nullable error)
         {
-            if (([result isKindOfClass:NSString.class] && ![result isEqualToString:@"true"]) || ([result isKindOfClass:NSNumber.class] && !result))
+            if (([result isKindOfClass:NSString.class] && ![result isEqualToString:@"true"]) || ([result isKindOfClass:NSNumber.class] && ![result boolValue]))
             {
                 [webView evaluateJavaScript:m_js completionHandler:nil];
             }
