@@ -12,7 +12,12 @@
 
 + (void)clientToast:(KCWebView *)aWebView argList:(KCArgList *)aArgList
 {
-    
+    if(nil == aArgList)
+        return;
+    NSString* message = [aArgList getString:@"msg"];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KCClientUI clientToast" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    KCRelease(alert);
+    [alert show];
 }
 
 @end

@@ -10,7 +10,6 @@
 #import "KCRegistMgr.h"
 #import "KCJSObjDefine.h"
 
-#import "KCApiClientInfo.h"
 #import "KCClientUI.h"
 #import "KCWidget.h"
 #import "KCApiTest.h"
@@ -61,7 +60,6 @@
 + (void)registAllClass
 {
     //for test
-    [KCJSBridge registClass:[KCApiClientInfo class] jsObjName:@"clientInfo"];
     [KCJSBridge registClass:[KCClientUI class] jsObjName:@"clientUI"];
     [KCJSBridge registClass:[KCWidget class] jsObjName:@"widget"];
     
