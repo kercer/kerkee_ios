@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "kerkee.h"
 #import "KCRegistMgr.h"
-#import "KCAssistant.h"
+#import "KCHelper.h"
 #import "KCBaseDefine.h"
 #import "KCWebPathDefine.h"
 #import "KCURIComponents.h"
@@ -35,8 +35,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     //addSkipBackupAttributeToItemAtURL
     
-    KCAssistant* assistant = [[KCAssistant alloc] init];
-    KCRelease(assistant);
+    KCHelper* helper = [[KCHelper alloc] init];
+    KCRelease(helper);
+    [helper unzipHtml];
     
     [KCRegistMgr registAllClass];
     KCLog(@"docment dir:\n%@",KCWebPath_HtmlRootPath);
