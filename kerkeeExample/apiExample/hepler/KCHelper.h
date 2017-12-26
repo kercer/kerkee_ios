@@ -1,5 +1,5 @@
 //
-//  KCAssistant.h
+//  KCHelper.h
 //  kerkee
 //
 //  Created by zihong on 15/9/23.

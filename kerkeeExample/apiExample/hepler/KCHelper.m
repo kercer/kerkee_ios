@@ -1,5 +1,5 @@
 //
-//  KCAssistant.m
+//  KCHelper.m
 //  kerkee
 //
 //  Created by zihong on 15/9/23.

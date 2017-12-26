@@ -15,7 +15,6 @@
 #import "KCClassParser.h"
 #import "KCSingleton.h"
 #import "KCBaseDefine.h"
-#import "KCWebPathDefine.h"
 #import "KCJSExecutor.h"
 #import "NSObject+KCSelector.h"
 #import "NSObject+KCObjectInfo.h"
