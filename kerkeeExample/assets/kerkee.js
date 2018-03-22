@@ -33,8 +33,7 @@
 		callbackId : 0,
 		processingMsg : false,
 		isReady : false,
-		isNotifyReady : false,
-        initCompletePromise: null
+		isNotifyReady : false
 	};
 
 	ApiBridge.create = function()
@@ -174,49 +173,6 @@
 		});
 	}
 
-    if (typeof Promise === 'function') {
-        ApiBridge.Promise = Promise
-    } else {
-        ApiBridge.Promise = easyPromise;
-    }
-    function easyPromise(callback) {
-        var PENDING = 'pending';
-        var DONE = 'done';
-        var doneCallbacksArr = [];
-
-        var state = PENDING;
-
-        var resolve = function() {
-            state = DONE;
-            dispatch(doneCallbacksArr);
-        }
-
-        this.then = function(cb) {
-            if (state === DONE) {
-                setTimeout(function () {
-                    cb();
-                }, 0);
-            }
-
-            if (state === PENDING) {
-                doneCallbacksArr.push(cb);
-            }
-        }
-
-        var dispatch = function(cbs) {
-            var cb;
-            while (cb = cbs.shift()) {
-                setTimeout((function (fn) {
-                    return function () {
-                        fn();
-                    };
-                })(cb), 0);
-            }
-        }
-
-        callback(resolve);
-    }
-
 	var	_Configs =
     {
         isOpenJSLog:false,
@@ -310,16 +266,14 @@
 
 	kerkee.invoke = function(clz, method, args, callback)
 	{
-        ApiBridge.initCompletePromise.then(function() {
-            if (callback)
-            {
-                ApiBridge.callNative(clz, method, args, callback);
-            }
-            else
-            {
-                ApiBridge.callNative(clz, method, args);
-            }
-        });
+		if (callback)
+		{
+			ApiBridge.callNative(clz, method, args, callback);
+		}
+		else
+		{
+			ApiBridge.callNative(clz, method, args);
+		}
 	};
 
 	kerkee.onSetImage = function(srcSuffix, desUri)
@@ -355,6 +309,7 @@
 		});
 	}
 
+	// _XMLHttpRequest.globalId = 0;
 	_XMLHttpRequest.globalId = Math.floor(Math.random()*1000);
 	_XMLHttpRequest.cache = [];
 	_XMLHttpRequest.setProperties = function(jsonObj)
@@ -500,31 +455,38 @@
 		_window.open = window.open;
 	};
 
-    ApiBridge.initCompletePromise = new ApiBridge.Promise(function(resolve) {
-        ApiBridge.onBridgeInitComplete(function(aConfigs)
-        {
-            if (aConfigs)
-            {
-                if (aConfigs.hasOwnProperty('isOpenJSLog'))
-                {
-                    _Configs.isOpenJSLog = aConfigs.isOpenJSLog;
-                }
-                if (aConfigs.hasOwnProperty('isOpenNativeXHR'))
-                {
-                    _Configs.isOpenNativeXHR = aConfigs.isOpenNativeXHR;
-                }
-            }
 
-            if (_Configs.isOpenJSLog)
-            {
-                global.console.log = ApiBridge.log;
-            }
+	ApiBridge.onBridgeInitComplete(function(aConfigs)
+	{
+		if (aConfigs)
+		{
+			if (aConfigs.hasOwnProperty('isOpenJSLog'))
+        	{
+        		_Configs.isOpenJSLog = aConfigs.isOpenJSLog;
+        	}
+        	if (aConfigs.hasOwnProperty('isOpenNativeXHR'))
+       		{
+       			_Configs.isOpenNativeXHR = aConfigs.isOpenNativeXHR;
+       		}
+		}
 
-            ApiBridge.onNativeInitComplete(ApiBridge.onDeviceReady);
+//		alert(JSON.stringify(aConfigs));
+		if (_Configs.isOpenJSLog)
+		{
+			global.console.log = ApiBridge.log;
+		}
+//		else
+//		{
+//			global.console.log = null;
+//			global.console.log = _Configs.sysLog;
+//		}
 
-            resolve();
-        });
-    })
+		ApiBridge.onNativeInitComplete(ApiBridge.onDeviceReady);
 
+		// kerkee.onDeviceReady(function(){
+		// alert('onDeviceReady');
+		// });
+
+	});
 
 })(window);
