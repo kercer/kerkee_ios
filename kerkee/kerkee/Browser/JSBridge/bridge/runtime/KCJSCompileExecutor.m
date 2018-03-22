@@ -22,8 +22,13 @@
     
     NSString *js = [[NSString alloc] initWithFormat:@"JSON.stringify(%@)", aJS];
     [KCJSExecutor callJS:js inWebView:aWebview completionHandler:^(id _Nullable result, NSError * _Nullable error) {
-        id resultObj = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        id resultObj = nil;
+        if (result != nil)
+        {
+            resultObj = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        }
         aCompletionHandler(resultObj, nil);
+
     }]
     KCAutorelease(js);
     
