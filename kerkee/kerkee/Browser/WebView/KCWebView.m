@@ -67,7 +67,7 @@
 @synthesize customUserAgent = m_customUserAgent;
 
 
-static int createWebViewID = 0;
+static int createWebViewID = 1;
 
 #pragma mark - init
 - (instancetype)initWithCoder:(NSCoder*)aCoder
