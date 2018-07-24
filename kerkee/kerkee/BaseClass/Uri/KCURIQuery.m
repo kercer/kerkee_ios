@@ -52,7 +52,8 @@
 + (instancetype)queryWithURL:(NSURL *)aUrl;
 {
     // Always resolve, since unlike paths there's no way for two queries to be in some way concatenated
-    CFURLRef cfURL = CFURLCopyAbsoluteURL((__bridge_retained CFURLRef)aUrl);
+    CFURLRef leakCFURL = (__bridge_retained CFURLRef)aUrl;
+    CFURLRef cfURL = CFURLCopyAbsoluteURL(leakCFURL);
     
     NSString *string = (NSString *)CFBridgingRelease(CFURLCopyQueryString(cfURL,
                                                         NULL));  // leave unescaped
@@ -60,6 +61,7 @@
     KCURIQuery *result = [[self alloc] initWithPercentEncodedString:string];
     KCRelease(string);
     CFRelease(cfURL);
+    CFRelease(leakCFURL);
     KCAutorelease(result);
     return result;
 }
