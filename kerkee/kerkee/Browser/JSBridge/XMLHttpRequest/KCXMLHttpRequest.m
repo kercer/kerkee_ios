@@ -358,7 +358,7 @@ didReceiveResponse:(NSURLResponse *)aResponse
     [self notifyFetchFailed:nil];
     
     mState = DONE;
-    
+    [mConnection invalidateAndCancel];
 }
 
 //if statusCode is 200, aStatusText is "OK"
@@ -378,6 +378,7 @@ didReceiveResponse:(NSURLResponse *)aResponse
     [self callJSSetProperties:properties];
     
     mState = DONE;
+    [mConnection invalidateAndCancel];
     
     return properties;
 }
