@@ -25,38 +25,38 @@
 
 - (NSData *)md5HashWithKey:(NSData *)key
 {
-    unsigned char digest[MD5_DIGEST_LENGTH];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
     
     HMAC_MD5([key bytes], [key length], [self bytes], [self length], digest);
     
-    return [NSData dataWithBytes:&digest length:MD5_DIGEST_LENGTH];
+    return [NSData dataWithBytes:&digest length:CC_MD5_DIGEST_LENGTH];
 }
 
 - (NSData *)sha1HashWithKey:(NSData *)key
 {
-    unsigned char digest[SHA_DIGEST_LENGTH];
+    unsigned char digest[CC_SHA1_DIGEST_LENGTH];
     
     HMAC_SHA1([key bytes], [key length], [self bytes], [self length], digest);
     
-    return [NSData dataWithBytes:&digest length:SHA_DIGEST_LENGTH];
+    return [NSData dataWithBytes:&digest length:CC_SHA1_DIGEST_LENGTH];
 }
 
 - (NSData *)sha256HashWithKey:(NSData *)key
 {
-    unsigned char digest[SHA256_DIGEST_LENGTH];
+    unsigned char digest[CC_SHA256_DIGEST_LENGTH];
     
     HMAC_SHA256([key bytes], [key length], [self bytes], [self length], digest);
     
-    return [NSData dataWithBytes:&digest length:SHA256_DIGEST_LENGTH];
+    return [NSData dataWithBytes:&digest length:CC_SHA256_DIGEST_LENGTH];
 }
 
 - (NSData *)sha512HashWithKey:(NSData *)key
 {
-    unsigned char digest[SHA512_DIGEST_LENGTH];
+    unsigned char digest[CC_SHA512_DIGEST_LENGTH];
     
     HMAC_SHA512([key bytes], [key length], [self bytes], [self length], digest);
     
-    return [NSData dataWithBytes:&digest length:SHA512_DIGEST_LENGTH];
+    return [NSData dataWithBytes:&digest length:CC_SHA512_DIGEST_LENGTH];
 }
 
 @end

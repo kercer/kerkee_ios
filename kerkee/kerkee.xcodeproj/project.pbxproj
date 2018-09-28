@@ -269,7 +269,6 @@
 		DFE85A881C83F14B00B5ADD5 /* KCJSCompileExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE85A861C83F14B00B5ADD5 /* KCJSCompileExecutor.m */; };
 		DFE85A891C83FB0A00B5ADD5 /* KCJSCompileExecutor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */; };
 		DFE8A62D1C92D60700EDC868 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFE8A6171C92D60700EDC868 /* SSKeychain.strings */; };
-		DFE8A62E1C92D60700EDC868 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFE8A6191C92D60700EDC868 /* Info.plist */; };
 		DFE8A62F1C92D60700EDC868 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A61A1C92D60700EDC868 /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE8A6301C92D60700EDC868 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A61B1C92D60700EDC868 /* SSKeychain.m */; };
 		DFE8A6311C92D60700EDC868 /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -566,7 +565,6 @@
 		DFE85A851C83F14B00B5ADD5 /* KCJSCompileExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCJSCompileExecutor.h; sourceTree = "<group>"; };
 		DFE85A861C83F14B00B5ADD5 /* KCJSCompileExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCJSCompileExecutor.m; sourceTree = "<group>"; };
 		DFE8A6181C92D60700EDC868 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
-		DFE8A6191C92D60700EDC868 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFE8A61A1C92D60700EDC868 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		DFE8A61B1C92D60700EDC868 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
@@ -999,7 +997,6 @@
 			isa = PBXGroup;
 			children = (
 				DFE8A6171C92D60700EDC868 /* SSKeychain.strings */,
-				DFE8A6191C92D60700EDC868 /* Info.plist */,
 				DFE8A61A1C92D60700EDC868 /* SSKeychain.h */,
 				DFE8A61B1C92D60700EDC868 /* SSKeychain.m */,
 				DFE8A61C1C92D60700EDC868 /* SSKeychainQuery.h */,
@@ -1189,7 +1186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFE8A62E1C92D60700EDC868 /* Info.plist in Resources */,
 				DFE8A62D1C92D60700EDC868 /* SSKeychain.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
