@@ -97,6 +97,7 @@ static int createWebViewID = 1;
     }
     return self;
 }
+
 - (void)initWebView
 {
     m_webViewID = createWebViewID++;
@@ -124,6 +125,15 @@ static int createWebViewID = 1;
     m_imageSetter = [[KCWebImageSetter alloc] init];
 }
 
+
++ (WKProcessPool *)singleWkProcessPool
+{
+    static dispatch_once_t once;
+    static WKProcessPool * singleton;
+    dispatch_once( &once, ^{ singleton = [[WKProcessPool alloc] init]; } );
+    return singleton;
+}
+
 - (void)initWKWebView
 {
     WKWebViewConfiguration* configuration = [[NSClassFromString(@"WKWebViewConfiguration") alloc] init];
@@ -132,6 +142,8 @@ static int createWebViewID = 1;
     WKPreferences* preferences = [NSClassFromString(@"WKPreferences") new];
     preferences.javaScriptCanOpenWindowsAutomatically = YES;
     configuration.preferences = preferences;
+    //使用单例 解决locastorage 储存问题
+    configuration.processPool = [KCWebView singleWkProcessPool];
     
     KCWKWebView* webView = [[NSClassFromString(@"KCWKWebView") alloc] initWithFrame:self.bounds configuration:configuration];
     webView.UIDelegate = self;
