@@ -43,14 +43,10 @@
             webDocumentView = ((id(*)(id, SEL))objc_msgSend)(aWebView.realWebView, @selector(_documentView));
             #pragma clang diagnostic pop
             
-            Ivar browserVar = class_getInstanceVariable(object_getClass(webDocumentView), "_webView");
-            webView = object_getIvar(webDocumentView, browserVar);
-            
-//            object_getInstanceVariable(webDocumentView, "_webView", (void**)&webView);
+            object_getInstanceVariable(webDocumentView, "_webView", (void**)&webView);
             NSString *selString = [@"setCustom" stringByAppendingString:@"UserAgent:"];
             SEL sel = NSSelectorFromString(selString);
-            if (webView != NULL)
-                [webView performSelector:sel withObject:user_agent];
+            [webView performSelector:sel withObject:user_agent];
         }];
     }
     else
