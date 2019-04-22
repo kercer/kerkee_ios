@@ -17,7 +17,7 @@
 		DF44A1131B9FE5F20045092E /* KCUncaughtExceptionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DF44A1111B9FE5F20045092E /* KCUncaughtExceptionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF44A1141B9FE5F20045092E /* KCUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1121B9FE5F20045092E /* KCUncaughtExceptionHandler.m */; };
 		DF537D061FB05C8B00E3B6D7 /* KCUtilWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = DF537D041FB05C8B00E3B6D7 /* KCUtilWebView.h */; };
-		DF537D071FB05C8B00E3B6D7 /* KCUtilWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF537D051FB05C8B00E3B6D7 /* KCUtilWebView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DF537D071FB05C8B00E3B6D7 /* KCUtilWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF537D051FB05C8B00E3B6D7 /* KCUtilWebView.m */; };
 		DF54B5E01BF9B45500F384BF /* KCJSCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF54B5E11BF9B45500F384BF /* KCJSCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = DF54B5DF1BF9B45500F384BF /* KCJSCallback.m */; };
 		DF54B5E21BF9B4D300F384BF /* KCJSCallback.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DF54B5DE1BF9B45500F384BF /* KCJSCallback.h */; };
@@ -1168,6 +1168,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = DF3074FB1B959B01005AA030;
