@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://www.kerkee.com"
   
   # s.platform     = :ios
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "7.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
