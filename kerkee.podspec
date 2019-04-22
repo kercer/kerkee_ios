@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
   
-  s.source       = { :git => "https://github.com/kercer/kerkee_ios.git", :tag => "v1.0.4" }
+  s.source       = { :git => "https://github.com/kercer/kerkee_ios.git", :tag => "v1.0.7" }
   #s.source       = { :git => "/Users/zihong/Desktop/workspace/kercer/kerkee_ios", :tag => "v1.0.1" }
   
   s.source_files  = "kerkee_ios", "kerkee/**/*.{h,m}"
