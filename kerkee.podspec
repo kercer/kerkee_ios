@@ -25,13 +25,12 @@ Pod::Spec.new do |s|
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
   
-  s.source       = { :git => "https://github.com/kercer/kerkee_ios.git", :tag => "v1.0.7" }
   #s.source       = { :git => "/Users/zihong/Desktop/workspace/kercer/kerkee_ios", :tag => "v1.0.1" }
+  s.source       = { :git => "https://github.com/kercer/kerkee_ios.git", :tag => "#{s.version}", :submodules => true  }
   
-  s.source_files  = "kerkee_ios", "kerkee/**/*.{h,m}"
-  s.exclude_files = "kerkee/kerkeeTests", "kerkee/dependencies"
+  s.source_files  = "kerkee/**/*.{h,m}"
 
-  # s.public_header_files = "Classes/**/*.h"
+  s.public_header_files = "kerkee/**/*.h"
 
 
   # s.resource  = "icon.png"
@@ -40,17 +39,22 @@ Pod::Spec.new do |s|
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
   s.framework  = 'Foundation', 'CoreGraphics', 'UIKit'
+  
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   s.library   = "z"
   # s.libraries = "iconv", "xml2"
 
-
   s.requires_arc = true
-
+  # non_arc_files = 'kerkee/Browser/WebView/KCUtilWebView.{h,m}'
+  # s.exclude_files = non_arc_files
+  # s.subspec 'no-arc' do |ss|
+    # ss.requires_arc = false
+    # ss.frameworks = "UIKit", "Foundation" #支持的框架
+    # ss.source_files = non_arc_files
+  # end
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "JSONKit", "~> 1.4"
-  s.dependency 'SSKeychain'
+  s.dependency 'SSKeychain','~>1.2.3'
   # s.dependency 'Reachability'
 
 

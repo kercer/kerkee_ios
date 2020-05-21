@@ -1,0 +1,6 @@
+framework module Pods_kerkee {
+  umbrella header "Pods-kerkee-umbrella.h"
+
+  export *
+  module * { export * }
+}

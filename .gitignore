@@ -18,3 +18,7 @@ xcuserdata
 *.DS_Store
 *.swp
 *.out
+
+## Pods
+Pods/
+Podfile.lock
