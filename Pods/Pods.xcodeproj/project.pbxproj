@@ -7,115 +7,114 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0644E7E46367AD63DC08CA0E0FE1929E /* SSKeychain-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E598286C4A97A67FDCC0BC52808CA8 /* SSKeychain-dummy.m */; };
-		1C1E128170AE3230021AF2273BBE76AF /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A54C4FAD8FD05CD53C20FDB32BC518 /* SSKeychain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		321F200731A459024B3AA64620E13CBF /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3408E676FB097ECFFFDC557F4BB39A /* SSKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C8B1A06553A5B8DCF0675715AAF13AD /* Pods-kerkeeTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C527102FEB9D76E8EC70AA291805D081 /* Pods-kerkeeTests-dummy.m */; };
-		50ADE22B39E890C6296892D377CA5B93 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 18153C402A04C723F48BC0897011D2A0 /* SSKeychainQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		55AAEB2939EA78B2AF75275FD9C8C636 /* Pods-kerkee-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66AF4FA5ADE4E36CEA302F8CBD18120A /* Pods-kerkee-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D21E4E5B5C0576A8D62D9C5D0F540C7 /* Pods-kerkee-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F90C6E40E6FDE4462A13F93D4BD2F /* Pods-kerkee-dummy.m */; };
-		70179D3A0182F239FC7B3023B3B85CB7 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = AC52D655E7D2A4835C3615A2BEAE2FB3 /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		883F4C9F71AB22FE7CD4DEF98C8E8A82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */; };
-		9B9156C501FB62FF7017237FA028E9CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */; };
-		A324B10493CDAEBD46CF675EE9FFC874 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */; };
-		AD557DC9C71AD5D85B57BF752BC12306 /* SSKeychain-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FB62C5711C32823FEE14B8F058CDF9E0 /* SSKeychain-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FC46A95A9AF8226AB4098E0CAC829632 /* Pods-kerkeeTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A3A64E13C825DECC787F6D618BC81A3A /* Pods-kerkeeTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF1E44B1B78CC4EC1A9FAB2B5ECEFC3A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C6FBEEEFA5DEBF6E6E83512D4F03EE /* Security.framework */; };
+		02B9A8C11C16034557EDAB7DAD51134A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1097409647121B59B1C4562DF2ABC919 /* Security.framework */; };
+		2F44E7C3D3784EB354A1815D97EFB27F /* SSKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = B9654AB75513D10F8138F0E585FACFA7 /* SSKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55CAAB03D654E9B4E3955103F9A44460 /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = D69DB7B9D5AC5584B8A80EA32168354F /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C2D1AB494F5D717DF4008E456F323F0 /* SSKeychain-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DCAB78D116376093B85F4CB59B229C26 /* SSKeychain-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8BCB88147C2D9828C74FFC8C43C48551 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = BB965B55B541845BF199F3148C6F2F54 /* SSKeychain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9FB1F09AB4D5294ABFC8D2567AD43D49 /* Pods-kerkeeTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A2E78C9DBA1A7A369835E4C1C6D64CB /* Pods-kerkeeTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2FB51DFA14E0413A6A7BADC3015AC1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 701A0DC6A6A0F9DA590CC0D517AABE50 /* Foundation.framework */; };
+		A539D8192123FE9C00EE6F151D922EE5 /* Pods-kerkeeTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 844C87CDA7BED30694E5C66D7021BEDA /* Pods-kerkeeTests-dummy.m */; };
+		B3BCFCDB7F480DF1CA07D245F5D9FACB /* SSKeychain-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 478E8533ACBD16EB124AAF06EFE4520F /* SSKeychain-dummy.m */; };
+		DE9EB7818D1B120594393FC01A8C544E /* Pods-kerkee-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4F5FD2407FAA4CD953051376543745 /* Pods-kerkee-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDCD3CB4C202D1F031061532063BB515 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 701A0DC6A6A0F9DA590CC0D517AABE50 /* Foundation.framework */; };
+		F52B255AAA945309DDB2CF1D9DB4186C /* Pods-kerkee-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F411A9E4E6704A8BCD168DFDAF8B03E6 /* Pods-kerkee-dummy.m */; };
+		F6470459B5F939B0B60A29C674473DB2 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DC75D41D287D39696442488139F201 /* SSKeychainQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FA0673C531AA75FA00CEB7557D396913 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 701A0DC6A6A0F9DA590CC0D517AABE50 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B38468EDC3CC4B4F5DC005E76679F233 /* PBXContainerItemProxy */ = {
+		265718C7D83465F6E9608A67E311578B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1B0966B31A835648DE8A160CC5F66A6D;
+			remoteGlobalIDString = B0EFDE9D34E10514C2A3029479020E2B;
 			remoteInfo = "Pods-kerkee";
 		};
-		E609A3B809F49DCF64CD48EB0A3A415F /* PBXContainerItemProxy */ = {
+		8A307F05814A5D2E0BC766519E2AB6CA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EA54F522EB1EFAA68F82173E352875DD;
+			remoteGlobalIDString = 433F473AE4621E6EDEF539AB007F3E70;
 			remoteInfo = SSKeychain;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B3408E676FB097ECFFFDC557F4BB39A /* SSKeychainQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = SSKeychain/SSKeychainQuery.h; sourceTree = "<group>"; };
-		18153C402A04C723F48BC0897011D2A0 /* SSKeychainQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSKeychainQuery.m; path = SSKeychain/SSKeychainQuery.m; sourceTree = "<group>"; };
-		2F904BBBAB4016BE3E08EF48099E4A85 /* Pods-kerkee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-kerkee.release.xcconfig"; sourceTree = "<group>"; };
-		38900226E7AA46F51CC63F03990AB71B /* SSKeychain-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SSKeychain-prefix.pch"; sourceTree = "<group>"; };
-		40C6FBEEEFA5DEBF6E6E83512D4F03EE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		40E598286C4A97A67FDCC0BC52808CA8 /* SSKeychain-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SSKeychain-dummy.m"; sourceTree = "<group>"; };
-		5CCFF7DB88B045FE33D0997BC4E78632 /* Pods_kerkeeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_kerkeeTests.framework; path = "Pods-kerkeeTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		66AF4FA5ADE4E36CEA302F8CBD18120A /* Pods-kerkee-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-kerkee-umbrella.h"; sourceTree = "<group>"; };
-		68A54C4FAD8FD05CD53C20FDB32BC518 /* SSKeychain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = SSKeychain/SSKeychain.m; sourceTree = "<group>"; };
-		8B7D539D6451122AEB875CD16D1430BA /* Pods-kerkee-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-kerkee-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8D31F9EFD8C9444593DA3634F1288E8F /* SSKeychain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SSKeychain.release.xcconfig; sourceTree = "<group>"; };
-		8D7B87B3AEF360CB4D1D484E9536FAAD /* SSKeychain-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SSKeychain-Info.plist"; sourceTree = "<group>"; };
-		8F85EE79467741EE33CD7B09A6D41ECD /* Pods-kerkeeTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-kerkeeTests-Info.plist"; sourceTree = "<group>"; };
-		95E4E02F2452D369B9595A09122A56C2 /* Pods-kerkeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-kerkeeTests.release.xcconfig"; sourceTree = "<group>"; };
-		96A4BDCD56621D993B1B6993D241BA28 /* SSKeychain.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SSKeychain.modulemap; sourceTree = "<group>"; };
-		970FFC9A4288F404EA871FFF82A250B0 /* Pods-kerkeeTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-kerkeeTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		9CF897B893B7E62BCEFCA727F830CCFF /* Pods_kerkee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_kerkee.framework; path = "Pods-kerkee.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05381D4ACFCB76E508C5565DB24B74B7 /* Pods-kerkeeTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-kerkeeTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		0ED10C434E84FF3DD7FD588231DA29ED /* Pods-kerkee.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-kerkee.modulemap"; sourceTree = "<group>"; };
+		0F67FC15167700BD747F6FB576080F27 /* SSKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SSKeychain.framework; path = SSKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1097409647121B59B1C4562DF2ABC919 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		22F66041E7150D40EAAF0C7BFAF876F4 /* Pods-kerkee-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-kerkee-acknowledgements.plist"; sourceTree = "<group>"; };
+		24E4DD5EF856285E118996D91D9536F2 /* Pods-kerkee-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-kerkee-Info.plist"; sourceTree = "<group>"; };
+		2C4FE2336D6F2A36788136805569A68C /* Pods-kerkee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-kerkee.debug.xcconfig"; sourceTree = "<group>"; };
+		2EC64A38D29798CE2A9DDEAEFF9E77A5 /* SSKeychain-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SSKeychain-prefix.pch"; sourceTree = "<group>"; };
+		2F4F5FD2407FAA4CD953051376543745 /* Pods-kerkee-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-kerkee-umbrella.h"; sourceTree = "<group>"; };
+		31273BCE5880BE00B9A6AF743081AA9E /* SSKeychain.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SSKeychain.xcconfig; sourceTree = "<group>"; };
+		32279FF9E6202CC4C5BE51EDA354BE6F /* SSKeychain-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SSKeychain-Info.plist"; sourceTree = "<group>"; };
+		478E8533ACBD16EB124AAF06EFE4520F /* SSKeychain-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SSKeychain-dummy.m"; sourceTree = "<group>"; };
+		5035C3207DD28991B71EA6F73396291F /* Pods-kerkeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-kerkeeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5036CA983CE7405FA368A132C2301E77 /* Pods-kerkee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-kerkee.release.xcconfig"; sourceTree = "<group>"; };
+		5A2E78C9DBA1A7A369835E4C1C6D64CB /* Pods-kerkeeTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-kerkeeTests-umbrella.h"; sourceTree = "<group>"; };
+		6499439F0F61F0925254CCD6A5B89910 /* Pods-kerkeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-kerkeeTests.release.xcconfig"; sourceTree = "<group>"; };
+		64DC75D41D287D39696442488139F201 /* SSKeychainQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSKeychainQuery.m; path = SSKeychain/SSKeychainQuery.m; sourceTree = "<group>"; };
+		701A0DC6A6A0F9DA590CC0D517AABE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		74584D09B3728E30BECD7BD70A64F5A4 /* Pods-kerkeeTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-kerkeeTests-Info.plist"; sourceTree = "<group>"; };
+		844C87CDA7BED30694E5C66D7021BEDA /* Pods-kerkeeTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-kerkeeTests-dummy.m"; sourceTree = "<group>"; };
+		90A42A791057FD3C20DB6BFFAF047BBD /* Pods-kerkeeTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-kerkeeTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A3A64E13C825DECC787F6D618BC81A3A /* Pods-kerkeeTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-kerkeeTests-umbrella.h"; sourceTree = "<group>"; };
-		AA00C5BB26266B591B10CE6D2DD52221 /* Pods-kerkee-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-kerkee-Info.plist"; sourceTree = "<group>"; };
-		AB3A30002DA8B02C6EE9699AD5F5CDA7 /* Pods-kerkee-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-kerkee-acknowledgements.plist"; sourceTree = "<group>"; };
-		AC52D655E7D2A4835C3615A2BEAE2FB3 /* SSKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = SSKeychain/SSKeychain.h; sourceTree = "<group>"; };
-		ADC9FDD286C61C38DC5905E67C95B688 /* Pods-kerkee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-kerkee.debug.xcconfig"; sourceTree = "<group>"; };
-		B6FA0B439BD7D675CD213160DBB86E54 /* Pods-kerkee.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-kerkee.modulemap"; sourceTree = "<group>"; };
-		BD5FD4B9A76C92D7FE903AEA943AF70D /* SSKeychain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SSKeychain.debug.xcconfig; sourceTree = "<group>"; };
-		C527102FEB9D76E8EC70AA291805D081 /* Pods-kerkeeTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-kerkeeTests-dummy.m"; sourceTree = "<group>"; };
-		CB7FC35F99120AA9B4C482BDDE907C5B /* SSKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SSKeychain.framework; path = SSKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4ABD54E69FDFBEC41CD70578A085B92 /* Pods-kerkeeTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-kerkeeTests.modulemap"; sourceTree = "<group>"; };
-		E08BCAC274B578042781513D3DE74EF2 /* Pods-kerkeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-kerkeeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E1A05F35FA73B89318975E84F9AB4C26 /* Pods-kerkeeTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-kerkeeTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		FB62C5711C32823FEE14B8F058CDF9E0 /* SSKeychain-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SSKeychain-umbrella.h"; sourceTree = "<group>"; };
-		FD7F90C6E40E6FDE4462A13F93D4BD2F /* Pods-kerkee-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-kerkee-dummy.m"; sourceTree = "<group>"; };
+		B9654AB75513D10F8138F0E585FACFA7 /* SSKeychainQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = SSKeychain/SSKeychainQuery.h; sourceTree = "<group>"; };
+		BB965B55B541845BF199F3148C6F2F54 /* SSKeychain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = SSKeychain/SSKeychain.m; sourceTree = "<group>"; };
+		C437A8418302B82487388999765F0C99 /* Pods_kerkeeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_kerkeeTests.framework; path = "Pods-kerkeeTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D660A2DCB2DF47543156DD962FF9D01E /* Pods_kerkee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_kerkee.framework; path = "Pods-kerkee.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D69DB7B9D5AC5584B8A80EA32168354F /* SSKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = SSKeychain/SSKeychain.h; sourceTree = "<group>"; };
+		DA2D3852468B4D72198262C1757BAD6A /* Pods-kerkee-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-kerkee-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DCAB78D116376093B85F4CB59B229C26 /* SSKeychain-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SSKeychain-umbrella.h"; sourceTree = "<group>"; };
+		F14608332518F7D1D54E965C0C72465A /* Pods-kerkeeTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-kerkeeTests.modulemap"; sourceTree = "<group>"; };
+		F411A9E4E6704A8BCD168DFDAF8B03E6 /* Pods-kerkee-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-kerkee-dummy.m"; sourceTree = "<group>"; };
+		F8A624A4C6712991B245FAADF2BD8780 /* SSKeychain.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SSKeychain.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		76DE28628D03A39865A98D042AB604DA /* Frameworks */ = {
+		31BD969E92DA502BB974CB0C13A0D023 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A324B10493CDAEBD46CF675EE9FFC874 /* Foundation.framework in Frameworks */,
+				EDCD3CB4C202D1F031061532063BB515 /* Foundation.framework in Frameworks */,
+				02B9A8C11C16034557EDAB7DAD51134A /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC4302BB9C2F5097798A16C5CBEEC053 /* Frameworks */ = {
+		CC05B69E811E4B25D7D97FB4C99E0C20 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				883F4C9F71AB22FE7CD4DEF98C8E8A82 /* Foundation.framework in Frameworks */,
+				A2FB51DFA14E0413A6A7BADC3015AC1F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E0B2D5EBBC27E71AB3AC6D68DD0B83E8 /* Frameworks */ = {
+		D85EDF165D8676E52A93C640D59578AD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B9156C501FB62FF7017237FA028E9CA /* Foundation.framework in Frameworks */,
-				FF1E44B1B78CC4EC1A9FAB2B5ECEFC3A /* Security.framework in Frameworks */,
+				FA0673C531AA75FA00CEB7557D396913 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08F3851186BF957D4D5F2DF6F2B71662 /* Pods-kerkeeTests */ = {
+		057E5C3A5AD1DF7E22DB33B0FB7504B0 /* Pods-kerkeeTests */ = {
 			isa = PBXGroup;
 			children = (
-				D4ABD54E69FDFBEC41CD70578A085B92 /* Pods-kerkeeTests.modulemap */,
-				E1A05F35FA73B89318975E84F9AB4C26 /* Pods-kerkeeTests-acknowledgements.markdown */,
-				970FFC9A4288F404EA871FFF82A250B0 /* Pods-kerkeeTests-acknowledgements.plist */,
-				C527102FEB9D76E8EC70AA291805D081 /* Pods-kerkeeTests-dummy.m */,
-				8F85EE79467741EE33CD7B09A6D41ECD /* Pods-kerkeeTests-Info.plist */,
-				A3A64E13C825DECC787F6D618BC81A3A /* Pods-kerkeeTests-umbrella.h */,
-				E08BCAC274B578042781513D3DE74EF2 /* Pods-kerkeeTests.debug.xcconfig */,
-				95E4E02F2452D369B9595A09122A56C2 /* Pods-kerkeeTests.release.xcconfig */,
+				F14608332518F7D1D54E965C0C72465A /* Pods-kerkeeTests.modulemap */,
+				90A42A791057FD3C20DB6BFFAF047BBD /* Pods-kerkeeTests-acknowledgements.markdown */,
+				05381D4ACFCB76E508C5565DB24B74B7 /* Pods-kerkeeTests-acknowledgements.plist */,
+				844C87CDA7BED30694E5C66D7021BEDA /* Pods-kerkeeTests-dummy.m */,
+				74584D09B3728E30BECD7BD70A64F5A4 /* Pods-kerkeeTests-Info.plist */,
+				5A2E78C9DBA1A7A369835E4C1C6D64CB /* Pods-kerkeeTests-umbrella.h */,
+				5035C3207DD28991B71EA6F73396291F /* Pods-kerkeeTests.debug.xcconfig */,
+				6499439F0F61F0925254CCD6A5B89910 /* Pods-kerkeeTests.release.xcconfig */,
 			);
 			name = "Pods-kerkeeTests";
 			path = "Target Support Files/Pods-kerkeeTests";
@@ -124,89 +123,88 @@
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B475D44F9DE8B3EB70D1C14FDE147B9 /* iOS */,
+				9F8BF27D4DE2662DBD9B3EC87B18039F /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		284C831414766A2BD59575C95893E580 /* SSKeychain */ = {
+		183BBA08877DDA83675F4A10DE0A8B68 /* Pods-kerkee */ = {
 			isa = PBXGroup;
 			children = (
-				AC52D655E7D2A4835C3615A2BEAE2FB3 /* SSKeychain.h */,
-				68A54C4FAD8FD05CD53C20FDB32BC518 /* SSKeychain.m */,
-				0B3408E676FB097ECFFFDC557F4BB39A /* SSKeychainQuery.h */,
-				18153C402A04C723F48BC0897011D2A0 /* SSKeychainQuery.m */,
-				7C188630C19683005D91B09E4818CA03 /* Support Files */,
-			);
-			name = SSKeychain;
-			path = SSKeychain;
-			sourceTree = "<group>";
-		};
-		2AE8AF7BAAA80857928937C7BE71A2E2 /* Pods-kerkee */ = {
-			isa = PBXGroup;
-			children = (
-				B6FA0B439BD7D675CD213160DBB86E54 /* Pods-kerkee.modulemap */,
-				8B7D539D6451122AEB875CD16D1430BA /* Pods-kerkee-acknowledgements.markdown */,
-				AB3A30002DA8B02C6EE9699AD5F5CDA7 /* Pods-kerkee-acknowledgements.plist */,
-				FD7F90C6E40E6FDE4462A13F93D4BD2F /* Pods-kerkee-dummy.m */,
-				AA00C5BB26266B591B10CE6D2DD52221 /* Pods-kerkee-Info.plist */,
-				66AF4FA5ADE4E36CEA302F8CBD18120A /* Pods-kerkee-umbrella.h */,
-				ADC9FDD286C61C38DC5905E67C95B688 /* Pods-kerkee.debug.xcconfig */,
-				2F904BBBAB4016BE3E08EF48099E4A85 /* Pods-kerkee.release.xcconfig */,
+				0ED10C434E84FF3DD7FD588231DA29ED /* Pods-kerkee.modulemap */,
+				DA2D3852468B4D72198262C1757BAD6A /* Pods-kerkee-acknowledgements.markdown */,
+				22F66041E7150D40EAAF0C7BFAF876F4 /* Pods-kerkee-acknowledgements.plist */,
+				F411A9E4E6704A8BCD168DFDAF8B03E6 /* Pods-kerkee-dummy.m */,
+				24E4DD5EF856285E118996D91D9536F2 /* Pods-kerkee-Info.plist */,
+				2F4F5FD2407FAA4CD953051376543745 /* Pods-kerkee-umbrella.h */,
+				2C4FE2336D6F2A36788136805569A68C /* Pods-kerkee.debug.xcconfig */,
+				5036CA983CE7405FA368A132C2301E77 /* Pods-kerkee.release.xcconfig */,
 			);
 			name = "Pods-kerkee";
 			path = "Target Support Files/Pods-kerkee";
 			sourceTree = "<group>";
 		};
+		1E974975B3856CA74390FF35551E96B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D660A2DCB2DF47543156DD962FF9D01E /* Pods_kerkee.framework */,
+				C437A8418302B82487388999765F0C99 /* Pods_kerkeeTests.framework */,
+				0F67FC15167700BD747F6FB576080F27 /* SSKeychain.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E7430962087E2CDD43CDA0E7FA05747 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2AE8AF7BAAA80857928937C7BE71A2E2 /* Pods-kerkee */,
-				08F3851186BF957D4D5F2DF6F2B71662 /* Pods-kerkeeTests */,
+				183BBA08877DDA83675F4A10DE0A8B68 /* Pods-kerkee */,
+				057E5C3A5AD1DF7E22DB33B0FB7504B0 /* Pods-kerkeeTests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6B475D44F9DE8B3EB70D1C14FDE147B9 /* iOS */ = {
+		5D6A9368E62306358DB6433401F60AAE /* SSKeychain */ = {
 			isa = PBXGroup;
 			children = (
-				EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */,
-				40C6FBEEEFA5DEBF6E6E83512D4F03EE /* Security.framework */,
+				D69DB7B9D5AC5584B8A80EA32168354F /* SSKeychain.h */,
+				BB965B55B541845BF199F3148C6F2F54 /* SSKeychain.m */,
+				B9654AB75513D10F8138F0E585FACFA7 /* SSKeychainQuery.h */,
+				64DC75D41D287D39696442488139F201 /* SSKeychainQuery.m */,
+				AE4769BB987808B2094CFCCA5F9846ED /* Support Files */,
 			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		7C188630C19683005D91B09E4818CA03 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				96A4BDCD56621D993B1B6993D241BA28 /* SSKeychain.modulemap */,
-				40E598286C4A97A67FDCC0BC52808CA8 /* SSKeychain-dummy.m */,
-				8D7B87B3AEF360CB4D1D484E9536FAAD /* SSKeychain-Info.plist */,
-				38900226E7AA46F51CC63F03990AB71B /* SSKeychain-prefix.pch */,
-				FB62C5711C32823FEE14B8F058CDF9E0 /* SSKeychain-umbrella.h */,
-				BD5FD4B9A76C92D7FE903AEA943AF70D /* SSKeychain.debug.xcconfig */,
-				8D31F9EFD8C9444593DA3634F1288E8F /* SSKeychain.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SSKeychain";
+			name = SSKeychain;
+			path = SSKeychain;
 			sourceTree = "<group>";
 		};
 		82DC472756C3A7E0A6ADC855007C2D43 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				284C831414766A2BD59575C95893E580 /* SSKeychain */,
+				5D6A9368E62306358DB6433401F60AAE /* SSKeychain */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		917C36C2B777A3E7672E5D4A058D383D /* Products */ = {
+		9F8BF27D4DE2662DBD9B3EC87B18039F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				9CF897B893B7E62BCEFCA727F830CCFF /* Pods_kerkee.framework */,
-				5CCFF7DB88B045FE33D0997BC4E78632 /* Pods_kerkeeTests.framework */,
-				CB7FC35F99120AA9B4C482BDDE907C5B /* SSKeychain.framework */,
+				701A0DC6A6A0F9DA590CC0D517AABE50 /* Foundation.framework */,
+				1097409647121B59B1C4562DF2ABC919 /* Security.framework */,
 			);
-			name = Products;
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		AE4769BB987808B2094CFCCA5F9846ED /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8A624A4C6712991B245FAADF2BD8780 /* SSKeychain.modulemap */,
+				31273BCE5880BE00B9A6AF743081AA9E /* SSKeychain.xcconfig */,
+				478E8533ACBD16EB124AAF06EFE4520F /* SSKeychain-dummy.m */,
+				32279FF9E6202CC4C5BE51EDA354BE6F /* SSKeychain-Info.plist */,
+				2EC64A38D29798CE2A9DDEAEFF9E77A5 /* SSKeychain-prefix.pch */,
+				DCAB78D116376093B85F4CB59B229C26 /* SSKeychain-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SSKeychain";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -215,7 +213,7 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
 				82DC472756C3A7E0A6ADC855007C2D43 /* Pods */,
-				917C36C2B777A3E7672E5D4A058D383D /* Products */,
+				1E974975B3856CA74390FF35551E96B3 /* Products */,
 				2E7430962087E2CDD43CDA0E7FA05747 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -223,81 +221,43 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2E300278D6B6B2D7523DA0F619B2670F /* Headers */ = {
+		4EC01E866A8A6DCEEA7FDD9672D47037 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC46A95A9AF8226AB4098E0CAC829632 /* Pods-kerkeeTests-umbrella.h in Headers */,
+				5C2D1AB494F5D717DF4008E456F323F0 /* SSKeychain-umbrella.h in Headers */,
+				55CAAB03D654E9B4E3955103F9A44460 /* SSKeychain.h in Headers */,
+				2F44E7C3D3784EB354A1815D97EFB27F /* SSKeychainQuery.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B4F8C6079610E9E90D3908F5F62A848E /* Headers */ = {
+		D8C4C07ABB1744C7E53C84C9AC177FB1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55AAEB2939EA78B2AF75275FD9C8C636 /* Pods-kerkee-umbrella.h in Headers */,
+				DE9EB7818D1B120594393FC01A8C544E /* Pods-kerkee-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC08C8E5C58372DCDBDFA9F9A7BBF241 /* Headers */ = {
+		F2B0DC4B5FB9952BB8CE9CBBD2B89477 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD557DC9C71AD5D85B57BF752BC12306 /* SSKeychain-umbrella.h in Headers */,
-				70179D3A0182F239FC7B3023B3B85CB7 /* SSKeychain.h in Headers */,
-				321F200731A459024B3AA64620E13CBF /* SSKeychainQuery.h in Headers */,
+				9FB1F09AB4D5294ABFC8D2567AD43D49 /* Pods-kerkeeTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1B0966B31A835648DE8A160CC5F66A6D /* Pods-kerkee */ = {
+		433F473AE4621E6EDEF539AB007F3E70 /* SSKeychain */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C0EACD66AB1549D38139FBFD01B39CC /* Build configuration list for PBXNativeTarget "Pods-kerkee" */;
+			buildConfigurationList = F9B6542BF6CCD84911C500C74EF4B910 /* Build configuration list for PBXNativeTarget "SSKeychain" */;
 			buildPhases = (
-				B4F8C6079610E9E90D3908F5F62A848E /* Headers */,
-				D4266F784B7093107AF9DD723287E9E9 /* Sources */,
-				DC4302BB9C2F5097798A16C5CBEEC053 /* Frameworks */,
-				1C10D91D3BACEDF94CE8A77F70EA2F5B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1B76116461F6DDBE1BE5B8F7D50FF973 /* PBXTargetDependency */,
-			);
-			name = "Pods-kerkee";
-			productName = "Pods-kerkee";
-			productReference = 9CF897B893B7E62BCEFCA727F830CCFF /* Pods_kerkee.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		44BF57A49BF746F8CF1A4BE1C435CD74 /* Pods-kerkeeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 918DC60A70874D4F302BAE57BDE7C117 /* Build configuration list for PBXNativeTarget "Pods-kerkeeTests" */;
-			buildPhases = (
-				2E300278D6B6B2D7523DA0F619B2670F /* Headers */,
-				6A096E63947E80D235336C91CC88A198 /* Sources */,
-				76DE28628D03A39865A98D042AB604DA /* Frameworks */,
-				F591547E77106D645340CB2284C9B4F9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F2EB6183727AC82EA11B0CCE239EEF50 /* PBXTargetDependency */,
-			);
-			name = "Pods-kerkeeTests";
-			productName = "Pods-kerkeeTests";
-			productReference = 5CCFF7DB88B045FE33D0997BC4E78632 /* Pods_kerkeeTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EA54F522EB1EFAA68F82173E352875DD /* SSKeychain */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F5A36814B4C47EA7763072722ECB1CBB /* Build configuration list for PBXNativeTarget "SSKeychain" */;
-			buildPhases = (
-				EC08C8E5C58372DCDBDFA9F9A7BBF241 /* Headers */,
-				3C98CFC26674CCACD56D9D1C56AA21C3 /* Sources */,
-				E0B2D5EBBC27E71AB3AC6D68DD0B83E8 /* Frameworks */,
-				DA4CF042586BDB1614EF5475A4777171 /* Resources */,
+				4EC01E866A8A6DCEEA7FDD9672D47037 /* Headers */,
+				A271889B58A4A495C13BCF31797198AB /* Sources */,
+				31BD969E92DA502BB974CB0C13A0D023 /* Frameworks */,
+				1B3294D81100C9F9A1D3326A9ABB8BD9 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -305,7 +265,45 @@
 			);
 			name = SSKeychain;
 			productName = SSKeychain;
-			productReference = CB7FC35F99120AA9B4C482BDDE907C5B /* SSKeychain.framework */;
+			productReference = 0F67FC15167700BD747F6FB576080F27 /* SSKeychain.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A5071857077679D2F8B66D48594A669E /* Pods-kerkeeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46168C0A6C1E9D26A8802B359826CEFF /* Build configuration list for PBXNativeTarget "Pods-kerkeeTests" */;
+			buildPhases = (
+				F2B0DC4B5FB9952BB8CE9CBBD2B89477 /* Headers */,
+				2A7AB719813E7F5EC6FBD05E1BAC81FF /* Sources */,
+				D85EDF165D8676E52A93C640D59578AD /* Frameworks */,
+				471465FA61327471E795D29F0C1BAF5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6638C349C70E80509F828D84F96DEC68 /* PBXTargetDependency */,
+			);
+			name = "Pods-kerkeeTests";
+			productName = "Pods-kerkeeTests";
+			productReference = C437A8418302B82487388999765F0C99 /* Pods_kerkeeTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B0EFDE9D34E10514C2A3029479020E2B /* Pods-kerkee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C6CE7A0565532D59C4871CD559D2F85 /* Build configuration list for PBXNativeTarget "Pods-kerkee" */;
+			buildPhases = (
+				D8C4C07ABB1744C7E53C84C9AC177FB1 /* Headers */,
+				AB083C51D68A5FA7CDC35097562FF0E2 /* Sources */,
+				CC05B69E811E4B25D7D97FB4C99E0C20 /* Frameworks */,
+				ED769703D7CBE48B7C5878BE74D32A9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1CC7EFFEE40756A68DB11394D17EFF2B /* PBXTargetDependency */,
+			);
+			name = "Pods-kerkee";
+			productName = "Pods-kerkee";
+			productReference = D660A2DCB2DF47543156DD962FF9D01E /* Pods_kerkee.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -314,45 +312,44 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = en;
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 917C36C2B777A3E7672E5D4A058D383D /* Products */;
+			productRefGroup = 1E974975B3856CA74390FF35551E96B3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1B0966B31A835648DE8A160CC5F66A6D /* Pods-kerkee */,
-				44BF57A49BF746F8CF1A4BE1C435CD74 /* Pods-kerkeeTests */,
-				EA54F522EB1EFAA68F82173E352875DD /* SSKeychain */,
+				B0EFDE9D34E10514C2A3029479020E2B /* Pods-kerkee */,
+				A5071857077679D2F8B66D48594A669E /* Pods-kerkeeTests */,
+				433F473AE4621E6EDEF539AB007F3E70 /* SSKeychain */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1C10D91D3BACEDF94CE8A77F70EA2F5B /* Resources */ = {
+		1B3294D81100C9F9A1D3326A9ABB8BD9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA4CF042586BDB1614EF5475A4777171 /* Resources */ = {
+		471465FA61327471E795D29F0C1BAF5F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F591547E77106D645340CB2284C9B4F9 /* Resources */ = {
+		ED769703D7CBE48B7C5878BE74D32A9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,114 +359,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3C98CFC26674CCACD56D9D1C56AA21C3 /* Sources */ = {
+		2A7AB719813E7F5EC6FBD05E1BAC81FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0644E7E46367AD63DC08CA0E0FE1929E /* SSKeychain-dummy.m in Sources */,
-				1C1E128170AE3230021AF2273BBE76AF /* SSKeychain.m in Sources */,
-				50ADE22B39E890C6296892D377CA5B93 /* SSKeychainQuery.m in Sources */,
+				A539D8192123FE9C00EE6F151D922EE5 /* Pods-kerkeeTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A096E63947E80D235336C91CC88A198 /* Sources */ = {
+		A271889B58A4A495C13BCF31797198AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C8B1A06553A5B8DCF0675715AAF13AD /* Pods-kerkeeTests-dummy.m in Sources */,
+				B3BCFCDB7F480DF1CA07D245F5D9FACB /* SSKeychain-dummy.m in Sources */,
+				8BCB88147C2D9828C74FFC8C43C48551 /* SSKeychain.m in Sources */,
+				F6470459B5F939B0B60A29C674473DB2 /* SSKeychainQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D4266F784B7093107AF9DD723287E9E9 /* Sources */ = {
+		AB083C51D68A5FA7CDC35097562FF0E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D21E4E5B5C0576A8D62D9C5D0F540C7 /* Pods-kerkee-dummy.m in Sources */,
+				F52B255AAA945309DDB2CF1D9DB4186C /* Pods-kerkee-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1B76116461F6DDBE1BE5B8F7D50FF973 /* PBXTargetDependency */ = {
+		1CC7EFFEE40756A68DB11394D17EFF2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SSKeychain;
-			target = EA54F522EB1EFAA68F82173E352875DD /* SSKeychain */;
-			targetProxy = E609A3B809F49DCF64CD48EB0A3A415F /* PBXContainerItemProxy */;
+			target = 433F473AE4621E6EDEF539AB007F3E70 /* SSKeychain */;
+			targetProxy = 8A307F05814A5D2E0BC766519E2AB6CA /* PBXContainerItemProxy */;
 		};
-		F2EB6183727AC82EA11B0CCE239EEF50 /* PBXTargetDependency */ = {
+		6638C349C70E80509F828D84F96DEC68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-kerkee";
-			target = 1B0966B31A835648DE8A160CC5F66A6D /* Pods-kerkee */;
-			targetProxy = B38468EDC3CC4B4F5DC005E76679F233 /* PBXContainerItemProxy */;
+			target = B0EFDE9D34E10514C2A3029479020E2B /* Pods-kerkee */;
+			targetProxy = 265718C7D83465F6E9608A67E311578B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		36E58265AE2B2FA37BC9945BE6CC327A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E08BCAC274B578042781513D3DE74EF2 /* Pods-kerkeeTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-kerkeeTests/Pods-kerkeeTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-kerkeeTests/Pods-kerkeeTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		435BFD8A1C592FF5501118B58D4B4465 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD5FD4B9A76C92D7FE903AEA943AF70D /* SSKeychain.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SSKeychain/SSKeychain-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SSKeychain/SSKeychain-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SSKeychain/SSKeychain.modulemap";
-				PRODUCT_MODULE_NAME = SSKeychain;
-				PRODUCT_NAME = SSKeychain;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		4BE66A09A74FD25164AAB3C2645B9B93 /* Release */ = {
+		05DF210AC65EBB0E593AAF976B2C2177 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -524,14 +458,44 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		674F5F8531AD9F2B333B9C28EE1351D6 /* Release */ = {
+		0C06D13A497A8793522687FF5D0F1680 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F904BBBAB4016BE3E08EF48099E4A85 /* Pods-kerkee.release.xcconfig */;
+			baseConfigurationReference = 31273BCE5880BE00B9A6AF743081AA9E /* SSKeychain.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SSKeychain/SSKeychain-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SSKeychain/SSKeychain-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SSKeychain/SSKeychain.modulemap";
+				PRODUCT_MODULE_NAME = SSKeychain;
+				PRODUCT_NAME = SSKeychain;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3300BB535405F5F1FF88FB0BE4A5D25D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5036CA983CE7405FA368A132C2301E77 /* Pods-kerkee.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -563,11 +527,10 @@
 			};
 			name = Release;
 		};
-		705A231AEB53C58FD4D48F04883D7C36 /* Release */ = {
+		406FD1EDE5189BF977A0C85A9F70FF91 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95E4E02F2452D369B9595A09122A56C2 /* Pods-kerkeeTests.release.xcconfig */;
+			baseConfigurationReference = 31273BCE5880BE00B9A6AF743081AA9E /* SSKeychain.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -577,19 +540,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-kerkeeTests/Pods-kerkeeTests-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SSKeychain/SSKeychain-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SSKeychain/SSKeychain-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-kerkeeTests/Pods-kerkeeTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/SSKeychain/SSKeychain.modulemap";
+				PRODUCT_MODULE_NAME = SSKeychain;
+				PRODUCT_NAME = SSKeychain;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -597,7 +558,7 @@
 			};
 			name = Release;
 		};
-		7EF7227D9B20A1D549000096ACCB23D7 /* Debug */ = {
+		421ECB1396280A8D83853C3DDBED1700 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -656,14 +617,47 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		9E45F52E5F016131D42C194495C1F313 /* Debug */ = {
+		6FF50A6A7CCC730E0EF2EF9EAC3A3ADD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADC9FDD286C61C38DC5905E67C95B688 /* Pods-kerkee.debug.xcconfig */;
+			baseConfigurationReference = 5035C3207DD28991B71EA6F73396291F /* Pods-kerkeeTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-kerkeeTests/Pods-kerkeeTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-kerkeeTests/Pods-kerkeeTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		77AE17C95494F8950A59D181AFA411B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C4FE2336D6F2A36788136805569A68C /* Pods-kerkee.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -694,10 +688,11 @@
 			};
 			name = Debug;
 		};
-		CA444841F2F432ECC44D26E1C3247300 /* Release */ = {
+		A2C467AC8F3285C539E87BEBD98F1839 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D31F9EFD8C9444593DA3634F1288E8F /* SSKeychain.release.xcconfig */;
+			baseConfigurationReference = 6499439F0F61F0925254CCD6A5B89910 /* Pods-kerkeeTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -707,17 +702,19 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SSKeychain/SSKeychain-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SSKeychain/SSKeychain-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-kerkeeTests/Pods-kerkeeTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SSKeychain/SSKeychain.modulemap";
-				PRODUCT_MODULE_NAME = SSKeychain;
-				PRODUCT_NAME = SSKeychain;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-kerkeeTests/Pods-kerkeeTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -728,38 +725,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		46168C0A6C1E9D26A8802B359826CEFF /* Build configuration list for PBXNativeTarget "Pods-kerkeeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FF50A6A7CCC730E0EF2EF9EAC3A3ADD /* Debug */,
+				A2C467AC8F3285C539E87BEBD98F1839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7EF7227D9B20A1D549000096ACCB23D7 /* Debug */,
-				4BE66A09A74FD25164AAB3C2645B9B93 /* Release */,
+				421ECB1396280A8D83853C3DDBED1700 /* Debug */,
+				05DF210AC65EBB0E593AAF976B2C2177 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C0EACD66AB1549D38139FBFD01B39CC /* Build configuration list for PBXNativeTarget "Pods-kerkee" */ = {
+		8C6CE7A0565532D59C4871CD559D2F85 /* Build configuration list for PBXNativeTarget "Pods-kerkee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9E45F52E5F016131D42C194495C1F313 /* Debug */,
-				674F5F8531AD9F2B333B9C28EE1351D6 /* Release */,
+				77AE17C95494F8950A59D181AFA411B3 /* Debug */,
+				3300BB535405F5F1FF88FB0BE4A5D25D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		918DC60A70874D4F302BAE57BDE7C117 /* Build configuration list for PBXNativeTarget "Pods-kerkeeTests" */ = {
+		F9B6542BF6CCD84911C500C74EF4B910 /* Build configuration list for PBXNativeTarget "SSKeychain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				36E58265AE2B2FA37BC9945BE6CC327A /* Debug */,
-				705A231AEB53C58FD4D48F04883D7C36 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F5A36814B4C47EA7763072722ECB1CBB /* Build configuration list for PBXNativeTarget "SSKeychain" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				435BFD8A1C592FF5501118B58D4B4465 /* Debug */,
-				CA444841F2F432ECC44D26E1C3247300 /* Release */,
+				0C06D13A497A8793522687FF5D0F1680 /* Debug */,
+				406FD1EDE5189BF977A0C85A9F70FF91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
