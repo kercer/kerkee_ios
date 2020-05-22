@@ -18,6 +18,10 @@
 #import "KCUtilDevice.h"
 
 
+@interface KCUIWebView ()
+@property (nonatomic, assign) id scrollViewDelegate;
+@end
+
 @interface KCWKWebView ()
 @property (nonatomic, assign) id scrollViewDelegate;
 @end
@@ -114,7 +118,8 @@ static int createWebViewID = 1;
     }
     else
     {
-        m_isUsingUIWebView = NO;
+        [self initUIWebView];
+        m_isUsingUIWebView = YES;
     }
     [self.realWebView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:nil];
     self.scalesPageToFit = YES;
@@ -181,6 +186,30 @@ static int createWebViewID = 1;
     }
 }
 
+- (void)initUIWebView
+{
+    KCUIWebView* webView = [[KCUIWebView alloc] initWithFrame:self.bounds];
+    webView.backgroundColor = [UIColor clearColor];
+    webView.allowsInlineMediaPlayback = YES;
+    webView.mediaPlaybackRequiresUserAction = NO;
+    
+    webView.scrollViewDelegate = self;
+    
+    webView.opaque = NO;
+    for (UIView* subview in [webView.scrollView subviews])
+    {
+        if ([subview isKindOfClass:[UIImageView class]])
+        {
+            ((UIImageView*)subview).image = nil;
+            subview.backgroundColor = [UIColor clearColor];
+        }
+    }
+
+    webView.delegate = self;
+    webView.progressDelegate = self;
+
+    m_realWebView = webView;
+}
 - (void)addScriptMessageHandler:(id<WKScriptMessageHandler>)aScriptMessageHandler name:(NSString *)aName
 {
     if (!m_isUsingUIWebView)
@@ -230,6 +259,53 @@ static int createWebViewID = 1;
     BOOL resultBOOL = [self notifyWebViewShouldStartLoadWithRequest:request navigationType:navigationType];
     return resultBOOL;
 }
+
+#pragma mark --
+#pragma mark KCWebViewProgressDelegate
+-(void)webView:(KCUIWebView*)aWebView identifierForInitialRequest:(NSURLRequest*)aInitialRequest
+{
+    if (m_progressDelegate)
+    {
+        if ([m_progressDelegate respondsToSelector:@selector(webView:identifierForInitialRequest:)])
+        {
+            [m_progressDelegate webView:self identifierForInitialRequest:aInitialRequest];
+        }
+    }
+    
+//    if([aInitialRequest isKindOfClass:[NSURLRequest class]])
+//    {
+//        NSURLRequest *rqt = (NSURLRequest *)aInitialRequest;
+//        if(nil != m_imageSetter)
+//        {
+//            [m_imageSetter handleImage:[KCWebImageSetterTask create:self url:rqt.URL]];
+//        }
+//    }
+}
+
+-(void) webView:(KCUIWebView*)aWebView didReceiveResourceNumber:(int)aResourceNumber totalResources:(int)aTotalResources
+{
+    if (m_progressDelegate)
+    {
+        if ([m_progressDelegate respondsToSelector:@selector(webView:didReceiveResourceNumber:totalResources:)])
+        {
+            [m_progressDelegate webView:self didReceiveResourceNumber:aResourceNumber totalResources:aTotalResources];
+        }
+    }
+}
+
+-(void)webView:(id)aWebView didReceiveTitle:(NSString *)aTitle
+{
+    self.title = aTitle;
+    
+    if (m_progressDelegate)
+    {
+        if ([m_progressDelegate respondsToSelector:@selector(webView:didReceiveTitle:)])
+        {
+            [m_progressDelegate webView:self didReceiveTitle:aTitle];
+        }
+    }
+}
+
 
 
 #pragma mark - WKNavigationDelegate
@@ -810,13 +886,22 @@ static int createWebViewID = 1;
     m_imageSetter = nil;
     [self loadHTMLString:@"" baseURL:nil];
     
-    KCWKWebView* webView = m_realWebView;
-    webView.UIDelegate = nil;
-    webView.navigationDelegate = nil;
-    webView.scrollViewDelegate = nil;
+    if (m_isUsingUIWebView)
+    {
+        KCUIWebView* webView = m_realWebView;
+        webView.delegate = nil;
+        webView.scrollViewDelegate = nil;
+    }
+    else
+    {
+        KCWKWebView* webView = m_realWebView;
+        webView.UIDelegate = nil;
+        webView.navigationDelegate = nil;
+        webView.scrollViewDelegate = nil;
 
-    [webView removeObserver:self forKeyPath:@"estimatedProgress"];
-    [webView removeObserver:self forKeyPath:@"title"];
+        [webView removeObserver:self forKeyPath:@"estimatedProgress"];
+        [webView removeObserver:self forKeyPath:@"title"];
+    }
     [m_realWebView removeObserver:self forKeyPath:@"loading"];
     [m_realWebView scrollView].delegate = nil;
     [m_realWebView stopLoading];
