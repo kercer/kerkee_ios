@@ -13,6 +13,7 @@
 @interface KCArgList()
 {
     NSMutableDictionary *m_Args;
+    NSDictionary *m_rawArgs;
 }
 
 @end
@@ -116,6 +117,16 @@
 - (NSInteger)count
 {
     return [m_Args count];
+}
+
+- (void)setRawArgs:(NSDictionary *)dict {
+    if ([dict isKindOfClass:NSDictionary.class]) {
+        m_rawArgs = dict;
+    }
+}
+
+- (NSDictionary *)getRawArgs {
+    return m_rawArgs;
 }
 
 @end

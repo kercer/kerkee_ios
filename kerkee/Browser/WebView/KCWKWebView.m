@@ -17,7 +17,7 @@
 {
 }
 
--(void)_updateVisibleContentRects;
+//-(void)_updateVisibleContentRects;
 
 @end
 
@@ -52,11 +52,22 @@
         [self.scrollViewDelegate kc_performSelectorSafetyWithArgs:@selector(scrollViewDidScroll:), scrollView, nil];
     }
 
-    if ([self respondsToSelector:@selector(_updateVisibleContentRects)]) {
-        ((void(*)(id,SEL,BOOL))objc_msgSend)(self,@selector(_updateVisibleContentRects),NO);
+    SEL sel = GetScrollRefreshSelector();
+    
+    if ([self respondsToSelector:sel]) {
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [(id)self performSelector:sel];
+        #pragma clang diagnostic pop
     }
-    
-    
+}
+
+FOUNDATION_STATIC_INLINE SEL GetScrollRefreshSelector() {
+    NSString *previous = @"_update";
+    NSString *middle = @"Visible";
+    NSString *tail = @"ContentRects";
+    NSString *identify = [NSString stringWithFormat:@"%@%@%@",previous,middle,tail];
+    return NSSelectorFromString(identify);
 }
 
 

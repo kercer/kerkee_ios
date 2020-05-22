@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KCWebViewProgressDelegate.h"
+#import "KCUIWebView.h"
+#import <WebKit/WebKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,11 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)webViewDidStartLoad:(KCWebView*)aWebView;
 - (void)webViewDidFinishLoad:(KCWebView*)aWebView;
 - (void)webView:(KCWebView*)aWebView didFailLoadWithError:(NSError*)aError;
-- (BOOL)webView:(KCWebView*)aWebView shouldStartLoadWithRequest:(NSURLRequest*)aRequest navigationType:(UIWebViewNavigationType)aNavigationType;
+- (BOOL)webView:(KCWebView*)aWebView shouldStartLoadWithRequest:(NSURLRequest*)aRequest navigationType:(WKNavigationType)aNavigationType;
 
 @end
 
-// automatically choose to use WKWebView or UIWebView
 @interface KCWebView : UIView
 
 - (instancetype)initWithFrame:(CGRect)aFrame;
@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithFrame:(CGRect)aFrame usingUIWebView:(BOOL)aIsUsingUIWebView configuration:(id)configuration;
 
 @property (nonatomic, readonly) id realWebView;
+
+@property (nonatomic , strong) NSDictionary *xhrHeaders;
 
 // Will agent to WKUIDelegate WKNavigationDelegate internal unrealized callback.
 @property (weak, nonatomic) id<KCWebViewDelegate> delegate;

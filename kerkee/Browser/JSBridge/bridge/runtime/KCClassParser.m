@@ -81,6 +81,8 @@
         [list addArg:arg];
     }
     
+    [list setRawArgs:dic];
+    
     KCAutorelease(list);
     return list;
 }

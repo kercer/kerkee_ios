@@ -23,4 +23,7 @@
 - (NSString *)toString;
 - (NSInteger)count;
 
+- (void)setRawArgs:(NSDictionary *)dict;
+- (NSDictionary *)getRawArgs;
+
 @end

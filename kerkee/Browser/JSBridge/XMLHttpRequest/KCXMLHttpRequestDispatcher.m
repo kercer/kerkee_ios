@@ -112,11 +112,13 @@
             url = href;
         }
     }
-    
-    
+    [aWebView.xhrHeaders enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [xhr setRequestHeader:key headerValue:obj];
+    }];
     [xhr open:method url:url userAgent:userAgent referer:referer cookie:cookie timeout:timeout];
 //    BACKGROUND_COMMIT
 }
+
 
 - (void)send:(KCWebView*)aWebView argList:(KCArgList *)aArgs
 {
@@ -158,7 +160,6 @@
         }
         [xhr setRequestHeader:headerName headerValue:headerValueString];
     }
-    
 }
 
 - (void)overrideMimeType:(KCWebView*)aWebView argList:(KCArgList *)aArgs

@@ -83,7 +83,6 @@ FOUNDATION_EXPORT const unsigned char kerkeeVersionString[];
 #import <kerkee/KCFetchManifest.h>
 #import <kerkee/KCManifestObject.h>
 #import <kerkee/KCString.h>
-#import <kerkee/UIWebView+KCClean.h>
 #import <kerkee/KCUriDispatcher.h>
 #import <kerkee/KCApiBridge.h>
 #import <kerkee/KCFileManager.h>

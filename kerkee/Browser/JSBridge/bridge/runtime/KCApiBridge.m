@@ -111,7 +111,7 @@ static BOOL sIsOpenJSLog = true;
 #pragma mark --
 #pragma mark UIWebViewDelegate
 
-- (BOOL)webView:(KCWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (BOOL)webView:(KCWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(WKNavigationType)navigationType
 {
     if ([request.URL.scheme isEqualToString:PRIVATE_SCHEME])
     {

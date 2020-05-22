@@ -12,7 +12,7 @@
 #import "KCWebView.h"
 #import "KCRegister.h"
 
-@interface KCJSBridge : NSObject<UIWebViewDelegate>
+@interface KCJSBridge : NSObject
 
 - (id)initWithWebView:(KCWebView *)aWebView delegate:(id)delegate;
 

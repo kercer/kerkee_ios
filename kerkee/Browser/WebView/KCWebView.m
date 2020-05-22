@@ -8,7 +8,6 @@
 
 #import "KCWebView.h"
 #import <dlfcn.h>
-#import <WebKit/WebKit.h>
 #import <TargetConditionals.h>
 #import "KCApiBridge.h"
 #import "NSObject+KCSelector.h"
@@ -18,13 +17,17 @@
 #import "KCUtilDevice.h"
 
 
+@interface KCUIWebView ()
+@property (nonatomic, assign) id scrollViewDelegate;
+@end
+
 @interface KCWKWebView ()
 @property (nonatomic, assign) id scrollViewDelegate;
 @end
 
 
 
-@interface KCWebView () <UIWebViewDelegate, KCWebViewProgressDelegate, WKNavigationDelegate, WKUIDelegate>
+@interface KCWebView () <KCWebViewProgressDelegate, WKNavigationDelegate, WKUIDelegate>
 {
     BOOL m_isUsingUIWebView;
     id m_realWebView;
@@ -43,7 +46,7 @@
 
 @property (nonatomic, copy) NSString* title;
 
-@property (nonatomic,weak)id m_attach;
+@property (nonatomic,retain)id m_attach;
 
 @end
 
@@ -114,13 +117,14 @@ static int createWebViewID = 1;
     }
     else
     {
-        m_isUsingUIWebView = NO;
+        [self initUIWebView];
+        m_isUsingUIWebView = YES;
     }
     [self.realWebView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:nil];
     self.scalesPageToFit = YES;
     
     [self.realWebView setFrame:self.bounds];
-    [self.realWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    [((UIView *)self.realWebView) setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     [self addSubview:self.realWebView];
     
     m_imageSetter = [[KCWebImageSetter alloc] init];
@@ -181,6 +185,30 @@ static int createWebViewID = 1;
     }
 }
 
+- (void)initUIWebView
+{
+//    KCUIWebView* webView = [[KCUIWebView alloc] initWithFrame:self.bounds];
+//    webView.backgroundColor = [UIColor clearColor];
+////    webView.allowsInlineMediaPlayback = YES;
+////    webView.mediaPlaybackRequiresUserAction = NO;
+//
+//    webView.scrollViewDelegate = self;
+//
+//    webView.opaque = NO;
+//    for (UIView* subview in [webView.scrollView subviews])
+//    {
+//        if ([subview isKindOfClass:[UIImageView class]])
+//        {
+//            ((UIImageView*)subview).image = nil;
+//            subview.backgroundColor = [UIColor clearColor];
+//        }
+//    }
+//
+////    webView.delegate = self;
+//    webView.progressDelegate = self;
+//
+//    m_realWebView = webView;
+}
 - (void)addScriptMessageHandler:(id<WKScriptMessageHandler>)aScriptMessageHandler name:(NSString *)aName
 {
     if (!m_isUsingUIWebView)
@@ -198,38 +226,9 @@ static int createWebViewID = 1;
 }
 - (JSContext *)jsContext
 {
-    if (m_isUsingUIWebView)
-    {
-        return [(UIWebView*)self.realWebView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    }
     return nil;
 }
 
-
-#pragma mark - UIWebViewDelegate
-
-- (void)webViewDidFinishLoad:(UIWebView*)webView
-{
-//    self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    if (self.originRequest == nil)
-    {
-        self.originRequest = webView.request;
-    }
-    [self notifyWebViewDidFinishLoad];
-}
-- (void)webViewDidStartLoad:(UIWebView*)webView
-{
-    [self notifyWebViewDidStartLoad];
-}
-- (void)webView:(UIWebView*)webView didFailLoadWithError:(NSError*)error
-{
-    [self notifyWebViewDidFailLoadWithError:error];
-}
-- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    BOOL resultBOOL = [self notifyWebViewShouldStartLoadWithRequest:request navigationType:navigationType];
-    return resultBOOL;
-}
 
 
 #pragma mark - WKNavigationDelegate
@@ -357,33 +356,24 @@ static int createWebViewID = 1;
     {
         if (aNavigationType == -1)
         {
-            aNavigationType = UIWebViewNavigationTypeOther;
+            aNavigationType = WKNavigationTypeOther;
         }
         resultBOOL = [self.delegate webView:self shouldStartLoadWithRequest:aRequest navigationType:aNavigationType];
     }
     return resultBOOL;
 }
 
-
 #pragma mark - private
 
 - (void)setDelegate:(id<KCWebViewDelegate>)aDelegate
 {
     m_delegate = aDelegate;
-    if (m_isUsingUIWebView)
-    {
-        UIWebView* webView = self.realWebView;
-        webView.delegate = nil;
-        webView.delegate = self;
-    }
-    else
-    {
-        WKWebView* webView = self.realWebView;
-        webView.UIDelegate = nil;
-        webView.navigationDelegate = nil;
-        webView.UIDelegate = self;
-        webView.navigationDelegate = self;
-    }
+
+    WKWebView* webView = self.realWebView;
+    webView.UIDelegate = nil;
+    webView.navigationDelegate = nil;
+    webView.UIDelegate = self;
+    webView.navigationDelegate = self;
 }
 
 - (BOOL)isLoadingWKWebViewDisableScheme:(NSURL*)aUrl
@@ -413,15 +403,8 @@ static int createWebViewID = 1;
     self.originRequest = aRequest;
     self.currentRequest = aRequest;
 
-    if (m_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView loadRequest:aRequest];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView loadRequest:aRequest];
-    }
+    return [(WKWebView*)self.realWebView loadRequest:aRequest];
+
 }
 
 - (id)loadFileURL:(NSURL *)aURL allowingReadAccessToURL:(NSURL *)aReadAccessURL
@@ -429,50 +412,22 @@ static int createWebViewID = 1;
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:aURL];
     self.originRequest = request;
     self.currentRequest = request;
-    if (m_isUsingUIWebView)
-    {
-        return [self loadRequest:request];
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView loadFileURL:aURL allowingReadAccessToURL:aReadAccessURL];
-    }
+    return [(WKWebView*)self.realWebView loadFileURL:aURL allowingReadAccessToURL:aReadAccessURL];
+
 }
 
 
 - (id)loadHTMLString:(NSString*)aString baseURL:(nullable NSURL*)aBaseURL
 {
-    if (m_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView loadHTMLString:aString baseURL:aBaseURL];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView loadHTMLString:aString baseURL:aBaseURL];
-    }
+    return [(WKWebView*)self.realWebView loadHTMLString:aString baseURL:aBaseURL];
 }
 - (NSURLRequest*)currentRequest
 {
-    if (m_isUsingUIWebView)
-    {
-        return [(UIWebView*)self.realWebView request];
-    }
-    else
-    {
-        return _currentRequest;
-    }
+    return _currentRequest;
 }
 - (NSURL*)URL
 {
-    if (m_isUsingUIWebView)
-    {
-        return [(UIWebView*)self.realWebView request].URL;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView URL];
-    }
+    return [(WKWebView*)self.realWebView URL];
 }
 
 
@@ -491,54 +446,20 @@ static int createWebViewID = 1;
 
 - (id)goBack
 {
-    if (m_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView goBack];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView goBack];
-    }
+    return [(WKWebView*)self.realWebView goBack];
 }
 - (id)goForward
 {
-    if (m_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView goForward];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView goForward];
-    }
+    return [(WKWebView*)self.realWebView goForward];
 }
 - (id)reload
 {
-    if (m_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView reload];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView reload];
-    }
+    return [(WKWebView*)self.realWebView reload];
 }
+
 - (id)reloadFromOrigin
 {
-    if (m_isUsingUIWebView)
-    {
-        if (self.originRequest)
-        {
-            [self evaluateJavaScript:[NSString stringWithFormat:@"window.location.replace('%@')", self.originRequest.URL.absoluteString] completionHandler:nil];
-        }
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView reloadFromOrigin];
-    }
+    return [(WKWebView*)self.realWebView reloadFromOrigin];
 }
 - (void)stopLoading
 {
@@ -547,29 +468,12 @@ static int createWebViewID = 1;
 
 - (void)evaluateJavaScript:(NSString *)aJavaScriptString completionHandler:(void (^ _Nullable)(_Nullable id, NSError* _Nullable error))aCompletionHandler
 {
-    if (m_isUsingUIWebView)
-    {
-        NSString* result = [(UIWebView*)self.realWebView stringByEvaluatingJavaScriptFromString:aJavaScriptString];
-        if (aCompletionHandler)
-        {
-            aCompletionHandler(result, nil);
-        }
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView evaluateJavaScript:aJavaScriptString completionHandler:aCompletionHandler];
-    }
+
+    return [(WKWebView*)self.realWebView evaluateJavaScript:aJavaScriptString completionHandler:aCompletionHandler];
 }
 
 - (void)setScalesPageToFit:(BOOL)scalesPageToFit
 {
-    if (m_isUsingUIWebView)
-    {
-        UIWebView* webView = m_realWebView;
-        webView.scalesPageToFit = scalesPageToFit;
-    }
-    else
-    {
         if (m_scalesPageToFit == scalesPageToFit)
         {
             return;
@@ -625,42 +529,18 @@ static int createWebViewID = 1;
                 [userContentController addUserScript:wkUScript];
             }
         }
-    }
     m_scalesPageToFit = scalesPageToFit;
 }
 - (BOOL)scalesPageToFit
 {
-    if (m_isUsingUIWebView)
-    {
-        return [m_realWebView scalesPageToFit];
-    }
-    else
-    {
-        return m_scalesPageToFit;
-    }
+    return m_scalesPageToFit;
 }
 
 - (NSInteger)countOfHistory
 {
-    if (m_isUsingUIWebView)
-    {
-        UIWebView* webView = self.realWebView;
 
-        int count = [[webView stringByEvaluatingJavaScriptFromString:@"window.history.length"] intValue];
-        if (count)
-        {
-            return count;
-        }
-        else
-        {
-            return 1;
-        }
-    }
-    else
-    {
-        WKWebView* webView = self.realWebView;
-        return webView.backForwardList.backList.count;
-    }
+    WKWebView* webView = self.realWebView;
+    return webView.backForwardList.backList.count;
 }
 - (void)gobackWithStep:(NSInteger)aStep
 {
@@ -675,17 +555,9 @@ static int createWebViewID = 1;
             aStep = historyCount - 1;
         }
 
-        if (m_isUsingUIWebView)
-        {
-            UIWebView* webView = self.realWebView;
-            [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"window.history.go(-%ld)", (long)aStep]];
-        }
-        else
-        {
-            WKWebView* webView = self.realWebView;
+        WKWebView* webView = self.realWebView;
             WKBackForwardListItem* backItem = webView.backForwardList.backList[aStep];
-            [webView goToBackForwardListItem:backItem];
-        }
+        [webView goToBackForwardListItem:backItem];
     }
     else
     {
@@ -814,13 +686,12 @@ static int createWebViewID = 1;
     webView.UIDelegate = nil;
     webView.navigationDelegate = nil;
     webView.scrollViewDelegate = nil;
-
     [webView removeObserver:self forKeyPath:@"estimatedProgress"];
     [webView removeObserver:self forKeyPath:@"title"];
     [m_realWebView removeObserver:self forKeyPath:@"loading"];
     [m_realWebView scrollView].delegate = nil;
     [m_realWebView stopLoading];
-    [(UIWebView*)m_realWebView loadHTMLString:@"" baseURL:nil];
+    [(WKWebView*)m_realWebView loadHTMLString:@"" baseURL:nil];
     [m_realWebView stopLoading];
     [m_realWebView removeFromSuperview];
     m_realWebView = nil;
