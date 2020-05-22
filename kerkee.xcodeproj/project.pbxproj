@@ -115,7 +115,6 @@
 		DF8F35C91BC7727A00C79B71 /* KCXMLHttpRequestDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB7A1B9C17F2009F4775 /* KCXMLHttpRequestDelegate.h */; };
 		DF8F35CA1BC7727A00C79B71 /* KCXMLHttpRequestDispatcher.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB7B1B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.h */; };
 		DF8F35CB1BC7727A00C79B71 /* KCWebPath.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB7E1B9C17F2009F4775 /* KCWebPath.h */; };
-		DF8F35CD1BC7727A00C79B71 /* KCUIWebView.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB801B9C17F2009F4775 /* KCUIWebView.h */; };
 		DF8F35CE1BC7727A00C79B71 /* KCWebViewManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB831B9C17F2009F4775 /* KCWebViewManager.h */; };
 		DF8F35CF1BC7727A00C79B71 /* KCWebViewProxy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB851B9C17F2009F4775 /* KCWebViewProxy.h */; };
 		DF8F35D01BC7727A00C79B71 /* UIWebView+KCClean.h in Copy Files */ = {isa = PBXBuildFile; fileRef = DFC3AB871B9C17F2009F4775 /* UIWebView+KCClean.h */; };
@@ -137,8 +136,6 @@
 		DFC3ABA61B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7C1B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.m */; };
 		DFC3ABA71B9C17F2009F4775 /* KCWebPath.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3AB7E1B9C17F2009F4775 /* KCWebPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3ABA81B9C17F2009F4775 /* KCWebPath.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB7F1B9C17F2009F4775 /* KCWebPath.m */; };
-		DFC3ABA91B9C17F2009F4775 /* KCUIWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3AB801B9C17F2009F4775 /* KCUIWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DFC3ABAA1B9C17F2009F4775 /* KCUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB811B9C17F2009F4775 /* KCUIWebView.m */; };
 		DFC3ABAB1B9C17F2009F4775 /* KCWebViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3AB831B9C17F2009F4775 /* KCWebViewManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFC3ABAC1B9C17F2009F4775 /* KCWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC3AB841B9C17F2009F4775 /* KCWebViewManager.m */; };
 		DFC3ABAD1B9C17F2009F4775 /* KCWebViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC3AB851B9C17F2009F4775 /* KCWebViewProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -305,7 +302,6 @@
 				DF8F35C91BC7727A00C79B71 /* KCXMLHttpRequestDelegate.h in Copy Files */,
 				DF8F35CA1BC7727A00C79B71 /* KCXMLHttpRequestDispatcher.h in Copy Files */,
 				DF8F35CB1BC7727A00C79B71 /* KCWebPath.h in Copy Files */,
-				DF8F35CD1BC7727A00C79B71 /* KCUIWebView.h in Copy Files */,
 				DF8F35CE1BC7727A00C79B71 /* KCWebViewManager.h in Copy Files */,
 				DF8F35CF1BC7727A00C79B71 /* KCWebViewProxy.h in Copy Files */,
 				DF8F35D01BC7727A00C79B71 /* UIWebView+KCClean.h in Copy Files */,
@@ -393,8 +389,6 @@
 		DFC3AB7C1B9C17F2009F4775 /* KCXMLHttpRequestDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCXMLHttpRequestDispatcher.m; sourceTree = "<group>"; };
 		DFC3AB7E1B9C17F2009F4775 /* KCWebPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWebPath.h; sourceTree = "<group>"; };
 		DFC3AB7F1B9C17F2009F4775 /* KCWebPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWebPath.m; sourceTree = "<group>"; };
-		DFC3AB801B9C17F2009F4775 /* KCUIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUIWebView.h; sourceTree = "<group>"; };
-		DFC3AB811B9C17F2009F4775 /* KCUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUIWebView.m; sourceTree = "<group>"; };
 		DFC3AB831B9C17F2009F4775 /* KCWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWebViewManager.h; sourceTree = "<group>"; };
 		DFC3AB841B9C17F2009F4775 /* KCWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWebViewManager.m; sourceTree = "<group>"; };
 		DFC3AB851B9C17F2009F4775 /* KCWebViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWebViewProxy.h; sourceTree = "<group>"; };
@@ -743,8 +737,6 @@
 				DF7CE6691DDD936500821A37 /* KCWebView.m */,
 				DFC3AB7E1B9C17F2009F4775 /* KCWebPath.h */,
 				DFC3AB7F1B9C17F2009F4775 /* KCWebPath.m */,
-				DFC3AB801B9C17F2009F4775 /* KCUIWebView.h */,
-				DFC3AB811B9C17F2009F4775 /* KCUIWebView.m */,
 				DFCF9A891DED664500039A95 /* KCWKWebView.h */,
 				DFCF9A8A1DED664500039A95 /* KCWKWebView.m */,
 				DFC3AB821B9C17F2009F4775 /* private */,
@@ -899,7 +891,6 @@
 				DFC3AB9E1B9C17F2009F4775 /* KCWebImageSetter.h in Headers */,
 				DFCF9A8B1DED664500039A95 /* KCWKWebView.h in Headers */,
 				DFC3AC061B9C17FC009F4775 /* KCSandbox.h in Headers */,
-				DFC3ABA91B9C17F2009F4775 /* KCUIWebView.h in Headers */,
 				DFC3AC371B9C17FC009F4775 /* KCMainBundle.h in Headers */,
 				DFC3AC1A1B9C17FC009F4775 /* NSObject+KCProperty.h in Headers */,
 				DFC3AC271B9C17FC009F4775 /* KCFileCache.h in Headers */,
@@ -994,7 +985,7 @@
 		DF3074FC1B959B01005AA030 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = zihong;
 				TargetAttributes = {
 					DF3075041B959B01005AA030 = {
@@ -1007,11 +998,11 @@
 			};
 			buildConfigurationList = DF3074FF1B959B01005AA030 /* Build configuration list for PBXProject "kerkee" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = DF3074FB1B959B01005AA030;
 			productRefGroup = DF3075061B959B01005AA030 /* Products */;
@@ -1141,7 +1132,6 @@
 				DFC3ABAC1B9C17F2009F4775 /* KCWebViewManager.m in Sources */,
 				DFC3AC381B9C17FC009F4775 /* KCMainBundle.m in Sources */,
 				DF809CB31B9D90FF008B315D /* KCArgList.m in Sources */,
-				DFC3ABAA1B9C17F2009F4775 /* KCUIWebView.m in Sources */,
 				DFE100CE1C1E9FFF00938E43 /* KCString.m in Sources */,
 				DF6A1F441E0A38BB00709677 /* UIActionSheet+Blocks.m in Sources */,
 				DFC3AC111B9C17FC009F4775 /* NSDate+KCDate.m in Sources */,
@@ -1187,6 +1177,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1195,12 +1186,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1244,6 +1237,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1252,12 +1246,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

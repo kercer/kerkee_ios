@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KCUIWebView.h"
+#import "KCWebViewProgressDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
