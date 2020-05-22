@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "kerkee"
-  s.version      = "1.1.1"
+  s.version      = "1.2.0"
   s.summary      = "kerkee is a hybrid app framework,This repository is kerkee for ios"
   s.description  = "kerkee is a hybrid app framework,This repository is kerkee for ios, is the multi-agent framework"
 
